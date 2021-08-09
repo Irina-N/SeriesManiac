@@ -1,0 +1,2 @@
+# SeriesManiac
+Студенческий проект GeecBrains
