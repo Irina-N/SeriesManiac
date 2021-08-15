@@ -1,12 +1,13 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import App from "../App/App";
+import Start from "../Start/Start";
 
 function Router () {
     return (
     <Switch>            
         <Route exact path="/">
-            <App/>
+            <Start/>
         </Route>
     </Switch>
     )
