@@ -2,8 +2,8 @@ import React from 'react';
 
 function App() {
     return (
-        <div className="container">
-            React is working!!!!!            
+        <div className='content'>
+            Lets's go!          
         </div>
     );
 }
