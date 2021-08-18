@@ -17,7 +17,22 @@ const FormSingUp = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(email, login, password, passwordConfirmation);
+    const newUser = {email, login, password, passwordConfirmation};
+    fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(newUser)
+        })
+        .then(response => response.json())
+        .then(answer => {
+            console.log(answer);            
+        })
+        .catch(err => {            
+            console.log('Something wrong', err);
+        });    
+    
     setEmail('');
     setLogin('');
     setPassword(''); 
@@ -25,7 +40,7 @@ const FormSingUp = () => {
   };
 
   return (
-        <form className='form__signup' action='/action_page.php' onSubmit={handleSubmit} name='sing_up' encType='multipart/form-data' method='post'>
+        <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
             required

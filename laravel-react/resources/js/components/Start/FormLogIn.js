@@ -7,11 +7,28 @@ const FormLogIn = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(email, password);    
+    const user = {email, password};
+    fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(user)
+        })
+        .then(response => response.json())
+        .then(answer => {
+            console.log(answer);            
+        })
+        .catch(err => {            
+            console.log('Something wrong', err);
+        }); 
+        
+    setEmail('');
+    setPassword('');    
   };
 
   return (        
-      <form className='form__login' onSubmit={handleSubmit} name='log_in' action='/action_page.php'  encType='multipart/form-data' method='post'>
+      <form className='form__login' onSubmit={handleSubmit} name='log_in'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
             type='text' 
