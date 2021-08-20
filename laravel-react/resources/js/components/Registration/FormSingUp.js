@@ -30,7 +30,7 @@ const FormSingUp = () => {
 
 
   return (
-        <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
+        <form className='form__signup' action='/register' onSubmit={handleSubmit} name='sing_up'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
             required
