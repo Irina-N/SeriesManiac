@@ -1,43 +1,33 @@
-import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
-import Header from '../Header/Header';
+import React, {useCallback, useState} from "react";
+import { useDispatch, useSelector} from "react-redux";
 import './FormSingUp.css';
+import {fetchSignUp} from '../../actions/signUp'
 
 const FormSingUp = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');  
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+
+  const {signUpRequestStatus} = useSelector(state => state.signUpReducer);
 /* 
   const emailRegEx = /^[A-z0-9._-]+@[A-z0-9.-]+\.[A-z]{2,4}$/;
-  const loginRegEx = /^[A-zА-я0-9._-]{3,20}$/;
+  const loginRegEx = /^[A-zА-я0-9._-\s]{3,20}$/;
   const passwordRegEx = '';
  */
   
-
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();    
     const newUser = {email, login, password, passwordConfirmation};
-    fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(newUser)
-        })
-        .then(response => response.json())
-        .then(answer => {
-            console.log(answer);            
-        })
-        .catch(err => {            
-            console.log('Something wrong', err);
-        });    
-    
+    dispatch(fetchSignUp(newUser));    
     setEmail('');
     setLogin('');
     setPassword(''); 
-    setPasswordConfirmation('');
-  };
+    setPasswordConfirmation('');    
+}, [dispatch, email, login, password, passwordConfirmation])
+
 
   return (
         <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
@@ -88,49 +78,3 @@ const FormSingUp = () => {
 
 
 export default FormSingUp;
-/* 
-<form className='form__auth' onSubmit={handleSubmit} name='sing_up' action='action.php' encType='multipart/form-data' method='post'>      
-        <TextField
-            label='email'
-            variant='outlined'
-            type='email'
-            required
-            value={email}
-            onChange={e => setEmail(e.target.value)}                    
-        />
-        <TextField
-            id='input_username_reg'
-            label='логин'
-            variant='outlined'
-            required
-            value={login}
-            onChange={e => setLogin(e.target.value)}                    
-        />
-        <TextField
-            error
-            id='input_password_reg'
-            label='пароль'
-            variant='outlined'
-            type='password'
-            required
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-        />
-        <TextField
-            error
-            id='input_password_conf_reg'
-            label='повторите пароль'
-            variant='outlined'
-            type='password'
-            required
-            value={passwordConfirmation}
-            onChange={e => setPasswordConfirmation(e.target.value)}
-        />
-
-        <Button 
-            id='singup_btn'
-            type='submit' 
-            variant='contained'>
-            Зарегистрироваться
-        </Button> 
-    </form> */

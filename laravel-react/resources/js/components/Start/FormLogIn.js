@@ -1,33 +1,26 @@
-import React, { useState } from 'react';
+import React, {useCallback, useState} from "react";
+import { useDispatch, useSelector} from "react-redux";
 import './FormLogIn.css';
+import {fetchLogin} from '../../actions/login'
 
 const FormLogIn = () => {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const user = {email, password};
-    fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-          },
-          body: JSON.stringify(user)
-        })
-        .then(response => response.json())
-        .then(answer => {
-            console.log(answer);            
-        })
-        .catch(err => {            
-            console.log('Something wrong', err);
-        }); 
-        
-    setEmail('');
-    setPassword('');    
-  };
+  const {loginRequestStatus} = useSelector(state => state.loginReducer);
 
-  return (        
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();    
+    const user = {email, password};
+    dispatch(fetchLogin(user));    
+    setPassword('');        
+}, [dispatch, email, password])
+
+  return (
+    <React.Fragment>
+     <h3 className='center-text'>Заходите!</h3>        
       <form className='form__login' onSubmit={handleSubmit} name='log_in'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
@@ -49,6 +42,7 @@ const FormLogIn = () => {
 
           <input type='submit' value='ВОЙТИ'></input>
         </form>
+      </React.Fragment>
   );
 };
 
