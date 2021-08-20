@@ -9,19 +9,19 @@ function Start() {
 
     return (
         <div className='content'> 
-        <Header/>
-            <h3 className='center-text'>Заходите!</h3>
+        <Header/>            
             <FormLogIn/> 
             <h3 className='center-text'>Ещё нет аккаунта?</h3>
             <div className='content-back'>
             <Button 
                 color='primary' 
                 component={Link} 
-                to='/singup'
+                to='/register'
                 id='singup_btn'
                 variant='contained'>        
             Зарегистрироваться
-            </Button>
+            </Button>           
+
             </div>             
         </div>         
     );
