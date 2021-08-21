@@ -17,11 +17,7 @@ class LoginController extends Controller
 
     public function login(Request $requset)
     {
-        /*
-        if(\Auth::check()){
-           return redirect(route('home'));
-        }
-        */
+        
         $formFields = $requset->only(['email', 'password']);
 
         if(\Auth::attempt($formFields)){
