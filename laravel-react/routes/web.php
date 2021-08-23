@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -31,3 +32,5 @@ Route::get('/logout', function(){
 Route::get('/profile', function(){
     return view('welcome');
 })->middleware('auth')->name('home');
+
+Route::get('/get-all-films', [FilmController::class, 'getAllFilms']);
