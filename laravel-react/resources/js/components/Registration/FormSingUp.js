@@ -1,17 +1,19 @@
 import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
+import { REQUEST_STATUSES } from '../../constants.js';
 import './FormSingUp.css';
 import {fetchSignUp} from '../../actions/signUp'
 
 const FormSingUp = () => {
   const dispatch = useDispatch();
-
+ 
   const [email, setEmail] = useState('');  
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
   const {signUpRequestStatus} = useSelector(state => state.signUpReducer);
+
 /* 
   const emailRegEx = /^[A-z0-9._-]+@[A-z0-9.-]+\.[A-z]{2,4}$/;
   const loginRegEx = /^[A-zА-я0-9._-\s]{3,20}$/;

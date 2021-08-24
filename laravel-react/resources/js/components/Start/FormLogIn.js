@@ -1,16 +1,17 @@
 import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
+import { REQUEST_STATUSES } from '../../constants.js';
 import './FormLogIn.css';
-import {fetchLogin} from '../../actions/login'
+import {fetchLogin} from '../../actions/login';
 
 const FormLogIn = () => {
   const dispatch = useDispatch();
-
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const {loginRequestStatus} = useSelector(state => state.loginReducer);
-
+  
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
     const user = {email, password};
