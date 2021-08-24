@@ -1,4 +1,4 @@
-import { REQUEST_STATUSES } from '../../constants';
+import { REQUEST_STATUSES } from '../../common/constants/constants';
 
 export const LOGIN_LOADING_STARTED = 'LOGIN::LOGIN_LOADING_STARTED';
 export const LOGIN_LOADING_SUCCESS = 'LOGIN::LOGIN_LOADING_SUCCESS';

@@ -1,5 +1,5 @@
 import {SIGN_UP_LOADING_STARTED, SIGN_UP_LOADING_SUCCESS, SIGN_UP_LOADING_ERROR, SIGN_UP_LOADING_IDLE } from '../actions/signUp';
-import { REQUEST_STATUSES } from '../../constants';
+import { REQUEST_STATUSES } from '../../common/constants/constants';
 
 const initialState = {
     signUpRequestStatus: REQUEST_STATUSES.IDLE,

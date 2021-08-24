@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTopMovies } from '../../store/actions/movies';
+import { MovieCard } from '../MovieCard/MovieCard';
 
 export const Movies = () => {
-  const topMovies = useSelector((state) => state.movies)
+  const dispatch = useDispatch();
+  const topMovies = useSelector((state) => state.moviesReducer.movies);
+  
+  useEffect(() => {
+    dispatch(getTopMovies());
+  }, []);
 
   const handlerSearch = () => {
 
@@ -22,12 +29,12 @@ export const Movies = () => {
     </section>
     <div className="container-fluid d-flex bg-light justify-content-center p-2">
       <div className="btn-group" id="button-wrapper" srole="group" aria-label="Basic radio toggle button group">
-        <input type="radio" className="btn-check" name="btnradio" id="popular" autocomplete="off"/>
-        <label className="btn btn-outline-dark" for="popular">Popular</label>
-        <input type="radio" className="btn-check" name="btnradio" id="upcoming" autocomplete="off"/>
-        <label className="btn btn-outline-dark" for="upcoming">Upcoming</label>
-        <input type="radio" className="btn-check" name="btnradio" id="top_rated" autocomplete="off"/>
-        <label className="btn btn-outline-dark" for="top_rated">Top rated</label>
+        <input type="radio" className="btn-check" name="btnradio" id="popular" autoComplete="off"/>
+        <label className="btn btn-outline-dark" htmlFor="popular">Popular</label>
+        <input type="radio" className="btn-check" name="btnradio" id="upcoming" autoComplete="off"/>
+        <label className="btn btn-outline-dark" htmlFor="upcoming">Upcoming</label>
+        <input type="radio" className="btn-check" name="btnradio" id="top_rated" autoComplete="off"/>
+        <label className="btn btn-outline-dark" htmlFor="top_rated">Top rated</label>
       </div>
     </div>
     <div className="container-fluid d-flex bg-light justify-content-center">
@@ -38,14 +45,16 @@ export const Movies = () => {
             </button>
         </form>
     </div>
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div id="film-container" class="row">
-          {}
+    <div className="album py-5 bg-light">
+      <div className="container">
+        <div id="film-container" className="row">
+          {topMovies && topMovies.map((movie) => {
+            <MovieCard key={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />
+          })}
         </div>
       </div>
-      <div class="d-flex justify-content-center align-items-center pt-4">
-        <button id="load-more" type="button" class="btn btn-lg btn-outline-success">
+      <div className="d-flex justify-content-center align-items-center pt-4">
+        <button id="load-more" type="button" className="btn btn-lg btn-outline-success">
           Load more
         </button>
       </div>

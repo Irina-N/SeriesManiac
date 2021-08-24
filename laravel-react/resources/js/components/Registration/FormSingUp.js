@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { REQUEST_STATUSES } from '../../constants.js';
+import { REQUEST_STATUSES } from '../../common/constants/constants.js';
 import './FormSingUp.css';
 import {fetchSignUp} from '../../store/actions/signUp'
 

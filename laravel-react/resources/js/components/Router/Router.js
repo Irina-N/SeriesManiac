@@ -12,8 +12,7 @@ function Router () {
     return (
     <Switch>            
         <Route exact path='/'>
-            <Movies/>
-            {/* <Start/> */}
+            <Start/>
         </Route>
         <Route exact path='/register'>
             <Registration/>
@@ -23,6 +22,9 @@ function Router () {
         </Route>
         <Route exact path='/logout'>
             <Logout/>
+        </Route>
+        <Route exact path='/movies'>
+          <Movies/>
         </Route>
     </Switch>
     )

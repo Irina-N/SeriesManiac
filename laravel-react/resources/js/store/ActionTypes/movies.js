@@ -1,1 +1,1 @@
-export const GET_TOP = "MOVIES::GET_TOP",
+export const GET_TOP = "MOVIES::GET_TOP";

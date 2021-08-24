@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { REQUEST_STATUSES } from '../../constants';
+import { REQUEST_STATUSES } from '../../common/constants/constants';
 import './FormLogIn.css';
 import {fetchLogin} from '../../store/actions/login';
 
