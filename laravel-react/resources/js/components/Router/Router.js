@@ -3,7 +3,8 @@ import {Route, Switch} from 'react-router-dom';
 import App from '../App/App';
 import Start from '../Start/Start';
 import Profile from '../Profile/Profile';
-import Registration from '../Registration/Registration'
+import Registration from '../Registration/Registration';
+import Logout from '../Profile/Logout';
 import '../../../css/app.css'
 
 function Router () {
@@ -17,6 +18,9 @@ function Router () {
         </Route>
         <Route exact path='/profile'>
             <Profile/>
+        </Route>
+        <Route exact path='/logout'>
+            <Logout/>
         </Route>
     </Switch>
     )
