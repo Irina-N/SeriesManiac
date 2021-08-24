@@ -12331,7 +12331,7 @@ var Movies = /*#__PURE__*/function () {
   _createClass(Movies, [{
     key: "getTopMovies",
     value: function getTopMovies() {
-      return this._http.load('https://api.myshows.ru/shows/top/all/', {
+      return this._http.load('/movies', {
         method: _common_constants_constants__WEBPACK_IMPORTED_MODULE_0__.HttpMethod.GET
       });
     }
