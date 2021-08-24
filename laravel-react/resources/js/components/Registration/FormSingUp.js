@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { REQUEST_STATUSES } from '../../constants.js';
 import './FormSingUp.css';
-import {fetchSignUp} from '../../actions/signUp'
+import {fetchSignUp} from '../../store/actions/signUp'
 
 const FormSingUp = () => {
   const dispatch = useDispatch();

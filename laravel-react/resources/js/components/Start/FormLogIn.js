@@ -1,8 +1,8 @@
 import React, {useCallback, useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { REQUEST_STATUSES } from '../../constants.js';
+import { REQUEST_STATUSES } from '../../constants';
 import './FormLogIn.css';
-import {fetchLogin} from '../../actions/login';
+import {fetchLogin} from '../../store/actions/login';
 
 const FormLogIn = () => {
   const dispatch = useDispatch();

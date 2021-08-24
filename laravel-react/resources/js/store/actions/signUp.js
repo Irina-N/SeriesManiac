@@ -1,4 +1,4 @@
-import { REQUEST_STATUSES } from '../constants.js';
+import { REQUEST_STATUSES } from '../../constants';
 
 export const SIGN_UP_LOADING_STARTED = 'SIGN_UP::SIGN_UP_LOADING_STARTED';
 export const SIGN_UP_LOADING_SUCCESS = 'SIGN_UP::SIGN_UP_LOADING_SUCCESS';

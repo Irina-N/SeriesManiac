@@ -1,5 +1,5 @@
 import {LOGIN_LOADING_STARTED, LOGIN_LOADING_SUCCESS, LOGIN_LOADING_ERROR, LOGIN_LOADING_IDLE } from '../actions/login';
-import { REQUEST_STATUSES } from '../constants';
+import { REQUEST_STATUSES } from '../../constants';
 
 const initialState = {
     loginRequestStatus: REQUEST_STATUSES.IDLE,

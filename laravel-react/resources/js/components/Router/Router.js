@@ -6,12 +6,14 @@ import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
 import Logout from '../Profile/Logout';
 import '../../../css/app.css'
+import Movies from '../Movies/Movies';
 
 function Router () {
     return (
     <Switch>            
         <Route exact path='/'>
-            <Start/>
+            <Movies/>
+            {/* <Start/> */}
         </Route>
         <Route exact path='/register'>
             <Registration/>
