@@ -24,7 +24,7 @@ class LoginController extends Controller
             return redirect()->intended(route('home'));
         }
         
-        return redirect(route('login'))->withErrors([
+        return response()->json([
             'email' => 'Failed to login!'
         ]);
 
