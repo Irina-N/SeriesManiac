@@ -1,8 +1,8 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { REQUEST_STATUSES } from '../../constants.js';
 import './FormSingUp.css';
-import {fetchSignUp} from '../../actions/signUp'
+import {fetchSignUp, setSignUpRequestStatusIdle} from '../../actions/signUp'
 
 const FormSingUp = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const FormSingUp = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
 
   const {signUpRequestStatus} = useSelector(state => state.signUpReducer);
 
@@ -19,6 +20,10 @@ const FormSingUp = () => {
   const loginRegEx = /^[A-zА-я0-9._-\s]{3,20}$/;
   const passwordRegEx = '';
  */
+ 
+  const handleOnClickErrorBtn = () => {
+    setErrorMessageClassName('errorMessage hidden');
+  }
   
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
@@ -28,10 +33,25 @@ const FormSingUp = () => {
     setLogin('');
     setPassword(''); 
     setPasswordConfirmation('');    
-}, [dispatch, email, login, password, passwordConfirmation])
+}, [dispatch, email, login, password, passwordConfirmation]);
+
+  useEffect(() => {
+    console.log('request status', signUpRequestStatus)   
+  })
+
+  if(signUpRequestStatus === REQUEST_STATUSES.ERROR) {
+    dispatch(setSignUpRequestStatusIdle());
+    setErrorMessageClassName('errorMessage');      
+  }
 
 
   return (
+      <React.Fragment>
+        <div className={errorMessageClassName}>
+        <p className='errorMessage__text'>Ошибка</p>
+        <p className='errorMessage__text'>Здесь планируется разместить описание ошибки в зависимости от того, что придёт с бэкенда</p>
+        <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
+      </div>
         <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
@@ -74,7 +94,9 @@ const FormSingUp = () => {
           </input>
 
           <input type='submit' value='ЗАРЕГИСТРИРОВАТЬСЯ'></input>
-        </form>    
+        </form>
+      </React.Fragment>
+            
       );
 };
 

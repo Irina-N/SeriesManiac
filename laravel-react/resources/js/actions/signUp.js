@@ -35,6 +35,9 @@ export const fetchSignUp = (newUser) => (dispatch) => {
         body: JSON.stringify(newUser)
         })
     .then(response => {
+        if (!response.ok) {
+            throw 'Response status is not ok';
+        }
         return response.json()
     })
     .then(answer => {
