@@ -22,24 +22,34 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $data = $request->all();
-
+        $errors = [];
+/*
         $validateFields = $request->validate([
             'login' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'passwordConfirmation' => ['required', 'string', 'min:8'],
         ]);
-
+*/
         if($data['password'] !== $data['passwordConfirmation']){
-            return response()->json([
-                'formError' => 'Password Confirmation is not correct!'
+            array_push($errors,[
+                'password' => 'Password is not correct!',
+            ]);
+        }
+        elseif(strlen($data['password']) < 8){
+            array_push($errors,[
+                'password' => 'Password is too weak!',
             ]);
         }
         
         if(User::where('email', $data['email'])->exists()){
-            return response()->json([
-                'formError' => 'This Email already exist!'
+            array_push($errors,[
+                'email' => 'This Email already exist!',
             ]);
+        }
+
+        if(!empty($errors)){
+            return response()->json($errors);
         }
 
         $user = User::create([

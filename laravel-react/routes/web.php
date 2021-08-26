@@ -4,6 +4,8 @@ use App\Http\Controllers\FilmController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Profile\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +19,10 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', [LoginController::class, 'show'])->name('login');
-
-Route::post('/login', [LoginController::class, 'login']);
-
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
 
-Route::post('/register', [RegisterController::class, 'register']);
-
-Route::get('/logout', function(){
-    Auth::logout();
-    return redirect(route('login'));
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/profile', [ProfileController::class, 'show'])->name('home');
+    Route::get('/movies', [FilmController::class, 'show'])->name('movies');
+    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
-
-Route::get('/profile', function(){
-    return view('welcome');
-})->middleware('auth')->name('home');
-
-Route::get('/get-all-films', [FilmController::class, 'getAllFilms']);
