@@ -17,16 +17,25 @@ class LoginController extends Controller
 
     public function login(Request $requset)
     {
-        
         $formFields = $requset->only(['email', 'password']);
+        $errors = [];
 
         if(\Auth::attempt($formFields)){
             return redirect()->intended(route('home'));
         }
         
-        return redirect(route('login'))->withErrors([
-            'email' => 'Failed to login!'
-        ]);
+        if(User::where('email', $data['email'])->exists()){
+            array_push($errors,[
+                'password' => 'Wrong Password!',
+            ]);
+        }else{
+            array_push($errors,[
+                'email' => 'Wrong Email!',
+            ]);
+        }
 
+        if(!empty($errors)){
+            return response()->json($errors);
+        }
     }
 }

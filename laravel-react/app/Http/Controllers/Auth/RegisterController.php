@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facade\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -20,23 +21,37 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        /*
-        
-
+        $data = $request->all();
+        $errors = [];
+/*
         $validateFields = $request->validate([
             'login' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+            'passwordConfirmation' => ['required', 'string', 'min:8'],
         ]);
-
-        if(User::where('email', $validateFields['email'])->exists()){
-            return redirect(route('register'))->withErrors([
-                'formError' => 'Failed to register user!'
+*/
+        if($data['password'] !== $data['passwordConfirmation']){
+            array_push($errors,[
+                'password' => 'Password is not correct!',
             ]);
         }
-        */
+        elseif(strlen($data['password']) < 8){
+            array_push($errors,[
+                'password' => 'Password is too weak!',
+            ]);
+        }
         
-        $data = $request->all();
+        if(User::where('email', $data['email'])->exists()){
+            array_push($errors,[
+                'email' => 'This Email already exist!',
+            ]);
+        }
+
+        if(!empty($errors)){
+            return response()->json($errors);
+        }
+
         $user = User::create([
             'login' => $data['login'],
             'email' => $data['email'],
@@ -46,7 +61,7 @@ class RegisterController extends Controller
             \Auth::login($user);
             return redirect(route('home'));
         }else{
-            return redirect(route('register'))->withErrors([
+            return response()->json([
                 'formError' => 'Failed to register user!'
             ]);
         }
