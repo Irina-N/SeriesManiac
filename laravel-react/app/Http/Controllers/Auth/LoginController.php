@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\User;
 class LoginController extends Controller
 {
     public function show()
@@ -21,10 +21,10 @@ class LoginController extends Controller
         $errors = [];
 
         if(\Auth::attempt($formFields)){
-            return redirect()->intended(route('home'));
+            return response()->json('success');
         }
         
-        if(User::where('email', $data['email'])->exists()){
+        if(User::where('email', $formFields['email'])->exists()){
             array_push($errors,[
                 'password' => 'Wrong Password!',
             ]);
