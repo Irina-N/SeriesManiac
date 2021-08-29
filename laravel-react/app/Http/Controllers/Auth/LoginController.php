@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 class LoginController extends Controller
@@ -21,7 +22,7 @@ class LoginController extends Controller
         $errors = [];
 
         if(\Auth::attempt($formFields)){
-            return response()->json('success');
+            return response()->json(Auth::user()->only('id','login'));
         }
         
         if(User::where('email', $formFields['email'])->exists()){

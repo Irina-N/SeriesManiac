@@ -59,7 +59,7 @@ class RegisterController extends Controller
         ]);
         if($user){
             \Auth::login($user);
-            return response()->json('success');
+            return response()->json(Auth::user()->only('id','login'));
         }else{
             return response()->json([
                 'formError' => 'Failed to register user!'
