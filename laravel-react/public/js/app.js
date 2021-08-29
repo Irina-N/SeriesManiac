@@ -6814,6 +6814,10 @@ var fetchLogin = function fetchLogin(user) {
       },
       body: JSON.stringify(user)
     }).then(function (response) {
+      if (!response.ok) {
+        throw 'Response status is not ok';
+      }
+
       return response.json();
     }).then(function (answer) {
       console.log(answer);
@@ -6886,6 +6890,10 @@ var fetchSignUp = function fetchSignUp(newUser) {
       },
       body: JSON.stringify(newUser)
     }).then(function (response) {
+      if (!response.ok) {
+        throw 'Response status is not ok';
+      }
+
       return response.json();
     }).then(function (answer) {
       console.log(answer);
@@ -7089,7 +7097,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants.js */ "./resources/js/constants.js");
 /* harmony import */ var _FormSingUp_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormSingUp.css */ "./resources/js/components/Registration/FormSingUp.css");
 /* harmony import */ var _actions_signUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/signUp */ "./resources/js/actions/signUp.js");
@@ -7114,10 +7121,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var FormSingUp = function FormSingUp() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7139,20 +7144,25 @@ var FormSingUp = function FormSingUp() {
       passwordConfirmation = _useState8[0],
       setPasswordConfirmation = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('errorMessage hidden'),
+      _useState10 = _slicedToArray(_useState9, 2),
+      errorMessageClassName = _useState10[0],
+      setErrorMessageClassName = _useState10[1];
+
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.signUpReducer;
   }),
       signUpRequestStatus = _useSelector.signUpRequestStatus;
-
-  if (signUpRequestStatus === _constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.SUCCESS) {
-    history.push('/profile');
-  }
   /* 
     const emailRegEx = /^[A-z0-9._-]+@[A-z0-9.-]+\.[A-z]{2,4}$/;
     const loginRegEx = /^[A-zА-я0-9._-\s]{3,20}$/;
     const passwordRegEx = '';
    */
 
+
+  var handleOnClickErrorBtn = function handleOnClickErrorBtn() {
+    setErrorMessageClassName('errorMessage hidden');
+  };
 
   var handleSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     e.preventDefault();
@@ -7168,61 +7178,85 @@ var FormSingUp = function FormSingUp() {
     setPassword('');
     setPasswordConfirmation('');
   }, [dispatch, email, login, password, passwordConfirmation]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
-    className: "form__signup",
-    onSubmit: handleSubmit,
-    name: "sing_up",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-      htmlFor: "email",
-      children: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u0430\u044F \u043F\u043E\u0447\u0442\u0430"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-      required: true,
-      type: "text",
-      id: "email",
-      name: "email",
-      value: email,
-      onChange: function onChange(e) {
-        return setEmail(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-      htmlFor: "login",
-      children: "\u041B\u043E\u0433\u0438\u043D"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-      required: true,
-      type: "text",
-      id: "login",
-      name: "login",
-      value: login,
-      onChange: function onChange(e) {
-        return setLogin(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-      htmlFor: "password",
-      children: "\u041F\u0430\u0440\u043E\u043B\u044C"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-      required: true,
-      type: "password",
-      id: "password",
-      name: "password",
-      value: password,
-      onChange: function onChange(e) {
-        return setPassword(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-      htmlFor: "password2",
-      children: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-      required: true,
-      type: "password",
-      id: "password2",
-      name: "password2",
-      value: passwordConfirmation,
-      onChange: function onChange(e) {
-        return setPasswordConfirmation(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-      type: "submit",
-      value: "\u0417\u0410\u0420\u0415\u0413\u0418\u0421\u0422\u0420\u0418\u0420\u041E\u0412\u0410\u0422\u042C\u0421\u042F"
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log('request status', signUpRequestStatus);
+  });
+
+  if (signUpRequestStatus === _constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.ERROR) {
+    dispatch((0,_actions_signUp__WEBPACK_IMPORTED_MODULE_4__.setSignUpRequestStatusIdle)());
+    setErrorMessageClassName('errorMessage');
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: errorMessageClassName,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        className: "errorMessage__text",
+        children: "\u041E\u0448\u0438\u0431\u043A\u0430"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        className: "errorMessage__text",
+        children: "\u0417\u0434\u0435\u0441\u044C \u043F\u043B\u0430\u043D\u0438\u0440\u0443\u0435\u0442\u0441\u044F \u0440\u0430\u0437\u043C\u0435\u0441\u0442\u0438\u0442\u044C \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043A\u0438 \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442 \u0442\u043E\u0433\u043E, \u0447\u0442\u043E \u043F\u0440\u0438\u0434\u0451\u0442 \u0441 \u0431\u044D\u043A\u0435\u043D\u0434\u0430"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "btnErrorMessageClose",
+        onClick: handleOnClickErrorBtn,
+        children: "OK"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+      className: "form__signup",
+      onSubmit: handleSubmit,
+      name: "sing_up",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "email",
+        children: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u0430\u044F \u043F\u043E\u0447\u0442\u0430"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        required: true,
+        type: "text",
+        id: "email",
+        name: "email",
+        value: email,
+        onChange: function onChange(e) {
+          return setEmail(e.target.value);
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "login",
+        children: "\u041B\u043E\u0433\u0438\u043D"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        required: true,
+        type: "text",
+        id: "login",
+        name: "login",
+        value: login,
+        onChange: function onChange(e) {
+          return setLogin(e.target.value);
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "password",
+        children: "\u041F\u0430\u0440\u043E\u043B\u044C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        required: true,
+        type: "password",
+        id: "password",
+        name: "password",
+        value: password,
+        onChange: function onChange(e) {
+          return setPassword(e.target.value);
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        htmlFor: "password2",
+        children: "\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        required: true,
+        type: "password",
+        id: "password2",
+        name: "password2",
+        value: passwordConfirmation,
+        onChange: function onChange(e) {
+          return setPasswordConfirmation(e.target.value);
+        }
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        type: "submit",
+        value: "\u0417\u0410\u0420\u0415\u0413\u0418\u0421\u0422\u0420\u0418\u0420\u041E\u0412\u0410\u0422\u042C\u0421\u042F"
+      })]
     })]
   });
 };
@@ -7354,7 +7388,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _constants_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants.js */ "./resources/js/constants.js");
 /* harmony import */ var _FormLogIn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormLogIn.css */ "./resources/js/components/Start/FormLogIn.css");
@@ -7380,10 +7413,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var FormLogIn = function FormLogIn() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7395,14 +7426,19 @@ var FormLogIn = function FormLogIn() {
       password = _useState4[0],
       setPassword = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('errorMessage hidden'),
+      _useState6 = _slicedToArray(_useState5, 2),
+      errorMessageClassName = _useState6[0],
+      setErrorMessageClassName = _useState6[1];
+
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.loginReducer;
   }),
       loginRequestStatus = _useSelector.loginRequestStatus;
 
-  if (loginRequestStatus === _constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.SUCCESS) {
-    history.push('/profile');
-  }
+  var handleOnClickErrorBtn = function handleOnClickErrorBtn() {
+    setErrorMessageClassName('errorMessage hidden');
+  };
 
   var handleSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     e.preventDefault();
@@ -7413,8 +7449,30 @@ var FormLogIn = function FormLogIn() {
     dispatch((0,_actions_login__WEBPACK_IMPORTED_MODULE_4__.fetchLogin)(user));
     setPassword('');
   }, [dispatch, email, password]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log('request status', loginRequestStatus);
+  });
+
+  if (loginRequestStatus === _constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.ERROR) {
+    dispatch((0,_actions_login__WEBPACK_IMPORTED_MODULE_4__.setLoginRequestStatusIdle)());
+    setErrorMessageClassName('errorMessage');
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: errorMessageClassName,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        className: "errorMessage__text",
+        children: "\u041E\u0448\u0438\u0431\u043A\u0430"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        className: "errorMessage__text",
+        children: "\u0417\u0434\u0435\u0441\u044C \u043F\u043B\u0430\u043D\u0438\u0440\u0443\u0435\u0442\u0441\u044F \u0440\u0430\u0437\u043C\u0435\u0441\u0442\u0438\u0442\u044C \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u043E\u0448\u0438\u0431\u043A\u0438 \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442 \u0442\u043E\u0433\u043E, \u0447\u0442\u043E \u043F\u0440\u0438\u0434\u0451\u0442 \u0441 \u0431\u044D\u043A\u0435\u043D\u0434\u0430 (\u0432 \u043F\u0435\u0440\u0432\u0443\u044E \u043E\u0447\u0435\u0440\u0435\u0434\u044C \u0441\u043E\u043E\u0431\u0449\u0435\u043D\u0438\u0435, \u0447\u0442\u043E \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E \u0432\u0432\u0435\u0434\u0435\u043D\u044B email \u0438\u043B\u0438 \u043F\u0430\u0440\u043E\u043B\u044C)"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        className: "btnErrorMessageClose",
+        onClick: handleOnClickErrorBtn,
+        children: "OK"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
       className: "center-text",
       children: "\u0417\u0430\u0445\u043E\u0434\u0438\u0442\u0435!"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
@@ -12179,7 +12237,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    margin: 0;\r\n    font-size: 17px;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.bgVideo {\r\n    position: fixed;\r\n    right: 0;\r\n    bottom: 0;\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n}\r\n\r\n.content {\r\n    position: fixed;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    padding: 20px;\r\n}\r\n\r\n\r\n\r\n.center-text {\r\n    margin: 0 auto;\r\n    text-align: center;\r\n    padding: 10px;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    margin: 0;\r\n    font-size: 17px;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.bgVideo {\r\n    position: fixed;\r\n    right: 0;\r\n    bottom: 0;\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n}\r\n\r\n.content {\r\n    position: fixed;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    padding: 20px;\r\n}\r\n\r\n\r\n\r\n.center-text {\r\n    margin: 0 auto;\r\n    text-align: center;\r\n    padding: 10px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12251,7 +12309,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\r\n    width: 800px;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 16px;\r\n    resize: vertical;\r\n}\r\n\r\ninput[type=submit] {\r\n    width: 35%;\r\n    font-weight: 500;\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\r\n    width: 800px;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 16px;\r\n    resize: vertical;\r\n}\r\n\r\ninput[type=submit] {\r\n    width: 35%;\r\n    font-weight: 500;\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.errorMessage {\r\n    position: fixed;\r\n    padding: 20px 30px;\r\n    width: 500px;\r\n    min-height: 200px;\r\n    left: calc(50% - 200px);\r\n    bottom: calc(50% - 100px);\r\n    background-color: #ccc;\r\n    border-radius: 8px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    z-index: 3;\r\n}\r\n\r\n.errorMessage__text {\r\n    color: crimson;\r\n    font-size: 22px;\r\n    line-height: 28px;\r\n}\r\n\r\n.btnErrorMessageClose {\r\n    width: 80px;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12299,7 +12357,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__login {\r\n    width: 800px;\r\n    margin: 0 auto 10px;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 20px;\r\n    resize: vertical;\r\n}\r\n\r\nlabel {\r\n    margin: 0;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 35%;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__login {\r\n    width: 800px;\r\n    margin: 0 auto 10px;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 20px;\r\n    resize: vertical;\r\n}\r\n\r\nlabel {\r\n    margin: 0;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 35%;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.errorMessage {\r\n    position: fixed;\r\n    padding: 20px 30px;\r\n    width: 500px;\r\n    min-height: 200px;\r\n    left: calc(50% - 200px);\r\n    bottom: calc(50% - 100px);\r\n    background-color: #ccc;\r\n    border-radius: 8px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    z-index: 3;\r\n}\r\n\r\n.errorMessage__text {\r\n    color: crimson;\r\n    font-size: 22px;\r\n    line-height: 28px;\r\n}\r\n\r\n.btnErrorMessageClose {\r\n    width: 80px;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
