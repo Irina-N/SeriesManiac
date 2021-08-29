@@ -22,7 +22,7 @@ class LoginController extends Controller
         $errors = [];
 
         if(\Auth::attempt($formFields)){
-            return response()->json(Auth::user()->only('id','login'));
+            return response()->json(['user' => Auth::user()->only('id','login')]);
         }
         
         if(User::where('email', $formFields['email'])->exists()){
@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         if(!empty($errors)){
-            return response()->json($errors);
+            return response()->json(['error' => $errors]);
         }
     }
 }

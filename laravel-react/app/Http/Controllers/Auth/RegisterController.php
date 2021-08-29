@@ -49,7 +49,7 @@ class RegisterController extends Controller
         }
 
         if(!empty($errors)){
-            return response()->json($errors);
+            return response()->json(['error' => $errors]);
         }
 
         $user = User::create([
@@ -59,10 +59,10 @@ class RegisterController extends Controller
         ]);
         if($user){
             \Auth::login($user);
-            return response()->json(Auth::user()->only('id','login'));
+            return response()->json(['user' => \Auth::user()->only('id','login')]);
         }else{
             return response()->json([
-                'formError' => 'Failed to register user!'
+                'error' => 'Failed to register user!'
             ]);
         }
     }
