@@ -49,14 +49,14 @@ const FormSingUp = () => {
       <React.Fragment>
         <div className={errorMessageClassName}>
         <p className='errorMessage__text'>Ошибка</p>
-        <p className='errorMessage__text'>Здесь планируется разместить описание ошибки в зависимости от того, что придёт с бэкенда</p>
+        <p className='errorMessage__text'>Не получается связаться с сервером</p>
         <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
       </div>
         <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
             required
-            type='text' 
+            type='email' 
             id='email' 
             name='email' 
             value={email}

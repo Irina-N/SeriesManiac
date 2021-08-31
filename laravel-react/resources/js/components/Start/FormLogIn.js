@@ -1,21 +1,47 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
+import { useHistory } from 'react-router-dom'
 import { REQUEST_STATUSES } from '../../constants.js';
 import './FormLogIn.css';
-import {fetchLogin, setLoginRequestStatusIdle} from '../../actions/login';
+import {fetchLogin, setLoginRequestStatusIdle, changeRequestAnswerInState} from '../../actions/login';
+import {changeProfileInState} from '../../actions/profile';
 
 const FormLogIn = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
 
-  const {loginRequestStatus} = useSelector(state => state.loginReducer);
+  const {loginRequestStatus, loginRequestAnswer} = useSelector(state => state.loginReducer);
+
+  useEffect(() => {
+    if(loginRequestStatus === REQUEST_STATUSES.ERROR) {
+      dispatch(setLoginRequestStatusIdle());
+      setErrorMessageClassName('errorMessage');      
+    }
+    /* if(loginRequestStatus === REQUEST_STATUSES.SUCCESS) {
+      console.log('success, loginRequestAnswer:', loginRequestAnswer);
+      dispatch(setLoginRequestStatusIdle());
+    } */
+  });
+
+  useEffect(() => {
+    if (loginRequestAnswer.hasOwnProperty('user')) {     
+      dispatch(setLoginRequestStatusIdle());
+      dispatch(changeProfileInState(loginRequestAnswer.user));
+      dispatch(changeRequestAnswerInState({}));
+      history.push('/profile');      
+    } else if (loginRequestAnswer.hasOwnProperty('error')) {
+      console.log('loginRequestAnswer:', loginRequestAnswer);
+      dispatch(changeRequestAnswerInState({}));//добавить обработку ошибки выше
+    } 
+  });
 
   const handleOnClickErrorBtn = () => {
     setErrorMessageClassName('errorMessage hidden');
-  }
+  };
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
@@ -24,28 +50,20 @@ const FormLogIn = () => {
     setPassword('');        
   }, [dispatch, email, password]);
 
-  useEffect(() => {
-    console.log('request status', loginRequestStatus)   
-  })
-
-  if(loginRequestStatus === REQUEST_STATUSES.ERROR) {
-    dispatch(setLoginRequestStatusIdle());
-    setErrorMessageClassName('errorMessage');      
-  }
-    
+  
 
   return (
     <React.Fragment>
       <div className={errorMessageClassName}>
         <p className='errorMessage__text'>Ошибка</p>
-        <p className='errorMessage__text'>Здесь планируется разместить описание ошибки в зависимости от того, что придёт с бэкенда (в первую очередь сообщение, что неправильно введены email или пароль)</p>
+        <p className='errorMessage__text'>Не получается связаться с сервером</p>
         <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
       </div>
      <h3 className='center-text'>Заходите!</h3>        
       <form className='form__login' onSubmit={handleSubmit} name='log_in'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
-            type='text' 
+            type='email' 
             id='email' 
             name='email' 
             value={email}
