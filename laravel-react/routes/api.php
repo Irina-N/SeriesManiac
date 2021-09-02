@@ -23,7 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('/login', [LoginController::class, 'login']);
-    Route::post('/register', [RegisterController::class, 'register']);
     Route::get('/movies', [FilmController::class, 'getAllFilms']); 
 });
