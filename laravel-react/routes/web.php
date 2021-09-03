@@ -20,8 +20,10 @@ use App\Http\Controllers\Profile\LogoutController;
 
 Route::get('/', [LoginController::class, 'show'])->name('login');
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
+
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
+
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('home');
     Route::get('/movies', [FilmController::class, 'show'])->name('movies');

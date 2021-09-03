@@ -22,34 +22,18 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $data = $request->all();
-        $errors = [];
-/*
-        $validateFields = $request->validate([
+
+        $validator = Validator::make($data, [
             'login' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'passwordConfirmation' => ['required', 'string', 'min:8'],
         ]);
-*/
-        if($data['password'] !== $data['passwordConfirmation']){
-            array_push($errors,[
-                'password' => 'Password is not correct!',
-            ]);
-        }
-        elseif(strlen($data['password']) < 8){
-            array_push($errors,[
-                'password' => 'Password is too weak!',
-            ]);
-        }
-        
-        if(User::where('email', $data['email'])->exists()){
-            array_push($errors,[
-                'email' => 'This Email already exist!',
-            ]);
-        }
 
-        if(!empty($errors)){
-            return response()->json(['error' => $errors]);
+        $errors = $validator->errors();
+
+        if ($validator->fails()) {
+            return response()->json($errors,404);
         }
 
         $user = User::create([
@@ -57,13 +41,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
         if($user){
             \Auth::login($user);
-            return response()->json(['user' => \Auth::user()->only('id','login')]);
+            return response()->json(\Auth::user()->only('id','login'),201);
         }else{
-            return response()->json([
-                'error' => 'Failed to register user!'
-            ]);
+            return response()->json('Failed to register user!',404);
         }
     }
 }
