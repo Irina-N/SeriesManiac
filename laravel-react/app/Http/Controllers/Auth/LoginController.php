@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
 
         if(!empty($errors)){
-            return response()->json($errors,404);
+            return response()->json($errors,400);
         }
         
     }
