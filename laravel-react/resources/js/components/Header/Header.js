@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 
 
-function Header() {
+export default function Header() {
 
     return (
         <h1 className='header__title center-text'> 
@@ -11,4 +11,3 @@ function Header() {
     );
 }
 
-export default Header;

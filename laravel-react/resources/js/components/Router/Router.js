@@ -6,7 +6,7 @@ import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
 import '../../../css/app.css';
 
-function Router () {
+export default function Router () {
     return (
     <Switch>            
         <Route exact path='/'>
@@ -22,4 +22,3 @@ function Router () {
     )
 }
 
-export default Router;

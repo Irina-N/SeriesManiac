@@ -4,31 +4,22 @@ import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import Header from '../Header/Header';
 import './Profile.css';
-import { changeProfileInState } from '../../actions/profile';
+import { fetchLogout } from '../../store/actions/currentUser';
 
-function Profile () {
+export default function Profile() {
     const history = useHistory();
-    const dispatch = useDispatch();
-    const {user} = useSelector(state => state.profileReducer);
+    const dispatch = useDispatch();    
+    const {user} = useSelector(state => state.currentUserReducer);
     
     
-    useEffect(() => {        
-    if (!user.hasOwnProperty('id')) {          
-        history.push('/');      
+    useEffect(() => {      
+        if (!user.id) {     
+            history.push('/');      
         } 
-    }, []);
+    });
 
     const handleOnClick = () => {
-        fetch('/logout')
-        .then(response => {
-            if (response.ok) {
-                dispatch(changeProfileInState({}));
-                history.push('/');                
-            } 
-        })
-        .catch(err => {
-            console.log('Logout error:', err);
-        })
+        dispatch(fetchLogout());        
     }
 
 
@@ -42,7 +33,7 @@ function Profile () {
                 <p>id: {user.id}</p>
             </div>
          
-         <Button 
+        <Button 
                 color='primary' 
                 id='logout_btn'
                 variant='contained'
@@ -53,5 +44,3 @@ function Profile () {
         </div>         
     );
 }
-
-export default Profile;
