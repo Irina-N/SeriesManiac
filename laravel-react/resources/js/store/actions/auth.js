@@ -4,6 +4,7 @@ export const LOGIN_LOADING_STARTED = 'LOGIN::LOGIN_LOADING_STARTED';
 export const LOGIN_LOADING_SUCCESS = 'LOGIN::LOGIN_LOADING_SUCCESS';
 export const LOGIN_LOADING_ERROR = 'LOGIN::LOGIN_LOADING_ERROR';
 export const LOGIN_LOADING_IDLE = 'LOGIN::LOGIN_LOADING_IDLE';
+export const CHANGE_REQUEST_ANSWER = 'LOGIN::CHANGE_REQUEST_ANSWER';
 
 export const setLoginRequestStatusStarted = () => ({
     type: LOGIN_LOADING_STARTED,
@@ -25,6 +26,11 @@ export const setLoginRequestStatusIdle = () => ({
     payload: REQUEST_STATUSES.IDLE,
 });
 
+export const changeRequestAnswerInState = (requestAnswer) => ({
+    type: CHANGE_REQUEST_ANSWER,
+    payload: requestAnswer,
+});
+
 export const fetchLogin = (user) => (dispatch) => {
     dispatch(setLoginRequestStatusStarted());
     fetch('/login', {
@@ -41,7 +47,7 @@ export const fetchLogin = (user) => (dispatch) => {
         return response.json()
     })
     .then(answer => {
-        console.log(answer);
+        dispatch(changeRequestAnswerInState(answer));
         dispatch(setLoginRequestStatusSuccess());
     })
     .catch(err => {

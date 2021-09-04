@@ -1,51 +1,57 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { REQUEST_STATUSES } from '../../constants.js';
-import './FormLogIn.css';
-import {fetchLogin, setLoginRequestStatusIdle} from '../../actions/login';
+import { useHistory } from 'react-router-dom';
+import { REQUEST_STATUSES, FETCH_URL } from '../../common/constants/constants.js';
+import './FormAuth.css';
+import { fetchUser } from '../../store/actions/currentUser';
 
-const FormLogIn = () => {
+
+export default function FormAuth () {
   const dispatch = useDispatch();
+  const history = useHistory();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
 
-  const {loginRequestStatus} = useSelector(state => state.loginReducer);
+  const {requestStatus, user, requestError} = useSelector(state => state.currentUserReducer);
+  
+  useEffect(() => {
+    if(requestStatus === REQUEST_STATUSES.ERROR) {
+      setErrorMessageClassName('errorMessage');      
+    }
+  });
+
+  useEffect(() => {
+    if (user.id) {     
+      history.push('/profile');      
+    }  
+  });
 
   const handleOnClickErrorBtn = () => {
     setErrorMessageClassName('errorMessage hidden');
-  }
+  };
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
-    const user = {email, password};       
-    dispatch(fetchLogin(user));    
+    const formData = {email, password};       
+    dispatch(fetchUser(formData, FETCH_URL.AUTH));    
     setPassword('');        
   }, [dispatch, email, password]);
 
-  useEffect(() => {
-    console.log('request status', loginRequestStatus)   
-  })
-
-  if(loginRequestStatus === REQUEST_STATUSES.ERROR) {
-    dispatch(setLoginRequestStatusIdle());
-    setErrorMessageClassName('errorMessage');      
-  }
-    
-
+  
   return (
     <React.Fragment>
       <div className={errorMessageClassName}>
-        <p className='errorMessage__text'>Ошибка</p>
-        <p className='errorMessage__text'>Здесь планируется разместить описание ошибки в зависимости от того, что придёт с бэкенда (в первую очередь сообщение, что неправильно введены email или пароль)</p>
+        <p className='errorMessage__text'>Ошибка {requestError.errorCode}</p>
+        <p className='errorMessage__text'> Пожалуйста, убедитесь в правильности заполнения полей.<br/>{requestError.errorDescription?.join(' ') ?? ''} </p>
         <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
       </div>
-     <h3 className='center-text'>Заходите!</h3>        
-      <form className='form__login' onSubmit={handleSubmit} name='log_in'>
+      <h3 className='center-text'>Заходите!</h3>        
+      <form className='form__auth' onSubmit={handleSubmit} name='auth'>
           <label htmlFor='email'>Электронная почта</label>
           <input 
-            type='text' 
+            type='email' 
             id='email' 
             name='email' 
             value={email}
@@ -66,5 +72,3 @@ const FormLogIn = () => {
       </React.Fragment>
   );
 };
-
-export default FormLogIn;

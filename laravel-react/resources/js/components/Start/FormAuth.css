@@ -1,6 +1,6 @@
-.form__signup {
+.form__auth {
     width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.3);
     padding: 20px;
@@ -9,6 +9,7 @@
 }
 
 input[type=text],
+input[type=email],
 input[type=password],
 select,
 textarea {
@@ -18,16 +19,20 @@ textarea {
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     resize: vertical;
 }
 
+label {
+    margin: 0;
+}
+
 input[type=submit] {
-    width: 35%;
-    font-weight: 500;
     align-self: center;
     background-color: #04AA6D;
     color: white;
+    width: 35%;
+    font-weight: 500;
     font-size: 16px;
     padding: 12px 20px;
     border: none;

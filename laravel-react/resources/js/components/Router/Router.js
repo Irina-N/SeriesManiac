@@ -4,10 +4,9 @@ import App from '../App/App';
 import Start from '../Start/Start';
 import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
-import Logout from '../Profile/Logout';
-import '../../../css/app.css'
+import '../../../css/app.css';
 
-function Router () {
+export default function Router () {
     return (
     <Switch>            
         <Route exact path='/'>
@@ -18,12 +17,8 @@ function Router () {
         </Route>
         <Route exact path='/profile'>
             <Profile/>
-        </Route>
-        <Route exact path='/logout'>
-            <Logout/>
-        </Route>
+        </Route>        
     </Switch>
     )
 }
 
-export default Router;

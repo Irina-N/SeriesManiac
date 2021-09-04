@@ -1,31 +1,46 @@
-import React from "react";
-import { useParams } from 'react-router-dom'
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { Link  } from 'react-router-dom';
 import Header from '../Header/Header';
 import './Profile.css';
+import { fetchLogout } from '../../store/actions/currentUser';
 
-function Profile (props) {
-    //const { userId } = useParams()
+export default function Profile() {
+    const history = useHistory();
+    const dispatch = useDispatch();    
+    const {user} = useSelector(state => state.currentUserReducer);
+    
+    
+    useEffect(() => {      
+        if (!user.id) {     
+            history.push('/');      
+        } 
+    });
+
+    const handleOnClick = () => {
+        dispatch(fetchLogout());        
+    }
+
 
 
     return (
         <div className='content'> 
         <Header/>            
-
-         Профиль пользователя 
-         <Button 
+        	<div>
+                <h4>Профиль пользователя </h4>
+                <p>login: {user.login}</p>
+                <p>id: {user.id}</p>
+            </div>
+         
+        <Button 
                 color='primary' 
-                component={Link} 
-                to='/logout'
                 id='logout_btn'
-                variant='contained'>        
+                variant='contained'
+                onClick={handleOnClick}>        
         Выйти
         </Button> 
                          
         </div>         
     );
 }
-
-export default Profile;

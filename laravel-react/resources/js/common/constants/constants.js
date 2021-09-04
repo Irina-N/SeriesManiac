@@ -4,3 +4,9 @@ export const REQUEST_STATUSES = {
     ERROR: 'error',
     IDLE: 'idle'
 }
+
+export const FETCH_URL = {
+    AUTH: '/login',
+    REGISTER: '/register',
+    LOGOUT: '/logout',
+}
