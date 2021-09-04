@@ -33,7 +33,7 @@ class RegisterController extends Controller
         $errors = $validator->errors();
 
         if ($validator->fails()) {
-            return response()->json($errors,404);
+            return response()->json($errors,400);
         }
 
         $user = User::create([
@@ -46,7 +46,7 @@ class RegisterController extends Controller
             \Auth::login($user);
             return response()->json(\Auth::user()->only('id','login'),201);
         }else{
-            return response()->json('Failed to register user!',404);
+            return response()->json('Failed to register user!',400);
         }
     }
 }
