@@ -30,10 +30,8 @@ class RegisterController extends Controller
             'passwordConfirmation' => ['required', 'string', 'min:8'],
         ]);
 
-        $errors = $validator->errors();
-
         if ($validator->fails()) {
-            return response()->json($errors,400);
+            return response()->json($validator->errors(),400);
         }
 
         $user = User::create([
