@@ -19,24 +19,15 @@ class LoginController extends Controller
     public function login(Request $requset)
     {
         $data = $requset->only(['email', 'password']);
-        $errors = [];
 
         if(\Auth::attempt($data)){
             return response()->json(Auth::user()->only('id','login'),200);
         }
         
         if(User::where('email', $data['email'])->exists()){
-            array_push($errors,[
-                'password' => 'Wrong Password!',
-            ]);
+            return response()->json(['password' => 'Wrong Password!'],400);
         }else{
-            array_push($errors,[
-                'email' => 'Wrong Email!',
-            ]);
-        }
-
-        if(!empty($errors)){
-            return response()->json($errors,400);
+            return response()->json(['email' => 'Wrong Email!'],400);
         }
         
     }
