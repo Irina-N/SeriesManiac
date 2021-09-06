@@ -7545,10 +7545,8 @@ var fetchUser = function fetchUser(formData, url) {
 
             case 17:
               errors = _context.sent;
-              errorsTextArr = errors.map(function (error) {
-                return Object.keys(error).map(function (fieldName) {
-                  return error[fieldName];
-                }).join(', ');
+              errorsTextArr = Object.keys(errors).map(function (fieldName) {
+                return errors[fieldName];
               });
               throw {
                 errorCode: 400,
