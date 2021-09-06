@@ -6820,7 +6820,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "REQUEST_STATUSES": () => (/* binding */ REQUEST_STATUSES),
-/* harmony export */   "FETCH_URL": () => (/* binding */ FETCH_URL)
+/* harmony export */   "FETCH_URL": () => (/* binding */ FETCH_URL),
+/* harmony export */   "HttpHeader": () => (/* binding */ HttpHeader),
+/* harmony export */   "HttpMethod": () => (/* binding */ HttpMethod),
+/* harmony export */   "ContentType": () => (/* binding */ ContentType)
 /* harmony export */ });
 var REQUEST_STATUSES = {
   STARTED: 'started',
@@ -6833,33 +6836,18 @@ var FETCH_URL = {
   REGISTER: '/register',
   LOGOUT: '/logout'
 };
-
-/***/ }),
-
-/***/ "./resources/js/components/App/App.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/App/App.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "content",
-    children: "Lets's go!"
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+var HttpHeader = {
+  CONTENT_TYPE: 'content-type'
+};
+var HttpMethod = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  DELETE: 'DELETE'
+};
+var ContentType = {
+  JSON: 'application/json'
+};
 
 /***/ }),
 
@@ -7211,14 +7199,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Router)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _App_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../App/App */ "./resources/js/components/App/App.js");
-/* harmony import */ var _Start_Start__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Start/Start */ "./resources/js/components/Start/Start.js");
-/* harmony import */ var _Profile_Profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Profile/Profile */ "./resources/js/components/Profile/Profile.js");
-/* harmony import */ var _Registration_Registration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Registration/Registration */ "./resources/js/components/Registration/Registration.js");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Start_Start__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Start/Start */ "./resources/js/components/Start/Start.js");
+/* harmony import */ var _Profile_Profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Profile/Profile */ "./resources/js/components/Profile/Profile.js");
+/* harmony import */ var _Registration_Registration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Registration/Registration */ "./resources/js/components/Registration/Registration.js");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -7228,19 +7214,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Router() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
       exact: true,
       path: "/",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Start_Start__WEBPACK_IMPORTED_MODULE_2__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Start_Start__WEBPACK_IMPORTED_MODULE_1__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
       exact: true,
       path: "/register",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Registration_Registration__WEBPACK_IMPORTED_MODULE_4__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Registration_Registration__WEBPACK_IMPORTED_MODULE_3__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
       exact: true,
       path: "/profile",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Profile__WEBPACK_IMPORTED_MODULE_3__.default, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, {})
     })]
   });
 }
