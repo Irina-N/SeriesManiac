@@ -52,9 +52,7 @@ export const fetchUser = (formData, url) => {
 
             } else if (response.status === 400) {
                 const errors = await response.json();
-                let errorsTextArr = errors.map((error) => {
-                    return Object.keys(error).map((fieldName) => error[fieldName]).join(', ');    
-                });   
+                let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName]);
                 throw {errorCode: 400, errorDescription: errorsTextArr}
 
             } else {
