@@ -6,7 +6,7 @@ class Movies {
   }
 
   getTopMovies() {
-    return this._http.load('/movies', {
+    return this._http.load('api/movies', {
       method: HttpMethod.GET
     });
   }

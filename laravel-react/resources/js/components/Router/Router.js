@@ -1,8 +1,9 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import Start from '../Start/Start';
+import Auth from '../Auth/Auth';
 import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
+import Movies from '../Movies/Movies';
 import '../../../css/app.css';
 
 
@@ -10,13 +11,16 @@ export default function Router () {
     return (
     <Switch>            
         <Route exact path='/'>
-            <Start/>
+            <Auth/>
         </Route>
         <Route exact path='/register'>
             <Registration/>
         </Route>
         <Route exact path='/profile'>
             <Profile/>
+        </Route>
+        <Route exact path='/movies'>
+            <Movies/>
         </Route>
              
 

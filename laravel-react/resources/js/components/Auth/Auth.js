@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 import { Link  } from 'react-router-dom';
 import FormAuth from './FormAuth';
 import Header from '../Header/Header';
-import './Start.css';
+import './Auth.css';
 
 export default function Start() {
 

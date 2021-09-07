@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import{ currentUserReducer } from './reducers/currentUser';
+import moviesReducer from './reducers/movies';
 
 
 const persistConfig = {
@@ -12,6 +13,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     currentUserReducer,
+    moviesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
