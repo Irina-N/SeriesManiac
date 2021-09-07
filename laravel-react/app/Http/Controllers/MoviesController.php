@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use Illuminate\Http\Request;
 
-class FilmController extends Controller
+class MoviesController extends Controller
 {
     public function show()
     {
         return view('welcome');
     }
 
-    public function getAllFilms()
+    public function getMovies()
     {
-        return response()->json(Film::all());
+        return response()->json(Film::paginate(10));
     }
 }
