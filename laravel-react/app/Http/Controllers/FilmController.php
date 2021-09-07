@@ -12,8 +12,8 @@ class FilmController extends Controller
         return view('welcome');
     }
 
-    public function getAllFilms()
+    public function getMovies()
     {
-        return response()->json(Film::all());
+        return response()->json(Film::paginate(10));
     }
 }
