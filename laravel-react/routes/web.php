@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\FilmController;
+use App\Http\Controllers\MoviesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -26,6 +26,6 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('home');
-    Route::get('/movies', [FilmController::class, 'show'])->name('movies');
+    Route::get('/movies', [MoviesController::class, 'show'])->name('movies');
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });

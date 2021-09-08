@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Film;
+use App\Models\Movies;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 
@@ -17,7 +17,7 @@ class FilmSeeder extends Seeder
     {
         $data = Http::get('https://api.myshows.ru/shows/top/all/');
         foreach ($data->json() as $film) {
-            Film::create([
+            Movies::create([
                 'title' => $film['title'],
                 'ru_title' => $film['ruTitle'],
                 'year' => $film['year'],

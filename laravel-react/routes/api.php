@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Profile\ProfileController;
-use App\Http\Controllers\FilmController;
+use App\Http\Controllers\MoviesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/movies', [FilmController::class, 'getMovies']); 
+Route::get('/movies', [MoviesController::class, 'getMovies']); 
 
