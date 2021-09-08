@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Database\Seeders\MoviesSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            FilmSeeder::class
+            MoviesSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }

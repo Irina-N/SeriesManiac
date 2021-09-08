@@ -6,7 +6,7 @@ use App\Models\Movies;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 
-class FilmSeeder extends Seeder
+class MoviesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
