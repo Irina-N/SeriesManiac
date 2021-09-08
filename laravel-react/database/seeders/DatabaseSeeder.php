@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\MoviesSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
