@@ -4,6 +4,7 @@ import Auth from '../Auth/Auth';
 import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
 import Movies from '../Movies/Movies';
+import MovieCard from '../Movies/MovieCard/MovieCard';
 import '../../../css/app.css';
 
 
@@ -22,8 +23,10 @@ export default function Router () {
         <Route exact path='/movies'>
             <Movies/>
         </Route>
+        <Route exact path='/movie/:movieId' component={MovieCard}>
+        </Route>
              
-
+        
 
     </Switch>
     )

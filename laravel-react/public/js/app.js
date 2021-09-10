@@ -11346,10 +11346,11 @@ var REQUEST_STATUSES = {
 var FETCH_URL = {
   AUTH: '/login',
   REGISTER: '/register',
-  LOGOUT: '/logout'
+  LOGOUT: '/logout',
+  SEND_GRADE: '/movies/grade'
 };
 var HttpHeader = {
-  CONTENT_TYPE: 'content-type'
+  CONTENT_TYPE: 'Content-Type'
 };
 var HttpMethod = {
   GET: 'GET',
@@ -11450,7 +11451,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function FormAuth() {
-  var _requestError$errorDe, _requestError$errorDe2;
+  var _error$errorDescripti, _error$errorDescripti2;
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -11475,18 +11476,18 @@ function FormAuth() {
   }),
       requestStatus = _useSelector.requestStatus,
       user = _useSelector.user,
-      requestError = _useSelector.requestError;
+      error = _useSelector.error;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (requestStatus === _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.ERROR) {
       setErrorMessageClassName('errorMessage');
     }
-  });
+  }, [requestStatus, error]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (user.id) {
       history.push('/profile');
     }
-  });
+  }, [user]);
 
   var handleOnClickErrorBtn = function handleOnClickErrorBtn() {
     setErrorMessageClassName('errorMessage hidden');
@@ -11506,10 +11507,10 @@ function FormAuth() {
       className: errorMessageClassName,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "errorMessage__text",
-        children: ["\u041E\u0448\u0438\u0431\u043A\u0430 ", requestError.errorCode]
+        children: ["\u041E\u0448\u0438\u0431\u043A\u0430 ", error.errorCode]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "errorMessage__text",
-        children: [" \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044C \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), (_requestError$errorDe = (_requestError$errorDe2 = requestError.errorDescription) === null || _requestError$errorDe2 === void 0 ? void 0 : _requestError$errorDe2.join(' ')) !== null && _requestError$errorDe !== void 0 ? _requestError$errorDe : '', " "]
+        children: [" \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044C \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), (_error$errorDescripti = (_error$errorDescripti2 = error.errorDescription) === null || _error$errorDescripti2 === void 0 ? void 0 : _error$errorDescripti2.join(' ')) !== null && _error$errorDescripti !== void 0 ? _error$errorDescripti : '', " "]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "btnErrorMessageClose",
         onClick: handleOnClickErrorBtn,
@@ -11581,44 +11582,217 @@ function Header() {
 
 /***/ }),
 
-/***/ "./resources/js/components/MovieCard/MovieCard.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/MovieCard/MovieCard.js ***!
-  \********************************************************/
+/***/ "./resources/js/components/Movies/MovieCard/MovieCard.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Movies/MovieCard/MovieCard.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MovieCard": () => (/* binding */ MovieCard)
+/* harmony export */   "default": () => (/* binding */ MovieCard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Header/Header */ "./resources/js/components/Header/Header.js");
+/* harmony import */ var _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/constants/constants */ "./resources/js/common/constants/constants.js");
+/* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../store/actions/movies */ "./resources/js/store/actions/movies.js");
+/* harmony import */ var _MovieCard_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MovieCard.css */ "./resources/js/components/Movies/MovieCard/MovieCard.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var MovieCard = function MovieCard(_ref) {
-  var image = _ref.image,
+
+
+
+
+
+
+
+function MovieCard() {
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(); //const history = useHistory();
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var movieId = Number(params.movieId);
+  var userId = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.currentUserReducer.user.id;
+  });
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      userMovieGrade = _useState2[0],
+      setUserMovieGrade = _useState2[1];
+
+  var currentMovie = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.moviesReducer.movies.data;
+  }).find(function (movie) {
+    return movie.id == movieId;
+  });
+  var ru_title = currentMovie.ru_title,
+      title = currentMovie.title,
+      image = currentMovie.image,
+      year = currentMovie.year;
+  var handleInputChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    var target = e.target;
+
+    if (target.type === 'radio' && target.checked) {
+      setUserMovieGrade(Number(target.value));
+    }
+  });
+
+  var isDisabled = function isDisabled() {
+    if (typeof userMovieGrade === 'number') {
+      return false;
+    }
+
+    return true;
+  };
+
+  var handleSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    e.preventDefault();
+    var formData = {
+      userId: userId,
+      movieId: movieId,
+      userMovieGrade: userMovieGrade
+    };
+    console.log(formData);
+    dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_4__.sendMovieGrade)(formData, _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__.FETCH_URL.SEND_GRADE));
+  }, [dispatch, userId, movieId, userMovieGrade]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    className: "content",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      className: "movie-card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+        src: image
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("h4", {
+        children: [ru_title, " (", title, ")"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        children: year
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
+        name: "movieGrade",
+        className: "form__movie-grade",
+        onSubmit: handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "radio",
+          id: "movieGrade1",
+          name: "userMovieGrade",
+          value: "1",
+          onChange: handleInputChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          htmlFor: "movieGrade1",
+          children: "\u041D\u0435 \u043E\u0441\u0438\u043B\u0438\u043B(\u0430)"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "radio",
+          id: "movieGrade2",
+          name: "userMovieGrade",
+          value: "2",
+          onChange: handleInputChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          htmlFor: "movieGrade2",
+          children: "\u0416\u0430\u043B\u044C \u043F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "radio",
+          id: "movieGrade3",
+          name: "userMovieGrade",
+          value: "3",
+          onChange: handleInputChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          htmlFor: "movieGrade3",
+          children: "\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C, \u0447\u0442\u043E-\u0442\u043E - \u043D\u0435\u0442"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "radio",
+          id: "movieGrade4",
+          name: "userMovieGrade",
+          value: "4",
+          onChange: handleInputChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          htmlFor: "movieGrade4",
+          children: "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u043B(\u0430) \u0441 \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u0435\u043C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "radio",
+          id: "movieGrade5",
+          name: "userMovieGrade",
+          value: "5",
+          onChange: handleInputChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          htmlFor: "movieGrade5",
+          children: "\u0412\u0430\u0443!"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+          type: "submit",
+          value: "\u041E\u0446\u0435\u043D\u0438\u0442\u044C",
+          disabled: isDisabled()
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        id: "to-bookmarks-btn",
+        type: "button",
+        className: "btn to-bookmarks-btn",
+        children: "\u0412 \u0437\u0430\u043A\u043B\u0430\u0434\u043A\u0438"
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Movies/MovieListItem/MovieListItem.jsx":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Movies/MovieListItem/MovieListItem.jsx ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MovieListItem": () => (/* binding */ MovieListItem)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../MovieCard/MovieCard */ "./resources/js/components/Movies/MovieCard/MovieCard.js");
+/* harmony import */ var _MovieListItem_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MovieListItem.css */ "./resources/js/components/Movies/MovieListItem/MovieListItem.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var MovieListItem = function MovieListItem(_ref) {
+  var movieId = _ref.movieId,
+      image = _ref.image,
       title = _ref.title,
       year = _ref.year,
       ruTitle = _ref.ruTitle;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     className: "col-lg-3 col-md-4 col-12 p-2",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    to: "/movie/".concat(movieId),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "card shadow-sm",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: image
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
         className: "card-title",
         children: ruTitle
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           className: "card-text truncate",
           children: title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "d-flex justify-content-between align-items-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("small", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("small", {
             className: "text-muted",
             children: year
           })
@@ -11647,9 +11821,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/actions/movies */ "./resources/js/store/actions/movies.js");
-/* harmony import */ var _MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MovieCard/MovieCard */ "./resources/js/components/MovieCard/MovieCard.js");
+/* harmony import */ var _MovieListItem_MovieListItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MovieListItem/MovieListItem */ "./resources/js/components/Movies/MovieListItem/MovieListItem.jsx");
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Header/Header */ "./resources/js/components/Header/Header.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _movies_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./movies.css */ "./resources/js/components/Movies/movies.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -11665,7 +11841,8 @@ var Movies = function Movies() {
     return state.moviesReducer.movies;
   });
   var moviesList = topMovies.data.map(function (movie) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_5__.MovieCard, {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MovieListItem_MovieListItem__WEBPACK_IMPORTED_MODULE_5__.MovieListItem, {
+      movieId: movie.id,
       image: movie.image,
       title: movie.title,
       year: movie.year,
@@ -11678,35 +11855,35 @@ var Movies = function Movies() {
 
   var handlerSearch = function handlerSearch() {};
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "content",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "container-fluid d-flex bg-light justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
         className: "form-inline col-6 px-2 d-flex justify-content-center",
         onSubmit: handlerSearch,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("input", {
           className: "form-control m-2 w-50",
           type: "search",
           placeholder: "Search"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
           className: "btn btn-dark m-2",
           type: "button",
           children: "Search"
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "album py-5 bg-light",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           id: "film-container",
           className: "row",
           children: topMovies && moviesList
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "d-flex justify-content-center align-items-center pt-4",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
           id: "load-more",
           type: "button",
           className: "btn btn-lg btn-outline-success",
@@ -11762,7 +11939,7 @@ function Profile() {
     if (!user.id) {
       history.push('/');
     }
-  });
+  }, [user]);
 
   var handleOnClick = function handleOnClick() {
     dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__.fetchLogout)());
@@ -11839,7 +12016,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function FormRegister() {
-  var _requestError$errorDe, _requestError$errorDe2;
+  var _error$errorDescripti, _error$errorDescripti2;
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
@@ -11874,7 +12051,7 @@ function FormRegister() {
   }),
       requestStatus = _useSelector.requestStatus,
       user = _useSelector.user,
-      requestError = _useSelector.requestError; //TODO: сделать валидацию
+      error = _useSelector.error; //TODO: сделать валидацию
 
   /* 
     const emailRegEx = /^[A-z0-9._-]+@[A-z0-9.-]+\.[A-z]{2,4}$/;
@@ -11887,12 +12064,12 @@ function FormRegister() {
     if (requestStatus === _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_2__.REQUEST_STATUSES.ERROR) {
       setErrorMessageClassName('errorMessage');
     }
-  });
+  }, [requestStatus]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (user.id) {
       history.push('/profile');
     }
-  });
+  }, [user]);
 
   var handleOnClickErrorBtn = function handleOnClickErrorBtn() {
     setErrorMessageClassName('errorMessage hidden');
@@ -11917,10 +12094,10 @@ function FormRegister() {
       className: errorMessageClassName,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "errorMessage__text",
-        children: ["\u041E\u0448\u0438\u0431\u043A\u0430 ", requestError.errorCode]
+        children: ["\u041E\u0448\u0438\u0431\u043A\u0430 ", error.errorCode]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
         className: "errorMessage__text",
-        children: [" \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044C \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), (_requestError$errorDe = (_requestError$errorDe2 = requestError.errorDescription) === null || _requestError$errorDe2 === void 0 ? void 0 : _requestError$errorDe2.join(' ')) !== null && _requestError$errorDe !== void 0 ? _requestError$errorDe : '', " "]
+        children: [" \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044C \u0432 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E\u0441\u0442\u0438 \u0437\u0430\u043F\u043E\u043B\u043D\u0435\u043D\u0438\u044F \u043F\u043E\u043B\u0435\u0439.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), (_error$errorDescripti = (_error$errorDescripti2 = error.errorDescription) === null || _error$errorDescripti2 === void 0 ? void 0 : _error$errorDescripti2.join(' ')) !== null && _error$errorDescripti !== void 0 ? _error$errorDescripti : '', " "]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "btnErrorMessageClose",
         onClick: handleOnClickErrorBtn,
@@ -12053,13 +12230,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Router)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Auth_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Auth/Auth */ "./resources/js/components/Auth/Auth.js");
 /* harmony import */ var _Profile_Profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Profile/Profile */ "./resources/js/components/Profile/Profile.js");
 /* harmony import */ var _Registration_Registration__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Registration/Registration */ "./resources/js/components/Registration/Registration.js");
 /* harmony import */ var _Movies_Movies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Movies/Movies */ "./resources/js/components/Movies/Movies.jsx");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Movies_MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Movies/MovieCard/MovieCard */ "./resources/js/components/Movies/MovieCard/MovieCard.js");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -12070,23 +12249,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Router() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Switch, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
       exact: true,
       path: "/",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Auth_Auth__WEBPACK_IMPORTED_MODULE_1__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Auth_Auth__WEBPACK_IMPORTED_MODULE_1__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
       exact: true,
       path: "/register",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Registration_Registration__WEBPACK_IMPORTED_MODULE_3__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Registration_Registration__WEBPACK_IMPORTED_MODULE_3__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
       exact: true,
       path: "/profile",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Profile_Profile__WEBPACK_IMPORTED_MODULE_2__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
       exact: true,
       path: "/movies",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Movies_Movies__WEBPACK_IMPORTED_MODULE_4__.default, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Movies_Movies__WEBPACK_IMPORTED_MODULE_4__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+      exact: true,
+      path: "/movie/:movieId",
+      component: _Movies_MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_5__.default
     })]
   });
 }
@@ -12187,6 +12370,57 @@ var Http = /*#__PURE__*/function () {
       return load;
     }()
   }, {
+    key: "send",
+    value: function () {
+      var _send = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(url, formData) {
+        var _options, _options$method2, method, _options$payload2, payload, contentType, headers, response, response_1;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log('enter in send');
+                _options = options, _options$method2 = _options.method, method = _options$method2 === void 0 ? _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.POST : _options$method2, _options$payload2 = _options.payload, payload = _options$payload2 === void 0 ? JSON.stringify(formData) : _options$payload2, contentType = _options.contentType;
+                headers = this._getHeaders({
+                  contentType: contentType
+                });
+                _context2.prev = 3;
+                _context2.next = 6;
+                return fetch(url, {
+                  method: method,
+                  headers: headers,
+                  body: payload
+                });
+
+              case 6:
+                response = _context2.sent;
+                _context2.next = 9;
+                return this._checkStatus(response);
+
+              case 9:
+                response_1 = _context2.sent;
+                return _context2.abrupt("return", this._parseTEXT(response_1));
+
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](3);
+                return _context2.abrupt("return", this._throwError(_context2.t0));
+
+              case 16:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[3, 13]]);
+      }));
+
+      function send(_x2, _x3) {
+        return _send.apply(this, arguments);
+      }
+
+      return send;
+    }()
+  }, {
     key: "_getHeaders",
     value: function _getHeaders(_ref) {
       var contentType = _ref.contentType;
@@ -12201,37 +12435,37 @@ var Http = /*#__PURE__*/function () {
   }, {
     key: "_checkStatus",
     value: function () {
-      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(response) {
+      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(response) {
         var _parsedException$mess, parsedException;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 if (response.ok) {
-                  _context2.next = 5;
+                  _context3.next = 5;
                   break;
                 }
 
-                _context2.next = 3;
+                _context3.next = 3;
                 return response.json();
 
               case 3:
-                parsedException = _context2.sent;
+                parsedException = _context3.sent;
                 throw new Error((_parsedException$mess = parsedException === null || parsedException === void 0 ? void 0 : parsedException.message) !== null && _parsedException$mess !== void 0 ? _parsedException$mess : response.statusText);
 
               case 5:
-                return _context2.abrupt("return", response);
+                return _context3.abrupt("return", response);
 
               case 6:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
-      function _checkStatus(_x2) {
+      function _checkStatus(_x4) {
         return _checkStatus2.apply(this, arguments);
       }
 
@@ -12241,6 +12475,11 @@ var Http = /*#__PURE__*/function () {
     key: "_parseJSON",
     value: function _parseJSON(response) {
       return response.json();
+    }
+  }, {
+    key: "_parseTEXT",
+    value: function _parseTEXT(response) {
+      return response.text();
     }
   }, {
     key: "_throwError",
@@ -12316,6 +12555,11 @@ var Movies = /*#__PURE__*/function () {
         method: _common_constants_constants__WEBPACK_IMPORTED_MODULE_0__.HttpMethod.GET
       });
     }
+  }, {
+    key: "sendMovieGrade",
+    value: function sendMovieGrade(formData) {
+      return this._http.send('/movies/grade', formData);
+    }
   }]);
 
   return Movies;
@@ -12334,9 +12578,11 @@ var Movies = /*#__PURE__*/function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "GET_TOP": () => (/* binding */ GET_TOP)
+/* harmony export */   "GET_TOP": () => (/* binding */ GET_TOP),
+/* harmony export */   "SEND_GRADE": () => (/* binding */ SEND_GRADE)
 /* harmony export */ });
 var GET_TOP = "MOVIES::GET_TOP";
+var SEND_GRADE = "MOVIES::SEND_GRADE";
 
 /***/ }),
 
@@ -12354,10 +12600,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "REQUEST_ERROR": () => (/* binding */ REQUEST_ERROR),
 /* harmony export */   "REQUEST_IDLE": () => (/* binding */ REQUEST_IDLE),
 /* harmony export */   "CHANGE_CURRENT_USER": () => (/* binding */ CHANGE_CURRENT_USER),
-/* harmony export */   "setRequestStatusStarted": () => (/* binding */ setRequestStatusStarted),
-/* harmony export */   "setRequestStatusSuccess": () => (/* binding */ setRequestStatusSuccess),
-/* harmony export */   "setRequestStatusError": () => (/* binding */ setRequestStatusError),
-/* harmony export */   "setRequestStatusIdle": () => (/* binding */ setRequestStatusIdle),
+/* harmony export */   "setStatusStarted": () => (/* binding */ setStatusStarted),
+/* harmony export */   "setStatusSuccess": () => (/* binding */ setStatusSuccess),
+/* harmony export */   "setStatusError": () => (/* binding */ setStatusError),
+/* harmony export */   "setStatusIdle": () => (/* binding */ setStatusIdle),
 /* harmony export */   "changeCurrentUser": () => (/* binding */ changeCurrentUser),
 /* harmony export */   "fetchUser": () => (/* binding */ fetchUser),
 /* harmony export */   "fetchRegister": () => (/* binding */ fetchRegister),
@@ -12378,25 +12624,25 @@ var REQUEST_SUCCESS = 'CURRENT_USER::REQUEST_SUCCESS';
 var REQUEST_ERROR = 'CURRENT_USER::REQUEST_ERROR';
 var REQUEST_IDLE = 'CURRENT_USER::REQUEST_IDLE';
 var CHANGE_CURRENT_USER = 'CURRENT_USER::CHANGE';
-var setRequestStatusStarted = function setRequestStatusStarted() {
+var setStatusStarted = function setStatusStarted() {
   return {
     type: REQUEST_STARTED,
     payload: _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_1__.REQUEST_STATUSES.STARTED
   };
 };
-var setRequestStatusSuccess = function setRequestStatusSuccess() {
+var setStatusSuccess = function setStatusSuccess() {
   return {
     type: REQUEST_SUCCESS,
     payload: _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_1__.REQUEST_STATUSES.SUCCESS
   };
 };
-var setRequestStatusError = function setRequestStatusError() {
+var setStatusError = function setStatusError() {
   return {
     type: REQUEST_ERROR,
     payload: _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_1__.REQUEST_STATUSES.ERROR
   };
 };
-var setRequestStatusIdle = function setRequestStatusIdle() {
+var setStatusIdle = function setStatusIdle() {
   return {
     type: REQUEST_IDLE,
     payload: _common_constants_constants_js__WEBPACK_IMPORTED_MODULE_1__.REQUEST_STATUSES.IDLE
@@ -12419,8 +12665,8 @@ var fetchUser = function fetchUser(formData, url) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              dispatch(changeCurrentUser({}, 'requestError'));
-              dispatch(setRequestStatusStarted());
+              dispatch(changeCurrentUser({}, 'error'));
+              dispatch(setStatusStarted());
               _context.prev = 2;
               _context.next = 5;
               return fetch(url, {
@@ -12445,7 +12691,7 @@ var fetchUser = function fetchUser(formData, url) {
             case 9:
               user = _context.sent;
               dispatch(changeCurrentUser(user, 'user'));
-              dispatch(setRequestStatusIdle());
+              dispatch(setStatusIdle());
               _context.next = 24;
               break;
 
@@ -12482,9 +12728,9 @@ var fetchUser = function fetchUser(formData, url) {
             case 26:
               _context.prev = 26;
               _context.t0 = _context["catch"](2);
-              dispatch(changeCurrentUser(_context.t0, 'requestError'));
-              dispatch(setRequestStatusError());
-              dispatch(setRequestStatusIdle());
+              dispatch(changeCurrentUser(_context.t0, 'error'));
+              dispatch(setStatusError());
+              dispatch(setStatusIdle());
 
             case 31:
             case "end":
@@ -12498,7 +12744,7 @@ var fetchUser = function fetchUser(formData, url) {
       return _ref.apply(this, arguments);
     };
   }();
-}; //TODO 
+}; //TODO при оптимизации валидации на фронтенде отдать функционал fetchRegister в fetchUser
 
 var fetchRegister = function fetchRegister(formData, url) {
   return /*#__PURE__*/function () {
@@ -12508,8 +12754,8 @@ var fetchRegister = function fetchRegister(formData, url) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              dispatch(changeCurrentUser({}, 'requestError'));
-              dispatch(setRequestStatusStarted());
+              dispatch(changeCurrentUser({}, 'error'));
+              dispatch(setStatusStarted());
               _context2.prev = 2;
               _context2.next = 5;
               return fetch(url, {
@@ -12534,13 +12780,13 @@ var fetchRegister = function fetchRegister(formData, url) {
             case 9:
               user = _context2.sent;
               dispatch(changeCurrentUser(user, 'user'));
-              dispatch(setRequestStatusIdle());
-              _context2.next = 24;
+              dispatch(setStatusIdle());
+              _context2.next = 26;
               break;
 
             case 14:
               if (!(response.status === 400)) {
-                _context2.next = 22;
+                _context2.next = 24;
                 break;
               }
 
@@ -12549,39 +12795,42 @@ var fetchRegister = function fetchRegister(formData, url) {
 
             case 17:
               errors = _context2.sent;
+              console.log('errors:', errors); //let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName].join(', '));
+
               errorsTextArr = Object.keys(errors).map(function (fieldName) {
                 return errors[fieldName].join(', ');
               });
+              console.log('errorsTextArr:', errorsTextArr);
               throw {
                 errorCode: 400,
                 errorDescription: errorsTextArr
               };
 
-            case 22:
+            case 24:
               errorText = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
               throw {
                 errorCode: response.status,
                 errorDescription: [errorText]
               };
 
-            case 24:
-              _context2.next = 32;
+            case 26:
+              _context2.next = 34;
               break;
 
-            case 26:
-              _context2.prev = 26;
+            case 28:
+              _context2.prev = 28;
               _context2.t0 = _context2["catch"](2);
               console.log('Something wrong', _context2.t0);
-              dispatch(changeCurrentUser(_context2.t0, 'requestError'));
-              dispatch(setRequestStatusError());
-              dispatch(setRequestStatusIdle());
+              dispatch(changeCurrentUser(_context2.t0, 'error'));
+              dispatch(setStatusError());
+              dispatch(setStatusIdle());
 
-            case 32:
+            case 34:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[2, 26]]);
+      }, _callee2, null, [[2, 28]]);
     }));
 
     return function (_x2) {
@@ -12597,7 +12846,7 @@ var fetchLogout = function fetchLogout() {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              dispatch(setRequestStatusStarted());
+              dispatch(setStatusStarted());
               _context3.prev = 1;
               _context3.next = 4;
               return fetch(_common_constants_constants_js__WEBPACK_IMPORTED_MODULE_1__.FETCH_URL.LOGOUT);
@@ -12607,7 +12856,7 @@ var fetchLogout = function fetchLogout() {
 
               if (response.ok) {
                 dispatch(changeCurrentUser({}, 'user'));
-                dispatch(setRequestStatusIdle());
+                dispatch(setStatusIdle());
               }
 
               _context3.next = 13;
@@ -12617,8 +12866,8 @@ var fetchLogout = function fetchLogout() {
               _context3.prev = 8;
               _context3.t0 = _context3["catch"](1);
               console.log('Logout error:', _context3.t0);
-              dispatch(setRequestStatusError());
-              dispatch(setRequestStatusIdle());
+              dispatch(setStatusError());
+              dispatch(setStatusIdle());
 
             case 13:
             case "end":
@@ -12645,13 +12894,15 @@ var fetchLogout = function fetchLogout() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getTopMovies": () => (/* binding */ getTopMovies)
+/* harmony export */   "getTopMovies": () => (/* binding */ getTopMovies),
+/* harmony export */   "sendMovieGrade": () => (/* binding */ sendMovieGrade)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/index */ "./resources/js/services/index.js");
 /* harmony import */ var _ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ActionTypes/movies */ "./resources/js/store/ActionTypes/movies.js");
+/* harmony import */ var _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants/constants */ "./resources/js/common/constants/constants.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -12661,7 +12912,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsyncThunk)(_ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__.GET_TOP, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+
+var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createAsyncThunk)(_ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__.GET_TOP, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -12679,47 +12931,62 @@ var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsyncT
     }
   }, _callee);
 })));
+/* const sendMovieGrade = createAsyncThunk(
+  SEND_GRADE,
+  async () => await movieService.sendMovieGrade(formData)
+);  */
 
-/* export const getTopMovies = () => {
-  return async (dispatch) => {
-      
-      //dispatch(setRequestStatusStarted());
-      
-      try {
-          const response = await fetch('api/movies', {
-              method: 'GET',
-              headers: {
+var sendMovieGrade = function sendMovieGrade(formData, url) {
+  return /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log('started');
+              _context2.prev = 1;
+              _context2.next = 4;
+              return fetch(url, {
+                method: 'PUT',
+                headers: {
                   'Content-Type': 'application/json;charset=utf-8'
-              },
-              
-          });
-          if (response.ok) {
-            console.log('films resp ok')
-              const films = await response.json();
-              console.log('films:', films)
-              //dispatch(changeCurrentUser(user, 'user'));
-              //dispatch(setRequestStatusIdle()); 
+                },
+                body: JSON.stringify(formData)
+              });
 
-          } else {
-            console.log('response.status:', response.status)
-            const errors = await response.json();
-            console.log('errors:', errors)
-            
-             //throw {errorCode: 400, errorDescription: errorsTextArr} 
+            case 4:
+              response = _context2.sent;
+
+              if (response.ok) {
+                console.log('Grade sent successful');
+              } else {
+                console.log('response.status:', response.status);
+              }
+
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
+              console.log('Failed', _context2.t0);
+
+            case 11:
+            case "end":
+              return _context2.stop();
           }
-          
-      } catch (err) {
-          console.log('Something wrong', err);
-          /* dispatch(changeCurrentUser(err, 'requestError'));
-          dispatch(setRequestStatusError());
-          dispatch(setRequestStatusIdle());  
-      }
-  }
-}
+        }
+      }, _callee2, null, [[1, 8]]);
+    }));
+
+    return function (_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+};
 
 
-
- */
 
 /***/ }),
 
@@ -12746,7 +13013,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   requestStatus: _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.REQUEST_STATUSES.IDLE,
-  requestError: {},
+  error: {},
   user: {}
 };
 var currentUserReducer = function currentUserReducer() {
@@ -18010,6 +18277,78 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".header__title {\r\n    color: orange;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieCard/MovieCard.css":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieCard/MovieCard.css ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\r\n    margin-right: 5px;\r\n    margin-left: 10px;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 250px;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieListItem/MovieListItem.css":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieListItem/MovieListItem.css ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/movies.css":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/movies.css ***!
+  \*************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "#film-container {\r\n    max-height: 57vh;\r\n    overflow-y: scroll;\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Profile/Profile.css":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Profile/Profile.css ***!
@@ -18027,7 +18366,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".profile__container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n    justify-content: flex-start;\r\n    align-content: flex-start;\r\n}\r\n\r\n.btn {\r\n    width: 35%;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".profile__container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n    justify-items: flex-start;\r\n    align-items: center;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -92914,6 +93253,96 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_Header_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/Movies/MovieCard/MovieCard.css":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Movies/MovieCard/MovieCard.css ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./MovieCard.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieCard/MovieCard.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieCard_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieCard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/Movies/MovieListItem/MovieListItem.css":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Movies/MovieListItem/MovieListItem.css ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieListItem_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./MovieListItem.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/MovieListItem/MovieListItem.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieListItem_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_MovieListItem_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/Movies/movies.css":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Movies/movies.css ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_movies_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./movies.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/movies.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_movies_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_movies_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 

@@ -16,7 +16,7 @@ export default function Profile() {
         if (!user.id) {     
             history.push('/');      
         } 
-    });
+    }, [user]);
 
     const handleOnClick = () => {
         dispatch(fetchLogout());        

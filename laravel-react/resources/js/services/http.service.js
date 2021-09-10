@@ -1,4 +1,4 @@
-import { HttpHeader, HttpMethod, ContentType } from '../common/constants/constants';
+import { HttpHeader, HttpMethod, contentType } from '../common/constants/constants';
 
 class Http {
 
@@ -29,6 +29,34 @@ class Http {
     }
   }
 
+  async send(url, formData) {
+    console.log('enter in send')
+    const {
+      method = HttpMethod.POST,
+      payload = JSON.stringify(formData),
+      contentType,
+    } = options;
+
+    const headers = this._getHeaders({
+      contentType
+    });
+
+    try {
+      const response = await fetch(url, {
+        method,
+        headers,
+        body: payload
+      });     
+
+      const response_1 = await this._checkStatus(response);
+
+      return this._parseTEXT(response_1);
+
+    } catch (err) {
+      return this._throwError(err);
+    }
+  }
+
   _getHeaders({ contentType }) {
     const headers = new Headers();
 
@@ -51,6 +79,10 @@ class Http {
 
   _parseJSON(response) {
     return response.json();
+  }
+
+  _parseTEXT(response) {
+    return response.text();
   }
 
   _throwError(err) {
