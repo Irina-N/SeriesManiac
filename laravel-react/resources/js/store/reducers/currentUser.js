@@ -3,7 +3,7 @@ import { REQUEST_STATUSES } from '../../common/constants/constants';
 
 const initialState = {
     requestStatus: REQUEST_STATUSES.IDLE,
-    requestError: {},
+    error: {},
     user: {},
 };
 

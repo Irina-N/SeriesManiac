@@ -15,7 +15,7 @@ export default function FormRegister (){
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
 
-  const {requestStatus, user, requestError} = useSelector(state => state.currentUserReducer);
+  const {requestStatus, user, error} = useSelector(state => state.currentUserReducer);
 
   //TODO: сделать валидацию
 /* 
@@ -28,13 +28,13 @@ export default function FormRegister (){
     if(requestStatus === REQUEST_STATUSES.ERROR) {
       setErrorMessageClassName('errorMessage');      
     }
-  });
+  }, [requestStatus]);
 
   useEffect(() => {
     if (user.id) {     
       history.push('/profile');      
     }  
-  });
+  }, [user]);
 
   const handleOnClickErrorBtn = () => {
     setErrorMessageClassName('errorMessage hidden');
@@ -53,8 +53,8 @@ export default function FormRegister (){
   return (
     <React.Fragment>
       <div className={errorMessageClassName}>
-      <p className='errorMessage__text'>Ошибка {requestError.errorCode}</p>
-        <p className='errorMessage__text'> Пожалуйста, убедитесь в правильности заполнения полей.<br/>{requestError.errorDescription?.join(' ') ?? ''} </p>
+      <p className='errorMessage__text'>Ошибка {error.errorCode}</p>
+        <p className='errorMessage__text'> Пожалуйста, убедитесь в правильности заполнения полей.<br/>{error.errorDescription?.join(' ') ?? ''} </p>
         <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
       </div>
       <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>

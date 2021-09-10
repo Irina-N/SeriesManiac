@@ -1,4 +1,4 @@
-import { HttpMethod } from '../common/constants/constants';
+import { HttpMethod, HttpHeader } from '../common/constants/constants';
 
 class Movies {
   constructor({ http }) {
@@ -9,6 +9,10 @@ class Movies {
     return this._http.load('api/movies', {
       method: HttpMethod.GET
     });
+  }
+
+  sendMovieGrade(formData) {
+    return this._http.send('/movies/grade', formData);
   }
 
 }

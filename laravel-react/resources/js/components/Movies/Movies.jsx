@@ -3,14 +3,15 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopMovies } from '../../store/actions/movies';
-import { MovieCard } from '../MovieCard/MovieCard';
-import Header from '../Header/Header'
+import { MovieListItem } from './MovieListItem/MovieListItem';
+import Header from '../Header/Header';
+import './movies.css'
 
 export const Movies = () => {
   const dispatch = useDispatch();
   const topMovies = useSelector((state) => state.moviesReducer.movies);
   const moviesList = topMovies.data.map((movie) => {
-    return (<MovieCard key={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />)
+    return (<MovieListItem key={movie.id} movieId={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />)
   })
 
   useEffect(() => {
@@ -24,6 +25,9 @@ export const Movies = () => {
   return (
     <div className='content'>
       <Header />
+
+      {/* Предлагаю пока делать основной функуионал. И.Н. */}
+
       {/* <section id="random-movie" className="py-5 text-center container-fluid">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">

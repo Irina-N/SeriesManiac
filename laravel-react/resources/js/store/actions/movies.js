@@ -1,52 +1,41 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movies as movieService } from "../../services/index";
-import { GET_TOP } from "../ActionTypes/movies";
+import { GET_TOP, SEND_GRADE } from "../ActionTypes/movies";
+import FETCH_URL from '../../common/constants/constants'
 
 const getTopMovies = createAsyncThunk(
   GET_TOP,
   async () => await movieService.getTopMovies()
 ); 
 
+/* const sendMovieGrade = createAsyncThunk(
+  SEND_GRADE,
+  async () => await movieService.sendMovieGrade(formData)
+);  */
 
-export { getTopMovies };
-
-/* export const getTopMovies = () => {
+const sendMovieGrade = (formData, url) => {
   return async (dispatch) => {
-      
-      //dispatch(setRequestStatusStarted());
-      
+    console.log('started')
+
       try {
-          const response = await fetch('api/movies', {
-              method: 'GET',
+          const response = await fetch(url, {
+              method: 'PUT',
               headers: {
                   'Content-Type': 'application/json;charset=utf-8'
               },
-              
+              body: JSON.stringify(formData)
           });
           if (response.ok) {
-            console.log('films resp ok')
-              const films = await response.json();
-              console.log('films:', films)
-              //dispatch(changeCurrentUser(user, 'user'));
-              //dispatch(setRequestStatusIdle()); 
-
+              console.log('Grade sent successful');
           } else {
             console.log('response.status:', response.status)
-            const errors = await response.json();
-            console.log('errors:', errors)
-            
-             //throw {errorCode: 400, errorDescription: errorsTextArr} 
           }
-          
+                   
       } catch (err) {
-          console.log('Something wrong', err);
-          /* dispatch(changeCurrentUser(err, 'requestError'));
-          dispatch(setRequestStatusError());
-          dispatch(setRequestStatusIdle());  
+          console.log('Failed', err);          
       }
   }
 }
 
 
-
- */
+export { getTopMovies, sendMovieGrade };

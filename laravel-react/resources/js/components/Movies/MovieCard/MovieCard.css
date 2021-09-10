@@ -1,0 +1,38 @@
+input[type=radio] {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+input[type=submit] {
+    align-self: center;
+    background-color: #04AA6D;
+    color: white;
+    width: 250px;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.btn {
+    width: 250px;
+    background-color: #04AA6D;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
