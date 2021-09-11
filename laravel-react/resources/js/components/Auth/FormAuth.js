@@ -68,7 +68,7 @@ export default function FormAuth () {
           </input>
 
           <input type='submit' value='ВОЙТИ'></input>
-        </form>
+        </form>        
       </React.Fragment>
   );
 };

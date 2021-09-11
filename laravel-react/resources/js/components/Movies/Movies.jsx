@@ -10,9 +10,6 @@ import './movies.css'
 export const Movies = () => {
   const dispatch = useDispatch();
   const topMovies = useSelector((state) => state.moviesReducer.movies);
-  const moviesList = topMovies.data.map((movie) => {
-    return (<MovieListItem key={movie.id} movieId={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />)
-  })
 
   useEffect(() => {
     dispatch(getTopMovies());
@@ -20,6 +17,21 @@ export const Movies = () => {
 
   const handlerSearch = () => {
 
+  }
+
+  if (!topMovies) {
+    return (
+      <div className='content'>
+        <Header />
+        <div className="album py-5 bg-light">
+          <div className="container">
+            <div id="film-container" className="row">
+              loading...
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -57,7 +69,10 @@ export const Movies = () => {
       <div className="album py-5 bg-light">
         <div className="container">
           <div id="film-container" className="row">
-            {topMovies && moviesList}
+            {topMovies.data.map((movie) => {
+              return (<MovieListItem key={movie.id} movieId={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />)
+            })}
+            {/* {topMovies && moviesList} */}
           </div>
         </div>
         <div className="d-flex justify-content-center align-items-center pt-4">

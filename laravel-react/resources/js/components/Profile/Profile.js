@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import Header from '../Header/Header';
 import './Profile.css';
 import { fetchLogout } from '../../store/actions/currentUser';
+import { getTopMovies } from '../../store/actions/movies';
 
 export default function Profile() {
     const history = useHistory();
@@ -18,9 +19,14 @@ export default function Profile() {
         } 
     }, [user]);
 
-    const handleOnClick = () => {
+    const handleLogout = () => {
         dispatch(fetchLogout());        
     }
+
+    /* const handleOnClick = () => {
+        dispatch(getTopMovies());
+        history.push('/movies');
+    } */
 
 
 
@@ -38,7 +44,8 @@ export default function Profile() {
                     component={Link} 
                     to='/movies'
                     id='moviesp_btn'
-                    variant='contained'>        
+                    variant='contained'
+                    /* onClick={handleOnClick} */>        
                     Все сериалы
                 </Button> 
 
@@ -47,7 +54,7 @@ export default function Profile() {
                     color='primary' 
                     id='logout_btn'
                     variant='contained'
-                    onClick={handleOnClick}>        
+                    onClick={handleLogout}>        
                     Выйти
                 </Button> 
             </div>

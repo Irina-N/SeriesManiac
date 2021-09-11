@@ -11840,20 +11840,28 @@ var Movies = function Movies() {
   var topMovies = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.moviesReducer.movies;
   });
-  var moviesList = topMovies.data.map(function (movie) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MovieListItem_MovieListItem__WEBPACK_IMPORTED_MODULE_5__.MovieListItem, {
-      movieId: movie.id,
-      image: movie.image,
-      title: movie.title,
-      year: movie.year,
-      ruTitle: movie.ruTitle
-    }, movie.id);
-  });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_4__.getTopMovies)());
   }, []);
 
   var handlerSearch = function handlerSearch() {};
+
+  if (!topMovies) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      className: "content",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        className: "album py-5 bg-light",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            id: "film-container",
+            className: "row",
+            children: "loading..."
+          })
+        })
+      })]
+    });
+  }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "content",
@@ -11879,7 +11887,15 @@ var Movies = function Movies() {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           id: "film-container",
           className: "row",
-          children: topMovies && moviesList
+          children: topMovies.data.map(function (movie) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MovieListItem_MovieListItem__WEBPACK_IMPORTED_MODULE_5__.MovieListItem, {
+              movieId: movie.id,
+              image: movie.image,
+              title: movie.title,
+              year: movie.year,
+              ruTitle: movie.ruTitle
+            }, movie.id);
+          })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "d-flex justify-content-center align-items-center pt-4",
@@ -11910,13 +11926,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header/Header */ "./resources/js/components/Header/Header.js");
 /* harmony import */ var _Profile_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Profile.css */ "./resources/js/components/Profile/Profile.css");
 /* harmony import */ var _store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/actions/currentUser */ "./resources/js/store/actions/currentUser.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../store/actions/movies */ "./resources/js/store/actions/movies.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -11927,7 +11945,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Profile() {
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
@@ -11941,34 +11959,41 @@ function Profile() {
     }
   }, [user]);
 
-  var handleOnClick = function handleOnClick() {
+  var handleLogout = function handleLogout() {
     dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__.fetchLogout)());
   };
+  /* const handleOnClick = () => {
+      dispatch(getTopMovies());
+      history.push('/movies');
+  } */
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "content",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "profile__container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
         children: "\u041F\u0440\u043E\u0444\u0438\u043B\u044C \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F "
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
         children: ["login: ", user.login]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
         children: ["id: ", user.id]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
         className: "btn",
         color: "primary",
-        component: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
+        component: react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link,
         to: "/movies",
         id: "moviesp_btn",
-        variant: "contained",
+        variant: "contained"
+        /* onClick={handleOnClick} */
+        ,
         children: "\u0412\u0441\u0435 \u0441\u0435\u0440\u0438\u0430\u043B\u044B"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
         className: "btn",
         color: "primary",
         id: "logout_btn",
         variant: "contained",
-        onClick: handleOnClick,
+        onClick: handleLogout,
         children: "\u0412\u044B\u0439\u0442\u0438"
       })]
     })]
@@ -12370,57 +12395,6 @@ var Http = /*#__PURE__*/function () {
       return load;
     }()
   }, {
-    key: "send",
-    value: function () {
-      var _send = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(url, formData) {
-        var _options, _options$method2, method, _options$payload2, payload, contentType, headers, response, response_1;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                console.log('enter in send');
-                _options = options, _options$method2 = _options.method, method = _options$method2 === void 0 ? _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.POST : _options$method2, _options$payload2 = _options.payload, payload = _options$payload2 === void 0 ? JSON.stringify(formData) : _options$payload2, contentType = _options.contentType;
-                headers = this._getHeaders({
-                  contentType: contentType
-                });
-                _context2.prev = 3;
-                _context2.next = 6;
-                return fetch(url, {
-                  method: method,
-                  headers: headers,
-                  body: payload
-                });
-
-              case 6:
-                response = _context2.sent;
-                _context2.next = 9;
-                return this._checkStatus(response);
-
-              case 9:
-                response_1 = _context2.sent;
-                return _context2.abrupt("return", this._parseTEXT(response_1));
-
-              case 13:
-                _context2.prev = 13;
-                _context2.t0 = _context2["catch"](3);
-                return _context2.abrupt("return", this._throwError(_context2.t0));
-
-              case 16:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[3, 13]]);
-      }));
-
-      function send(_x2, _x3) {
-        return _send.apply(this, arguments);
-      }
-
-      return send;
-    }()
-  }, {
     key: "_getHeaders",
     value: function _getHeaders(_ref) {
       var contentType = _ref.contentType;
@@ -12435,37 +12409,37 @@ var Http = /*#__PURE__*/function () {
   }, {
     key: "_checkStatus",
     value: function () {
-      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(response) {
+      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(response) {
         var _parsedException$mess, parsedException;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 if (response.ok) {
-                  _context3.next = 5;
+                  _context2.next = 5;
                   break;
                 }
 
-                _context3.next = 3;
+                _context2.next = 3;
                 return response.json();
 
               case 3:
-                parsedException = _context3.sent;
+                parsedException = _context2.sent;
                 throw new Error((_parsedException$mess = parsedException === null || parsedException === void 0 ? void 0 : parsedException.message) !== null && _parsedException$mess !== void 0 ? _parsedException$mess : response.statusText);
 
               case 5:
-                return _context3.abrupt("return", response);
+                return _context2.abrupt("return", response);
 
               case 6:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3);
+        }, _callee2);
       }));
 
-      function _checkStatus(_x4) {
+      function _checkStatus(_x2) {
         return _checkStatus2.apply(this, arguments);
       }
 
@@ -12475,11 +12449,6 @@ var Http = /*#__PURE__*/function () {
     key: "_parseJSON",
     value: function _parseJSON(response) {
       return response.json();
-    }
-  }, {
-    key: "_parseTEXT",
-    value: function _parseTEXT(response) {
-      return response.text();
     }
   }, {
     key: "_throwError",
@@ -12554,11 +12523,6 @@ var Movies = /*#__PURE__*/function () {
       return this._http.load('api/movies', {
         method: _common_constants_constants__WEBPACK_IMPORTED_MODULE_0__.HttpMethod.GET
       });
-    }
-  }, {
-    key: "sendMovieGrade",
-    value: function sendMovieGrade(formData) {
-      return this._http.send('/movies/grade', formData);
     }
   }]);
 
@@ -12899,10 +12863,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _services_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/index */ "./resources/js/services/index.js");
 /* harmony import */ var _ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ActionTypes/movies */ "./resources/js/store/ActionTypes/movies.js");
-/* harmony import */ var _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants/constants */ "./resources/js/common/constants/constants.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -12912,8 +12875,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
-var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createAsyncThunk)(_ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__.GET_TOP, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsyncThunk)(_ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__.GET_TOP, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -12931,10 +12893,6 @@ var getTopMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.createAsyncT
     }
   }, _callee);
 })));
-/* const sendMovieGrade = createAsyncThunk(
-  SEND_GRADE,
-  async () => await movieService.sendMovieGrade(formData)
-);  */
 
 var sendMovieGrade = function sendMovieGrade(formData, url) {
   return /*#__PURE__*/function () {

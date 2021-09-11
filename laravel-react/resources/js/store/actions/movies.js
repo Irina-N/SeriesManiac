@@ -1,17 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movies as movieService } from "../../services/index";
 import { GET_TOP, SEND_GRADE } from "../ActionTypes/movies";
-import FETCH_URL from '../../common/constants/constants'
 
 const getTopMovies = createAsyncThunk(
   GET_TOP,
   async () => await movieService.getTopMovies()
 ); 
-
-/* const sendMovieGrade = createAsyncThunk(
-  SEND_GRADE,
-  async () => await movieService.sendMovieGrade(formData)
-);  */
 
 const sendMovieGrade = (formData, url) => {
   return async (dispatch) => {
@@ -36,6 +30,5 @@ const sendMovieGrade = (formData, url) => {
       }
   }
 }
-
 
 export { getTopMovies, sendMovieGrade };
