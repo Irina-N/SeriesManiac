@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Test;
 use App\Http\Controllers\MoviesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -22,7 +23,7 @@ Route::get( '/{any}', function(){
     return view('welcome');
 })->where('any', '.*');
 */
-Route::get('/', [RegisterController::class, 'show'])->name('login');
+Route::get('/', [LoginController::class, 'show'])->name('login');
 Route::get('/register', [RegisterController::class, 'show']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
@@ -30,6 +31,8 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile', [ProfileController::class, 'show'])->name('home');
     Route::get('/movies', [MoviesController::class, 'show'])->name('movies');
+    Route::get('/movies/{id}', [MoviesController::class, 'show']);
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::put('/movies/grade', [MoviesController::class, 'grade']);
 });
  
