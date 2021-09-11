@@ -9,10 +9,11 @@ export const FETCH_URL = {
     AUTH: '/login',
     REGISTER: '/register',
     LOGOUT: '/logout',
+    SEND_GRADE: '/movies/grade',
 }
 
 export const HttpHeader = {
-    CONTENT_TYPE: 'content-type',
+    CONTENT_TYPE: 'Content-Type',
   };
   
 export const HttpMethod = {
@@ -25,3 +26,4 @@ export const HttpMethod = {
 export const ContentType = {
     JSON: 'application/json',
 };
+

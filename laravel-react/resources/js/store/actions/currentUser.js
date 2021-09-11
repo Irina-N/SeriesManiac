@@ -6,22 +6,22 @@ export const REQUEST_ERROR = 'CURRENT_USER::REQUEST_ERROR';
 export const REQUEST_IDLE = 'CURRENT_USER::REQUEST_IDLE';
 export const CHANGE_CURRENT_USER = 'CURRENT_USER::CHANGE';
 
-export const setRequestStatusStarted = () => ({
+export const setStatusStarted = () => ({
     type: REQUEST_STARTED,
     payload: REQUEST_STATUSES.STARTED,
 });
 
-export const setRequestStatusSuccess = () => ({
+export const setStatusSuccess = () => ({
     type: REQUEST_SUCCESS,
     payload: REQUEST_STATUSES.SUCCESS,
 });
 
-export const setRequestStatusError = () => ({
+export const setStatusError = () => ({
     type: REQUEST_ERROR,
     payload: REQUEST_STATUSES.ERROR,
 });
 
-export const setRequestStatusIdle = () => ({
+export const setStatusIdle = () => ({
     type: REQUEST_IDLE,
     payload: REQUEST_STATUSES.IDLE,
 });
@@ -33,8 +33,8 @@ export const changeCurrentUser = (data, target) => ({
 
 export const fetchUser = (formData, url) => {
     return async (dispatch) => {
-        dispatch(changeCurrentUser({}, 'requestError')); 
-        dispatch(setRequestStatusStarted());
+        dispatch(changeCurrentUser({}, 'error')); 
+        dispatch(setStatusStarted());
         
         try {
             const response = await fetch(url, {
@@ -48,7 +48,7 @@ export const fetchUser = (formData, url) => {
             if (response.ok) {
                 const user = await response.json();
                 dispatch(changeCurrentUser(user, 'user'));
-                dispatch(setRequestStatusIdle()); 
+                dispatch(setStatusIdle()); 
 
             } else if (response.status === 400) {
                 const errors = await response.json();
@@ -61,19 +61,19 @@ export const fetchUser = (formData, url) => {
             }
             
         } catch (err) {
-            dispatch(changeCurrentUser(err, 'requestError'));
-            dispatch(setRequestStatusError());
-            dispatch(setRequestStatusIdle()); 
+            dispatch(changeCurrentUser(err, 'error'));
+            dispatch(setStatusError());
+            dispatch(setStatusIdle()); 
         }
     }
 }
 
-//TODO 
+//TODO при оптимизации валидации на фронтенде отдать функционал fetchRegister в fetchUser
 
 export const fetchRegister = (formData, url) => {
     return async (dispatch) => {
-        dispatch(changeCurrentUser({}, 'requestError')); 
-        dispatch(setRequestStatusStarted());
+        dispatch(changeCurrentUser({}, 'error')); 
+        dispatch(setStatusStarted());
         
         try {
             const response = await fetch(url, {
@@ -86,11 +86,14 @@ export const fetchRegister = (formData, url) => {
             if (response.ok) {
                 const user = await response.json();
                 dispatch(changeCurrentUser(user, 'user'));
-                dispatch(setRequestStatusIdle()); 
+                dispatch(setStatusIdle()); 
 
             } else if (response.status === 400) {
                 const errors = await response.json();
+                console.log('errors:', errors)
+                //let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName].join(', '));
                 let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName].join(', '));
+                console.log('errorsTextArr:', errorsTextArr)
                 throw {errorCode: 400, errorDescription: errorsTextArr}
 
             } else {
@@ -100,27 +103,27 @@ export const fetchRegister = (formData, url) => {
             
         } catch (err) {
             console.log('Something wrong', err);
-            dispatch(changeCurrentUser(err, 'requestError'));
-            dispatch(setRequestStatusError());
-            dispatch(setRequestStatusIdle()); 
+            dispatch(changeCurrentUser(err, 'error'));
+            dispatch(setStatusError());
+            dispatch(setStatusIdle()); 
         }
     }
 }
 
 export const fetchLogout = () => {
     return async (dispatch) => {
-        dispatch(setRequestStatusStarted());
+        dispatch(setStatusStarted());
         
         try {
             const response = await fetch(FETCH_URL.LOGOUT);
             if (response.ok) {
                 dispatch(changeCurrentUser({}, 'user')); 
-                dispatch(setRequestStatusIdle());           
+                dispatch(setStatusIdle());           
             }            
         } catch (err) {
             console.log('Logout error:', err);
-            dispatch(setRequestStatusError());
-            dispatch(setRequestStatusIdle()); 
+            dispatch(setStatusError());
+            dispatch(setStatusIdle()); 
         } 
     }   
 } 
