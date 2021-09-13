@@ -5,7 +5,7 @@ import FormAuth from './FormAuth';
 import Header from '../Header/Header';
 import './Auth.css';
 
-export default function Start() {
+export default function Auth() {
 
     return (
         <div className='content'> 

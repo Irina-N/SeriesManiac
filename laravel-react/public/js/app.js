@@ -11373,7 +11373,7 @@ var ContentType = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Start)
+/* harmony export */   "default": () => (/* binding */ Auth)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Button/Button.js");
@@ -11390,7 +11390,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Start() {
+function Auth() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "content",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormAuth__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
@@ -11487,7 +11487,7 @@ function FormAuth() {
     if (user.id) {
       history.push('/profile');
     }
-  }, [user]);
+  });
 
   var handleOnClickErrorBtn = function handleOnClickErrorBtn() {
     setErrorMessageClassName('errorMessage hidden');
@@ -11623,19 +11623,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function MovieCard() {
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(); //const history = useHistory();
-
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var movieId = Number(params.movieId);
   var userId = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.currentUserReducer.user.id;
   });
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      userMovieGrade = _useState2[0],
-      setUserMovieGrade = _useState2[1];
-
   var currentMovie = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.moviesReducer.movies.data;
   }).find(function (movie) {
@@ -11645,6 +11639,17 @@ function MovieCard() {
       title = currentMovie.title,
       image = currentMovie.image,
       year = currentMovie.year;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      userMovieGrade = _useState2[0],
+      setUserMovieGrade = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isRated = _useState4[0],
+      setIsRated = _useState4[1];
+
   var handleInputChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     var target = e.target;
 
@@ -11652,15 +11657,6 @@ function MovieCard() {
       setUserMovieGrade(Number(target.value));
     }
   });
-
-  var isDisabled = function isDisabled() {
-    if (typeof userMovieGrade === 'number') {
-      return false;
-    }
-
-    return true;
-  };
-
   var handleSubmit = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     e.preventDefault();
     var formData = {
@@ -11671,6 +11667,58 @@ function MovieCard() {
     console.log(formData);
     dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_4__.sendMovieGrade)(formData, _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__.FETCH_URL.SEND_GRADE));
   }, [dispatch, userId, movieId, userMovieGrade]);
+  var handleOnMouseEnter = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    if (!isRated) {
+      var currentGrade = Number(e.target.parentElement.attributes.grade.value);
+      var form = e.target.parentElement.parentElement;
+      [].forEach.call(form.children, function (elem) {
+        if (elem.nodeName === 'LABEL' && Number(elem.attributes.grade.value) <= currentGrade) {
+          elem.style.color = '#ffe066';
+        }
+
+        ;
+      });
+    }
+  });
+  var handleOnMouseLeave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    if (!isRated) {
+      var form = e.target.parentElement.parentElement;
+      [].forEach.call(form.children, function (elem) {
+        if (elem.nodeName === 'LABEL') {
+          elem.style.color = '#ccccb3';
+        }
+
+        ;
+      });
+    }
+  });
+  var handleOnClick = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
+    var currentGrade = Number(e.target.parentElement.attributes.grade.value);
+    var form = e.target.parentElement.parentElement;
+    [].forEach.call(form.children, function (elem) {
+      if (elem.nodeName === 'LABEL' && Number(elem.attributes.grade.value) <= currentGrade) {
+        elem.style.color = '#ffa500';
+      } else if (elem.nodeName === 'LABEL') {
+        elem.style.color = '#ccccb3';
+      }
+
+      ;
+    });
+    setIsRated(true);
+  });
+
+  var _changeStarsColor = function _changeStarsColor(e, color) {
+    var currentGrade = e.type === 'mouseleave' ? 6 : Number(e.target.parentElement.attributes.grade.value);
+    var form = e.target.parentElement.parentElement;
+    [].forEach.call(form.children, function (elem) {
+      if (elem.nodeName === 'LABEL' && Number(elem.attributes.grade.value) <= currentGrade) {
+        elem.style.color = color;
+      }
+
+      ;
+    });
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "content",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
@@ -11692,8 +11740,16 @@ function MovieCard() {
           value: "1",
           onChange: handleInputChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          id: "movieGradeLable1",
+          grade: "1",
           htmlFor: "movieGrade1",
-          children: "\u041D\u0435 \u043E\u0441\u0438\u043B\u0438\u043B(\u0430)"
+          hint: "\u041D\u0435 \u043E\u0441\u0438\u043B\u0438\u043B(\u0430)",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-star fa-3x",
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+            onClick: handleOnClick
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           type: "radio",
           id: "movieGrade2",
@@ -11701,8 +11757,16 @@ function MovieCard() {
           value: "2",
           onChange: handleInputChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          id: "movieGradeLable2",
+          grade: "2",
           htmlFor: "movieGrade2",
-          children: "\u0416\u0430\u043B\u044C \u043F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438"
+          hint: "\u0416\u0430\u043B\u044C \u043F\u043E\u0442\u0440\u0430\u0447\u0435\u043D\u043D\u043E\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-star fa-3x",
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+            onClick: handleOnClick
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           type: "radio",
           id: "movieGrade3",
@@ -11710,8 +11774,16 @@ function MovieCard() {
           value: "3",
           onChange: handleInputChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          id: "movieGradeLable3",
+          grade: "3",
           htmlFor: "movieGrade3",
-          children: "\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C, \u0447\u0442\u043E-\u0442\u043E - \u043D\u0435\u0442"
+          hint: "\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u043B\u043E\u0441\u044C, \u0447\u0442\u043E-\u0442\u043E - \u043D\u0435\u0442",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-star fa-3x",
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+            onClick: handleOnClick
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           type: "radio",
           id: "movieGrade4",
@@ -11719,8 +11791,16 @@ function MovieCard() {
           value: "4",
           onChange: handleInputChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          id: "movieGradeLable4",
+          grade: "4",
           htmlFor: "movieGrade4",
-          children: "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u043B(\u0430) \u0441 \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u0435\u043C"
+          hint: "\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u043B(\u0430) \u0441 \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u0435\u043C",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-star fa-3x",
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+            onClick: handleOnClick
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           type: "radio",
           id: "movieGrade5",
@@ -11728,12 +11808,20 @@ function MovieCard() {
           value: "5",
           onChange: handleInputChange
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+          id: "movieGradeLable5",
+          grade: "5",
           htmlFor: "movieGrade5",
-          children: "\u0412\u0430\u0443!"
+          hint: "\u0412\u0430\u0443!",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-star fa-3x",
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+            onClick: handleOnClick
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
           type: "submit",
           value: "\u041E\u0446\u0435\u043D\u0438\u0442\u044C",
-          disabled: isDisabled()
+          disabled: !isRated
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         id: "to-bookmarks-btn",
@@ -11777,7 +11865,7 @@ var MovieListItem = function MovieListItem(_ref) {
       ruTitle = _ref.ruTitle;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     className: "col-lg-3 col-md-4 col-12 p-2",
-    to: "/movie/".concat(movieId),
+    to: "/movies/".concat(movieId),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "card shadow-sm",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
@@ -12293,7 +12381,7 @@ function Router() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Movies_Movies__WEBPACK_IMPORTED_MODULE_4__.default, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
       exact: true,
-      path: "/movie/:movieId",
+      path: "/movies/:movieId",
       component: _Movies_MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_5__.default
     })]
   });
@@ -18228,7 +18316,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header__title {\r\n    color: orange;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header__title {\r\n    color: #ffa500;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18252,7 +18340,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\r\n    margin-right: 5px;\r\n    margin-left: 10px;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 250px;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\r\n    display: none;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 250px;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\ninput[type=submit]:disabled:hover {\r\n    background-color: #04AA6D;\r\n}\r\n\r\ninput[type=submit]:disabled {\r\n    cursor: default;\r\n}\r\n\r\nlabel {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
