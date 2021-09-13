@@ -26,7 +26,7 @@ export default function FormAuth () {
     if (user.id) {     
       history.push('/profile');      
     }  
-  }, [user]);
+  });
 
   const handleOnClickErrorBtn = () => {
     setErrorMessageClassName('errorMessage hidden');

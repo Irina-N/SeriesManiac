@@ -23,7 +23,7 @@ export default function Router () {
         <Route exact path='/movies'>
             <Movies/>
         </Route>
-        <Route exact path='/movie/:movieId' component={MovieCard}>
+        <Route exact path='/movies/:movieId' component={MovieCard}>
         </Route>
              
         
