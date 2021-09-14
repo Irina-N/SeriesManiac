@@ -25,7 +25,6 @@ export default function Router () {
         </Route>
         <Route exact path='/movie/:movieId' component={MovieCard}>
         </Route>
-             
         
 
     </Switch>

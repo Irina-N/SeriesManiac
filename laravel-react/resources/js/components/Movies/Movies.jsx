@@ -1,37 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopMovies } from '../../store/actions/movies';
 import { MovieListItem } from './MovieListItem/MovieListItem';
 import Header from '../Header/Header';
+import Spinner from 'react-bootstrap/Spinner'
 import './movies.css'
+import { RandomMovie } from './RandomMovie/RandomMovie';
 
 export const Movies = () => {
   const dispatch = useDispatch();
-  const topMovies = useSelector((state) => state.moviesReducer.movies);
+  const { movies: topMovies} = useSelector((state) => state.moviesReducer);
+  const { preloader } = useSelector((state) => state.moviesReducer);
+  const [paginateCounter, setPaginateCounter] = useState(0);
 
   useEffect(() => {
     dispatch(getTopMovies());
   }, []);
 
-  const handlerSearch = () => {
-
+  const loadMore = () => {
+    dispatch(getTopMovies(paginateCounter + 1));
+    setPaginateCounter(paginateCounter + 1);
   }
 
-  if (!topMovies) {
-    return (
-      <div className='content'>
-        <Header />
-        <div className="album py-5 bg-light">
-          <div className="container">
-            <div id="film-container" className="row">
-              loading...
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+  const handlerSearch = () => {
+
   }
 
   return (
@@ -40,14 +34,7 @@ export const Movies = () => {
 
       {/* Предлагаю пока делать основной функуионал. И.Н. */}
 
-      {/* <section id="random-movie" className="py-5 text-center container-fluid">
-        <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 id="random-movie-name" className="fw-light text-light">The Suicide Squad</h1>
-            <p id="random-movie-description" className="lead text-white">Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.</p>
-          </div>
-        </div>
-      </section> */}
+      {/* <RandomMovie /> */}
       {/* <div className="container-fluid d-flex bg-light justify-content-center p-2">
         <div className="btn-group" id="button-wrapper" srole="group" aria-label="Basic radio toggle button group">
           <input type="radio" className="btn-check" name="btnradio" id="popular" autoComplete="off" />
@@ -69,14 +56,17 @@ export const Movies = () => {
       <div className="album py-5 bg-light">
         <div className="container">
           <div id="film-container" className="row">
-            {topMovies.data.map((movie) => {
-              return (<MovieListItem key={movie.id} movieId={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ruTitle} />)
-            })}
+            {(preloader || !topMovies || !topMovies.length)
+              ? <Spinner animation="border" variant="dark" />
+              : topMovies.map((movie) => {
+                  return (<MovieListItem key={movie.id} movieId={movie.id} image={movie.image} title={movie.title} year={movie.year} ruTitle={movie.ru_title} />)
+              })
+            }
             {/* {topMovies && moviesList} */}
           </div>
         </div>
         <div className="d-flex justify-content-center align-items-center pt-4">
-          <button id="load-more" type="button" className="btn btn-lg btn-outline-success">
+          <button onClick={loadMore} id="load-more" type="button" className="btn btn-lg btn-outline-success">
             Load more
           </button>
         </div>
