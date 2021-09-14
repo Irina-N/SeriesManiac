@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\Movies;
+use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
@@ -16,6 +17,20 @@ class MoviesController extends Controller
     public function getMovies()
     {
         return response()->json(Movies::paginate(10),200);
+    }
+
+    public function getOneMovie(Request $request)
+    {
+        $data = $request->all(); 
+        $id = Movies::find($data['id'])->first('api_id');
+        return Http::get('https://api.myshows.ru/shows/'.$id);
+    }
+
+    public function getRandMovies()
+    {
+        $id = rand(1, 500);
+        $randMovies = Movies::find($id);
+        return response()->json($randMovies);
     }
 
     public function grade(Request $request)

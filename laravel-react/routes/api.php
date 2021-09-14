@@ -22,5 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/movies', [MoviesController::class, 'getMovies']); 
+Route::get('/movies', [MoviesController::class, 'getMovies']);
+Route::get('/movies/{id}', [MoviesController::class, 'getOneMovie']);
+Route::get('/movies/rand', [MoviesController::class, 'getRandMovies']);
+
 

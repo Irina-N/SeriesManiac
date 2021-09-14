@@ -25,7 +25,7 @@ Route::get( '/{any}', function(){
 */
 Route::get('/', [LoginController::class, 'show'])->name('login');
 Route::get('/register', [RegisterController::class, 'show']);
-
+Route::get('/test', [test::class, 'test']);
 //Будут позже добавлены в /api/
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);

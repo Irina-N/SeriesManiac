@@ -15,7 +15,9 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            $table->integer('api_id');
             $table->string('title');
+            //$table->longText('description', 1500);
             $table->string('ru_title');
             $table->smallInteger('year');
             $table->float('raiting')->nullable();
