@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movies;
 use Illuminate\Http\Request;
 use App\Models\Grade;
+use App\Models\Movies;
 
 class MoviesController extends Controller
 {
@@ -15,7 +15,7 @@ class MoviesController extends Controller
 
     public function getMovies()
     {
-        return response()->json(Movies::paginate(10));
+        return response()->json(Movies::paginate(10),200);
     }
 
     public function grade(Request $request)
@@ -30,16 +30,32 @@ class MoviesController extends Controller
 
         //Если такая запись уже существует мы её обновляем Если не существует то добавляем новую..
         if($check){
-            $gradeId = Grade::where('user_id', $data['userId'])->where('movies_id', $data['movieId'])->get('id');
-            $grade = Grade::find($gradeId[0]['id']);
+            $gradeId = Grade::where('user_id', $data['userId'])
+                            ->where('movies_id', $data['movieId'])
+                            ->first('id');
+            $grade = Grade::find($gradeId['id']);
             $grade->grade = $data['userMovieGrade'];
             $grade->save();
         }else{
+            //Создаём запись оценки
             $grade = Grade::create([
                 'user_id' => $data['userId'],
                 'movies_id' => $data['movieId'],
                 'grade' => $data['userMovieGrade'],
-            ]);  
+            ]);
+            //Вычисляем наш рейтинг и повышаем значение просмотра на 1 каждый раз как новый пользователь оценил фильм
+            $movie = Movies::where('id', $data['movieId'])->first();
+            $grades = Grade::where('movies_id', $data['movieId'])->get();
+            $movie['watched'] += 1;
+            $gradeSum = 0;
+            foreach($grades as $grade){
+                $gradeSum += $grade['grade'];
+            }
+            $raiting = $gradeSum / $movie['watched'];
+            $movie->watched = $movie['watched'];
+            $movie->raiting = $raiting;
+            $movie->save();
         }
+
     }
 }
