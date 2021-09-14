@@ -15,11 +15,17 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
+            $table->integer('api_id');
             $table->string('title');
+            //$table->longText('description', 1500);
             $table->string('ru_title');
             $table->smallInteger('year');
+            $table->float('raiting')->nullable();
+            $table->integer('watched')->nullable();
+            $table->integer('place')->nullable();
+            $table->string('status')->nullable();
             $table->string('image');
-            $table->integer('likes')->nullable();
+            $table->string('big_image')->nullable();
             $table->timestamps();
         });
     }
