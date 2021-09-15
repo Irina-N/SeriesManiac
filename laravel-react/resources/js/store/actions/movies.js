@@ -1,11 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { movies as movieService } from "../../services/index";
-import { GET_TOP, SEND_GRADE } from "../ActionTypes/movies";
+import { GET_TOP, SEND_GRADE, GET_ONE, GET_RANDOM, GET_MORE, GET_SEARCH } from "../ActionTypes/movies";
 
 const getTopMovies = createAsyncThunk(
   GET_TOP,
-  async () => await movieService.getTopMovies()
-); 
+  async (counter) => await movieService.getTopMovies(counter)
+);
+
+const getOneMovie = createAsyncThunk(
+  GET_ONE,
+  async (id) => await movieService.getOneMovie(id)
+);
+
+const getRandomMovie = createAsyncThunk(
+  GET_RANDOM,
+  async () => await movieService.getRandomMovie()
+);
+
+const loadMoreMovies = createAsyncThunk(
+  GET_MORE,
+  async ({counter, query}) => await movieService.loadMoreMovies({counter, query})
+);
+
+const searchMovies = createAsyncThunk(
+  GET_SEARCH,
+  async ({query, counter}) => {console.log(33333, query, counter); await movieService.searchMovies({query, counter})}
+);
 
 const sendMovieGrade = (formData, url) => {
   return async (dispatch) => {
@@ -24,11 +44,11 @@ const sendMovieGrade = (formData, url) => {
           } else {
             console.log('response.status:', response.status)
           }
-                   
+
       } catch (err) {
           console.log('Failed', err);          
       }
   }
 }
 
-export { getTopMovies, sendMovieGrade };
+export { getTopMovies, getOneMovie, getRandomMovie, loadMoreMovies, searchMovies, sendMovieGrade };
