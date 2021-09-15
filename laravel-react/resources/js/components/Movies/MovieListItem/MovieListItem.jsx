@@ -19,7 +19,6 @@ export const MovieListItem = ({ movieId, image, title, year, ruTitle }) => {
             <small className="text-muted">{year}</small>
           </div>
         </div>
-
       </div>
     </Link>
   )

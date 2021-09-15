@@ -11,5 +11,6 @@
     <body>
         <div id="app"></div>
         <script src="./js/app.js" ></script>
+        <script src="https://kit.fontawesome.com/85b98b763b.js" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/register',
         '/login',
-        '/movies/grade'
+        '/movies/grade',
+        '/movies/{id}'
     ];
 }

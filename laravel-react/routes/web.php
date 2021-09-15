@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Test;
+use App\Http\Controllers\test;
 use App\Http\Controllers\MoviesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -25,6 +25,8 @@ Route::get( '/{any}', function(){
 */
 Route::get('/', [LoginController::class, 'show'])->name('login');
 Route::get('/register', [RegisterController::class, 'show']);
+Route::get('/test', [test::class, 'test']);
+//Будут позже добавлены в /api/
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [RegisterController::class, 'register']);
 
@@ -33,6 +35,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/movies', [MoviesController::class, 'show'])->name('movies');
     Route::get('/movies/{id}', [MoviesController::class, 'show']);
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+    //Будут позже добавлены в /api/
     Route::put('/movies/grade', [MoviesController::class, 'grade']);
 });
  
