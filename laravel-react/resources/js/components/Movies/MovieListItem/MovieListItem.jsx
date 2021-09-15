@@ -7,8 +7,9 @@ export const MovieListItem = ({ movieId, image, title, year, ruTitle }) => {
 
   return (
     <Link
-      className='col-lg-3 col-md-4 col-12 p-2'
-      to={`/movies/${movieId}`}>
+      className='col-lg-3 col-md-4 col-12 p-2 movie-list-item'
+      to={`/movie/${movieId}`}>
+
       <div className="card shadow-sm">
         <img src={image} />
         <h5 className="card-title">{ruTitle}</h5>

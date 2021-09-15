@@ -6,10 +6,12 @@ import Registration from '../Registration/Registration';
 import Movies from '../Movies/Movies';
 import MovieCard from '../Movies/MovieCard/MovieCard';
 import '../../../css/app.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Router () {
-    return (
+    return (<>
     <Switch>            
         <Route exact path='/'>
             <Auth/>
@@ -25,10 +27,10 @@ export default function Router () {
         </Route>
         <Route exact path='/movies/:movieId' component={MovieCard}>
         </Route>
-             
         
 
     </Switch>
-    )
+    <ToastContainer theme="colored"/>
+    </>)
 }
 
