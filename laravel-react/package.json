@@ -8,6 +8,7 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
+    "prepare": "cd.. && husky install",
     "pretty-quick": "pretty-quick --staged"
   },
   "devDependencies": {
