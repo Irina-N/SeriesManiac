@@ -8,17 +8,19 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick --staged"
   },
   "devDependencies": {
     "@babel/preset-react": "7.13.13",
     "axios": "0.21",
     "bootstrap": "5.0.1",
+    "husky": "7.0.2",
+    "husky-hg": "0.15.4",
     "jquery": "3.6",
-    "laravel-mix": "6.0.6",
-    "lodash": "4.17.19",
+    "laravel-mix": "^6.0.31",
+    "lodash": "^4.17.21",
     "popper.js": "1.16.1",
-    "postcss": "8.1.14",
+    "postcss": "^8.3.6",
     "prettier": "2.4.0",
     "pretty-quick": "3.1.1",
     "react": "17.0.2",
