@@ -11647,8 +11647,13 @@ function MovieCard() {
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      isRated = _useState4[0],
-      setIsRated = _useState4[1];
+      isHaveGrade = _useState4[0],
+      setIsHaveGrade = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isRated = _useState6[0],
+      setIsRated = _useState6[1];
 
   var handleInputChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
     var target = e.target;
@@ -11666,9 +11671,10 @@ function MovieCard() {
     };
     console.log(formData);
     dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_4__.sendMovieGrade)(formData, _common_constants_constants__WEBPACK_IMPORTED_MODULE_3__.FETCH_URL.SEND_GRADE));
+    setIsRated(true);
   }, [dispatch, userId, movieId, userMovieGrade]);
   var handleOnMouseEnter = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
-    if (!isRated) {
+    if (!isHaveGrade) {
       var currentGrade = Number(e.target.parentElement.attributes.grade.value);
       var form = e.target.parentElement.parentElement;
       [].forEach.call(form.children, function (elem) {
@@ -11681,7 +11687,7 @@ function MovieCard() {
     }
   });
   var handleOnMouseLeave = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
-    if (!isRated) {
+    if (!isHaveGrade) {
       var form = e.target.parentElement.parentElement;
       [].forEach.call(form.children, function (elem) {
         if (elem.nodeName === 'LABEL') {
@@ -11704,20 +11710,32 @@ function MovieCard() {
 
       ;
     });
-    setIsRated(true);
+    setIsHaveGrade(true);
   });
 
-  var _changeStarsColor = function _changeStarsColor(e, color) {
-    var currentGrade = e.type === 'mouseleave' ? 6 : Number(e.target.parentElement.attributes.grade.value);
+  var handleEditGrade = function handleEditGrade(e) {
+    setIsHaveGrade(false);
+    setIsRated(false);
     var form = e.target.parentElement.parentElement;
     [].forEach.call(form.children, function (elem) {
-      if (elem.nodeName === 'LABEL' && Number(elem.attributes.grade.value) <= currentGrade) {
-        elem.style.color = color;
+      if (elem.nodeName === 'LABEL') {
+        elem.style.color = '#ccccb3';
       }
 
       ;
     });
   };
+  /* const _changeStarsColor = (e, color) => {
+      const currentGrade = e.type === 'mouseleave' ? 6 : Number(e.target.
+      parentElement.attributes.grade.value);
+      const form = e.target.parentElement.parentElement;
+      [].forEach.call(form.children, function(elem) {
+          if (elem.nodeName === 'LABEL' && Number(elem.attributes.grade.value) <= currentGrade) {
+              elem.style.color = color;
+          };             
+      });        
+  } */
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "content",
@@ -11818,10 +11836,19 @@ function MovieCard() {
             onMouseLeave: handleOnMouseLeave,
             onClick: handleOnClick
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "btn btn_send_grade ".concat(isRated ? 'hidden' : ''),
           type: "submit",
-          value: "\u041E\u0446\u0435\u043D\u0438\u0442\u044C",
-          disabled: !isRated
+          disabled: !isHaveGrade,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-check fa-3x"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          className: "btn btn_edit_grade ".concat(isRated ? '' : 'hidden'),
+          onClick: handleEditGrade,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+            className: "fas fa-pen fa-2x"
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         id: "to-bookmarks-btn",
@@ -18340,7 +18367,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\r\n    display: none;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 250px;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\ninput[type=submit]:disabled:hover {\r\n    background-color: #04AA6D;\r\n}\r\n\r\ninput[type=submit]:disabled {\r\n    cursor: default;\r\n}\r\n\r\nlabel {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__movie-grade {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-items: flex-start;\r\n    gap: 8px;\r\n\r\n}\r\n\r\ninput[type=radio] {\r\n    display: none;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\n.btn_send_grade,\r\n.btn_edit_grade {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    padding: 0;\r\n    color: white;\r\n    width: 4em;\r\n    height: 3.5em;\r\n    font-weight: 500;\r\n    font-size: 16px;    \r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn_send_grade:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.btn_send_grade:disabled:hover {\r\n    background-color: #ccccb3;\r\n}\r\n\r\n.btn_send_grade:disabled {\r\n    cursor: default;\r\n    background-color: #ccccb3;    \r\n}\r\n\r\nlabel {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n}\r\n\r\n.to-bookmarks-btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.to-bookmarks-btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

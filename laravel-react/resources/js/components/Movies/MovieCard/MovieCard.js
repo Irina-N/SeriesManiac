@@ -17,6 +17,7 @@ export default function MovieCard() {
     const {ru_title, title, image, year} = currentMovie;
     
     const [userMovieGrade, setUserMovieGrade] = useState('');
+    const [isHaveGrade, setIsHaveGrade] = useState(false);  
     const [isRated, setIsRated] = useState(false);    
        
     const handleInputChange = useCallback((e) => {
@@ -30,11 +31,12 @@ export default function MovieCard() {
         e.preventDefault();   
         const formData = {userId, movieId, userMovieGrade}; 
         console.log(formData);
-        dispatch(sendMovieGrade(formData, FETCH_URL.SEND_GRADE));          
+        dispatch(sendMovieGrade(formData, FETCH_URL.SEND_GRADE));
+        setIsRated(true);     
     }, [dispatch, userId, movieId, userMovieGrade]);
 
     const handleOnMouseEnter = useCallback((e) => {
-        if (!isRated) {
+        if (!isHaveGrade) {
             const currentGrade = Number(e.target.parentElement.attributes.grade.value);
             const form = e.target.parentElement.parentElement;
             [].forEach.call(form.children, function(elem) {
@@ -48,7 +50,7 @@ export default function MovieCard() {
 
 
     const handleOnMouseLeave = useCallback((e) => {
-        if (!isRated) {
+        if (!isHaveGrade) {
             const form = e.target.parentElement.parentElement;
             [].forEach.call(form.children, function(elem) {
                 if (elem.nodeName === 'LABEL' ) {
@@ -69,10 +71,21 @@ export default function MovieCard() {
                 elem.style.color = '#ccccb3';
             };             
         });         
-        setIsRated(true);
+        setIsHaveGrade(true);
     });
 
-    const _changeStarsColor = (e, color) => {
+    const handleEditGrade = (e) => {
+        setIsHaveGrade(false);
+        setIsRated(false);        
+        const form = e.target.parentElement.parentElement;
+        [].forEach.call(form.children, function(elem) {
+            if (elem.nodeName === 'LABEL') {
+                elem.style.color = '#ccccb3';
+            };             
+        }); 
+    };
+
+    /* const _changeStarsColor = (e, color) => {
         const currentGrade = e.type === 'mouseleave' ? 6 : Number(e.target.
         parentElement.attributes.grade.value);
         const form = e.target.parentElement.parentElement;
@@ -81,7 +94,7 @@ export default function MovieCard() {
                 elem.style.color = color;
             };             
         });        
-    }
+    } */
     
     return (
         <div className='content'> 
@@ -162,7 +175,17 @@ export default function MovieCard() {
                             </i>
                     </label>
                     
-                    <input type='submit' value='Оценить' disabled={!isRated}></input> 
+                    <button 
+                        className={`btn btn_send_grade ${isRated ? 'hidden' : ''}`}
+                        type='submit' 
+                        disabled={!isHaveGrade}>
+                            <i className="fas fa-check fa-3x"></i>
+                    </button>
+                    <button 
+                        className={`btn btn_edit_grade ${isRated ? '' : 'hidden'}`}
+                        onClick={handleEditGrade}>
+                            <i className="fas fa-pen fa-2x"></i>
+                    </button> 
                 </form>
                 
                 <button id='to-bookmarks-btn' type='button' className='btn to-bookmarks-btn'>

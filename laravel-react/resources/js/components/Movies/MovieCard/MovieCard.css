@@ -1,30 +1,45 @@
+.form__movie-grade {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    gap: 8px;
+
+}
+
 input[type=radio] {
     display: none;
 }
 
-input[type=submit] {
+.hidden {
+    display: none;
+}
+
+.btn_send_grade,
+.btn_edit_grade {
     align-self: center;
     background-color: #04AA6D;
+    padding: 0;
     color: white;
-    width: 250px;
+    width: 4em;
+    height: 3.5em;
     font-weight: 500;
-    font-size: 16px;
-    padding: 12px 20px;
+    font-size: 16px;    
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+.btn_send_grade:hover {
     background-color: #45a049;
 }
 
-input[type=submit]:disabled:hover {
-    background-color: #04AA6D;
+.btn_send_grade:disabled:hover {
+    background-color: #ccccb3;
 }
 
-input[type=submit]:disabled {
+.btn_send_grade:disabled {
     cursor: default;
+    background-color: #ccccb3;    
 }
 
 label {
@@ -32,7 +47,7 @@ label {
     color: #ccccb3;
 }
 
-.btn {
+.to-bookmarks-btn {
     width: 250px;
     background-color: #04AA6D;
     margin-top: 15px;
@@ -45,6 +60,6 @@ label {
     cursor: pointer;
 }
 
-.btn:hover {
+.to-bookmarks-btn:hover {
     background-color: #45a049;
 }
