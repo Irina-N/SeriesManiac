@@ -16,14 +16,18 @@ const rootReducer = combineReducers({
     moviesReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, currentUserReducer);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
 export const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
+
+const storeForPersist = createStore(
     persistedReducer,
     composeEnhancers(applyMiddleware(thunk))
 );
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(storeForPersist);

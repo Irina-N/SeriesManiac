@@ -1,4 +1,5 @@
 #film-container {
     max-height: 57vh;
+    min-height: 57vh;
     overflow-y: scroll;
 }
