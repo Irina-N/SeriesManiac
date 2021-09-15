@@ -17,7 +17,7 @@ class CreateMoviesTable extends Migration
             $table->id();
             $table->integer('api_id');
             $table->string('title');
-            //$table->longText('description', 1500);
+            $table->longText('description', 1500);
             $table->string('ru_title');
             $table->smallInteger('year');
             $table->float('raiting')->nullable();

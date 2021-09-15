@@ -15,6 +15,5 @@ class VerifyCsrfToken extends Middleware
         '/register',
         '/login',
         '/movies/grade',
-        '/movies/{id}'
     ];
 }
