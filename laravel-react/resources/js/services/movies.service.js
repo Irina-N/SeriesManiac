@@ -6,10 +6,10 @@ class Movies {
   }
 
   getTopMovies(counter) {
-    const payload = counter ? counter : null;
+    const payload = counter ? {counter} : {counter: null};
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
-      payload,
+      payload: JSON.stringify(payload),
     });
   }
 
@@ -22,17 +22,17 @@ class Movies {
   }
 
   searchMovies({query, counter}) {
-    const payload = counter ? counter : null;
+    const payload = counter ? {counter} : {counter: null};
     return this._http.load(`api/movies/search?query=${query}`, {
       method: HttpMethod.POST,
-      payload,
+      payload: JSON.stringify(payload),
     });
   }
   
   sendMovieGrade(payload) {
     return this._http.load('/movies/grade', {
       method: HttpMethod.PUT,
-      payload
+      payload: JSON.stringify(payload),
     });
   }
   
