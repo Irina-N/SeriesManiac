@@ -9,14 +9,9 @@ use Illuminate\Support\Facades\Http;
 
 class test extends Controller
 {
-    public function test()
+    public function test(Request $request)
     {
-        $randMovies = Movies::inRandomOrder()->limit(1)->first();
-        $data = Http::get('https://api.myshows.ru/shows/'.$randMovies->api_id);
-        $string = explode("/small", $data['image']);
-        $url = implode("", $string);
-        $data['big_image'] = $url;
-        return $data;
+        return response()->json(Movies::inRandomOrder()->limit(1)->get(),200);
     }
 
 }

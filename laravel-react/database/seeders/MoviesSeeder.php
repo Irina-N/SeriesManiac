@@ -27,7 +27,7 @@ class MoviesSeeder extends Seeder
                 'year' => $film['year'],
                 'image' => $film['image'],
                 'big_image' => $url,
-                //'description' => $description['description'],
+                'description' => $description['description'],
             ]);
         }
     }
