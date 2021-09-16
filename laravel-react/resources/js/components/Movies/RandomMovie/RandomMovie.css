@@ -1,3 +1,9 @@
-.background {
-  background-image: url();
+#random-movie {
+  background-size: cover;
+  background-position: top;
+}
+#random-movie .row .mx-auto {
+  background-color: #10101078;
+  overflow: hidden;
+    max-height: 190px;
 }

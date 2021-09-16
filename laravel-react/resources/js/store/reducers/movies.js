@@ -4,8 +4,8 @@ import { getTopMovies, getOneMovie, getRandomMovie, loadMoreMovies, searchMovies
 const initialState = {
   movies: [],
   preloader: false,
-  randomMovie: null,
-  currentMovie: null,
+  randomMovie: {},
+  currentMovie: {},
   error: {
     status: false,
     errorMessage: ""
@@ -58,7 +58,7 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = false;
       state.error.errorMessage = "";
-      state.randomMovie = action.payload.data;
+      state.randomMovie = action.payload;
     },
     [getRandomMovie.rejected]: (state, action) => {
       state.preloader = false;
@@ -90,7 +90,7 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = false;
       state.error.errorMessage = "";
-      state.movies = action.payload.data;
+      state.movies = action.payload;
     },
     [searchMovies.rejected]: (state, action) => {
       state.preloader = false;

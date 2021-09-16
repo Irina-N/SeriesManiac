@@ -59,7 +59,7 @@ export const Movies = () => {
   };
 
   return (
-    <div className="content">
+    <div className="content main">
       <Header />
 
       {/* Предлагаю пока делать основной функуионал. И.Н. */}
