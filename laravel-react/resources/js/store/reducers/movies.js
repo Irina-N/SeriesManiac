@@ -26,7 +26,7 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = false;
       state.error.errorMessage = "";
-      state.movies = [...state.movies, ...action.payload.data];
+      state.movies = [...state.movies, ...action.payload];
     },
     [getTopMovies.rejected]: (state, action) => {
       state.preloader = false;
@@ -74,7 +74,7 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = false;
       state.error.errorMessage = "";
-      state.movies = [...state.movies, ...action.payload.data];
+      state.movies = [...state.movies, ...action.payload];
     },
     [loadMoreMovies.rejected]: (state, action) => {
       state.preloader = false;
