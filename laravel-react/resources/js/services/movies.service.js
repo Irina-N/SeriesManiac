@@ -6,10 +6,10 @@ class Movies {
   }
 
   getTopMovies(counter) {
-    const payload = counter ? {counter} : {counter: null};
+    // const payload = counter ? {counter} : {counter: null};
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
-      payload: JSON.stringify(payload),
+      payload: JSON.stringify({counter}),
     });
   }
 
