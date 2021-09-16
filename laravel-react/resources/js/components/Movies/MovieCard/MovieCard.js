@@ -13,7 +13,7 @@ export default function MovieCard() {
 
     const movieId = Number(params.movieId);
     const userId = useSelector(state => state.currentUserReducer.user.id);
-    const currentMovie = useSelector(state => state.moviesReducer.movies.data).find((movie) => movie.id == movieId);
+    const currentMovie = useSelector(state => state.moviesReducer.movies).find((movie) => movie.id == movieId);
     const {ru_title, title, image, year} = currentMovie;
     
     const [userMovieGrade, setUserMovieGrade] = useState('');
