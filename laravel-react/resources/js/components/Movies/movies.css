@@ -1,8 +1,14 @@
-#film-container {
-    overflow-y: scroll;
-    flex: 1 0 auto;
-}
+.content,
 .main {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* #film-container {
+  overflow-y: scroll;
+  flex: 1 0 auto;
+} */
+/* .main {
   display: flex;
   flex-direction: column;
 }
@@ -14,4 +20,4 @@
 .album .container {
   display: flex;
   flex: 1 0 auto;
-}
+} */
