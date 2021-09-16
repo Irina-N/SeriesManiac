@@ -13,8 +13,7 @@ class MoviesController extends Controller
     {
         //return response()->json(Movies::paginate(20),200);
 
-        $data = $request->all();
-        dd($request->all());
+        $data = $request->only('counter');
         return response()->json(Movies::
         select('id', 'title', 'ru_title', 'image', 'year')->
         where('id', '>=',($data['counter']-1)*20+1)->

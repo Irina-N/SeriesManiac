@@ -18711,7 +18711,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\n    margin: 0;\n    font-size: 17px;\n}\n\n* {\n    box-sizing: border-box;\n}\n\n.bgVideo {\n    position: fixed;\n    right: 0;\n    bottom: 0;\n    min-width: 100%;\n    min-height: 100%;\n}\n\n.content {\n    position: fixed;\n    background: rgba(0, 0, 0, 0.8);\n    color: #f1f1f1;\n    width: 100vw;\n    min-height: 100vh;\n    padding: 20px;\n}\n\n\n\n.center-text {\n    margin: 0 auto;\n    text-align: center;\n    padding: 10px;\n}\n\n.hidden {\n    display: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    margin: 0;\r\n    font-size: 17px;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.bgVideo {\r\n    position: fixed;\r\n    right: 0;\r\n    bottom: 0;\r\n    min-width: 100%;\r\n    min-height: 100%;\r\n}\r\n\r\n.content {\r\n    position: fixed;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n    width: 100vw;\r\n    min-height: 100vh;\r\n    padding: 20px;\r\n}\r\n\r\n\r\n\r\n.center-text {\r\n    margin: 0 auto;\r\n    text-align: center;\r\n    padding: 10px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18735,7 +18735,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\n    margin: 0 auto;\n    border-radius: 5px;\n    background: rgba(0, 0, 0, 0.3);\n    padding: 20px;\n    width: 800px;\n    display: flex;\n    justify-content: center;\n}\n\n\n#singup_btn {\n    width: 35%;\n    font-size: 16px;\n    font-weight: 500;\n    color: white;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    width: 800px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n#singup_btn {\r\n    width: 35%;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18759,7 +18759,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__auth {\n    width: 800px;\n    margin: 0 auto 10px;\n    border-radius: 5px;\n    background: rgba(0, 0, 0, 0.3);\n    padding: 20px;\n    display: flex;\n    flex-flow: column nowrap;\n}\n\ninput[type=text],\ninput[type=email],\ninput[type=password],\nselect,\ntextarea {\n    width: 100%;\n    padding: 12px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    box-sizing: border-box;\n    margin-top: 6px;\n    margin-bottom: 20px;\n    resize: vertical;\n}\n\nlabel {\n    margin: 0;\n}\n\ninput[type=submit] {\n    align-self: center;\n    background-color: #04AA6D;\n    color: white;\n    width: 35%;\n    font-weight: 500;\n    font-size: 16px;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n\ninput[type=submit]:hover {\n    background-color: #45a049;\n}\n\n.errorMessage {\n    position: fixed;\n    padding: 20px 30px;\n    width: 500px;\n    min-height: 200px;\n    left: calc(50% - 200px);\n    bottom: calc(50% - 100px);\n    background-color: #ccc;\n    border-radius: 8px;\n    display: flex;\n    flex-flow: column nowrap;\n    align-items: center;\n    justify-content: space-around;\n    z-index: 3;\n}\n\n.errorMessage__text {\n    color: crimson;\n    font-size: 22px;\n    line-height: 28px;\n}\n\n.btnErrorMessageClose {\n    width: 80px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__auth {\r\n    width: 800px;\r\n    margin: 0 auto 10px;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=email],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 20px;\r\n    resize: vertical;\r\n}\r\n\r\nlabel {\r\n    margin: 0;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 35%;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.errorMessage {\r\n    position: fixed;\r\n    padding: 20px 30px;\r\n    width: 500px;\r\n    min-height: 200px;\r\n    left: calc(50% - 200px);\r\n    bottom: calc(50% - 100px);\r\n    background-color: #ccc;\r\n    border-radius: 8px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    z-index: 3;\r\n}\r\n\r\n.errorMessage__text {\r\n    color: crimson;\r\n    font-size: 22px;\r\n    line-height: 28px;\r\n}\r\n\r\n.btnErrorMessageClose {\r\n    width: 80px;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18783,7 +18783,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header__title {\n    color: #ffa500;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header__title {\r\n    color: #ffa500;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18807,7 +18807,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\n    display: none;\n}\n\ninput[type=submit] {\n    align-self: center;\n    background-color: #04AA6D;\n    color: white;\n    width: 250px;\n    font-weight: 500;\n    font-size: 16px;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n\ninput[type=submit]:hover {\n    background-color: #45a049;\n}\n\ninput[type=submit]:disabled:hover {\n    background-color: #04AA6D;\n}\n\ninput[type=submit]:disabled {\n    cursor: default;\n}\n\nlabel {\n    cursor: pointer;\n    color: #ccccb3;\n}\n\n.btn {\n    width: 250px;\n    background-color: #04AA6D;\n    margin-top: 15px;\n    font-size: 16px;\n    font-weight: 500;\n    color: white;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n\n.btn:hover {\n    background-color: #45a049;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "input[type=radio] {\r\n    display: none;\r\n}\r\n\r\ninput[type=submit] {\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    width: 250px;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\ninput[type=submit]:disabled:hover {\r\n    background-color: #04AA6D;\r\n}\r\n\r\ninput[type=submit]:disabled {\r\n    cursor: default;\r\n}\r\n\r\nlabel {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18831,7 +18831,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\n  text-decoration: none;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\r\n  text-decoration: none;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18855,7 +18855,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\n  background-size: cover;\n  background-position: top;\n}\n#random-movie .row .mx-auto {\n  background-color: #10101078;\n  overflow: hidden;\n    max-height: 190px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n  background-size: cover;\r\n  background-position: top;\r\n}\r\n#random-movie .row .mx-auto {\r\n  background-color: #10101078;\r\n  overflow: hidden;\r\n    max-height: 190px;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18879,7 +18879,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#film-container {\n    overflow-y: scroll;\n    flex: 1 0 auto;\n}\n.main {\n  display: flex;\n  flex-direction: column;\n}\n.album {\n  display: flex;\n  flex: 1 0 auto;\n  flex-direction: column;\n}\n.album .container {\n  display: flex;\n  flex: 1 0 auto;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#film-container {\r\n    overflow-y: scroll;\r\n    flex: 1 0 auto;\r\n}\r\n.main {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.album {\r\n  display: flex;\r\n  flex: 1 0 auto;\r\n  flex-direction: column;\r\n}\r\n.album .container {\r\n  display: flex;\r\n  flex: 1 0 auto;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18903,7 +18903,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".profile__container {\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    justify-items: flex-start;\n    align-items: center;\n}\n\n.btn {\n    width: 250px;\n    font-size: 16px;\n    font-weight: 500;\n    color: white;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".profile__container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 10px;\r\n    justify-items: flex-start;\r\n    align-items: center;\r\n}\r\n\r\n.btn {\r\n    width: 250px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18927,7 +18927,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\n    width: 800px;\n    margin: 0 auto;\n    border-radius: 5px;\n    background: rgba(0, 0, 0, 0.3);\n    padding: 20px;\n    display: flex;\n    flex-flow: column nowrap;\n}\n\ninput[type=text],\ninput[type=email],\ninput[type=password],\nselect,\ntextarea {\n    width: 100%;\n    padding: 12px;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    box-sizing: border-box;\n    margin-top: 6px;\n    margin-bottom: 16px;\n    resize: vertical;\n}\n\ninput[type=submit] {\n    width: 35%;\n    font-weight: 500;\n    align-self: center;\n    background-color: #04AA6D;\n    color: white;\n    font-size: 16px;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n\ninput[type=submit]:hover {\n    background-color: #45a049;\n}\n\n.errorMessage {\n    position: fixed;\n    padding: 20px 30px;\n    width: 500px;\n    min-height: 200px;\n    left: calc(50% - 200px);\n    bottom: calc(50% - 100px);\n    background-color: #ccc;\n    border-radius: 8px;\n    display: flex;\n    flex-flow: column nowrap;\n    align-items: center;\n    justify-content: space-around;\n    z-index: 3;\n}\n\n.errorMessage__text {\n    color: crimson;\n    font-size: 22px;\n    line-height: 28px;\n}\n\n.btnErrorMessageClose {\n    width: 80px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\r\n    width: 800px;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=email],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 16px;\r\n    resize: vertical;\r\n}\r\n\r\ninput[type=submit] {\r\n    width: 35%;\r\n    font-weight: 500;\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n\r\n.errorMessage {\r\n    position: fixed;\r\n    padding: 20px 30px;\r\n    width: 500px;\r\n    min-height: 200px;\r\n    left: calc(50% - 200px);\r\n    bottom: calc(50% - 100px);\r\n    background-color: #ccc;\r\n    border-radius: 8px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    z-index: 3;\r\n}\r\n\r\n.errorMessage__text {\r\n    color: crimson;\r\n    font-size: 22px;\r\n    line-height: 28px;\r\n}\r\n\r\n.btnErrorMessageClose {\r\n    width: 80px;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18951,7 +18951,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\n    margin: 0 auto;\n    border-radius: 5px;\n    background: rgba(0, 0, 0, 0.3);\n    padding: 20px;\n    width: 800px;\n    display: flex;\n    justify-content: center;\n}\n\n\n#login_btn {\n    width: 35%;\n    font-size: 16px;\n    font-weight: 500;\n    color: white;\n    padding: 12px 20px;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    background: rgba(0, 0, 0, 0.3);\r\n    padding: 20px;\r\n    width: 800px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n#login_btn {\r\n    width: 35%;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
