@@ -1,4 +1,4 @@
-import { HttpMethod } from '../common/constants/constants';
+import { HttpMethod, ContentType } from '../common/constants/constants';
 
 class Movies {
   constructor({ http }) {
@@ -10,6 +10,7 @@ class Movies {
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
       payload: JSON.stringify({counter}),
+      contentType: ContentType.JSON,
     });
   }
 
@@ -26,6 +27,7 @@ class Movies {
     return this._http.load(`api/movies/search?query=${query}`, {
       method: HttpMethod.POST,
       payload: JSON.stringify(payload),
+      contentType: ContentType.JSON,
     });
   }
   
@@ -33,6 +35,7 @@ class Movies {
     return this._http.load('/movies/grade', {
       method: HttpMethod.PUT,
       payload: JSON.stringify(payload),
+      contentType: ContentType.JSON,
     });
   }
   
