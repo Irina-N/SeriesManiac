@@ -9,19 +9,26 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
+    public function show()
+    {
+        return view('welcome');
+    }
+
     public function getMovies()
     {
-        return response()->json(Movies::select('id','title','ru_title','year','image')->paginate(20),200);
+        return response()->json(Movies::paginate(20),200);
     }
 
     public function getOneMovie(Request $request)
     {
-        return response()->json(Movies::find($request->id)->first(),200);
+        $id = Movies::find($request->id)->first('api_id');
+        return Http::get('https://api.myshows.ru/shows/'.$id);
     }
 
     public function getRandMovies()
     {
-        return response()->json(Movies::inRandomOrder()->limit(1)->first(),200);
+        $randMovies = Movies::inRandomOrder()->limit(1)->first();
+        return Http::get('https://api.myshows.ru/shows/'.$randMovies->api_id);
     }
 
     public function grade(Request $request)
@@ -35,7 +42,7 @@ class MoviesController extends Controller
         if(isset($grade->id)){
             $grade->grade = $data['userMovieGrade'];
             $grade->save();
-            $this->raiting(0,$data);
+            $this->raiting(0);
         }else{
             //Создаём запись оценки
             $grade = Grade::create([
@@ -43,13 +50,13 @@ class MoviesController extends Controller
                 'movies_id' => $data['movieId'],
                 'grade' => $data['userMovieGrade'],
             ]);
-            //Вычисляем наш рейтинг и повышаем значение просмотра(vouted) на 1 каждый раз как новый пользователь оценил фильм
-            $this->raiting(1,$data);
+            //Вычисляем наш рейтинг и повышаем значение просмотра на 1 каждый раз как новый пользователь оценил фильм
+            $this->raiting(1);
         }
 
     }
 
-    public function raiting($add, $data)
+    public function raiting($add)
     {
         $movie = Movies::where('id', $data['movieId'])->first();
         $grades = Grade::where('movies_id', $data['movieId'])->get();
