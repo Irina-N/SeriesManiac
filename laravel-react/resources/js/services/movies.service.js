@@ -9,7 +9,7 @@ class Movies {
     // const payload = counter ? {counter} : {counter: null};
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
-      payload: JSON.stringify({counter}),
+      payload: JSON.stringify({ counter }),
       contentType: ContentType.JSON,
     });
   }
@@ -22,15 +22,15 @@ class Movies {
     return this._http.load(`api/movies/rand`, {});
   }
 
-  searchMovies({query, counter}) {
-    const payload = counter ? {counter} : {counter: null};
+  searchMovies({ query, counter }) {
+    const payload = counter ? { counter } : { counter: null };
     return this._http.load(`api/movies/search?query=${query}`, {
       method: HttpMethod.POST,
       payload: JSON.stringify(payload),
       contentType: ContentType.JSON,
     });
   }
-  
+
   sendMovieGrade(payload) {
     return this._http.load('/movies/grade', {
       method: HttpMethod.PUT,
@@ -38,15 +38,14 @@ class Movies {
       contentType: ContentType.JSON,
     });
   }
-  
-  loadMoreMovies({counter, query}) {
+
+  async loadMoreMovies({ counter, query }) {
     if (query) {
-      this.searchMovies(query, counter);
+      return await this.searchMovies(query, counter);
     } else {
-      this.getTopMovies(counter)
+      return await this.getTopMovies(counter);
     }
   }
-
 }
 
 export { Movies };
