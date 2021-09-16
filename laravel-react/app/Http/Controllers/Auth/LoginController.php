@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class LoginController extends Controller
 {
-    public function login(Request $requset)
+    public function login(Request $request)
     {
-        $data = $requset->only(['email', 'password']);
+        $data = $request->only(['email', 'password']);
 
         if(\Auth::attempt($data)){
             return response()->json(Auth::user()->only('id','login'),200);

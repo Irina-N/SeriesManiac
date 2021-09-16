@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Http;
 
 class test extends Controller
 {
-    public function test(Request $request)
+    public function test()
     {
-        return response()->json(Movies::inRandomOrder()->limit(1)->get(),200);
+        return response()->json(Movies::select('title', 'ru_title', 'big_image', 'description')->inRandomOrder()->limit(1)->first(),200);
     }
 
 }
