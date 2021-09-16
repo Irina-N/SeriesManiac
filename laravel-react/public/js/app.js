@@ -11344,10 +11344,10 @@ var REQUEST_STATUSES = {
   IDLE: 'idle'
 };
 var FETCH_URL = {
-  AUTH: '/login',
-  REGISTER: '/register',
-  LOGOUT: '/logout',
-  SEND_GRADE: '/movies/grade'
+  AUTH: 'api/login',
+  REGISTER: 'api/register',
+  LOGOUT: 'api/logout',
+  SEND_GRADE: '/api/movies/grade'
 };
 var HttpHeader = {
   CONTENT_TYPE: 'Content-Type'
