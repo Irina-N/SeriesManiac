@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import parse from 'html-react-parser';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRandomMovie } from "../../../store/actions/movies";
-
+import './RandomMovie.css';
 export const RandomMovie = () => {
   const dispatch = useDispatch();
-  const { title, ruTitle, description, bigPoster } = useSelector((state) => state.moviesReducer?.randomMovie);
+  const { title, ru_title, description, big_image } = useSelector((state) => state.moviesReducer.randomMovie);
 
   useEffect(() => {
     dispatch(getRandomMovie());
@@ -12,12 +13,12 @@ export const RandomMovie = () => {
 
   return (
     <section id="random-movie" className="py-5 text-center container-fluid"
-      style={{backgroundImage: `url(${bigPoster})`}}>
+      style={{backgroundImage: `url(${big_image})`}}>
       <div className="row py-lg-5">
         <div className="col-lg-6 col-md-8 mx-auto">
-          <h1 className="fw-light text-light">{ruTitle}</h1>
+          <h1 className="fw-light text-light">{ru_title}</h1>
           <h2 className="fw-light text-light">{title}</h2>
-          <p className="lead text-white">{description}</p>
+          <div className="lead text-white text-break">{description ? parse(description) : ''}</div>
         </div>
       </div>
     </section> 

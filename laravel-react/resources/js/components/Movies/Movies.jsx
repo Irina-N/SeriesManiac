@@ -20,13 +20,13 @@ export const Movies = () => {
   const dispatch = useDispatch();
   const { movies: topMovies } = useSelector((state) => state.moviesReducer);
   const { preloader, error } = useSelector((state) => state.moviesReducer);
-  const [paginateCounter, setPaginateCounter] = useState(0);
+  const [paginateCounter, setPaginateCounter] = useState(1);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
 
   useEffect(() => {
     if (!topMovies.length) {
-      dispatch(getTopMovies());
+      dispatch(getTopMovies(paginateCounter));
     }
   }, []);
 
@@ -59,12 +59,12 @@ export const Movies = () => {
   };
 
   return (
-    <div className="content">
+    <div className="content main">
       <Header />
 
       {/* Предлагаю пока делать основной функуионал. И.Н. */}
 
-      {/* <RandomMovie /> */}
+      <RandomMovie />
       {/* <div className="container-fluid d-flex bg-light justify-content-center p-2">
         <div className="btn-group" id="button-wrapper" srole="group" aria-label="Basic radio toggle button group">
           <input type="radio" className="btn-check" name="btnradio" id="popular" autoComplete="off" />

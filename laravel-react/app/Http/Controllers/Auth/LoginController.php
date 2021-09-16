@@ -8,17 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class LoginController extends Controller
 {
-    public function show()
+    public function login(Request $request)
     {
-        if(\Auth::check()){
-            return redirect(route('home'));
-        }
-        return view('welcome');
-    }
-
-    public function login(Request $requset)
-    {
-        $data = $requset->only(['email', 'password']);
+        $data = $request->only(['email', 'password']);
 
         if(\Auth::attempt($data)){
             return response()->json(Auth::user()->only('id','login'),200);

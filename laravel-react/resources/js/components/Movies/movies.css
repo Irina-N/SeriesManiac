@@ -1,5 +1,17 @@
 #film-container {
-    max-height: 57vh;
-    min-height: 57vh;
     overflow-y: scroll;
+    flex: 1 0 auto;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.album {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+.album .container {
+  display: flex;
+  flex: 1 0 auto;
 }

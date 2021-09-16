@@ -9,26 +9,26 @@ use Illuminate\Support\Facades\Http;
 
 class MoviesController extends Controller
 {
-    public function show()
+    public function getMovies(Request $request)
     {
-        return view('welcome');
-    }
+        //return response()->json(Movies::paginate(20),200);
 
-    public function getMovies()
-    {
-        return response()->json(Movies::paginate(20),200);
+        $data = $request->only('counter');
+        return response()->json(Movies::
+        select('id', 'title', 'ru_title', 'image', 'year')->
+        where('id', '>=',($data['counter']-1)*20+1)->
+        where('id', '<=',$data['counter']*20)->
+        get(),200);
     }
 
     public function getOneMovie(Request $request)
     {
-        $id = Movies::find($request->id)->first('api_id');
-        return Http::get('https://api.myshows.ru/shows/'.$id);
+        return response()->json(Movies::find($request->id)->first(),200);
     }
 
     public function getRandMovies()
     {
-        $randMovies = Movies::inRandomOrder()->limit(1)->first();
-        return Http::get('https://api.myshows.ru/shows/'.$randMovies->api_id);
+        return response()->json(Movies::select('title', 'ru_title', 'big_image', 'description')->inRandomOrder()->limit(1)->first(),200);
     }
 
     public function grade(Request $request)
