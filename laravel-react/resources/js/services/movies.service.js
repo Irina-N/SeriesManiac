@@ -32,7 +32,7 @@ class Movies {
   sendMovieGrade(payload) {
     return this._http.load('/movies/grade', {
       method: HttpMethod.PUT,
-      payload
+      payload: JSON.stringify(payload),
     });
   }
   

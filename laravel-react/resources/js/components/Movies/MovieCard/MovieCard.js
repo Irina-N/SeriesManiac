@@ -74,8 +74,7 @@ export default function MovieCard() {
         setIsHaveGrade(true);
     });
 
-    const handleEditGrade = (e) => {
-        setIsHaveGrade(false);
+    const handleEditGrade = (e) => {        
         setIsRated(false);        
         const form = e.target.parentElement.parentElement;
         [].forEach.call(form.children, function(elem) {
@@ -83,6 +82,7 @@ export default function MovieCard() {
                 elem.style.color = '#ccccb3';
             };             
         }); 
+        setIsHaveGrade(false);
     };
 
     /* const _changeStarsColor = (e, color) => {
@@ -179,7 +179,7 @@ export default function MovieCard() {
                         className={`btn btn_send_grade ${isRated ? 'hidden' : ''}`}
                         type='submit' 
                         disabled={!isHaveGrade}>
-                            <i className="fas fa-check fa-3x"></i>
+                            <i className="fas fa-check fa-2x"></i>
                     </button>
                     <button 
                         className={`btn btn_edit_grade ${isRated ? '' : 'hidden'}`}

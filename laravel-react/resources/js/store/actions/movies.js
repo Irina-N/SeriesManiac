@@ -27,6 +27,11 @@ const searchMovies = createAsyncThunk(
   async ({query, counter}) => {console.log(33333, query, counter); await movieService.searchMovies({query, counter})}
 );
 
+/* const sendMovieGrade = createAsyncThunk(
+  SEND_GRADE,
+  async (payload) => movieService.sendMovieGrade(payload)
+); */
+
 const sendMovieGrade = (formData, url) => {
   return async (dispatch) => {
     console.log('started')
