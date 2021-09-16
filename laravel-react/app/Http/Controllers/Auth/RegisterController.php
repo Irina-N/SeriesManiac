@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    public function show()
-    {
-        if(\Auth::check()){
-            return redirect(route('home'));
-        }
-        return view('welcome');
-    }
-
     public function register(Request $request)
     {
         $data = $request->all();

@@ -18,25 +18,10 @@ use App\Http\Controllers\Profile\LogoutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+Route::get('/test', [test::class, 'test']);
 Route::get( '/{any}', function(){
     return view('welcome');
 })->where('any', '.*');
-*/
-Route::get('/', [LoginController::class, 'show'])->name('login');
-Route::get('/register', [RegisterController::class, 'show']);
-Route::get('/test', [test::class, 'test']);
-//Будут позже добавлены в /api/
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [RegisterController::class, 'register']);
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/profile', [ProfileController::class, 'show'])->name('home');
-    Route::get('/movies', [MoviesController::class, 'show'])->name('movies');
-    Route::get('/movies/{id}', [MoviesController::class, 'show']);
-    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-    //Будут позже добавлены в /api/
-    Route::put('/movies/grade', [MoviesController::class, 'grade']);
-});
  

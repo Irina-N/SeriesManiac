@@ -6,10 +6,10 @@ export const REQUEST_STATUSES = {
 }
 
 export const FETCH_URL = {
-    AUTH: '/login',
-    REGISTER: '/register',
-    LOGOUT: '/logout',
-    SEND_GRADE: '/movies/grade',
+    AUTH: 'api/login',
+    REGISTER: 'api/register',
+    LOGOUT: 'api/logout',
+    SEND_GRADE: '/api/movies/grade',
 }
 
 export const HttpHeader = {
