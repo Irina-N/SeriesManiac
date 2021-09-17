@@ -31,7 +31,7 @@ class Movies {
     });
   }
 
-  sendMovieGrade(payload) {
+  sendMovieRate(payload) {
     return this._http.load('/movies/grade', {
       method: HttpMethod.PUT,
       payload: JSON.stringify(payload),

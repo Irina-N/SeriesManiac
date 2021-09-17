@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { movies as movieService } from '../../services/index';
 import {
   GET_TOP,
-  SEND_GRADE,
+  SEND_RATE,
   GET_ONE,
   GET_RANDOM,
   GET_MORE,
@@ -36,12 +36,12 @@ const searchMovies = createAsyncThunk(
     await movieService.searchMovies({ query, counter }),
 );
 
-/* const sendMovieGrade = createAsyncThunk(
-  SEND_GRADE,
-  async (payload) => movieService.sendMovieGrade(payload)
+/* const sendMovieRate = createAsyncThunk(
+  SEND_RATE,
+  async (payload) => movieService.sendMovieRate(payload)
 ); */
 
-const sendMovieGrade = (formData, url) => {
+const sendMovieRate = (formData, url) => {
   return async (dispatch) => {
     console.log('started');
 
@@ -54,7 +54,7 @@ const sendMovieGrade = (formData, url) => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        console.log('Grade sent successful');
+        console.log('Rate sent successful');
       } else {
         console.log('response.status:', response.status);
       }
@@ -70,5 +70,5 @@ export {
   getRandomMovie,
   loadMoreMovies,
   searchMovies,
-  sendMovieGrade,
+  sendMovieRate,
 };
