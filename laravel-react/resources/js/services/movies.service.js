@@ -6,7 +6,6 @@ class Movies {
   }
 
   getTopMovies(counter) {
-    // const payload = counter ? {counter} : {counter: null};
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
       payload: JSON.stringify({ counter }),
@@ -15,7 +14,7 @@ class Movies {
   }
 
   getOneMovie(id) {
-    return this._http.load(`api/movies/${id}`, {});
+    return this._http.load(`/api/movies/${id}`, {});
   }
 
   getRandomMovie() {
@@ -23,10 +22,9 @@ class Movies {
   }
 
   searchMovies({ query, counter }) {
-    const payload = counter ? { counter } : { counter: null };
     return this._http.load(`api/movies/search?query=${query}`, {
       method: HttpMethod.POST,
-      payload: JSON.stringify(payload),
+      payload: JSON.stringify({ counter }),
       contentType: ContentType.JSON,
     });
   }
