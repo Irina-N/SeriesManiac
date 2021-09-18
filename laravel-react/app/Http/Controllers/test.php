@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Http;
 
 class test extends Controller
 {
-    public function test()
+    public function test($id)
     {
-        $query = 'sher';
-        return response()->json(Movies::where('title', 'LIKE', "%$query%")->orderBy('title')->get(),200);
+        return response()->json(Movies::find($id),200);
     }
 
 }

@@ -20,16 +20,15 @@ class MoviesController extends Controller
         get(),200);
     }
 
-    public function searchMovies(Request $request, $query)
+    public function searchMovies($query)
     {
         $data = $request->only('counter');
-        dd($data['counter']);
         return response()->json(Movies::where('title', 'LIKE', "%$query%")->orderBy('title')->get(),200);
     }
 
     public function getOneMovie($id)
     {
-        return response()->json(Movies::find($id)->first(),200);
+        return response()->json(Movies::find($id),200);
     }
 
     public function getRandMovies()
