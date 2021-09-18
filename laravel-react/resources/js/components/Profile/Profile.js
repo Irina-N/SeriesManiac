@@ -1,11 +1,10 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { useHistory, Link} from 'react-router-dom';
-import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import './Profile.css';
 import { fetchLogout } from '../../store/actions/currentUser';
-import { getTopMovies } from '../../store/actions/movies';
+
 
 export default function Profile() {
     const history = useHistory();
@@ -23,10 +22,9 @@ export default function Profile() {
         dispatch(fetchLogout());        
     }
 
-    /* const handleOnClick = () => {
-        dispatch(getTopMovies());
+    const handleToMovies = () => {
         history.push('/movies');
-    } */
+    }
 
 
 
@@ -38,25 +36,19 @@ export default function Profile() {
                 <p>login: {user.login}</p>
                 <p>id: {user.id}</p>            
 
-                <Button 
-                    className='btn'
-                    color='primary' 
-                    component={Link} 
-                    to='/movies'
-                    id='moviesp_btn'
-                    variant='contained'
-                    /* onClick={handleOnClick} */>        
+                <button 
+                    className='btn btn-success'                    
+                    onClick={handleToMovies}
+                    id='movies_btn'>
                     Все сериалы
-                </Button> 
+                </button> 
 
-                <Button 
-                    className='btn'
-                    color='primary' 
-                    id='logout_btn'
-                    variant='contained'
-                    onClick={handleLogout}>        
+                <button 
+                    className='btn btn-success'                    
+                    onClick={handleLogout}
+                    id='logout_btn'>
                     Выйти
-                </Button> 
+                </button> 
             </div>
                          
         </div>         

@@ -61,20 +61,7 @@ export const Movies = () => {
   return (
     <div className="content main">
       <Header />
-
-      {/* Предлагаю пока делать основной функуионал. И.Н. */}
-
       <RandomMovie />
-      {/* <div className="container-fluid d-flex bg-light justify-content-center p-2">
-        <div className="btn-group" id="button-wrapper" srole="group" aria-label="Basic radio toggle button group">
-          <input type="radio" className="btn-check" name="btnradio" id="popular" autoComplete="off" />
-          <label className="btn btn-outline-dark" htmlFor="popular">Popular</label>
-          <input type="radio" className="btn-check" name="btnradio" id="upcoming" autoComplete="off" />
-          <label className="btn btn-outline-dark" htmlFor="upcoming">Upcoming</label>
-          <input type="radio" className="btn-check" name="btnradio" id="top_rated" autoComplete="off" />
-          <label className="btn btn-outline-dark" htmlFor="top_rated">Top rated</label>
-        </div>
-      </div> */}
       <div className="container-fluid d-flex bg-light justify-content-center">
         <form
           className="form-inline col-6 px-2 d-flex justify-content-center"

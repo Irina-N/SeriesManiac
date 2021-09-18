@@ -1,38 +1,4 @@
-input[type=radio] {
-    display: none;
-}
-
-input[type=submit] {
-    align-self: center;
-    background-color: #04AA6D;
-    color: white;
-    width: 250px;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-input[type=submit]:disabled:hover {
-    background-color: #04AA6D;
-}
-
-input[type=submit]:disabled {
-    cursor: default;
-}
-
-label {
-    cursor: pointer;
-    color: #ccccb3;
-}
-
-.btn {
+.to-bookmarks-btn {
     width: 250px;
     background-color: #04AA6D;
     margin-top: 15px;
@@ -45,6 +11,6 @@ label {
     cursor: pointer;
 }
 
-.btn:hover {
+.to-bookmarks-btn:hover {
     background-color: #45a049;
 }
