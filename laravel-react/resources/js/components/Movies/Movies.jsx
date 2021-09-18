@@ -23,6 +23,7 @@ export const Movies = () => {
   const [paginateCounter, setPaginateCounter] = useState(1);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
+  const [isLoadMore, setIsLoadMore] = useState(false);
 
   useEffect(() => {
     if (!topMovies.length) {
@@ -36,10 +37,13 @@ export const Movies = () => {
     }
   }, [error.status]);
 
-  const loadMore = () => {
-    dispatch(
+  const loadMore = async () => {
+    setIsLoadMore(true);
+    await dispatch(
       loadMoreMovies({ counter: paginateCounter + 1, query: searchQuery }),
-    );
+    )
+      .unwrap()
+      .then(() => setIsLoadMore(false));
     setPaginateCounter(paginateCounter + 1);
   };
 
@@ -82,7 +86,7 @@ export const Movies = () => {
       <div className="album py-5 bg-light">
         <div className="container">
           <div id="film-container" className="row align-items-center">
-            {preloader || !topMovies || !topMovies.length ? (
+            {(preloader && !isLoadMore) || !topMovies || !topMovies.length ? (
               <div className="d-flex justify-content-center align-items-center h-100">
                 <Spinner animation="border" variant="dark" />
               </div>
@@ -94,14 +98,20 @@ export const Movies = () => {
           </div>
         </div>
         <div className="d-flex justify-content-center align-items-center pt-4">
-          <button
-            onClick={loadMore}
-            id="load-more"
-            type="button"
-            className="btn btn-lg btn-outline-success"
-          >
-            Load more
-          </button>
+          {preloader && isLoadMore ? (
+            <div className="d-flex justify-content-center align-items-center h-100">
+              <Spinner animation="border" variant="dark" />
+            </div>
+          ) : (
+            <button
+              onClick={loadMore}
+              id="load-more"
+              type="button"
+              className="btn btn-lg btn-outline-success"
+            >
+              Load more
+            </button>
+          )}
         </div>
       </div>
     </div>
