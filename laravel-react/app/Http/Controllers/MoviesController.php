@@ -12,7 +12,6 @@ class MoviesController extends Controller
     public function getMovies(Request $request)
     {
         //return response()->json(Movies::paginate(20),200);
-
         $data = $request->only('counter');
         return response()->json(Movies::
         select('id', 'title', 'ru_title', 'image', 'year')->
@@ -21,9 +20,16 @@ class MoviesController extends Controller
         get(),200);
     }
 
-    public function getOneMovie(Request $request)
+    public function searchMovies(Request $request, $query)
     {
-        return response()->json(Movies::find($request->id)->first(),200);
+        $data = $request->only('counter');
+        dd($data['counter']);
+        return response()->json(Movies::where('title', 'LIKE', "%$query%")->orderBy('title')->get(),200);
+    }
+
+    public function getOneMovie($id)
+    {
+        return response()->json(Movies::find($id)->first(),200);
     }
 
     public function getRandMovies()

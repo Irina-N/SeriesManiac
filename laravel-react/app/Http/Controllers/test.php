@@ -11,7 +11,8 @@ class test extends Controller
 {
     public function test()
     {
-        return response()->json(Movies::select('title', 'ru_title', 'big_image', 'description')->inRandomOrder()->limit(1)->first(),200);
+        $query = 'sher';
+        return response()->json(Movies::where('title', 'LIKE', "%$query%")->orderBy('title')->get(),200);
     }
 
 }
