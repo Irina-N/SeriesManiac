@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getTopMovies, getOneMovie, getRandomMovie, loadMoreMovies, searchMovies } from "../actions/movies";
+import { getTopMovies, getOneMovie, getRandomMovie, loadMoreMovies, searchMovies, sendMovieRate } from "../actions/movies";
 
 const initialState = {
   movies: [],
@@ -96,6 +96,10 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = true;
       state.error.errorMessage = "FAILED_WHILE_SEARCH";
+    },
+    [sendMovieRate.rejected]: (state, action) => {
+      state.error.status = true;
+      state.error.errorMessage = "Не удалось отправить данные";
     },
   },
 })

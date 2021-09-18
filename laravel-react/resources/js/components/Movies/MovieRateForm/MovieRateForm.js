@@ -19,7 +19,7 @@ export default function MovieRateForm (props) {
         e.preventDefault();
         const formData = {userId, movieId, userMovieRate}; 
         console.log(formData);
-        dispatch(sendMovieRate(formData, FETCH_URL.SEND_GRADE));
+        dispatch(sendMovieRate(formData));
         setIsRated(true);     
     }, [dispatch, userId, movieId, userMovieRate]);
 

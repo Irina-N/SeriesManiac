@@ -6851,7 +6851,7 @@ function MovieRateForm(props) {
       userMovieRate: userMovieRate
     };
     console.log(formData);
-    dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_3__.sendMovieRate)(formData, _common_constants_constants__WEBPACK_IMPORTED_MODULE_2__.FETCH_URL.SEND_GRADE));
+    dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_3__.sendMovieRate)(formData));
     setIsRated(true);
   }, [dispatch, userId, movieId, userMovieRate]);
   var handleOnMouseEnter = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (e) {
@@ -7867,7 +7867,7 @@ var Movies = /*#__PURE__*/function () {
   }, {
     key: "sendMovieRate",
     value: function sendMovieRate(payload) {
-      return this._http.load('/movies/grade', {
+      return this._http.load('/api/movies/grade', {
         method: _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.PUT,
         payload: JSON.stringify(payload),
         contentType: _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.ContentType.JSON
@@ -8403,60 +8403,48 @@ var searchMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsyncT
     return _ref7.apply(this, arguments);
   };
 }());
-/* const sendMovieRate = createAsyncThunk(
-  SEND_RATE,
-  async (payload) => movieService.sendMovieRate(payload)
-); */
+var sendMovieRate = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsyncThunk)(_ActionTypes_movies__WEBPACK_IMPORTED_MODULE_2__.SEND_RATE, /*#__PURE__*/function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(payload) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            return _context6.abrupt("return", _services_index__WEBPACK_IMPORTED_MODULE_1__.movies.sendMovieRate(payload));
 
-var sendMovieRate = function sendMovieRate(formData, url) {
-  return /*#__PURE__*/function () {
-    var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
-      var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              console.log('started');
-              _context6.prev = 1;
-              _context6.next = 4;
-              return fetch(url, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(formData)
-              });
-
-            case 4:
-              response = _context6.sent;
-
-              if (response.ok) {
-                console.log('Rate sent successful');
-              } else {
-                console.log('response.status:', response.status);
-              }
-
-              _context6.next = 11;
-              break;
-
-            case 8:
-              _context6.prev = 8;
-              _context6.t0 = _context6["catch"](1);
-              console.log('Failed', _context6.t0);
-
-            case 11:
-            case "end":
-              return _context6.stop();
-          }
+          case 1:
+          case "end":
+            return _context6.stop();
         }
-      }, _callee6, null, [[1, 8]]);
-    }));
+      }
+    }, _callee6);
+  }));
 
-    return function (_x5) {
-      return _ref8.apply(this, arguments);
-    };
-  }();
-};
+  return function (_x5) {
+    return _ref8.apply(this, arguments);
+  };
+}());
+/* const sendMovieRate = (formData, url) => {
+  return async (dispatch) => {
+    console.log('started');
+
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log('Rate sent successful');
+      } else {
+        console.log('response.status:', response.status);
+      }
+    } catch (err) {
+      console.log('Failed', err);
+    }
+  };
+}; */
 
 
 
@@ -8621,6 +8609,9 @@ var moviesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)(
     state.preloader = false;
     state.error.status = true;
     state.error.errorMessage = "FAILED_WHILE_SEARCH";
+  }), _defineProperty(_extraReducers, _actions_movies__WEBPACK_IMPORTED_MODULE_0__.sendMovieRate.rejected, function (state, action) {
+    state.error.status = true;
+    state.error.errorMessage = "Не удалось отправить данные";
   }), _extraReducers)
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (moviesSlice.reducer);
