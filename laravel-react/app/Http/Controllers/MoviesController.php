@@ -14,16 +14,22 @@ class MoviesController extends Controller
         //return response()->json(Movies::paginate(20),200);
         $data = $request->only('counter');
         return response()->json(Movies::
-        select('id', 'title', 'ru_title', 'image', 'year')->
-        where('id', '>=',($data['counter']-1)*20+1)->
-        where('id', '<=',$data['counter']*20)->
-        get(),200);
+        select('id', 'title', 'ru_title', 'image', 'year')
+        ->limit(20)
+        ->offset($data['counter']*20)
+        ->get(),200);
     }
 
-    public function searchMovies($query)
+    public function searchMovies(Request $request)
     {
+        $query = $_GET['query'];
         $data = $request->only('counter');
-        return response()->json(Movies::where('title', 'LIKE', "%$query%")->orderBy('title')->get(),200);
+        return response()->json(Movies::
+        where('title', 'LIKE', "%$query%")
+        ->orderBy('title')
+        ->limit(20)
+        ->offset($data['counter']*20)
+        ->get(),200);
     }
 
     public function getOneMovie($id)
@@ -45,23 +51,23 @@ class MoviesController extends Controller
 
         //Если такая запись уже существует мы её обновляем Если не существует то добавляем новую..
         if(isset($grade->id)){
-            $grade->grade = $data['userMovieGrade'];
+            $grade->grade = $data['userMovieRate'];
             $grade->save();
-            $this->raiting(0);
+            $this->raiting(0,$data);
         }else{
             //Создаём запись оценки
             $grade = Grade::create([
                 'user_id' => $data['userId'],
                 'movies_id' => $data['movieId'],
-                'grade' => $data['userMovieGrade'],
+                'grade' => $data['userMovieRate'],
             ]);
             //Вычисляем наш рейтинг и повышаем значение просмотра на 1 каждый раз как новый пользователь оценил фильм
-            $this->raiting(1);
+            $this->raiting(1,$data);
         }
 
     }
 
-    public function raiting($add)
+    public function raiting($add, $data)
     {
         $movie = Movies::where('id', $data['movieId'])->first();
         $grades = Grade::where('movies_id', $data['movieId'])->get();

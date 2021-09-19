@@ -29,7 +29,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::post('/movies', [MoviesController::class, 'getMovies']);
-Route::get('/movies/search?query={query}', [MoviesController::class, 'searchMovies']);
+Route::post('/movies/search', [MoviesController::class, 'searchMovies']);
 Route::get('/movies/rand', [MoviesController::class, 'getRandMovies']);
 Route::put('/movies/grade', [MoviesController::class, 'grade']);
 Route::get('/movies/{id}', [MoviesController::class, 'getOneMovie']);
