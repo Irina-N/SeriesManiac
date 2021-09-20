@@ -7942,7 +7942,10 @@ var Movies = /*#__PURE__*/function () {
                 }
 
                 _context.next = 4;
-                return this.searchMovies(query, counter);
+                return this.searchMovies({
+                  query: query,
+                  counter: counter
+                });
 
               case 4:
                 return _context.abrupt("return", _context.sent);
