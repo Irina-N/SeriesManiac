@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import './Profile.css';
-import { fetchLogout } from '../../store/actions/currentUser';
+import { logout, change } from '../../store/actions/currentUser';
 
 
 export default function Profile() {
@@ -19,7 +19,8 @@ export default function Profile() {
     }, [user]);
 
     const handleLogout = () => {
-        dispatch(fetchLogout());        
+        dispatch(change({}))
+        dispatch(logout());        
     }
 
     const handleToMovies = () => {
