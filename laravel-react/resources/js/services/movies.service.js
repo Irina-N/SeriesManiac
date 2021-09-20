@@ -39,7 +39,7 @@ class Movies {
 
   async loadMoreMovies({ counter, query }) {
     if (query) {
-      return await this.searchMovies(query, counter);
+      return await this.searchMovies({ query, counter });
     } else {
       return await this.getTopMovies(counter);
     }
