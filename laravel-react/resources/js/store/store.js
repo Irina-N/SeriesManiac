@@ -1,33 +1,26 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
-import {persistReducer, persistStore} from 'redux-persist';
-import{ currentUserReducer } from './reducers/currentUser';
+import { persistReducer, persistStore } from 'redux-persist';
+import { currentUserReducer as userReducer } from './reducers/currentUser';
 import moviesReducer from './reducers/movies';
 
-
 const persistConfig = {
-    key: 'root',
-    storage,
-}
+  key: 'root',
+  storage,
+};
+
+const currentUserReducer = persistReducer(persistConfig, userReducer);
 
 const rootReducer = combineReducers({
-    currentUserReducer,
-    moviesReducer,
+  currentUserReducer,
+  moviesReducer,
 });
-
-const persistedReducer = persistReducer(persistConfig, currentUserReducer);
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk)),
 );
 
-const storeForPersist = createStore(
-    persistedReducer,
-    composeEnhancers(applyMiddleware(thunk))
-);
-
-export const persistor = persistStore(storeForPersist);
+export const persistor = persistStore(store);
