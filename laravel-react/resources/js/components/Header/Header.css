@@ -1,3 +1,5 @@
 .header__title {
-    color: #ffa500;
+  color: #ffa500;
+  display: flex;
+  align-items: center;
 }
