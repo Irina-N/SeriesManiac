@@ -23,7 +23,7 @@ export const Movies = () => {
   const { movies: topMovies } = useSelector((state) => state.moviesReducer);
   const { preloader, error } = useSelector((state) => state.moviesReducer);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
-  const [paginateCounter, setPaginateCounter] = useState(1);
+  const [paginateCounter, setPaginateCounter] = useState(0);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
   const [isLoadMore, setIsLoadMore] = useState(false);
@@ -65,6 +65,7 @@ export const Movies = () => {
     ) {
       dispatch(searchMovies({ query: searchText.trim(), counter: 0 }));
       setSearchQuery(searchText.trim());
+      setPaginateCounter(0);
     } else if (!searchText.trim()?.length) {
       setSearchText('');
       setSearchQuery(null);

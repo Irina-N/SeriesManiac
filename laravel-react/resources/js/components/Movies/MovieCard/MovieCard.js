@@ -5,6 +5,7 @@ import { getOneMovie } from '../../../store/actions/movies';
 import Header from '../../Header/Header';
 import MovieRateForm from '../MovieRateForm/MovieRateForm';
 import parse from 'html-react-parser';
+import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 import './MovieCard.css';
 
 export default function MovieCard() {
@@ -44,7 +45,7 @@ export default function MovieCard() {
         </h4>
         <p>{year}</p>
         <div className="lead text-white text-break">
-          {description ? parse(description) : ''}
+          {description ? parse(descriptionMapper(description)) : ''}
         </div>
         <MovieRateForm movieId={movieId} userId={userId} />
         <button

@@ -8,7 +8,7 @@ class Movies {
   getTopMovies(counter) {
     return this._http.load('api/movies', {
       method: HttpMethod.POST,
-      payload: JSON.stringify({ counter }),
+      payload: JSON.stringify({ counter: counter ? counter : null }),
       contentType: ContentType.JSON,
     });
   }
@@ -24,7 +24,7 @@ class Movies {
   searchMovies({ query, counter }) {
     return this._http.load(`api/movies/search?query=${query}`, {
       method: HttpMethod.POST,
-      payload: JSON.stringify({ counter }),
+      payload: JSON.stringify({ counter: counter ? counter : null }),
       contentType: ContentType.JSON,
     });
   }
