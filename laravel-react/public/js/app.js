@@ -6689,6 +6689,7 @@ __webpack_require__.r(__webpack_exports__);
 function MovieCard() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
   var movieId = Number(params.movieId);
   var userId = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.currentUserReducer.user.id;
@@ -6703,6 +6704,11 @@ function MovieCard() {
       year = _useSelector.year,
       description = _useSelector.description;
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!userId) {
+      history.push('/');
+    }
+  }, [userId]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (params !== null && params !== void 0 ? params : params.movieId) {
       dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_2__.getOneMovie)(params.movieId));
@@ -7000,12 +7006,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../store/actions/movies */ "./resources/js/store/actions/movies.js");
 /* harmony import */ var _MovieListItem_MovieListItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./MovieListItem/MovieListItem */ "./resources/js/components/Movies/MovieListItem/MovieListItem.jsx");
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Header/Header */ "./resources/js/components/Header/Header.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
 /* harmony import */ var _RandomMovie_RandomMovie__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RandomMovie/RandomMovie */ "./resources/js/components/Movies/RandomMovie/RandomMovie.jsx");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var _movies_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./movies.css */ "./resources/js/components/Movies/movies.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -7045,9 +7052,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
 var Movies = function Movies() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_11__.useHistory)();
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
     return state.moviesReducer;
@@ -7059,6 +7068,10 @@ var Movies = function Movies() {
   }),
       preloader = _useSelector2.preloader,
       error = _useSelector2.error;
+
+  var userId = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
+    return state.currentUserReducer.user.id;
+  });
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7087,9 +7100,14 @@ var Movies = function Movies() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (error.status) {
-      react_toastify__WEBPACK_IMPORTED_MODULE_11__.toast.error(error.errorMessage);
+      react_toastify__WEBPACK_IMPORTED_MODULE_12__.toast.error(error.errorMessage);
     }
   }, [error.status]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (!userId) {
+      history.push('/');
+    }
+  }, [userId]);
 
   var loadMore = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -7169,7 +7187,7 @@ var Movies = function Movies() {
           className: "row align-items-center",
           children: preloader && !isLoadMore || !topMovies || !topMovies.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: "d-flex justify-content-center align-items-center h-100",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_12__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_13__["default"], {
               animation: "border",
               variant: "dark"
             })
@@ -7181,7 +7199,7 @@ var Movies = function Movies() {
         className: "d-flex justify-content-center align-items-center pt-4",
         children: preloader && isLoadMore ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "d-flex justify-content-center align-items-center h-100",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_13__["default"], {
             animation: "border",
             variant: "dark"
           })
@@ -7702,7 +7720,7 @@ var CurrentUser = /*#__PURE__*/function () {
   }, {
     key: "logout",
     value: function logout() {
-      return this._http.load('api/logout');
+      return this._http.put('api/logout');
     }
   }]);
 
@@ -7807,6 +7825,71 @@ var Http = /*#__PURE__*/function () {
       return load;
     }()
   }, {
+    key: "put",
+    value: function () {
+      var _put = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(url) {
+        var options,
+            _options$method2,
+            method,
+            _options$payload2,
+            payload,
+            contentType,
+            headers,
+            response,
+            _args2 = arguments;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                options = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {};
+                _options$method2 = options.method, method = _options$method2 === void 0 ? _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.GET : _options$method2, _options$payload2 = options.payload, payload = _options$payload2 === void 0 ? null : _options$payload2, contentType = options.contentType;
+                headers = this._getHeaders({
+                  contentType: contentType
+                });
+                _context2.prev = 3;
+                _context2.next = 6;
+                return fetch(url, {
+                  method: method,
+                  headers: headers,
+                  body: payload
+                });
+
+              case 6:
+                response = _context2.sent;
+
+                if (!response.ok) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                return _context2.abrupt("return");
+
+              case 9:
+                ;
+                _context2.next = 15;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](3);
+                return _context2.abrupt("return", this._throwError(_context2.t0));
+
+              case 15:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[3, 12]]);
+      }));
+
+      function put(_x2) {
+        return _put.apply(this, arguments);
+      }
+
+      return put;
+    }()
+  }, {
     key: "_getHeaders",
     value: function _getHeaders(_ref) {
       var contentType = _ref.contentType;
@@ -7821,37 +7904,37 @@ var Http = /*#__PURE__*/function () {
   }, {
     key: "_checkStatus",
     value: function () {
-      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(response) {
+      var _checkStatus2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(response) {
         var _parsedException$mess, parsedException;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 if (response.ok) {
-                  _context2.next = 5;
+                  _context3.next = 5;
                   break;
                 }
 
-                _context2.next = 3;
+                _context3.next = 3;
                 return response.json();
 
               case 3:
-                parsedException = _context2.sent;
+                parsedException = _context3.sent;
                 throw new Error((_parsedException$mess = parsedException === null || parsedException === void 0 ? void 0 : parsedException.message) !== null && _parsedException$mess !== void 0 ? _parsedException$mess : response.statusText);
 
               case 5:
-                return _context2.abrupt("return", response);
+                return _context3.abrupt("return", response);
 
               case 6:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
-      function _checkStatus(_x2) {
+      function _checkStatus(_x3) {
         return _checkStatus2.apply(this, arguments);
       }
 
@@ -7980,7 +8063,7 @@ var Movies = /*#__PURE__*/function () {
   }, {
     key: "sendMovieRate",
     value: function sendMovieRate(payload) {
-      return this._http.load('/api/movies/rate', {
+      return this._http.put('/api/movies/rate', {
         method: _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.PUT,
         payload: JSON.stringify(payload),
         contentType: _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.ContentType.JSON
@@ -8387,7 +8470,7 @@ var sendMovieRate = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_3__.createAsync
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "currentUserReducer": () => (/* binding */ currentUserReducer)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 /* harmony import */ var _actions_currentUser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/currentUser */ "./resources/js/store/actions/currentUser.js");
@@ -8423,7 +8506,7 @@ var currentUserSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSl
   }), _defineProperty(_extraReducers, _actions_currentUser__WEBPACK_IMPORTED_MODULE_0__.register.rejected, function (state, action) {
     state.preloader = false;
     state.error.status = true;
-    state.error.errorMessage = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
+    state.error.errorMessage = action.error.message;
   }), _defineProperty(_extraReducers, _actions_currentUser__WEBPACK_IMPORTED_MODULE_0__.login.pending, function (state, action) {
     state.preloader = true;
     state.error.status = false;
@@ -8436,7 +8519,7 @@ var currentUserSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSl
   }), _defineProperty(_extraReducers, _actions_currentUser__WEBPACK_IMPORTED_MODULE_0__.login.rejected, function (state, action) {
     state.preloader = false;
     state.error.status = true;
-    state.error.errorMessage = action.payload || 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
+    state.error.errorMessage = action.error.message;
   }), _defineProperty(_extraReducers, _actions_currentUser__WEBPACK_IMPORTED_MODULE_0__.logout.pending, function (state) {
     state.preloader = true;
     state.error.status = false;
@@ -8451,7 +8534,7 @@ var currentUserSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSl
     state.error.errorMessage = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
   }), _extraReducers)
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (currentUserSlice.reducer);
+var currentUserReducer = currentUserSlice.reducer;
 
 /***/ }),
 
@@ -8565,6 +8648,14 @@ var moviesSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)(
     state.preloader = false;
     state.error.status = true;
     state.error.errorMessage = 'FAILED_WHILE_SEARCH';
+  }), _defineProperty(_extraReducers, _actions_movies__WEBPACK_IMPORTED_MODULE_0__.sendMovieRate.pending, function (state) {
+    state.preloader = true;
+    state.error.status = false;
+    state.error.errorMessage = '';
+  }), _defineProperty(_extraReducers, _actions_movies__WEBPACK_IMPORTED_MODULE_0__.sendMovieRate.fulfilled, function (state, action) {
+    state.preloader = false;
+    state.error.status = false;
+    state.error.errorMessage = '';
   }), _defineProperty(_extraReducers, _actions_movies__WEBPACK_IMPORTED_MODULE_0__.sendMovieRate.rejected, function (state, action) {
     state.error.status = true;
     state.error.errorMessage = "Не удалось отправить данные";
@@ -8602,15 +8693,14 @@ var persistConfig = {
   key: 'root',
   storage: redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_1__["default"]
 };
+var currentUserReducer = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistReducer)(persistConfig, _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__.currentUserReducer);
 var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
-  currentUserReducer: _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__["default"],
+  currentUserReducer: currentUserReducer,
   moviesReducer: _reducers_movies__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
-var persistedReducer = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistReducer)(persistConfig, _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_5__.compose;
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(rootReducer, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__["default"])));
-var storeForPersist = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(persistedReducer, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__["default"])));
-var persistor = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistStore)(storeForPersist);
+var persistor = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistStore)(store);
 
 /***/ }),
 

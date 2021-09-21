@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logout, register, login, change } from '../actions/currentUser';
+import { logout, register, login, change, getError } from '../actions/currentUser';
 
 const initialState = {
     preloader: false,
@@ -17,7 +17,7 @@ const currentUserSlice = createSlice({
     extraReducers: {
       [change]: (state, action) => {
             state.user = action.payload
-      }, 
+      },
       [register.pending]: (state, action) => {
           state.preloader = true;
           state.error.status = false;
@@ -32,7 +32,7 @@ const currentUserSlice = createSlice({
       [register.rejected]: (state, action) => {
           state.preloader = false;
           state.error.status = true;
-          state.error.errorMessage = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
+          state.error.errorMessage = action.error.message;
       },
       [login.pending]: (state, action) => {
         state.preloader = true;
@@ -48,7 +48,7 @@ const currentUserSlice = createSlice({
       [login.rejected]: (state, action) => {
         state.preloader = false;
         state.error.status = true;
-        state.error.errorMessage = action.payload || 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
+        state.error.errorMessage = action.error.message;
       },
       [logout.pending]: (state) => {
         state.preloader = true;

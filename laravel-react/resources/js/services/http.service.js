@@ -29,6 +29,33 @@ class Http {
     }
   }
 
+  async put(url, options = {}) {
+    const {
+      method = HttpMethod.GET,
+      payload = null,
+      contentType,
+    } = options;
+
+    const headers = this._getHeaders({
+      contentType
+    });
+
+    try {
+      const response = await fetch(url, {
+        method,
+        headers,
+        body: payload
+      });
+
+      if (response.ok) {
+        return;
+      };      
+
+    } catch (err) {
+      return this._throwError(err);
+    }
+  }
+
   _getHeaders({ contentType }) {
     const headers = new Headers();
 
@@ -42,10 +69,10 @@ class Http {
   async _checkStatus(response) {
     if (!response.ok) {
       const parsedException = await response.json();
-
-      throw new Error(parsedException?.message ?? response.statusText);
+      
+      throw new Error(parsedException?.message ?? response.statusText);     
     }
-
+    
     return response;
   }
 
