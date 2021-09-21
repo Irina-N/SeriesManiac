@@ -14,17 +14,17 @@ export const NavProfile = ({
     <Dropdown as={NavItem} align="end">
       <Dropdown.Toggle as={NavLink} id="dropdown-profile-details">
         <UserAvatar
-          size="35"
+          size="40"
           name={userName}
           src={null}
           round={true}
           className="userAvatar"
           showTooltip={false}
         />
-        <span className="text-dark userName">{userName}</span>
+        <span className="text-light userName">{userName}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item to={'/profile'}>
+        <Dropdown.Item as={Link} to={'/profile'}>
           <div className="d-flex align-items-center">
             <i className="bi bi-person"></i>
             Profile

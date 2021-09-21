@@ -30,6 +30,7 @@ export const UserAvatar = ({
           className={className}
           style={style}
           onClick={onClick}
+          textSizeRatio={2.5}
         />
       </div>
     )}

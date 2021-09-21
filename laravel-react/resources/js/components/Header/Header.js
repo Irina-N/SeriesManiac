@@ -8,8 +8,8 @@ export default function Header() {
   const { user } = useSelector((state) => state.currentUserReducer);
 
   return (
-    <h1 className="header__title center-text">
-      SериальныйMaньяK
+    <header className="d-flex">
+      <h1 className="header__title center-text">SериальныйMaньяK</h1>
       <Navbar>
         <NavProfile
           userName={user.login}
@@ -17,6 +17,6 @@ export default function Header() {
           userId={user.id}
         />
       </Navbar>
-    </h1>
+    </header>
   );
 }
