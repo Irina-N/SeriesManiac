@@ -10,14 +10,15 @@ class test extends Controller
     public function test()
     {
         $movies = Grade::where('user_id',1)->get();//<--Мои фильмы
+        $usersWithIntersection = [];
+        $usersWithIntersectionWeight = [];
         $filmsId = [];
+        $returnData = [];
+        $userFilmsSum = count($movies);
+
         for($i = 0; $i < count($movies); $i++){
             array_push($filmsId, $movies[$i]['movies_id']);
         }
-
-        $usersWithIntersection = [];
-        $usersWithIntersectionWeight = [];
-        $userFilmsSum = count($movies);
 
         for($a = 0; $a < count($movies); $a++){
             $users = Grade::where('movies_id',$movies[$a]['movies_id'])->get();//<--Все пользователи которые смотрели этот один фильм
@@ -63,9 +64,15 @@ class test extends Controller
         for($a = 0; $a < count($personalRecommendations); $a++){
             $recommendations += [$personalRecommendations[$a] => $personalRecommendationsPoints[$a]];
         }
+
         arsort($recommendations);
 
-        return $recommendations;
+        foreach($recommendations as $key){
+            array_push($returnData, Movies::select('id', 'title', 'ru_title', 'image', 'year')->where('id', key($recommendations))->first());
+            next($recommendations);
+        }
+
+        return response()->json($returnData,200);
 
     }
 

@@ -25,7 +25,8 @@ class MoviesController extends Controller
         $query = $_GET['query'];
         $data = $request->only('counter');
         return response()->json(Movies::
-        where('title', 'LIKE', "%$query%")
+        select('id', 'title', 'ru_title', 'image', 'year')
+        ->where('title', 'LIKE', "%$query%")
         ->orderBy('title')
         ->limit(20)
         ->offset($data['counter']*20)
