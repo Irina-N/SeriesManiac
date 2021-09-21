@@ -8710,15 +8710,14 @@ var persistConfig = {
   key: 'root',
   storage: redux_persist_lib_storage__WEBPACK_IMPORTED_MODULE_1__["default"]
 };
+var currentUserReducer = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistReducer)(persistConfig, _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__.currentUserReducer);
 var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
-  currentUserReducer: _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__.currentUserReducer,
+  currentUserReducer: currentUserReducer,
   moviesReducer: _reducers_movies__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
-var persistedReducer = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistReducer)(persistConfig, _reducers_currentUser__WEBPACK_IMPORTED_MODULE_3__.currentUserReducer);
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_5__.compose;
 var store = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(rootReducer, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__["default"])));
-var storeForPersist = (0,redux__WEBPACK_IMPORTED_MODULE_5__.createStore)(persistedReducer, composeEnhancers((0,redux__WEBPACK_IMPORTED_MODULE_5__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_0__["default"])));
-var persistor = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistStore)(storeForPersist);
+var persistor = (0,redux_persist__WEBPACK_IMPORTED_MODULE_2__.persistStore)(store);
 
 /***/ }),
 
