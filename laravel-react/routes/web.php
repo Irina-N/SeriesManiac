@@ -18,7 +18,8 @@ use App\Http\Controllers\Profile\LogoutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test/search', [test::class, 'test']);
+Route::get('/test', [test::class, 'test']);
+Route::get('/test2', [test::class, 'test2']);
 Route::get( '/{any}', function(){
     return view('welcome');
 })->where('any', '.*');
