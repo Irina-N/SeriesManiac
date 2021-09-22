@@ -28,6 +28,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+Route::post('/profile/movies', [ProfileController::class, 'getUserMovies']);
 Route::post('/movies', [MoviesController::class, 'getMovies']);
 Route::post('/movies/search', [MoviesController::class, 'searchMovies']);
 Route::get('/movies/rand', [MoviesController::class, 'getRandMovies']);
