@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Grade;
 use App\Models\Movies;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth; 
+
 class test extends Controller
 {
     public function test()
