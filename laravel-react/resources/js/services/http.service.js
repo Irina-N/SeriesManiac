@@ -22,41 +22,19 @@ class Http {
 
       const response_1 = await this._checkStatus(response);
 
-      return this._parseJSON(response_1);
-
-    } catch (err) {
-      return this._throwError(err);
-    }
-  }
-
-  async put(url, options = {}) {
-    const {
-      method = HttpMethod.PUT,
-      payload = null,
-      contentType,
-    } = options;
-
-    const headers = this._getHeaders({
-      contentType
-    });
-
-    try {
-      const response = await fetch(url, {
-        method,
-        headers,
-        body: payload
-      });
-
-      if (response.ok) {        
+      if (response.status === 204) {
         return;
-      };      
+      } else {
+        return this._parseJSON(response_1);
+      }
+      
 
     } catch (err) {
       return this._throwError(err);
     }
   }
 
-  _getHeaders({ contentType }) {
+    _getHeaders({ contentType }) {
     const headers = new Headers();
 
     if (contentType) {
@@ -67,7 +45,7 @@ class Http {
   }
 
   async _checkStatus(response) {
-    console.log('response.status', response.status)
+    
     if (!response.ok) {
       const parsedException = await response.json();
       

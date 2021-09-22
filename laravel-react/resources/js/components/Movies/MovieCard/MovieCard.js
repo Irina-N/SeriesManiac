@@ -15,6 +15,9 @@ export default function MovieCard() {
 
   const movieId = Number(params.movieId);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
+  const movieRate = useSelector((state) => state.currentUserReducer.user).userMovies.find((movie) => movie.movies_id === movieId)?.grade;
+  
+  
   const {
     ru_title,
     title,
@@ -47,7 +50,7 @@ export default function MovieCard() {
         <div className="lead text-white text-break">
           {description ? parse(descriptionMapper(description)) : ''}
         </div>
-        <MovieRateForm movieId={movieId} userId={userId} />
+        <MovieRateForm movieId={movieId} userId={userId} userRate={movieRate}/>
         {/* <button
           id="to-bookmarks-btn"
           type="button"

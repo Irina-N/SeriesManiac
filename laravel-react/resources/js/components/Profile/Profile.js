@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import './Profile.css';
-import { logout, change } from '../../store/actions/currentUser';
+import { logout } from '../../store/actions/currentUser';
 
 
 export default function Profile() {
@@ -19,7 +19,6 @@ export default function Profile() {
     }, [user]);
 
     const handleLogout = () => {
-        dispatch(change({}))
         dispatch(logout());        
     }
 
