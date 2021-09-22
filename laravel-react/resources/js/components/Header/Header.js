@@ -10,13 +10,13 @@ export default function Header() {
   return (
     <header className="d-flex">
       <h1 className="header__title center-text">SериальныйMaньяK</h1>
-      <Navbar>
+      {user.id && (<Navbar>
         <NavProfile
           userName={user.login}
           // userAvatar={user.avatar}
           userId={user.id}
         />
-      </Navbar>
+      </Navbar>)}
     </header>
   );
 }

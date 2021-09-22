@@ -30,7 +30,7 @@ class Movies {
   }
 
   sendMovieRate(payload) {
-    return this._http.put('/api/movies/rate', {
+    return this._http.load('/api/movies/rate', {
       method: HttpMethod.PUT,
       payload: JSON.stringify(payload),
       contentType: ContentType.JSON,      

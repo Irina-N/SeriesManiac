@@ -39,7 +39,7 @@ export default function MovieCard() {
     <div className="content">
       <Header />
       <div className="movie-card">
-        <img src={image}></img>
+        <img className="movie-poster" src={image}></img>
         <h4>
           {ru_title} ({title})
         </h4>
@@ -48,13 +48,13 @@ export default function MovieCard() {
           {description ? parse(descriptionMapper(description)) : ''}
         </div>
         <MovieRateForm movieId={movieId} userId={userId} />
-        <button
+        {/* <button
           id="to-bookmarks-btn"
           type="button"
           className="btn to-bookmarks-btn"
         >
           В закладки
-        </button>
+        </button> */}
       </div>
     </div>
   );
