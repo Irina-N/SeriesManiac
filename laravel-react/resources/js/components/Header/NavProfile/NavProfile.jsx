@@ -2,13 +2,19 @@ import { Dropdown, NavItem, NavLink } from 'react-bootstrap';
 import { UserAvatar } from '../../common/Avatar/Avatar';
 import { Link } from 'react-router-dom';
 import './NavProfile.css';
+import { useDispatch } from "react-redux";
+import { logout } from '../../../store/actions/currentUser';
 
 export const NavProfile = ({
   userName,
   // userAvatar,
   userId,
 }) => {
-  const onLogout = () => {};
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <Dropdown as={NavItem} align="end">
@@ -31,7 +37,7 @@ export const NavProfile = ({
           </div>
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item as={Link} to={'/user/favourites'}>
+        <Dropdown.Item as={Link} to={'/user/my-movies'}>
           Мои сериалы
         </Dropdown.Item>
         <Dropdown.Item as={Link} to={'/movies'}>

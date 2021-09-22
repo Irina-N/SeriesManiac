@@ -58,6 +58,7 @@ const currentUserSlice = createSlice({
       [logout.fulfilled]: (state) => {
         state.preloader = false;
         state.error.status = false;
+        state.user = {};
         state.error.errorMessage = '';
       },
       [logout.rejected]: (state) => {

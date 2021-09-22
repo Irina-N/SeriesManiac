@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     margin: 0;
     font-size: 17px;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 * {
@@ -18,7 +19,7 @@ body {
 
 .content {
     position: fixed;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.3);
     color: #f1f1f1;
     width: 100vw;
     min-height: 100vh;
