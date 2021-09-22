@@ -5,6 +5,7 @@ import {
   getRandomMovie,
   loadMoreMovies,
   searchMovies,
+  sendMovieRate
 } from '../actions/movies';
 
 const initialState = {
@@ -102,6 +103,20 @@ const moviesSlice = createSlice({
       state.preloader = false;
       state.error.status = true;
       state.error.errorMessage = 'FAILED_WHILE_SEARCH';
+    },
+    [sendMovieRate.pending]: (state) => {
+      state.preloader = true;
+      state.error.status = false;
+      state.error.errorMessage = '';
+    },
+    [sendMovieRate.fulfilled]: (state, action) => {
+      state.preloader = false;
+      state.error.status = false;
+      state.error.errorMessage = '';      
+    },
+    [sendMovieRate.rejected]: (state, action) => {
+      state.error.status = true;
+      state.error.errorMessage = "Не удалось отправить данные";
     },
   },
 });

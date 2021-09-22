@@ -36,12 +36,12 @@ const searchMovies = createAsyncThunk(
     await movieService.searchMovies({ query, counter }),
 );
 
-/* const sendMovieRate = createAsyncThunk(
+const sendMovieRate = createAsyncThunk(
   SEND_RATE,
   async (payload) => movieService.sendMovieRate(payload)
-); */
+);
 
-const sendMovieRate = (formData, url) => {
+/* const sendMovieRate = (formData, url) => {
   return async (dispatch) => {
     console.log('started');
 
@@ -62,7 +62,7 @@ const sendMovieRate = (formData, url) => {
       console.log('Failed', err);
     }
   };
-};
+}; */
 
 export {
   getTopMovies,

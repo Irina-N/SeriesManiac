@@ -1,129 +1,22 @@
-import { REQUEST_STATUSES, FETCH_URL } from '../../common/constants/constants.js';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
+import { currentUser as currentUserService } from '../../services/index';
+import { LOGIN, REGISTER, LOGOUT, CHANGE} from '../ActionTypes/currentUser';
 
-export const REQUEST_STARTED = 'CURRENT_USER::REQUEST_STARTED';
-export const REQUEST_SUCCESS = 'CURRENT_USER::REQUEST_SUCCESS';
-export const REQUEST_ERROR = 'CURRENT_USER::REQUEST_ERROR';
-export const REQUEST_IDLE = 'CURRENT_USER::REQUEST_IDLE';
-export const CHANGE_CURRENT_USER = 'CURRENT_USER::CHANGE';
+export const login = createAsyncThunk(
+    LOGIN,
+    async (payload) => currentUserService.login(payload)
+);
 
-export const setStatusStarted = () => ({
-    type: REQUEST_STARTED,
-    payload: REQUEST_STATUSES.STARTED,
-});
+export const register = createAsyncThunk(
+    REGISTER,
+    async (payload) => currentUserService.register(payload)
+  );
 
-export const setStatusSuccess = () => ({
-    type: REQUEST_SUCCESS,
-    payload: REQUEST_STATUSES.SUCCESS,
-});
+export const logout = createAsyncThunk(
+    LOGOUT,
+    async () => await currentUserService.logout(),
+); 
 
-export const setStatusError = () => ({
-    type: REQUEST_ERROR,
-    payload: REQUEST_STATUSES.ERROR,
-});
+export const change = createAction(CHANGE);
 
-export const setStatusIdle = () => ({
-    type: REQUEST_IDLE,
-    payload: REQUEST_STATUSES.IDLE,
-});
 
-export const changeCurrentUser = (data, target) => ({
-    type: CHANGE_CURRENT_USER,
-    payload: {data, target}
-});
-
-export const fetchUser = (formData, url) => {
-    return async (dispatch) => {
-        dispatch(changeCurrentUser({}, 'error')); 
-        dispatch(setStatusStarted());
-        
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            if (response.ok) {
-                const user = await response.json();
-                dispatch(changeCurrentUser(user, 'user'));
-                dispatch(setStatusIdle()); 
-
-            } else if (response.status === 400) {
-                const errors = await response.json();
-                let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName]);
-                throw {errorCode: 400, errorDescription: errorsTextArr}
-
-            } else {
-                const errorText = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
-                throw {errorCode: response.status, errorDescription: [errorText]}
-            }
-            
-        } catch (err) {
-            dispatch(changeCurrentUser(err, 'error'));
-            dispatch(setStatusError());
-            dispatch(setStatusIdle()); 
-        }
-    }
-}
-
-//TODO при оптимизации валидации на фронтенде отдать функционал fetchRegister в fetchUser
-
-export const fetchRegister = (formData, url) => {
-    return async (dispatch) => {
-        dispatch(changeCurrentUser({}, 'error')); 
-        dispatch(setStatusStarted());
-        
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(formData)
-            });
-            if (response.ok) {
-                const user = await response.json();
-                dispatch(changeCurrentUser(user, 'user'));
-                dispatch(setStatusIdle()); 
-
-            } else if (response.status === 400) {
-                const errors = await response.json();
-                console.log('errors:', errors)
-                //let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName].join(', '));
-                let errorsTextArr = Object.keys(errors).map((fieldName) => errors[fieldName].join(', '));
-                console.log('errorsTextArr:', errorsTextArr)
-                throw {errorCode: 400, errorDescription: errorsTextArr}
-
-            } else {
-                const errorText = 'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
-                throw {errorCode: response.status, errorDescription: [errorText]}
-            }
-            
-        } catch (err) {
-            console.log('Something wrong', err);
-            dispatch(changeCurrentUser(err, 'error'));
-            dispatch(setStatusError());
-            dispatch(setStatusIdle()); 
-        }
-    }
-}
-
-export const fetchLogout = () => {
-    return async (dispatch) => {
-        dispatch(setStatusStarted());
-        
-        try {
-            const response = await fetch(FETCH_URL.LOGOUT);
-            if (response.ok) {
-                dispatch(changeCurrentUser({}, 'user')); 
-                dispatch(setStatusIdle());           
-            }            
-        } catch (err) {
-            console.log('Logout error:', err);
-            dispatch(setStatusError());
-            dispatch(setStatusIdle()); 
-        } 
-    }   
-} 

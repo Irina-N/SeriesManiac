@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {
   getTopMovies,
   loadMoreMovies,
@@ -18,8 +19,10 @@ const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
 
 export const Movies = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { movies: topMovies } = useSelector((state) => state.moviesReducer);
   const { preloader, error } = useSelector((state) => state.moviesReducer);
+  const userId = useSelector((state) => state.currentUserReducer.user.id);
   const [paginateCounter, setPaginateCounter] = useState(0);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
@@ -36,6 +39,12 @@ export const Movies = () => {
       toast.error(error.errorMessage);
     }
   }, [error.status]);
+
+  useEffect(() => {
+    if (!userId) {
+      history.push('/');
+    }
+  }, [userId]);
 
   const loadMore = async () => {
     setIsLoadMore(true);

@@ -1,3 +1,21 @@
 .movie-list-item {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+.card-body {
+    padding: .5rem 1rem;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-text {
+    font-size: .9rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

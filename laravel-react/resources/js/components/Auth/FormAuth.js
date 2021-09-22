@@ -1,9 +1,9 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { REQUEST_STATUSES, FETCH_URL } from '../../common/constants/constants.js';
+import { REQUEST_STATUSES } from '../../common/constants/constants.js';
 import './FormAuth.css';
-import { fetchUser } from '../../store/actions/currentUser';
+import { login } from '../../store/actions/currentUser';
 
 
 export default function FormAuth () {
@@ -35,7 +35,7 @@ export default function FormAuth () {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
     const formData = {email, password};       
-    dispatch(fetchUser(formData, FETCH_URL.AUTH));    
+    dispatch(login(formData));    
     setPassword('');        
   }, [dispatch, email, password]);
 

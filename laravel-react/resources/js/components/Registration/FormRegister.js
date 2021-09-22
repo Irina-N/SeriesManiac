@@ -1,9 +1,9 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { REQUEST_STATUSES, FETCH_URL } from '../../common/constants/constants.js';
+import { REQUEST_STATUSES } from '../../common/constants/constants.js';
 import './FormRegister.css';
-import { fetchUser, fetchRegister } from '../../store/actions/currentUser';
+import { login, register } from '../../store/actions/currentUser';
 
 export default function FormRegister (){
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export default function FormRegister (){
   const handleSubmit = useCallback((e) => {
     e.preventDefault();    
     const formData = {email, login, password, passwordConfirmation};
-    dispatch(fetchRegister(formData, FETCH_URL.REGISTER));       
+    dispatch(register(formData));       
     setEmail('');
     setLogin('');
     setPassword(''); 
