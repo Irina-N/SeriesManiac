@@ -7434,12 +7434,12 @@ var MovieListItem = function MovieListItem(_ref) {
       className: "card shadow-sm",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
         src: image
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-        className: "card-title",
-        children: ru_title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
+          className: "card-title",
+          children: ru_title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
           className: "card-text truncate",
           children: title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -8610,7 +8610,7 @@ var Http = /*#__PURE__*/function () {
             switch (_context2.prev = _context2.next) {
               case 0:
                 options = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : {};
-                _options$method2 = options.method, method = _options$method2 === void 0 ? _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.GET : _options$method2, _options$payload2 = options.payload, payload = _options$payload2 === void 0 ? null : _options$payload2, contentType = options.contentType;
+                _options$method2 = options.method, method = _options$method2 === void 0 ? _common_constants_constants__WEBPACK_IMPORTED_MODULE_1__.HttpMethod.PUT : _options$method2, _options$payload2 = options.payload, payload = _options$payload2 === void 0 ? null : _options$payload2, contentType = options.contentType;
                 headers = this._getHeaders({
                   contentType: contentType
                 });
@@ -8678,22 +8678,24 @@ var Http = /*#__PURE__*/function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
+                console.log('response.status', response.status);
+
                 if (response.ok) {
-                  _context3.next = 5;
+                  _context3.next = 6;
                   break;
                 }
 
-                _context3.next = 3;
+                _context3.next = 4;
                 return response.json();
 
-              case 3:
+              case 4:
                 parsedException = _context3.sent;
                 throw new Error((_parsedException$mess = parsedException === null || parsedException === void 0 ? void 0 : parsedException.message) !== null && _parsedException$mess !== void 0 ? _parsedException$mess : response.statusText);
 
-              case 5:
+              case 6:
                 return _context3.abrupt("return", response);
 
-              case 6:
+              case 7:
               case "end":
                 return _context3.stop();
             }
@@ -18180,7 +18182,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n}\r\n\r\n.movie-poster {\r\n    max-height: 55vh;\r\n}\r\n\r\n.to-bookmarks-btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.to-bookmarks-btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\r\n    max-width: 90vw;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n}\r\n\r\n.movie-poster {\r\n    max-height: 55vh;\r\n}\r\n\r\n.to-bookmarks-btn {\r\n    width: 250px;\r\n    background-color: #04AA6D;\r\n    margin-top: 15px;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.to-bookmarks-btn:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18204,7 +18206,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\r\n  text-decoration: none;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\r\n    text-decoration: none;\r\n}\r\n\r\n.card-body {\r\n    padding: .5rem 1rem;\r\n}\r\n\r\n.card-title {\r\n    font-size: 1.15rem;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.card-text {\r\n    font-size: .9rem;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

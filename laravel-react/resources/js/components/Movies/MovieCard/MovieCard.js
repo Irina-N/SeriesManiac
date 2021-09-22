@@ -39,7 +39,7 @@ export default function MovieCard() {
     <div className="content">
       <Header />
       <div className="movie-card">
-        <img className="movie-poster" src={image}></img>
+        <img className="movie-poster" src={image}></img>        
         <h4>
           {ru_title} ({title})
         </h4>

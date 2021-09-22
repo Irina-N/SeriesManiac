@@ -31,7 +31,7 @@ class Http {
 
   async put(url, options = {}) {
     const {
-      method = HttpMethod.GET,
+      method = HttpMethod.PUT,
       payload = null,
       contentType,
     } = options;
@@ -47,7 +47,7 @@ class Http {
         body: payload
       });
 
-      if (response.ok) {
+      if (response.ok) {        
         return;
       };      
 
@@ -67,6 +67,7 @@ class Http {
   }
 
   async _checkStatus(response) {
+    console.log('response.status', response.status)
     if (!response.ok) {
       const parsedException = await response.json();
       
