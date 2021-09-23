@@ -16,7 +16,7 @@ const getTopMovies = createAsyncThunk(
 
 const getOneMovie = createAsyncThunk(
   GET_ONE,
-  async (userId, movieId) => await movieService.getOneMovie(userId, movieId),
+  async ({userId, movieId}) => await movieService.getOneMovie({userId, movieId}),
 );
 
 const getRandomMovie = createAsyncThunk(

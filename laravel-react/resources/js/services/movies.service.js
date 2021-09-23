@@ -13,7 +13,7 @@ class Movies {
     });
   }
 
-  getOneMovie(userId, movieId) {
+  getOneMovie({userId, movieId}) {
     return this._http.load(`/api/movies/${movieId}`, {
       method: HttpMethod.POST,
       payload: JSON.stringify({ userId}),
