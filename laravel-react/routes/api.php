@@ -33,6 +33,6 @@ Route::post('/movies', [MoviesController::class, 'getMovies']);
 Route::post('/movies/search', [MoviesController::class, 'searchMovies']);
 Route::get('/movies/rand', [MoviesController::class, 'getRandMovies']);
 Route::put('/movies/rate', [MoviesController::class, 'grade']);
-Route::get('/movies/{id}', [MoviesController::class, 'getOneMovie']);
+Route::post('/movies/{id}', [MoviesController::class, 'getOneMovie']);
 
 
