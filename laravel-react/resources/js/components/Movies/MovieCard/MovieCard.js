@@ -36,7 +36,7 @@ export default function MovieCard() {
     if (movieId) {      
       dispatch(getOneMovie({userId, movieId}));
     }
-  }, [movieId]);
+  }, []);
 
   return (
     <div className="content">

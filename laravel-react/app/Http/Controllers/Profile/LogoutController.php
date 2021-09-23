@@ -9,6 +9,6 @@ class LogoutController extends Controller
 {
     public function logout(){
         \Auth::logout();
-        return response()->json(null,200);
+        return response()->json(null,204);
     }
 }
