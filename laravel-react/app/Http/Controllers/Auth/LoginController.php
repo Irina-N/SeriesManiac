@@ -15,8 +15,6 @@ class LoginController extends Controller
 
         if(\Auth::attempt($data)){
             $authData = Auth::user()->only('id','login');
-            $movies = Grade::select('movies_id', 'grade')->where('user_id', Auth::id())->get();
-            $authData['userMovies'] = $movies;
             return response()->json($authData,200);
         }
         
