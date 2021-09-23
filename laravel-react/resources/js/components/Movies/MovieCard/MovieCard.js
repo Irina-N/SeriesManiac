@@ -34,7 +34,8 @@ export default function MovieCard() {
 
   useEffect(() => {
     if (params ?? params.movieId) {
-      dispatch(getOneMovie(params.movieId));
+      console.log('params.movieId, userId', params.movieId, userId);
+      dispatch(getOneMovie(userId, params.movieId));
     }
   }, []);
 

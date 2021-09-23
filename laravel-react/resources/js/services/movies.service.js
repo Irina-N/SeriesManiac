@@ -13,8 +13,11 @@ class Movies {
     });
   }
 
-  getOneMovie(id) {
-    return this._http.load(`/api/movies/${id}`, {});
+  getOneMovie(userId, movieId) {
+    return this._http.load(`/api/movies/${movieId}`, {
+      method: HttpMethod.POST,
+      payload: userId,
+    });
   }
 
   getRandomMovie() {

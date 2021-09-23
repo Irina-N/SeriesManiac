@@ -8,7 +8,7 @@ class Http {
       payload = null,
       contentType,
     } = options;
-
+    console.log('payload', payload)
     const headers = this._getHeaders({
       contentType
     });
