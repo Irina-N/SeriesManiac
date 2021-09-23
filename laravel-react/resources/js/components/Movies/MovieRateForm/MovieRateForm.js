@@ -65,7 +65,7 @@ export default function MovieRateForm (props) {
     return (        
         <section className='form__movie-rate'>            
             <i 
-                className='fas fa-star fa-3x userMovieRate'
+                className='fas fa-star userMovieRate'
                 disabled={isRated}
                 id='movieRate1' 
                 rate='1'
@@ -76,7 +76,7 @@ export default function MovieRateForm (props) {
             </i>
 
             <i 
-                className='fas fa-star fa-3x userMovieRate'
+                className='fas fa-star userMovieRate'
                 disabled={isRated}
                 id='movieRate2' 
                 rate='2'
@@ -87,7 +87,7 @@ export default function MovieRateForm (props) {
             </i>
 
             <i 
-                className='fas fa-star fa-3x userMovieRate'
+                className='fas fa-star userMovieRate'
                 disabled={isRated}
                 id='movieRate3'
                 rate='3'
@@ -98,7 +98,7 @@ export default function MovieRateForm (props) {
             </i>
 
             <i 
-                className='fas fa-star fa-3x userMovieRate'
+                className='fas fa-star userMovieRate'
                 disabled={isRated}
                 id='movieRate4'  
                 rate='4'
@@ -109,7 +109,7 @@ export default function MovieRateForm (props) {
             </i>
 
             <i 
-                className='fas fa-star fa-3x userMovieRate'
+                className='fas fa-star userMovieRate'
                 disabled={isRated}
                 id='movieRate5' 
                 rate='5'
@@ -123,11 +123,11 @@ export default function MovieRateForm (props) {
                 className={`btn btn_send_rate ${isRated ? 'hidden' : ''}`}
                 disabled={!isHaveChoice}
                 onClick={handleSubmit}>
-                    <i className='fas fa-check fa-2x'></i>
+                    <i className='fas fa-check btn-icon'></i>
             </button>
 
             <button className={`btn btn_edit_rate ${isRated ? '' : 'hidden'}`}>
-                    <i className='fas fa-pen fa-2x' onClick={handleEditRate}></i>
+                    <i className='fas fa-pen btn-icon' onClick={handleEditRate}></i>
             </button> 
         </section>                    
     );

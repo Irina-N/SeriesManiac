@@ -33,10 +33,10 @@ export default function MovieCard() {
   }, [userId]);
 
   useEffect(() => {
-    if (params ?? params.movieId) {
-      dispatch(getOneMovie(params.movieId));
+    if (movieId) {      
+      dispatch(getOneMovie({userId, movieId}));
     }
-  }, []);
+  }, [movieId]);
 
   return (
     <div className="content">

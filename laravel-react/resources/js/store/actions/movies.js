@@ -16,7 +16,7 @@ const getTopMovies = createAsyncThunk(
 
 const getOneMovie = createAsyncThunk(
   GET_ONE,
-  async (id) => await movieService.getOneMovie(id),
+  async ({userId, movieId}) => await movieService.getOneMovie({userId, movieId}),
 );
 
 const getRandomMovie = createAsyncThunk(
@@ -40,29 +40,6 @@ const sendMovieRate = createAsyncThunk(
   SEND_RATE,
   async (payload) => movieService.sendMovieRate(payload)
 );
-
-/* const sendMovieRate = (formData, url) => {
-  return async (dispatch) => {
-    console.log('started');
-
-    try {
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        console.log('Rate sent successful');
-      } else {
-        console.log('response.status:', response.status);
-      }
-    } catch (err) {
-      console.log('Failed', err);
-    }
-  };
-}; */
 
 export {
   getTopMovies,
