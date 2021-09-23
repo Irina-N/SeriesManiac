@@ -38,7 +38,9 @@ class MoviesController extends Controller
         $data = $request->only(['userId']);
         $movie = Movies::find($id);
         $grade = Grade::select('grade')->where('user_id', $data)->where('movies_id', $id)->first();
-        $movie['grade'] = $grade->grade;
+        if(isset($grade)){
+            $movie['grade'] = $grade->grade;
+        }
         
         return response()->json($movie,200);
     }
