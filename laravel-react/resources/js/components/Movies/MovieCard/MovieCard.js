@@ -14,9 +14,7 @@ export default function MovieCard() {
   const history = useHistory();
 
   const movieId = Number(params.movieId);
-  const userId = useSelector((state) => state.currentUserReducer.user.id);
-  const movieRate = useSelector((state) => state.currentUserReducer.user).userMovies.find((movie) => movie.movies_id === movieId)?.grade;
-  
+  const userId = useSelector((state) => state.currentUserReducer.user.id);   
   
   const {
     ru_title,
@@ -39,22 +37,22 @@ export default function MovieCard() {
   }, []);
 
   return (
-    <div className="content">
+    <div className= 'content '>
       <Header />
-      <div className="movie-card">
-        <img className="movie-poster" src={image}></img>        
+      <div className= 'movie-card '>
+        <img className= 'movie-poster ' src={image}></img>        
         <h4>
           {ru_title} ({title})
         </h4>
         <p>{year}</p>
-        <div className="lead text-white text-break">
+        <div className= 'lead text-white text-break '>
           {description ? parse(descriptionMapper(description)) : ''}
         </div>
-        <MovieRateForm movieId={movieId} userId={userId} userRate={movieRate}/>
+        <MovieRateForm movieId={movieId} userId={userId}/>
         {/* <button
-          id="to-bookmarks-btn"
-          type="button"
-          className="btn to-bookmarks-btn"
+          id= 'to-bookmarks-btn '
+          type= 'button '
+          className= 'btn to-bookmarks-btn '
         >
           В закладки
         </button> */}
