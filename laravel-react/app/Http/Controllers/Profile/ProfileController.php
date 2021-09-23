@@ -10,11 +10,17 @@ class ProfileController extends Controller
 {
     public function getUserMovies(Request $request)
     {
-        $data = $request->only(['id']);
-        $userMovies = [];
-        foreach($data as $key){
-            array_push($userMovies, Movies::select('title', 'ru_title', 'year', 'image')->where('id', $key)->first());
+        $data = $request->only(['userId']);
+        $userMovies = Grade::select('movies_id', 'grade')->where('user_id', $data)->get();
+        
+        for($a = 0; $a < count($userMovies); $a++){
+            $movies[$a] = Movies::select('title', 'ru_title', 'year', 'image')->where('id', $userMovies[$a]['movies_id'])->first();
         }
-        return response()->json($userMovies, 200);
+
+        for($a = 0; $a < count($userMovies); $a++){
+            $movies[$a]['grade'] = $userMovies[$a]['grade'];
+        }
+
+        return response()->json($movies, 200);
     }
 }

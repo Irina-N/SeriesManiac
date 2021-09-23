@@ -33,9 +33,14 @@ class MoviesController extends Controller
         ->get(),200);
     }
 
-    public function getOneMovie($id)
+    public function getOneMovie(Request $request, $id)
     {
-        return response()->json(Movies::find($id),200);
+        $data = $request->only(['userId']);
+        $movie = Movies::find($id);
+        $grade = Grade::select('grade')->where('user_id', $data)->where('movies_id', $id)->first();
+        $movie['grade'] = $grade->grade;
+        
+        return response()->json($movie,200);
     }
 
     public function getRandMovies()
@@ -83,9 +88,10 @@ class MoviesController extends Controller
         $movie->save();
     }
 
-    public function recomend()
+    public function recomend(Request $request)
     {
-        $movies = Grade::where('user_id',1)->get();//<--Мои фильмы
+        $data = $request->only(['id']);
+        $movies = Grade::where('user_id',$data['id'])->get();//<--Мои фильмы
         $usersWithIntersection = [];
         $usersWithIntersectionWeight = [];
         $filmsId = [];
@@ -105,7 +111,7 @@ class MoviesController extends Controller
                     $userFilms = Grade::where('user_id', $users[$b]['user_id'])->get();//<--Все фильмы которые смотрел этот один пользователь
                     for($c = 0; $c < count($userFilms); $c++){
                         if(in_array($userFilms[$c]['movies_id'], $filmsId)){
-                            $currentUserGrade = Grade::where('user_id',1)->where('movies_id',$userFilms[$c]['movies_id'])->first();//<--Моя Оценка этого фильма
+                            $currentUserGrade = Grade::where('user_id',$data['id'])->where('movies_id',$userFilms[$c]['movies_id'])->first();//<--Моя Оценка этого фильма
                             $commonFilmsSum ++;
                             $gradesDifSum += abs(($currentUserGrade['grade'] - 3) - ($userFilms[$c]['grade'] - 3)) + 1;
                         }

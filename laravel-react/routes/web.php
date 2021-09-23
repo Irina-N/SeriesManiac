@@ -19,7 +19,7 @@ use App\Http\Controllers\Profile\LogoutController;
 |
 */
 Route::get('/test', [test::class, 'test']);
-Route::get('/test2', [test::class, 'test2']);
+
 Route::get( '/{any}', function(){
     return view('welcome');
 })->where('any', '.*');
