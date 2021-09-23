@@ -8,12 +8,11 @@
 
 .btn_send_rate,
 .btn_edit_rate {
-    background-color: #04AA6D;
+    color: #ffa500;
     padding: 0;
     margin-left: 3vw;
-    color: white;
     width: 4.5em;
-    height: 3em;
+    /* height: 5vmin; */
     font-weight: 500;
     font-size: 16px;
     border: none;
@@ -23,21 +22,31 @@
 
 .btn_send_rate:hover,
 .btn_edit_rate:hover {
-    background-color: #45a049;
+    color: #45a049; 
 }
 
 .btn_send_rate:disabled:hover {
-    background-color: #ccccb3;
+    color: #ccccb3;
 }
 
 .btn_send_rate:disabled {
     cursor: default;
-    background-color: #ccccb3;
+    color: #ccccb3; 
+}
+
+.fa-check {
+    font-size: 5vmin;
+}
+
+.fa-pen {
+    font-size: 4vmin;
 }
 
 .userMovieRate {
     cursor: pointer;
     color: #ccccb3;
+    font-size: 5vmin;
+    
 }
 
 .userMovieRate[disabled] {
