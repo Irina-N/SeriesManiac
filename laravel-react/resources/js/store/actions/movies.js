@@ -23,7 +23,6 @@ const getRandomMovie = createAsyncThunk(
   GET_RANDOM,
   async () => await movieService.getRandomMovie(),
 );
-
 const loadMoreMovies = createAsyncThunk(
   GET_MORE,
   async ({ counter, query }) =>
