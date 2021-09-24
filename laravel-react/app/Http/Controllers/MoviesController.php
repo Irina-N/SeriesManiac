@@ -41,7 +41,9 @@ class MoviesController extends Controller
         if(isset($grade)){
             $movie['grade'] = $grade->grade;
         }
-        
+        if(!isset($movie)){
+            return response()->json(null,404);
+        }
         return response()->json($movie,200);
     }
 
