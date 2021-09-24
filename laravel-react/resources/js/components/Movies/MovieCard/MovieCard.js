@@ -7,6 +7,7 @@ import MovieRateForm from '../MovieRateForm/MovieRateForm';
 import parse from 'html-react-parser';
 import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 import './MovieCard.css';
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function MovieCard() {
   const params = useParams();
@@ -14,16 +15,13 @@ export default function MovieCard() {
   const history = useHistory();
 
   const movieId = Number(params.movieId);
-  const userId = useSelector((state) => state.currentUserReducer.user.id);   
+  const userId = useSelector((state) => state.currentUserReducer.user.id);
+  //const rate = Number(useSelector((state) => state.moviesReducer.currentMovie.grade)) || null;   
+  const { preloader, error } = useSelector((state) => state.moviesReducer);  
   
-  const {
-    ru_title,
-    title,
-    big_image: image,
-    year,
-    description,
-  } = useSelector((state) => state.moviesReducer.currentMovie);
-
+  const currentMovie = useSelector((state) => state.moviesReducer.currentMovie);
+  const rate = currentMovie.grade || null;
+  
   useEffect(() => {
     if (!userId) {
       history.push('/');
@@ -31,31 +29,45 @@ export default function MovieCard() {
   }, [userId]);
 
   useEffect(() => {
-    if (movieId) {      
+    if (!Object.keys(currentMovie).length) {      
       dispatch(getOneMovie({userId, movieId}));
     }
   }, []);
 
+  useEffect(() => {  
+    console.log('error.status',error.status)
+      if  (error.status) {
+        history.push('/movies');
+      }
+    }, [error])
+
   return (
-    <div className= 'content '>
+    <div className='content'>
       <Header />
-      <div className= 'movie-card '>
-        <img className= 'movie-poster ' src={image}></img>        
-        <h4>
-          {ru_title} ({title})
-        </h4>
-        <p>{year}</p>
-        <div className= 'lead text-white text-break '>
-          {description ? parse(descriptionMapper(description)) : ''}
-        </div>
-        <MovieRateForm movieId={movieId} userId={userId}/>
-        {/* <button
-          id= 'to-bookmarks-btn '
-          type= 'button '
-          className= 'btn to-bookmarks-btn '
-        >
-          В закладки
-        </button> */}
+      <div className='movie-card'>
+        { preloader ? (
+              <div id='spinner' className='d-flex justify-content-center align-items-center'>
+                <Spinner animation='border' variant='warning' />
+              </div>
+            ) : (
+        <React.Fragment>
+          <img className='movie-poster' src={currentMovie.big_image}></img>        
+          <h4> 
+            {currentMovie.ru_title} ({currentMovie.title})
+          </h4>
+          <p>{currentMovie.year}</p>
+          <div className='lead text-white text-break'>
+            {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
+          </div>
+          <MovieRateForm movieId={movieId} userId={userId} rate={rate}/>
+          {/* <button
+            id='to-bookmarks-btn'
+            type='button'
+            className='btn to-bookmarks-btn'
+          >
+            В закладки
+          </button> */}
+        </React.Fragment>)} 
       </div>
     </div>
   );

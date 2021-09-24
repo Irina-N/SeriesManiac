@@ -3,6 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2vh;
+}
+
+#spinner{ 
+    position: fixed;
+    top: -10vh;
+    height: 50vh;
 }
 
 .movie-poster {

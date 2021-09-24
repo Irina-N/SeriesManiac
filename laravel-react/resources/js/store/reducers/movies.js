@@ -13,6 +13,7 @@ const initialState = {
   preloader: false,
   randomMovie: {},
   currentMovie: {},
+  requestStatus: '',
   error: {
     status: false,
     errorMessage: '',
@@ -112,7 +113,9 @@ const moviesSlice = createSlice({
     [sendMovieRate.fulfilled]: (state, action) => {
       state.preloader = false;
       state.error.status = false;
-      state.error.errorMessage = '';      
+      state.error.errorMessage = '';
+      state.currentMovie.grade = action.meta.arg.userMovieRate;
+          
     },
     [sendMovieRate.rejected]: (state, action) => {
       state.error.status = true;
