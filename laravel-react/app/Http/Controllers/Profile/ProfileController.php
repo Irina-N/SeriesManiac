@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Movies;
+use App\Models\Grade;
 
 class ProfileController extends Controller
 {
@@ -16,7 +17,7 @@ class ProfileController extends Controller
         $userMovies = Grade::select('movies_id', 'grade')->where('user_id', $data)->get();
         
         for($a = 0; $a < count($userMovies); $a++){
-            $movies[$a] = Movies::select('title', 'ru_title', 'year', 'image')->where('id', $userMovies[$a]['movies_id'])->first();
+            $movies[$a] = Movies::select('id', 'title', 'ru_title', 'year', 'image')->where('id', $userMovies[$a]['movies_id'])->first();
         }
 
         for($a = 0; $a < count($userMovies); $a++){
