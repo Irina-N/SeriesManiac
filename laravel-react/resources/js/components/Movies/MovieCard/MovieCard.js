@@ -8,6 +8,8 @@ import parse from 'html-react-parser';
 import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 import './MovieCard.css';
 import Spinner from 'react-bootstrap/Spinner';
+import { clearUsersError } from '../../../store/actions/currentUser';
+
 
 export default function MovieCard() {
   const params = useParams();
@@ -22,6 +24,7 @@ export default function MovieCard() {
   const currentMovie = useSelector((state) => state.moviesReducer.currentMovie);
   const rate = currentMovie.grade || null;
   
+
   useEffect(() => {
     if (!userId) {
       history.push('/');
@@ -35,11 +38,13 @@ export default function MovieCard() {
   }, []);
 
   useEffect(() => {  
-    console.log('error.status',error.status)
-      if  (error.status) {
-        history.push('/movies');
-      }
-    }, [error])
+    if  (error.status) {
+      toast.error(error.errorMessage);
+      dispatch(clearUsersError);
+      history.push('/movies');
+    }
+  }, [error.status]);
+
 
   return (
     <div className='content'>
