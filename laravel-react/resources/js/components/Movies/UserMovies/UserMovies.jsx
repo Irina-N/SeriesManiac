@@ -2,34 +2,54 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../Header/Header';
 import { UserMovieCard } from './UserMovieCard/UserMovieCard';
-import Card from 'react-bootstrap/Card';
 import { getTopMovies } from '../../../store/actions/movies';
+import { useDebouncedCallback } from 'use-debounce';
 import './UserMovies.css';
-import { Link } from 'react-router-dom';
+import { getUserMovies } from '../../../store/actions/currentUser';
+
+const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
 export const UserMovies = () => {
   const dispatch = useDispatch();
-  const { movies: topMovies } = useSelector((state) => state.moviesReducer);
+  const { id } = useSelector((state) => state.currentUserReducer.user);
+  const { movies } = useSelector((state) => state.moviesReducer);
+  // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
+  // const { movies: userMovies } = useSelector((state) => state.currentUserReducer);
+  const [userMovies, setUserMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const debouncedSearch = useDebouncedCallback((query) => {
+    const searchResult = movies.filter(
+      (movie) =>
+        movie.ru_title.toLowerCase().includes(query.toLowerCase()) ||
+        movie.title.toLowerCase().includes(query.toLowerCase()),
+    );
+    setUserMovies(searchResult);
+  }, DEBOUNCE_WAIT_MILLISECONDS);
 
   useEffect(() => {
-    if (!topMovies.length) {
+    if (id && !movies.length) {
       dispatch(getTopMovies());
+      // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
+      // dispatch(getUserMovies(id));
+    } else {
+      setUserMovies(movies);
     }
-  }, []);
+  }, [movies]);
 
-  const handlerSearch = (e) => {
-    e.preventDefault();
-  };
+  useEffect(() => {
+    if (searchText.trim().length > 0) {
+      debouncedSearch(searchText.trim());
+    } else {
+      setUserMovies(movies);
+      setSearchText('');
+    }
+  }, [searchText]);
 
   return (
     <div className="content main">
       <Header />
       <div className="container-fluid d-flex bg-light justify-content-center py-3">
-        <form
-          className="form-inline col-6 px-2 d-flex justify-content-center"
-          onSubmit={handlerSearch}
-        >
+        <form className="form-inline col-6 px-2 d-flex justify-content-center">
           <input
             className="form-control m-2 w-50"
             type="search"
@@ -37,14 +57,11 @@ export const UserMovies = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="btn btn-dark m-2" type="submit">
-            Search
-          </button>
         </form>
       </div>
       <div className="container-fluid d-flex bg-light justify-content-center flex-column align-items-center">
-        {topMovies.length &&
-          topMovies.map((movie) => {
+        {userMovies.length &&
+          userMovies.map((movie) => {
             return <UserMovieCard key={movie.id} {...movie} />;
           })}
       </div>

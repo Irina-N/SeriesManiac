@@ -21,10 +21,17 @@ class CurrentUser {
     });
   }
 
-  logout(){    
+  logout() {
     return this._http.load('api/logout');
   }
-  
+
+  getUserMovies(payload) {
+    return this._http.load('api/profile/movies', {
+      method: HttpMethod.POST,
+      payload: JSON.stringify({ id: payload }),
+      contentType: ContentType.JSON,
+    });
+  }
 }
 
 export { CurrentUser };
