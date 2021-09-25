@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './UserMovieCard.css';
 
-export const UserMovieCard = ({ id, image, ru_title, title, year, rate }) => {
+export const UserMovieCard = ({ id, image, ru_title, title, year, grade }) => {
   const Stars = () => {
     return (
       <div className="stars">
-        <i className={`fas fa-star ${rate >= 1 && 'cheked'}`} />
-        <i className={`fas fa-star ${rate >= 2 && 'cheked'}`} />
-        <i className={`fas fa-star ${rate >= 3 && 'cheked'}`} />
-        <i className={`fas fa-star ${rate >= 4 && 'cheked'}`} />
-        <i className={`fas fa-star ${rate === 5 && 'cheked'}`} />
+        <i className={`fas fa-star ${grade >= 1 && 'cheked'}`} />
+        <i className={`fas fa-star ${grade >= 2 && 'cheked'}`} />
+        <i className={`fas fa-star ${grade >= 3 && 'cheked'}`} />
+        <i className={`fas fa-star ${grade >= 4 && 'cheked'}`} />
+        <i className={`fas fa-star ${grade === 5 && 'cheked'}`} />
       </div>
     );
   };

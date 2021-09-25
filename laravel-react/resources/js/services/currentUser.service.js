@@ -26,9 +26,9 @@ class CurrentUser {
   }
 
   getUserMovies(payload) {
-    return this._http.load('api/profile/movies', {
+    return this._http.load('/api/profile/movies', {
       method: HttpMethod.POST,
-      payload: JSON.stringify({ id: payload }),
+      payload: JSON.stringify({ userId: payload }),
       contentType: ContentType.JSON,
     });
   }

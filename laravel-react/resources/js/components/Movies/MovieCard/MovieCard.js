@@ -16,6 +16,7 @@ export default function MovieCard() {
 
   const movieId = Number(params.movieId);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
+  const error = useSelector((state) => state.currentUserReducer.error);
 
   const {
     ru_title,

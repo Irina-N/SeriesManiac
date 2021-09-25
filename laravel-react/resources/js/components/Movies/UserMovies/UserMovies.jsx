@@ -15,9 +15,7 @@ const DEBOUNCE_WAIT_MILLISECONDS = 300;
 export const UserMovies = () => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.currentUserReducer.user);
-  // const { movies } = useSelector((state) => state.moviesReducer);
-  // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
-  const { movies: userMovies } = useSelector(
+  const { userMovies: movies, error } = useSelector(
     (state) => state.currentUserReducer,
   );
   const [userMovies, setUserMovies] = useState([]);
@@ -32,14 +30,12 @@ export const UserMovies = () => {
   }, DEBOUNCE_WAIT_MILLISECONDS);
 
   useEffect(() => {
-    if (id && !movies.length) {
-      // dispatch(getTopMovies());
-      // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
+    if (id) {
       dispatch(getUserMovies(id));
     } else {
       setUserMovies(movies);
     }
-  }, [movies]);
+  }, []);
 
   useEffect(() => {
     if (searchText.trim().length > 0) {

@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logout, register, login, change } from '../actions/currentUser';
+import {
+  logout,
+  register,
+  login,
+  change,
+  getUserMovies,
+} from '../actions/currentUser';
 import { CLEAR_ERROR } from '../ActionTypes/currentUser';
 
 const initialState = {
@@ -74,18 +80,18 @@ const currentUserSlice = createSlice({
       state.error.errorMessage =
         'У нас возникли неполадки. Пожалуйста, повторите попытку позже';
     },
-    [login.pending]: (state, action) => {
+    [getUserMovies.pending]: (state, action) => {
       state.preloader = true;
       state.error.status = false;
       state.error.errorMessage = '';
     },
-    [login.fulfilled]: (state, action) => {
+    [getUserMovies.fulfilled]: (state, action) => {
       state.preloader = false;
       state.error.status = false;
       state.error.errorMessage = '';
       state.userMovies = action.payload;
     },
-    [login.rejected]: (state, action) => {
+    [getUserMovies.rejected]: (state, action) => {
       state.preloader = false;
       state.error.status = true;
       state.error.errorMessage = 'FAILED_LOAD_USER_MOVIES';
