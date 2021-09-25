@@ -5,8 +5,9 @@ import {
   getRandomMovie,
   loadMoreMovies,
   searchMovies,
-  sendMovieRate
+  sendMovieRate,
 } from '../actions/movies';
+import { CLEAR_ERROR } from '../ActionTypes/movies';
 
 const initialState = {
   movies: [],
@@ -22,7 +23,12 @@ const initialState = {
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {},
+  reducers: {
+    [CLEAR_ERROR]: (state) => {
+      state.error.status = false;
+      state.error.errorMessage = '';
+    },
+  },
   extraReducers: {
     [getTopMovies.pending]: (state, action) => {
       state.preloader = true;
@@ -112,11 +118,11 @@ const moviesSlice = createSlice({
     [sendMovieRate.fulfilled]: (state, action) => {
       state.preloader = false;
       state.error.status = false;
-      state.error.errorMessage = '';      
+      state.error.errorMessage = '';
     },
     [sendMovieRate.rejected]: (state, action) => {
       state.error.status = true;
-      state.error.errorMessage = "Не удалось отправить данные";
+      state.error.errorMessage = 'Не удалось отправить данные';
     },
   },
 });
