@@ -24,14 +24,14 @@ export default function Router() {
           <Profile />
         </Route>
         <Route exact path="/movies">
-          {/* <Movies/> */}
+          <Movies />
           {/* раскомментировать верхнюю☝ строчку и удалить нижнюю☟ после реализации на беккенде */}
-          <UserMovies />
+          {/* <UserMovies /> */}
         </Route>
         {/* раскомментировать нижнюю☟ после реализации на беккенде */}
-        {/* <Route exact path="/profile/movies">
+        <Route exact path="/profile/movies">
           <UserMovies />
-        </Route> */}
+        </Route>
         <Route exact path="/movies/:movieId" component={MovieCard}></Route>
       </Switch>
       <ToastContainer theme="colored" />

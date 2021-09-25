@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
+  clearMoviesError,
   getTopMovies,
   loadMoreMovies,
   searchMovies,
@@ -37,6 +38,7 @@ export const Movies = () => {
   useEffect(() => {
     if (error.status) {
       toast.error(error.errorMessage);
+      dispatch(clearMoviesError);
     }
   }, [error.status]);
 

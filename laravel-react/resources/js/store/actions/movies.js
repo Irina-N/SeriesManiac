@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { movies as movieService } from '../../services/index';
 import {
   GET_TOP,
@@ -7,6 +7,7 @@ import {
   GET_RANDOM,
   GET_MORE,
   GET_SEARCH,
+  CLEAR_ERROR,
 } from '../ActionTypes/movies';
 
 const getTopMovies = createAsyncThunk(
@@ -16,7 +17,8 @@ const getTopMovies = createAsyncThunk(
 
 const getOneMovie = createAsyncThunk(
   GET_ONE,
-  async ({userId, movieId}) => await movieService.getOneMovie({userId, movieId}),
+  async ({ userId, movieId }) =>
+    await movieService.getOneMovie({ userId, movieId }),
 );
 
 const getRandomMovie = createAsyncThunk(
@@ -35,10 +37,11 @@ const searchMovies = createAsyncThunk(
     await movieService.searchMovies({ query, counter }),
 );
 
-const sendMovieRate = createAsyncThunk(
-  SEND_RATE,
-  async (payload) => movieService.sendMovieRate(payload)
+const sendMovieRate = createAsyncThunk(SEND_RATE, async (payload) =>
+  movieService.sendMovieRate(payload),
 );
+
+const clearMoviesError = createAction(CLEAR_ERROR);
 
 export {
   getTopMovies,
@@ -47,4 +50,5 @@ export {
   loadMoreMovies,
   searchMovies,
   sendMovieRate,
+  clearMoviesError,
 };

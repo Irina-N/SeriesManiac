@@ -5,16 +5,21 @@ import { UserMovieCard } from './UserMovieCard/UserMovieCard';
 import { getTopMovies } from '../../../store/actions/movies';
 import { useDebouncedCallback } from 'use-debounce';
 import './UserMovies.css';
-import { getUserMovies } from '../../../store/actions/currentUser';
+import {
+  clearUsersError,
+  getUserMovies,
+} from '../../../store/actions/currentUser';
 
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
 export const UserMovies = () => {
   const dispatch = useDispatch();
   const { id } = useSelector((state) => state.currentUserReducer.user);
-  const { movies } = useSelector((state) => state.moviesReducer);
+  // const { movies } = useSelector((state) => state.moviesReducer);
   // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
-  // const { movies: userMovies } = useSelector((state) => state.currentUserReducer);
+  const { movies: userMovies } = useSelector(
+    (state) => state.currentUserReducer,
+  );
   const [userMovies, setUserMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
   const debouncedSearch = useDebouncedCallback((query) => {
@@ -28,9 +33,9 @@ export const UserMovies = () => {
 
   useEffect(() => {
     if (id && !movies.length) {
-      dispatch(getTopMovies());
+      // dispatch(getTopMovies());
       // раскомментировать нижнюю☟ строчку и удалить верхнюю☝ после реализации на беккенде
-      // dispatch(getUserMovies(id));
+      dispatch(getUserMovies(id));
     } else {
       setUserMovies(movies);
     }
@@ -44,6 +49,13 @@ export const UserMovies = () => {
       setSearchText('');
     }
   }, [searchText]);
+
+  useEffect(() => {
+    if (error.status) {
+      toast.error(error.errorMessage);
+      dispatch(clearUsersError);
+    }
+  }, [error.status]);
 
   return (
     <div className="content main">

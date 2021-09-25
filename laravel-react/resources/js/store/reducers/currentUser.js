@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  logout,
-  register,
-  login,
-  change,
-  getError,
-} from '../actions/currentUser';
+import { logout, register, login, change } from '../actions/currentUser';
+import { CLEAR_ERROR } from '../ActionTypes/currentUser';
 
 const initialState = {
   preloader: false,
@@ -20,7 +15,12 @@ const initialState = {
 const currentUserSlice = createSlice({
   name: 'currentUser',
   initialState,
-  reducers: {},
+  reducers: {
+    [CLEAR_ERROR]: (state) => {
+      state.error.status = false;
+      state.error.errorMessage = '';
+    },
+  },
   extraReducers: {
     [change]: (state, action) => {
       state.user = action.payload;

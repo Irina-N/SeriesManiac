@@ -7,6 +7,7 @@ import MovieRateForm from '../MovieRateForm/MovieRateForm';
 import parse from 'html-react-parser';
 import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 import './MovieCard.css';
+import { clearUsersError } from '../../../store/actions/currentUser';
 
 export default function MovieCard() {
   const params = useParams();
@@ -14,8 +15,8 @@ export default function MovieCard() {
   const history = useHistory();
 
   const movieId = Number(params.movieId);
-  const userId = useSelector((state) => state.currentUserReducer.user.id);   
-  
+  const userId = useSelector((state) => state.currentUserReducer.user.id);
+
   const {
     ru_title,
     title,
@@ -31,24 +32,31 @@ export default function MovieCard() {
   }, [userId]);
 
   useEffect(() => {
-    if (movieId) {      
-      dispatch(getOneMovie({userId, movieId}));
+    if (movieId) {
+      dispatch(getOneMovie({ userId, movieId }));
     }
   }, []);
 
+  useEffect(() => {
+    if (error.status) {
+      toast.error(error.errorMessage);
+      dispatch(clearUsersError);
+    }
+  }, [error.status]);
+
   return (
-    <div className= 'content '>
+    <div className="content ">
       <Header />
-      <div className= 'movie-card '>
-        <img className= 'movie-poster ' src={image}></img>        
+      <div className="movie-card ">
+        <img className="movie-poster " src={image}></img>
         <h4>
           {ru_title} ({title})
         </h4>
         <p>{year}</p>
-        <div className= 'lead text-white text-break '>
+        <div className="lead text-white text-break ">
           {description ? parse(descriptionMapper(description)) : ''}
         </div>
-        <MovieRateForm movieId={movieId} userId={userId}/>
+        <MovieRateForm movieId={movieId} userId={userId} />
         {/* <button
           id= 'to-bookmarks-btn '
           type= 'button '

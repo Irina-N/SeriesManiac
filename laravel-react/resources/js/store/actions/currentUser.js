@@ -6,6 +6,7 @@ import {
   LOGOUT,
   CHANGE,
   GET_USER_MOVIES,
+  CLEAR_ERROR,
 } from '../ActionTypes/currentUser';
 
 export const login = createAsyncThunk(LOGIN, async (payload) =>
@@ -27,3 +28,5 @@ export const getUserMovies = createAsyncThunk(
 );
 
 export const change = createAction(CHANGE);
+
+export const clearUsersError = createAction(CLEAR_ERROR);
