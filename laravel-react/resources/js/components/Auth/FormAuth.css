@@ -43,29 +43,3 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
-
-.errorMessage {
-    position: fixed;
-    padding: 20px 30px;
-    width: 500px;
-    min-height: 200px;
-    left: calc(50% - 200px);
-    bottom: calc(50% - 100px);
-    background-color: #ccc;
-    border-radius: 8px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: space-around;
-    z-index: 3;
-}
-
-.errorMessage__text {
-    color: crimson;
-    font-size: 22px;
-    line-height: 28px;
-}
-
-.btnErrorMessageClose {
-    width: 80px;
-}

@@ -12,6 +12,7 @@ export default function Profile() {
     const {user} = useSelector(state => state.currentUserReducer);
     
     
+    
     useEffect(() => {      
         if (!user.id) {     
             history.push('/');      

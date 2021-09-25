@@ -1,9 +1,10 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { REQUEST_STATUSES } from '../../common/constants/constants.js';
 import './FormRegister.css';
 import { login, register } from '../../store/actions/currentUser';
+import Spinner from 'react-bootstrap/Spinner';
+import { toast } from 'react-toastify';
 
 export default function FormRegister (){
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ export default function FormRegister (){
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
+  const [shouldErrorBeShown, setShouldErrorBeShown] = useState(false);
 
-  const {requestStatus, user, error} = useSelector(state => state.currentUserReducer);
+  const {user, preloader, error} = useSelector(state => state.currentUserReducer);
 
   //TODO: сделать валидацию
 /* 
@@ -25,38 +26,29 @@ export default function FormRegister (){
  */
 
   useEffect(() => {
-    if(requestStatus === REQUEST_STATUSES.ERROR) {
-      setErrorMessageClassName('errorMessage');      
+    if (error.status && shouldErrorBeShown) {
+      toast.error(error.errorMessage);
+      setShouldErrorBeShown(false);
     }
-  }, [requestStatus]);
+  }, [error.status]);
 
   useEffect(() => {
     if (user.id) {     
       history.push('/profile');      
     }  
   }, [user]);
-
-  const handleOnClickErrorBtn = () => {
-    setErrorMessageClassName('errorMessage hidden');
-  }
   
   const handleSubmit = useCallback((e) => {
-    e.preventDefault();    
+    e.preventDefault();
+    setShouldErrorBeShown(true);
     const formData = {email, login, password, passwordConfirmation};
     dispatch(register(formData));       
-    setEmail('');
-    setLogin('');
     setPassword(''); 
     setPasswordConfirmation('');    
 }, [dispatch, email, login, password, passwordConfirmation]);
 
   return (
     <React.Fragment>
-      <div className={errorMessageClassName}>
-      <p className='errorMessage__text'>Ошибка {error.errorCode}</p>
-        <p className='errorMessage__text'> Пожалуйста, убедитесь в правильности заполнения полей.<br/>{error.errorDescription?.join(' ') ?? ''} </p>
-        <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
-      </div>
       <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
         <label htmlFor='email'>Электронная почта</label>
         <input 
@@ -100,7 +92,11 @@ export default function FormRegister (){
 
         <input type='submit' value='ЗАРЕГИСТРИРОВАТЬСЯ'></input>
       </form>
-    </React.Fragment>            
+      { preloader && (
+              <div id='spinner' className='d-flex justify-content-center align-items-center'>
+                <Spinner animation='border' variant='warning' />
+              </div>)}
+    </React.Fragment>           
   );
 };
 

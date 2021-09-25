@@ -21,8 +21,8 @@ class CurrentUser {
     });
   }
 
-  logout() {
-    return this._http.load('api/logout');
+  logout(){    
+    return this._http.load('/api/logout');
   }
 
   getUserMovies(payload) {
@@ -32,6 +32,7 @@ class CurrentUser {
       contentType: ContentType.JSON,
     });
   }
+  
 }
 
 export { CurrentUser };

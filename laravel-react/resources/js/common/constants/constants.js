@@ -1,10 +1,3 @@
-export const REQUEST_STATUSES = {
-    STARTED: 'started',
-    SUCCESS: 'success',
-    ERROR: 'error',
-    IDLE: 'idle'
-}
-
 export const HttpHeader = {
     CONTENT_TYPE: 'Content-Type',
   };

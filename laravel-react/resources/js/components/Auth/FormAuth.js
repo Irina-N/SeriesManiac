@@ -1,9 +1,10 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { REQUEST_STATUSES } from '../../common/constants/constants.js';
 import './FormAuth.css';
 import { login } from '../../store/actions/currentUser';
+import Spinner from 'react-bootstrap/Spinner';
+import { toast } from 'react-toastify';
 
 
 export default function FormAuth () {
@@ -12,28 +13,27 @@ export default function FormAuth () {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessageClassName, setErrorMessageClassName] = useState('errorMessage hidden');
+  const [shouldErrorBeShown, setShouldErrorBeShown] = useState(false);
 
-  const {requestStatus, user, error} = useSelector(state => state.currentUserReducer);
+  const {preloader, user, error} = useSelector(state => state.currentUserReducer);
   
   useEffect(() => {
-    if(requestStatus === REQUEST_STATUSES.ERROR) {
-      setErrorMessageClassName('errorMessage');      
+    if (error.status && shouldErrorBeShown) {
+      toast.error(error.errorMessage);
+      setShouldErrorBeShown(false);
     }
-  }, [requestStatus, error]);
+  }, [error.status]);
 
   useEffect(() => {
     if (user.id) {     
       history.push('/profile');      
     }  
   });
-
-  const handleOnClickErrorBtn = () => {
-    setErrorMessageClassName('errorMessage hidden');
-  };
+  
 
   const handleSubmit = useCallback((e) => {
-    e.preventDefault();    
+    e.preventDefault();
+    setShouldErrorBeShown(true);
     const formData = {email, password};       
     dispatch(login(formData));    
     setPassword('');        
@@ -41,12 +41,7 @@ export default function FormAuth () {
 
   
   return (
-    <React.Fragment>
-      <div className={errorMessageClassName}>
-        <p className='errorMessage__text'>Ошибка {error.errorCode}</p>
-        <p className='errorMessage__text'> Пожалуйста, убедитесь в правильности заполнения полей.<br/>{error.errorDescription?.join(' ') ?? ''} </p>
-        <button className='btnErrorMessageClose' onClick={handleOnClickErrorBtn}>OK</button>
-      </div>
+    <React.Fragment>      
       <h3 className='center-text'>Заходите!</h3>        
       <form className='form__auth' onSubmit={handleSubmit} name='auth'>
           <label htmlFor='email'>Электронная почта</label>
@@ -68,7 +63,11 @@ export default function FormAuth () {
           </input>
 
           <input type='submit' value='ВОЙТИ'></input>
-        </form>        
+        </form>
+        { preloader && (
+              <div id='spinner' className='d-flex justify-content-center align-items-center'>
+                <Spinner animation='border' variant='warning' />
+              </div>)}        
       </React.Fragment>
   );
 };
