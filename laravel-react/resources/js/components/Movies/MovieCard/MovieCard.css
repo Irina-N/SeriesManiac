@@ -6,12 +6,6 @@
     gap: 2vh;
 }
 
-#spinner{ 
-    position: fixed;
-    top: -10vh;
-    height: 50vh;
-}
-
 .movie-poster {
     max-height: 55vh;
 }

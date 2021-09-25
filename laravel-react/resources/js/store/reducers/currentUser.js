@@ -32,7 +32,7 @@ const currentUserSlice = createSlice({
       [register.rejected]: (state, action) => {
           state.preloader = false;
           state.error.status = true;
-          state.error.errorMessage = action.error.message;
+          state.error.errorMessage = 'Пожалуйста, убедитесь в правильности заполнения полей';
       },
       [login.pending]: (state, action) => {
         state.preloader = true;
@@ -48,7 +48,7 @@ const currentUserSlice = createSlice({
       [login.rejected]: (state, action) => {
         state.preloader = false;
         state.error.status = true;
-        state.error.errorMessage = action.error.message;
+        state.error.errorMessage = 'Неправильный логин или пароль';
       },
       [logout.pending]: (state) => {
         state.preloader = true;

@@ -22,7 +22,7 @@ class CurrentUser {
   }
 
   logout(){    
-    return this._http.load('api/logout');
+    return this._http.load('/api/logout');
   }
   
 }
