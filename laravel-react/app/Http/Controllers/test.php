@@ -14,18 +14,8 @@ class test extends Controller
 {
     public function test()
     {   
-        $data['userId'] = 1;
-        $userMovies = Grade::select('movies_id', 'grade')->where('user_id', $data)->get();
-        
-        for($a = 0; $a < count($userMovies); $a++){
-            $movies[$a] = Movies::select('title', 'ru_title', 'year', 'image')->where('id', $userMovies[$a]['movies_id'])->first();
-        }
-
-        for($a = 0; $a < count($userMovies); $a++){
-            $movies[$a]['grade'] = $userMovies[$a]['grade'];
-        }
-
-        return response()->json($movies, 200);
+        $data = Movies::limit(200)->get();
+        return $data;
     }
 
 

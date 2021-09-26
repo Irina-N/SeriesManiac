@@ -20,7 +20,8 @@ class CreateMoviesTable extends Migration
             $table->longText('description', 1500);
             $table->string('ru_title');
             $table->smallInteger('year');
-            $table->float('raiting')->nullable();
+            $table->float('rating')->nullable();
+            $table->float('api_rating')->nullable();
             $table->integer('watched')->nullable();
             $table->integer('place')->nullable();
             $table->string('status')->nullable();
