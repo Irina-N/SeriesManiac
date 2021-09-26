@@ -1,72 +1,70 @@
 .form__movie-rate {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-    align-items: flex-end;
-    justify-items: flex-start; 
-    padding-bottom: 3rem;   
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  justify-items: flex-start;
+  padding-bottom: 3rem;
 }
 
 .form__movie-rate__title {
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 2rem; 
-    margin-bottom: 1rem;   
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-
 .stars_block {
-    display: flex;
-    align-items: center;
-    justify-items: flex-end;
-    gap: 8px;
-    max-width: 90%;
+  display: flex;
+  align-items: center;
+  justify-items: flex-end;
+  gap: 8px;
+  max-width: 90%;
 }
 
 .btn_send_rate,
 .btn_edit_rate {
-    color: #ffa500;
-    padding: 0;    
-    width: 4rem;
-    margin-left: 4vw;
-    /* height: 5vmin; */
-    font-weight: 500;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  color: #ffa500;
+  padding: 0;
+  width: 4rem;
+  margin-left: 4vw;
+  /* height: 5vmin; */
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .btn_send_rate:hover,
 .btn_edit_rate:hover {
-    color: #45a049; 
+  color: #45a049;
 }
 
 .btn_send_rate:disabled:hover {
-    color: #ccccb3;
+  color: #ccccb3;
 }
 
 .btn_send_rate:disabled {
-    cursor: default;
-    color: #ccccb3; 
+  cursor: default;
+  color: #ccccb3;
 }
 
 .fa-check {
-    font-size: 5vmin;
+  font-size: 5vmin;
 }
 
 .fa-pen {
-    font-size: 4vmin;
+  font-size: 4vmin;
 }
 
 .userMovieRate {
-    cursor: pointer;
-    color: #ccccb3;
-    font-size: 5vmin;
-    
+  cursor: pointer;
+  color: #ccccb3;
+  font-size: 5vmin;
 }
 
 .userMovieRate[disabled] {
-    cursor: default;
+  cursor: default;
 }

@@ -1,43 +1,49 @@
-.card a {
+.user-movies .card a {
   text-decoration: none;
 }
-.card .row .col-md-4 {
+.user-movies .card .row .col-md-4 {
   max-width: 160px;
 }
-.card .row .col-md-8 {
+.user-movies .card .row img {
+  opacity: 0.8;
+}
+.user-movies .card:hover .row img {
+  opacity: 1;
+}
+.user-movies .card .row .col-md-8 {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
 }
-.card .card-body {
+.user-movies .card .card-body {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.card .card-body .fa-star {
+.user-movies .card .card-body .fa-star {
   font-size: 20px;
   color: rgb(204, 204, 179);
 }
-.card .card-body .cheked {
+.user-movies .card .card-body .cheked {
   color: rgb(255, 165, 0);
 }
 @media (max-width: 768px) {
-  .card .row {
+  .user-movies .card .row {
     justify-content: center;
   }
-  .card .row .col-md-4 {
+  .user-movies .card .row .col-md-4 {
     max-width: 320px;
   }
-  .card .card-body {
+  .user-movies .card .card-body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
   }
-  .card .card-body h4,
-  .card .card-body h5,
-  .card .card-body h4,
-  .card .card-body .stars {
+  .user-movies .card .card-body h4,
+  .user-movies .card .card-body h5,
+  .user-movies .card .card-body h4,
+  .user-movies .card .card-body .stars {
     width: 100%;
   }
 }

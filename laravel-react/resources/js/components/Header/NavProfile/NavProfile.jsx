@@ -5,11 +5,7 @@ import './NavProfile.css';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../store/actions/currentUser';
 
-export const NavProfile = ({
-  userName,
-  // userAvatar,
-  userId,
-}) => {
+export const NavProfile = ({ userName }) => {
   const dispatch = useDispatch();
 
   const onLogout = () => {

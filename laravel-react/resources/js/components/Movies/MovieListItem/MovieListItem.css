@@ -1,21 +1,29 @@
 .movie-list-item {
-    text-decoration: none;
+  text-decoration: none;
 }
-
+.movie-list-item:hover {
+  text-decoration: none;
+}
+.movie-list-item .card img {
+  opacity: 0.8;
+}
+.movie-list-item:hover .card img {
+  opacity: 1;
+}
 .card-body {
-    padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .card-title {
-    font-size: 1.15rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  font-size: 1.15rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .card-text {
-    font-size: .9rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  font-size: 0.9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
