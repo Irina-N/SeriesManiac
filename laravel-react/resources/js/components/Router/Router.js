@@ -25,10 +25,7 @@ export default function Router() {
         </Route>
         <Route exact path="/movies">
           <Movies />
-          {/* раскомментировать верхнюю☝ строчку и удалить нижнюю☟ после реализации на беккенде */}
-          {/* <UserMovies /> */}
         </Route>
-        {/* раскомментировать нижнюю☟ после реализации на беккенде */}
         <Route exact path="/profile/movies">
           <UserMovies />
         </Route>
