@@ -28,6 +28,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/register', [RegisterController::class, 'register']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+Route::post('/profile/recommend', [ProfileController::class, 'recommend']);
 Route::post('/profile/movies', [ProfileController::class, 'getUserMovies']);
 Route::post('/profile/edit', [ProfileController::class, 'userDataUpdate']);
 Route::post('/movies', [MoviesController::class, 'getMovies']);
