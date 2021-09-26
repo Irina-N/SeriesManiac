@@ -32,6 +32,8 @@ export const Movies = () => {
   useEffect(() => {
     if (!topMovies.length) {
       dispatch(getTopMovies(paginateCounter));
+      setSearchText('');
+      setSearchQuery(null);
     }
   }, []);
 
@@ -95,7 +97,7 @@ export const Movies = () => {
           </button>
         </form>
       </div>
-      <div className="album py-5 bg-light">
+      <div className="album py-5 bg-light w-100">
         <div className="container">
           <div id="film-container" className="row align-items-center">
             {(preloader && !isLoadMore) || !topMovies || !topMovies.length ? (
