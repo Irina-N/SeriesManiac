@@ -1,10 +1,13 @@
 import React, {useCallback, useState, useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
-import './FormAuth.css';
-import { login } from '../../store/actions/currentUser';
+
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
+
+import { login } from '../../store/actions/currentUser';
+
+import './FormAuth.css';
 
 
 export default function FormAuth () {

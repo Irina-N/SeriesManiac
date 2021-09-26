@@ -1,9 +1,11 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { useHistory } from 'react-router-dom';
+
 import Header from '../Header/Header';
-import './Profile.css';
 import { logout } from '../../store/actions/currentUser';
+
+import './Profile.css';
 
 
 export default function Profile() {
@@ -11,11 +13,9 @@ export default function Profile() {
     const dispatch = useDispatch();    
     const {user} = useSelector(state => state.currentUserReducer);
     
-    
-    
-    useEffect(() => {      
+    useEffect(() => {
         if (!user.id) {     
-            history.push('/');      
+            history.push('/');
         } 
     }, [user]);
 
@@ -26,8 +26,6 @@ export default function Profile() {
     const handleToMovies = () => {
         history.push('/movies');
     }
-
-
 
     return (
         <div className='content'> 

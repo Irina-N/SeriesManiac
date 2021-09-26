@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory  } from 'react-router-dom';
+
 import FormAuth from './FormAuth';
 import Header from '../Header/Header';
+
 import './Auth.css';
 
 export default function Auth() {

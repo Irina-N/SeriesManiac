@@ -1,11 +1,13 @@
 import React, {useCallback, useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {FETCH_URL} from '../../../common/constants/constants';
-import {sendMovieRate} from '../../../store/actions/movies'
-import './MovieRateForm.css';
+
 import Spinner from 'react-bootstrap/Spinner';
 
-//TODO: всплывающие подсказки
+import {FETCH_URL} from '../../../common/constants/constants';
+import {sendMovieRate} from '../../../store/actions/movies'
+
+import './MovieRateForm.css';
+
 
 export default function MovieRateForm (props) {
     const dispatch = useDispatch();   

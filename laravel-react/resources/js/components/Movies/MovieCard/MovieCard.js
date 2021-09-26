@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getOneMovie } from '../../../store/actions/movies';
-import Header from '../../Header/Header';
-import MovieRateForm from '../MovieRateForm/MovieRateForm';
+
 import parse from 'html-react-parser';
 import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
-import './MovieCard.css';
 import Spinner from 'react-bootstrap/Spinner';
+
+import Header from '../../Header/Header';
+import MovieRateForm from '../MovieRateForm/MovieRateForm';
+import { getOneMovie } from '../../../store/actions/movies';
 import { clearUsersError } from '../../../store/actions/currentUser';
+
+import './MovieCard.css';
 
 
 export default function MovieCard() {
@@ -18,7 +21,6 @@ export default function MovieCard() {
 
   const movieId = Number(params.movieId);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
-  //const rate = Number(useSelector((state) => state.moviesReducer.currentMovie.grade)) || null;   
   const { preloader, error } = useSelector((state) => state.moviesReducer);  
   
   const currentMovie = useSelector((state) => state.moviesReducer.currentMovie);

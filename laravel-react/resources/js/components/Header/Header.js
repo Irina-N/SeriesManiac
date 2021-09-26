@@ -1,7 +1,9 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import { useSelector } from 'react-redux';
+
 import { NavProfile } from './NavProfile/NavProfile';
+
 import './Header.css';
 
 export default function Header() {

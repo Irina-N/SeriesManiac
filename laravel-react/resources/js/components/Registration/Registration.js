@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory  } from 'react-router-dom';
+
 import Header from '../Header/Header';
 import FormRegister from './FormRegister';
-import { useHistory  } from 'react-router-dom';
+
 import './Registration.css';
 
 export default function Registration () {
