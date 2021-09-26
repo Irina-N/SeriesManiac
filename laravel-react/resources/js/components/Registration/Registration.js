@@ -17,16 +17,16 @@ export default function Registration () {
     <div className='content'> 
       <Header/>
       <h3 className='center-text'>Регистрация</h3>
-      <FormRegister/> <h3 className='center-text'>Уже есть аккаунт?</h3>
-            <div className='content-back'>
-            <button 
-                    className='btn btn-warning'                    
-                    onClick={handleOnClick}
-                    id='login_btn'>
-                        Войти
-                </button>           
-
-            </div>      
+      <FormRegister/> 
+      <h3 className='center-text'>Уже есть аккаунт?</h3>
+      <div className='content-back bg-dark'>
+        <button 
+        className='btn btn-warning'                    
+        onClick={handleOnClick}
+        id='login_btn'>
+        Войти
+        </button>           
+      </div>      
     </div>
   );
 };

@@ -52,7 +52,7 @@ export default function FormRegister (){
 
   return (
     <React.Fragment>
-      <form className='form__signup' onSubmit={handleSubmit} name='sing_up'>
+      <form className='form__signup bg-dark' onSubmit={handleSubmit} name='sing_up'>
         <label htmlFor='email'>Электронная почта</label>
         <input 
           required

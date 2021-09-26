@@ -75,73 +75,75 @@ export default function MovieRateForm (props) {
                
     return (        
         <section className='form__movie-rate' >
-            <h5 className='form__movie-rate__title'>Ваша оценка</h5>            
-            <div className='stars_block' ref={stars}>
-                <i 
-                    className='fas fa-star userMovieRate'
-                    disabled={isRated}
-                    id='movieRate1' 
-                    rate='1'
-                    hint='Не осилил(а)'
-                    onMouseEnter={handleOnMouseEnter}
-                    onMouseLeave={handleOnMouseLeave}
-                    onClick={handleOnClick}>
-                </i>
+            <h5 className='form__movie-rate__title'>Ваша оценка</h5>
+            <div className='form__movie-rate__content bg-dark'>            
+                <div className='stars_block' ref={stars}>
+                    <i 
+                        className='fas fa-star userMovieRate'
+                        disabled={isRated}
+                        id='movieRate1' 
+                        rate='1'
+                        hint='Не осилил(а)'
+                        onMouseEnter={handleOnMouseEnter}
+                        onMouseLeave={handleOnMouseLeave}
+                        onClick={handleOnClick}>
+                    </i>
 
-                <i 
-                    className='fas fa-star userMovieRate'
-                    disabled={isRated}
-                    id='movieRate2' 
-                    rate='2'
-                    hint='Жаль потраченного времени'
-                    onMouseEnter={handleOnMouseEnter}
-                    onMouseLeave={handleOnMouseLeave}
-                    onClick={handleOnClick}>
-                </i>
+                    <i 
+                        className='fas fa-star userMovieRate'
+                        disabled={isRated}
+                        id='movieRate2' 
+                        rate='2'
+                        hint='Жаль потраченного времени'
+                        onMouseEnter={handleOnMouseEnter}
+                        onMouseLeave={handleOnMouseLeave}
+                        onClick={handleOnClick}>
+                    </i>
 
-                <i 
-                    className='fas fa-star userMovieRate'
-                    disabled={isRated}
-                    id='movieRate3'
-                    rate='3'
-                    hint='Что-то понравилось, что-то - нет'
-                    onMouseEnter={handleOnMouseEnter}
-                    onMouseLeave={handleOnMouseLeave}
-                    onClick={handleOnClick}>
-                </i>
+                    <i 
+                        className='fas fa-star userMovieRate'
+                        disabled={isRated}
+                        id='movieRate3'
+                        rate='3'
+                        hint='Что-то понравилось, что-то - нет'
+                        onMouseEnter={handleOnMouseEnter}
+                        onMouseLeave={handleOnMouseLeave}
+                        onClick={handleOnClick}>
+                    </i>
 
-                <i 
-                    className='fas fa-star userMovieRate'
-                    disabled={isRated}
-                    id='movieRate4'  
-                    rate='4'
-                    hint='Посмотрел(а) с удовольствием'
-                    onMouseEnter={handleOnMouseEnter}
-                    onMouseLeave={handleOnMouseLeave}
-                    onClick={handleOnClick}>
-                </i>
+                    <i 
+                        className='fas fa-star userMovieRate'
+                        disabled={isRated}
+                        id='movieRate4'  
+                        rate='4'
+                        hint='Посмотрел(а) с удовольствием'
+                        onMouseEnter={handleOnMouseEnter}
+                        onMouseLeave={handleOnMouseLeave}
+                        onClick={handleOnClick}>
+                    </i>
 
-                <i 
-                    className='fas fa-star userMovieRate'
-                    disabled={isRated}
-                    id='movieRate5' 
-                    rate='5'
-                    hint='Вау!'                
-                    onMouseEnter={handleOnMouseEnter}
-                    onMouseLeave={handleOnMouseLeave}
-                    onClick={handleOnClick}>
-                </i>           
-            </div>        
-            <button 
-                className={`btn btn_send_rate ${isRated ? 'hidden' : ''}`}
-                disabled={!isHaveChoice}
-                onClick={handleSubmit}>
-                    <i className='fas fa-check btn-icon'></i>
-            </button>
+                    <i 
+                        className='fas fa-star userMovieRate'
+                        disabled={isRated}
+                        id='movieRate5' 
+                        rate='5'
+                        hint='Вау!'                
+                        onMouseEnter={handleOnMouseEnter}
+                        onMouseLeave={handleOnMouseLeave}
+                        onClick={handleOnClick}>
+                    </i>           
+                </div>        
+                <button 
+                    className={`btn btn_send_rate ${isRated ? 'hidden' : ''}`}
+                    disabled={!isHaveChoice}
+                    onClick={handleSubmit}>
+                        <i className='fas fa-check btn-icon'></i>
+                </button>
 
-            <button className={`btn btn_edit_rate ${isRated ? '' : 'hidden'}`}>
-                    <i className='fas fa-pen btn-icon' onClick={handleEditRate}></i>
-            </button> 
+                <button className={`btn btn_edit_rate ${isRated ? '' : 'hidden'}`}>
+                        <i className='fas fa-pen btn-icon' onClick={handleEditRate}></i>
+                </button> 
+            </div>
         </section>                    
     );
 }

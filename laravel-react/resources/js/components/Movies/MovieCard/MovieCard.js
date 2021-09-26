@@ -58,14 +58,14 @@ export default function MovieCard() {
               </div>
             ) : (
         <React.Fragment>
-          <img className='movie-poster' src={currentMovie.big_image}></img>        
-          <h4> 
-            {currentMovie.ru_title} ({currentMovie.title})
-          </h4>
-          <p>{currentMovie.year}</p>
-          <div className='lead text-white text-break'>
-            {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
-          </div>
+          <div className='movie-card__main-contentbg-dark'>
+            <img className='movie-poster' src={currentMovie.big_image}></img>        
+            <h4>{currentMovie.ru_title} ({currentMovie.title})</h4>
+            <p>{currentMovie.year}</p>
+            <div className='lead text-white text-break'>
+              {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
+            </div>
+          </div>        
           <MovieRateForm movieId={movieId} userId={userId} rate={rate}/>
           {/* <button
             id='to-bookmarks-btn'
@@ -74,7 +74,7 @@ export default function MovieCard() {
           >
             В закладки
           </button> */}
-        </React.Fragment>)} 
+        </React.Fragment>)}
       </div>
     </div>
   );
