@@ -1,9 +1,6 @@
 .content-back {
   margin: 0 auto;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.3);
   padding: 20px;
-  width: 800px;
   display: flex;
   justify-content: center;
 }
@@ -20,3 +17,4 @@
   border-radius: 4px;
   cursor: pointer;
 }
+

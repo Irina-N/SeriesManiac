@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import FormAuth from './FormAuth';
 import Header from '../Header/Header';
+
 import './Auth.css';
 
 export default function Auth() {
@@ -12,11 +13,11 @@ export default function Auth() {
   };
 
   return (
-    <div className="content">
+    <div className="content-narrow">
       <Header />
       <FormAuth />
       <h3 className="center-text">Ещё нет аккаунта?</h3>
-      <div className="content-back">
+      <div className="content-back bg-dark">
         <button
           className="btn btn-warning"
           onClick={handleOnClick}

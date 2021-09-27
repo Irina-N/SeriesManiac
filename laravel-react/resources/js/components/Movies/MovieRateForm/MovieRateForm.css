@@ -1,4 +1,9 @@
 .form__movie-rate {
+  width: 100%;
+  
+}
+
+.form__movie-rate__content{
   display: flex;
   flex-flow: wrap;
   justify-content: center;
