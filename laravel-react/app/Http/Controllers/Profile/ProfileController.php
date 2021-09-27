@@ -109,7 +109,7 @@ class ProfileController extends Controller
         arsort($recommendations);
 
         foreach($recommendations as $key){
-            array_push($returnData, Movies::select('id', 'title', 'ru_title', 'image', 'year')->where('id', key($recommendations))->first());
+            array_push($returnData, Movies::select('id', 'title', 'ru_title', 'image', 'year', 'api_rating')->where('id', key($recommendations))->first());
             next($recommendations);
         }
 
