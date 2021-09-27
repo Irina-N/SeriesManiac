@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Stars as Rating } from './Stars/Stars';
-import './UserMovieCard.css';
+import { Rating } from '../../../common/Rating/Rating';
 
-export const UserMovieCard = ({
+export const RecommendMovieCard = ({
   id,
   image,
   ru_title,
   title,
   year,
-  grade: rate,
+  api_rating: rate,
 }) => {
   return (
     <div className="card mb-3 w-100">
@@ -23,7 +22,7 @@ export const UserMovieCard = ({
               <h4 className="card-title text-dark w-25">{ru_title}</h4>
               <h5 className="card-title text-dark w-25">({title})</h5>
               <h5 className="card-text w-25 text-muted text-center">{year}</h5>
-              <Rating rate={rate} className="w-25" />
+              <Rating rate={rate} id={id} className="w-25" />
             </div>
           </div>
         </div>

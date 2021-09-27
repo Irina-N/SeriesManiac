@@ -40,7 +40,7 @@ export const Movies = () => {
   useEffect(() => {
     if (error.status) {
       toast.error(error.errorMessage);
-      dispatch(clearMoviesError);
+      dispatch(clearMoviesError());
     }
   }, [error.status]);
 

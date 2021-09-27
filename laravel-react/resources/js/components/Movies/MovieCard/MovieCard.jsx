@@ -42,7 +42,7 @@ export default function MovieCard() {
   useEffect(() => {
     if (error.status) {
       toast.error(error.errorMessage);
-      dispatch(clearUsersError);
+      dispatch(clearUsersError());
       history.push('/movies');
     }
   }, [error.status]);
@@ -50,25 +50,36 @@ export default function MovieCard() {
   return (
     <div className="content">
       <Header />
-      <div className='movie-card'>
-        { preloader ? (
-              <div id='spinner' className='d-flex justify-content-center align-items-center'>
-                <Spinner animation='border' variant='warning' />
-              </div>
-            ) : (
-        <React.Fragment>
-          <img className='movie-poster' src={currentMovie.big_image}></img>        
-          <div className='movie-header'>
-          <h4 className='movie_ru-title'>{currentMovie.ru_title || currentMovie.title}</h4>
-          {currentMovie.ru_title ? (<h5 className='movie_title'>{currentMovie.title}</h5>) : ''}
-          <p className='movie_year'>{currentMovie.year}</p>
+      <div className="movie-card">
+        {preloader ? (
+          <div
+            id="spinner"
+            className="d-flex justify-content-center align-items-center"
+          >
+            <Spinner animation="border" variant="warning" />
           </div>
-          <div className='movie-desc bg-dark lead text-white text-break'>
-            {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
-          </div>
-                
-          <MovieRateForm movieId={movieId} userId={userId} rate={rate}/>         
-        </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <img className="movie-poster" src={currentMovie.big_image}></img>
+            <div className="movie-header">
+              <h4 className="movie_ru-title">
+                {currentMovie.ru_title || currentMovie.title}
+              </h4>
+              {currentMovie.ru_title ? (
+                <h5 className="movie_title">{currentMovie.title}</h5>
+              ) : (
+                ''
+              )}
+              <p className="movie_year">{currentMovie.year}</p>
+            </div>
+            <div className="movie-desc bg-dark lead text-white text-break">
+              {currentMovie.description
+                ? parse(descriptionMapper(currentMovie.description))
+                : ''}
+            </div>
+
+            <MovieRateForm movieId={movieId} userId={userId} rate={rate} />
+          </React.Fragment>
         )}
       </div>
     </div>

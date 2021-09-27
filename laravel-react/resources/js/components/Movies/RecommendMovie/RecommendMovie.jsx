@@ -2,28 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Header from '../../Header/Header';
-import { UserMovieCard } from './UserMovieCard/UserMovieCard';
+import { RecommendMovieCard } from './RecommendMovieCard/RecommendMovieCard';
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
 import Spinner from 'react-bootstrap/Spinner';
-import './UserMovies.css';
 import {
   clearUsersError,
-  getUserMovies,
+  getRecommendMovies,
 } from '../../../store/actions/currentUser';
 
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
-export const UserMovies = () => {
+export const RecommendMovies = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useSelector((state) => state.currentUserReducer.user);
   const {
-    userMovies: movies,
+    recommendMovies: movies,
     error,
     preloader,
   } = useSelector((state) => state.currentUserReducer);
-  const [userMovies, setUserMovies] = useState([]);
+  const [recommendMovies, setRecommendMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
   const debouncedSearch = useDebouncedCallback((query) => {
     const searchResult = movies.filter(
@@ -31,7 +30,7 @@ export const UserMovies = () => {
         movie.ru_title.toLowerCase().includes(query.toLowerCase()) ||
         movie.title.toLowerCase().includes(query.toLowerCase()),
     );
-    setUserMovies(searchResult);
+    setRecommendMovies(searchResult);
   }, DEBOUNCE_WAIT_MILLISECONDS);
 
   useEffect(() => {
@@ -41,12 +40,13 @@ export const UserMovies = () => {
   }, [id]);
 
   useEffect(() => {
+    dispatch(clearUsersError);
     if (id) {
-      dispatch(getUserMovies(id))
+      dispatch(getRecommendMovies(id))
         .unwrap()
-        .then((res) => setUserMovies(res));
+        .then((res) => setRecommendMovies(res));
     } else {
-      setUserMovies(movies);
+      setRecommendMovies(movies);
     }
   }, []);
 
@@ -54,7 +54,7 @@ export const UserMovies = () => {
     if (searchText.trim().length > 0) {
       debouncedSearch(searchText.trim());
     } else {
-      setUserMovies(movies);
+      setRecommendMovies(movies);
       setSearchText('');
     }
   }, [searchText]);
@@ -91,9 +91,9 @@ export const UserMovies = () => {
           </div>
 
           <div className="container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies">
-            {userMovies.length &&
-              userMovies.map((movie) => {
-                return <UserMovieCard key={movie.id} {...movie} />;
+            {recommendMovies.length &&
+              recommendMovies.map((movie) => {
+                return <RecommendMovieCard key={movie.id} {...movie} />;
               })}
           </div>
         </React.Fragment>

@@ -10,13 +10,12 @@ import { login, clearUsersError } from '../../store/actions/currentUser';
 import './FormAuth.css';
 
 export default function FormAuth() {
-
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+
   const { preloader, user, error } = useSelector(
     (state) => state.currentUserReducer,
   );
@@ -24,7 +23,7 @@ export default function FormAuth() {
   useEffect(() => {
     if (error.status) {
       toast.error(error.errorMessage);
-      dispatch(clearUserError);
+      dispatch(clearUsersError());
     }
   }, [error.status]);
 
