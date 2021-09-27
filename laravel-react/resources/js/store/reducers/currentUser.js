@@ -5,13 +5,15 @@ import {
   login,
   change,
   getUserMovies,
+  getRecommendMovies,
+  clearUsersError,
 } from '../actions/currentUser';
-import { CLEAR_ERROR } from '../ActionTypes/currentUser';
 
 const initialState = {
   preloader: false,
   user: {},
   userMovies: [],
+  recommendMovies: [],
   error: {
     status: false,
     errorMessage: '',
@@ -21,13 +23,12 @@ const initialState = {
 const currentUserSlice = createSlice({
   name: 'currentUser',
   initialState,
-  reducers: {
-    [CLEAR_ERROR]: (state) => {
+  reducers: {},
+  extraReducers: {
+    [clearUsersError]: (state) => {
       state.error.status = false;
       state.error.errorMessage = '';
     },
-  },
-  extraReducers: {
     [change]: (state, action) => {
       state.user = action.payload;
     },
@@ -95,6 +96,22 @@ const currentUserSlice = createSlice({
       state.preloader = false;
       state.error.status = true;
       state.error.errorMessage = 'FAILED_LOAD_USER_MOVIES';
+    },
+    [getRecommendMovies.pending]: (state, action) => {
+      state.preloader = true;
+      state.error.status = false;
+      state.error.errorMessage = '';
+    },
+    [getRecommendMovies.fulfilled]: (state, action) => {
+      state.preloader = false;
+      state.error.status = false;
+      state.error.errorMessage = '';
+      state.recommendMovies = action.payload;
+    },
+    [getRecommendMovies.rejected]: (state, action) => {
+      state.preloader = false;
+      state.error.status = true;
+      state.error.errorMessage = 'FAILED_LOAD_RECOMMEND_MOVIES';
     },
   },
 });

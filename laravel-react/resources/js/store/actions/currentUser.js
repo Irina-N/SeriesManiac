@@ -6,7 +6,8 @@ import {
   LOGOUT,
   CHANGE,
   GET_USER_MOVIES,
-  CLEAR_ERROR,
+  GET_RECOMMEND_MOVIES,
+  CLEAR_USER_ERROR,
 } from '../ActionTypes/currentUser';
 
 export const login = createAsyncThunk(LOGIN, async (payload) =>
@@ -27,6 +28,11 @@ export const getUserMovies = createAsyncThunk(
   async (payload) => await currentUserService.getUserMovies(payload),
 );
 
+export const getRecommendMovies = createAsyncThunk(
+  GET_RECOMMEND_MOVIES,
+  async (payload) => await currentUserService.getRecommendMovies(payload),
+);
+
 export const change = createAction(CHANGE);
 
-export const clearUsersError = createAction(CLEAR_ERROR);
+export const clearUsersError = createAction(CLEAR_USER_ERROR);

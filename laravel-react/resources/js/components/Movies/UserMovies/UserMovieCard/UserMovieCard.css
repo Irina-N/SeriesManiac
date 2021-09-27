@@ -25,7 +25,7 @@
   font-size: 20px;
   color: rgb(204, 204, 179);
 }
-.user-movies .card .card-body .cheked {
+.user-movies .card .card-body .checked {
   color: rgb(255, 165, 0);
 }
 @media (max-width: 768px) {

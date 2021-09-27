@@ -7,7 +7,7 @@ import {
   GET_RANDOM,
   GET_MORE,
   GET_SEARCH,
-  CLEAR_ERROR,
+  CLEAR_MOVIE_ERROR,
 } from '../ActionTypes/movies';
 
 const getTopMovies = createAsyncThunk(
@@ -41,7 +41,7 @@ const sendMovieRate = createAsyncThunk(SEND_RATE, async (payload) =>
   movieService.sendMovieRate(payload),
 );
 
-const clearMoviesError = createAction(CLEAR_ERROR);
+const clearMoviesError = createAction(CLEAR_MOVIE_ERROR);
 
 export {
   getTopMovies,

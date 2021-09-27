@@ -21,7 +21,7 @@ class CurrentUser {
     });
   }
 
-  logout(){    
+  logout() {
     return this._http.load('/api/logout');
   }
 
@@ -32,7 +32,14 @@ class CurrentUser {
       contentType: ContentType.JSON,
     });
   }
-  
+
+  getRecommendMovies(payload) {
+    return this._http.load('/api/profile/recommend', {
+      method: HttpMethod.POST,
+      payload: JSON.stringify({ userId: payload }),
+      contentType: ContentType.JSON,
+    });
+  }
 }
 
 export { CurrentUser };

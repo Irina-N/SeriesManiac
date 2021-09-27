@@ -26,13 +26,12 @@ export const NavProfile = ({ userName }) => {
         <span className="text-light userName">{userName}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Divider />
         <Dropdown.Item as={Link} to={'/movies'}>
           Все сериалы
         </Dropdown.Item>
         <Dropdown.Item as={Link} to={'/user/movies'}>
           Мои сериалы
-        </Dropdown.Item>        
+        </Dropdown.Item>
         <Dropdown.Item as={Link} to={'/user/recommendations'}>
           Рекомендации
         </Dropdown.Item>
