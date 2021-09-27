@@ -1,6 +1,6 @@
 export const descriptionMapper = (htmlAsText) => {
-  if (!htmlAsText || !htmlAsText.length) return '';
-
+  if (!htmlAsText || !htmlAsText.length) return '';  
+  
   let newHtmlText = htmlAsText.replaceAll('</a>', '');
 
   while (newHtmlText.includes('<a href=')) {

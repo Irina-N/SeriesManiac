@@ -30,7 +30,7 @@ export default function FormAuth() {
 
   useEffect(() => {
     if (user.id) {
-      history.push('/profile');
+      history.push('/movies');
     }
   });
 
