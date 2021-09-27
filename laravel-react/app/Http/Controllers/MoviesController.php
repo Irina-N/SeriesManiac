@@ -49,7 +49,7 @@ class MoviesController extends Controller
 
     public function getRandMovies()
     {
-        return response()->json(Movies::select('title', 'ru_title', 'big_image', 'description')->inRandomOrder()->limit(1)->first(),200);
+        return response()->json(Movies::select('id', 'title', 'ru_title', 'big_image', 'description')->inRandomOrder()->limit(1)->first(),200);
     }
 
     public function grade(Request $request)
