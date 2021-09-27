@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getOneMovie } from '../../../store/actions/movies';
-import Header from '../../Header/Header';
-import MovieRateForm from '../MovieRateForm/MovieRateForm';
+
 import parse from 'html-react-parser';
 import { toast } from 'react-toastify';
 import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
-import './MovieCard.css';
 import Spinner from 'react-bootstrap/Spinner';
+
+import Header from '../../Header/Header';
+import MovieRateForm from '../MovieRateForm/MovieRateForm';
+import { getOneMovie } from '../../../store/actions/movies';
 import { clearUsersError } from '../../../store/actions/currentUser';
+
+import './MovieCard.css';
 
 export default function MovieCard() {
   const params = useParams();
@@ -18,7 +21,7 @@ export default function MovieCard() {
 
   const movieId = Number(params.movieId);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
-  //const rate = Number(useSelector((state) => state.moviesReducer.currentMovie.grade)) || null;
+
   const { preloader, error } = useSelector((state) => state.moviesReducer);
 
   const currentMovie = useSelector((state) => state.moviesReducer.currentMovie);
@@ -47,35 +50,23 @@ export default function MovieCard() {
   return (
     <div className="content">
       <Header />
-      <div className="movie-card">
-        {preloader ? (
-          <div
-            id="spinner"
-            className="d-flex justify-content-center align-items-center"
-          >
-            <Spinner animation="border" variant="warning" />
-          </div>
-        ) : (
-          <React.Fragment>
-            <img className="movie-poster" src={currentMovie.big_image}></img>
-            <h4>
-              {currentMovie.ru_title} ({currentMovie.title})
-            </h4>
+      <div className='movie-card'>
+        { preloader ? (
+              <div id='spinner' className='d-flex justify-content-center align-items-center'>
+                <Spinner animation='border' variant='warning' />
+              </div>
+            ) : (
+        <React.Fragment>
+          <div className='movie-card__main-content bg-dark'>
+            <img className='movie-poster' src={currentMovie.big_image}></img>        
+            <h4>{currentMovie.ru_title} ({currentMovie.title})</h4>
             <p>{currentMovie.year}</p>
-            <div className="lead text-white text-break">
-              {currentMovie.description
-                ? parse(descriptionMapper(currentMovie.description))
-                : ''}
+            <div className='lead text-white text-break'>
+              {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
             </div>
-            <MovieRateForm movieId={movieId} userId={userId} rate={rate} />
-            {/* <button
-            id='to-bookmarks-btn'
-            type='button'
-            className='btn to-bookmarks-btn'
-          >
-            В закладки
-          </button> */}
-          </React.Fragment>
+          </div>        
+          <MovieRateForm movieId={movieId} userId={userId} rate={rate}/>         
+        </React.Fragment>
         )}
       </div>
     </div>

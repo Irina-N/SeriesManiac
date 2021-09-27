@@ -1,9 +1,15 @@
 .movie-card {
-    max-width: 90vw;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2vh;
+    align-items: center;    
+}
+
+.movie-card__main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    gap: 2vh; 
 }
 
 .movie-poster {

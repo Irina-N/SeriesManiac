@@ -7,13 +7,13 @@ import {
   searchMovies,
   sendMovieRate
 } from '../actions/movies';
+import { CLEAR_ERROR } from '../ActionTypes/movies';
 
 const initialState = {
   movies: [],
   preloader: false,
   randomMovie: {},
   currentMovie: {},
-  requestStatus: '',
   error: {
     status: false,
     errorMessage: '',
@@ -23,7 +23,12 @@ const initialState = {
 const moviesSlice = createSlice({
   name: 'movies',
   initialState,
-  reducers: {},
+  reducers: {
+    [CLEAR_ERROR]: (state) => {
+      state.error.status = false;
+      state.error.errorMessage = '';
+    },
+  },
   extraReducers: {
     [getTopMovies.pending]: (state, action) => {
       state.preloader = true;

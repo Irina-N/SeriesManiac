@@ -1,27 +1,30 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import './FormAuth.css';
-import { login } from '../../store/actions/currentUser';
+
 import Spinner from 'react-bootstrap/Spinner';
 import { toast } from 'react-toastify';
 
+import { login, clearUsersError } from '../../store/actions/currentUser';
+
+import './FormAuth.css';
+
 export default function FormAuth() {
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [shouldErrorBeShown, setShouldErrorBeShown] = useState(false);
-
+  
   const { preloader, user, error } = useSelector(
     (state) => state.currentUserReducer,
   );
 
   useEffect(() => {
-    if (error.status && shouldErrorBeShown) {
+    if (error.status) {
       toast.error(error.errorMessage);
-      setShouldErrorBeShown(false);
+      dispatch(clearUserError);
     }
   }, [error.status]);
 
@@ -34,7 +37,6 @@ export default function FormAuth() {
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      setShouldErrorBeShown(true);
       const formData = { email, password };
       dispatch(login(formData));
       setPassword('');
@@ -45,7 +47,7 @@ export default function FormAuth() {
   return (
     <React.Fragment>
       <h3 className="center-text">Заходите!</h3>
-      <form className="form__auth" onSubmit={handleSubmit} name="auth">
+      <form className="form__auth bg-dark" onSubmit={handleSubmit} name="auth">
         <label htmlFor="email">Электронная почта</label>
         <input
           type="email"
