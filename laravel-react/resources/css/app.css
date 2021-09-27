@@ -27,7 +27,7 @@ body {
 .content {
     max-width: 100vw;
     min-height: 100vh;
-    padding: 1vh calc(50vw - 640px);
+    padding: 1vh calc(50vw - 490px);
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -43,8 +43,6 @@ body {
     align-content: center;
     align-items: center;
 }
-
-
 
 .center-text {
     margin: 0 auto;
