@@ -13,7 +13,7 @@ export const NavProfile = ({ userName }) => {
   };
 
   return (
-    <Dropdown as={NavItem} align="end">
+    <Dropdown as={NavItem} align="end" >
       <Dropdown.Toggle as={NavLink} id="dropdown-profile-details">
         <UserAvatar
           size="40"

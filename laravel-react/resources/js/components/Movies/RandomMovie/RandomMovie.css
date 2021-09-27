@@ -1,6 +1,7 @@
 #random-movie {
   background-size: cover;
   background-position: top;
+  text-decoration: none;
 }
 #random-movie .row .mx-auto {
   background-color: #10101078;

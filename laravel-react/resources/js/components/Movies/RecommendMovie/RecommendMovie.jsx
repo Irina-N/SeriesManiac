@@ -75,6 +75,8 @@ export const RecommendMovies = () => {
           className="d-flex justify-content-center align-items-center"
         >
           <Spinner animation="border" variant="warning" />
+          <p>Пожалуйста, подождите.</p>
+          <p>Мы рассчитываем индивидуальные рекомендации для вас.</p>
         </div>
       ) : (
         <React.Fragment>
