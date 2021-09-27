@@ -49,8 +49,8 @@ class ProfileController extends Controller
 
     public function recommend(Request $request)
     {
-        $data = $request->only(['id']);
-        $movies = Grade::where('user_id',$data['id'])->get();//<--Мои фильмы
+        $data = $request->only(['userId']);
+        $movies = Grade::where('user_id',$data['userId'])->get();//<--Мои фильмы
         $usersWithIntersection = [];
         $usersWithIntersectionWeight = [];
         $filmsId = [];
@@ -70,7 +70,7 @@ class ProfileController extends Controller
                     $userFilms = Grade::where('user_id', $users[$b]['user_id'])->get();//<--Все фильмы которые смотрел этот один пользователь
                     for($c = 0; $c < count($userFilms); $c++){
                         if(in_array($userFilms[$c]['movies_id'], $filmsId)){
-                            $currentUserGrade = Grade::where('user_id',$data['id'])->where('movies_id',$userFilms[$c]['movies_id'])->first();//<--Моя Оценка этого фильма
+                            $currentUserGrade = Grade::where('user_id',$data['userId'])->where('movies_id',$userFilms[$c]['movies_id'])->first();//<--Моя Оценка этого фильма
                             $commonFilmsSum ++;
                             $gradesDifSum += abs(($currentUserGrade['grade'] - 3) - ($userFilms[$c]['grade'] - 3)) + 1;
                         }

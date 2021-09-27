@@ -82,8 +82,8 @@ class MoviesController extends Controller
         $movie = Movies::where('id', $data['movieId'])->first();
         $grades = Grade::where('movies_id', $data['movieId'])->get();
         $movie['watched'] += $add;
-        if($movie['watched'] === 0){
-            $movie['watched'] = 1;
+        if($movie['watched'] == 0){
+            $movie['watched'] = count($grades);
         }
         $gradeSum = 0;
         foreach($grades as $grade){
