@@ -10,7 +10,7 @@ export default function Header() {
   const { user } = useSelector((state) => state.currentUserReducer);
 
   return (
-    <header className="d-flex">
+    <header className="header">
       <h1 className="header__title center-text">SериальныйMaньяK</h1>
       {user.id && (
         <Navbar>

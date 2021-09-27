@@ -57,7 +57,7 @@ export default function MovieCard() {
               </div>
             ) : (
         <React.Fragment>
-          <div className='movie-card__main-contentbg-dark'>
+          <div className='movie-card__main-content bg-dark'>
             <img className='movie-poster' src={currentMovie.big_image}></img>        
             <h4>{currentMovie.ru_title} ({currentMovie.title})</h4>
             <p>{currentMovie.year}</p>
