@@ -26,24 +26,15 @@ export const NavProfile = ({ userName }) => {
         <span className="text-light userName">{userName}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item as={Link} to={'/profile'}>
-          <div className="d-flex align-items-center">
-            <i className="bi bi-person"></i>
-            Profile
-          </div>
-        </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item as={Link} to={'/profile/movies'}>
-          Мои сериалы
-        </Dropdown.Item>
         <Dropdown.Item as={Link} to={'/movies'}>
           Все сериалы
         </Dropdown.Item>
+        <Dropdown.Item as={Link} to={'/user/movies'}>
+          Мои сериалы
+        </Dropdown.Item>        
         <Dropdown.Item as={Link} to={'/user/recommendations'}>
           Рекомендации
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to={'/user/settings'}>
-          Настройки
         </Dropdown.Item>
         <Dropdown.Item onClick={onLogout}>Выйти</Dropdown.Item>
       </Dropdown.Menu>

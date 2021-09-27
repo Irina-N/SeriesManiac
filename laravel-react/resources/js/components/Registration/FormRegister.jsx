@@ -29,7 +29,7 @@ export default function FormRegister() {
 
   useEffect(() => {
     if (user.id) {     
-      history.push('/profile');      
+      history.push('/movies');      
     }  
   }, [user]);
   

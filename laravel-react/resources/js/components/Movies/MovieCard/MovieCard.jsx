@@ -4,13 +4,13 @@ import { useParams, useHistory } from 'react-router-dom';
 
 import parse from 'html-react-parser';
 import { toast } from 'react-toastify';
-import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 import Spinner from 'react-bootstrap/Spinner';
 
 import Header from '../../Header/Header';
 import MovieRateForm from '../MovieRateForm/MovieRateForm';
 import { getOneMovie } from '../../../store/actions/movies';
 import { clearUsersError } from '../../../store/actions/currentUser';
+import { descriptionMapper } from '../../../helpers/mappers/movie-description-mapper';
 
 import './MovieCard.css';
 
@@ -57,14 +57,16 @@ export default function MovieCard() {
               </div>
             ) : (
         <React.Fragment>
-          <div className='movie-card__main-content bg-dark'>
-            <img className='movie-poster' src={currentMovie.big_image}></img>        
-            <h4>{currentMovie.ru_title} ({currentMovie.title})</h4>
-            <p>{currentMovie.year}</p>
-            <div className='lead text-white text-break'>
-              {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
-            </div>
-          </div>        
+          <img className='movie-poster' src={currentMovie.big_image}></img>        
+          <div className='movie-header'>
+          <h4 className='movie_ru-title'>{currentMovie.ru_title || currentMovie.title}</h4>
+          {currentMovie.ru_title ? (<h5 className='movie_title'>{currentMovie.title}</h5>) : ''}
+          <p className='movie_year'>{currentMovie.year}</p>
+          </div>
+          <div className='movie-desc bg-dark lead text-white text-break'>
+            {currentMovie.description ? parse(descriptionMapper(currentMovie.description)) : ''}
+          </div>
+                
           <MovieRateForm movieId={movieId} userId={userId} rate={rate}/>         
         </React.Fragment>
         )}

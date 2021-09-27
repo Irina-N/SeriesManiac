@@ -4,7 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Auth from '../Auth/Auth';
-import Profile from '../Profile/Profile';
 import Registration from '../Registration/Registration';
 import Movies from '../Movies/Movies';
 import MovieCard from '../Movies/MovieCard/MovieCard';
@@ -23,13 +22,10 @@ export default function Router() {
         <Route exact path="/register">
           <Registration />
         </Route>
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
         <Route exact path="/movies">
           <Movies />
         </Route>
-        <Route exact path="/profile/movies">
+        <Route exact path="/user/movies">
           <UserMovies />
         </Route>
         <Route exact path="/movies/:movieId" component={MovieCard}></Route>

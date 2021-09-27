@@ -5,5 +5,16 @@
 #random-movie .row .mx-auto {
   background-color: #10101078;
   overflow: hidden;
-    max-height: 190px;
+  max-height: 10rem;
+  padding: .5rem 1rem;
+}
+
+#random-movie .random-movie_title .fw-light {
+font-size: 2.2rem;
+line-height: 2.3rem!important;
+}
+
+#random-movie .lead {
+  font-size: .9rem;
+  font-weight: 200;
 }
