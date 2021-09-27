@@ -41,7 +41,7 @@ header .dropdown > .dropdown-toggle:hover {
 }
 
 header .dropdown .dropdown-item {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 header .dropdown-item:focus,
 header .dropdown-item:hover {

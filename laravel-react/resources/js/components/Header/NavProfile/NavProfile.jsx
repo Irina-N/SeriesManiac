@@ -33,17 +33,14 @@ export const NavProfile = ({ userName }) => {
           </div>
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item as={Link} to={'/profile/movies'}>
-          Мои сериалы
-        </Dropdown.Item>
         <Dropdown.Item as={Link} to={'/movies'}>
           Все сериалы
         </Dropdown.Item>
+        <Dropdown.Item as={Link} to={'/user/movies'}>
+          Мои сериалы
+        </Dropdown.Item>        
         <Dropdown.Item as={Link} to={'/user/recommendations'}>
           Рекомендации
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to={'/user/settings'}>
-          Настройки
         </Dropdown.Item>
         <Dropdown.Item onClick={onLogout}>Выйти</Dropdown.Item>
       </Dropdown.Menu>

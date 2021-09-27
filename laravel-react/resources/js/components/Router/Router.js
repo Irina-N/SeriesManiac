@@ -29,7 +29,7 @@ export default function Router() {
         <Route exact path="/movies">
           <Movies />
         </Route>
-        <Route exact path="/profile/movies">
+        <Route exact path="/user/movies">
           <UserMovies />
         </Route>
         <Route exact path="/movies/:movieId" component={MovieCard}></Route>

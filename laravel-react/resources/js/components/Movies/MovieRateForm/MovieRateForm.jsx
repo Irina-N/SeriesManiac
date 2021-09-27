@@ -18,7 +18,6 @@ export default function MovieRateForm ({ movieId, userId, rate }) {
 
     useEffect(() => {
         if (rate) {
-            console.log('if rate');                        
             setIsHaveChoice(true);
             setIsRated(true);
             changeStarsColor(rate, '#ffa500');
@@ -30,7 +29,6 @@ export default function MovieRateForm ({ movieId, userId, rate }) {
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
         const formData = {userId, movieId, userMovieRate}; 
-        console.log(formData);
         dispatch(sendMovieRate(formData));
         setIsRated(true);     
     }, [dispatch, userId, movieId, userMovieRate]);
