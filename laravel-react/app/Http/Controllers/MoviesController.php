@@ -82,11 +82,14 @@ class MoviesController extends Controller
         $movie = Movies::where('id', $data['movieId'])->first();
         $grades = Grade::where('movies_id', $data['movieId'])->get();
         $movie['watched'] += $add;
+        if($movie['watched'] === 0){
+            $movie['watched'] = 1;
+        }
         $gradeSum = 0;
         foreach($grades as $grade){
             $gradeSum += $grade['grade'];
         }
-        $rating = $gradeSum / $movie['watched']+1;
+        $rating = $gradeSum / $movie['watched'];
         $movie->watched = $movie['watched'];
         $movie->rating = $rating;
         $movie->save();
