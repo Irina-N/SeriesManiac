@@ -21,6 +21,7 @@ class MoviesSeeder extends Seeder
             $url = implode("", $string);
             $description = Http::get('https://api.myshows.ru/shows/'.$film['id']);
             Movies::create([
+                'api_rating' => $film['rating'],
                 'api_id' => $film['id'],
                 'title' => $film['title'],
                 'ru_title' => $film['ruTitle'],

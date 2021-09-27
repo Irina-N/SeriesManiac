@@ -14,7 +14,7 @@ class MoviesController extends Controller
         //return response()->json(Movies::paginate(20),200);
         $data = $request->only('counter');
         return response()->json(Movies::
-        select('id', 'title', 'ru_title', 'image', 'year')
+        select('id', 'title', 'ru_title', 'image', 'year', 'api_rating')
         ->limit(20)
         ->offset($data['counter']*20)
         ->get(),200);
