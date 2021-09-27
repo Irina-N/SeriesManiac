@@ -26,12 +26,6 @@ export const NavProfile = ({ userName }) => {
         <span className="text-light userName">{userName}</span>
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item as={Link} to={'/profile'}>
-          <div className="d-flex align-items-center">
-            <i className="bi bi-person"></i>
-            Profile
-          </div>
-        </Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item as={Link} to={'/movies'}>
           Все сериалы
