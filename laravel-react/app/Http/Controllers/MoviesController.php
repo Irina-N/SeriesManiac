@@ -86,9 +86,9 @@ class MoviesController extends Controller
         foreach($grades as $grade){
             $gradeSum += $grade['grade'];
         }
-        $raiting = $gradeSum / $movie['watched'];
+        $rating = $gradeSum / $movie['watched']+1;
         $movie->watched = $movie['watched'];
-        $movie->raiting = $raiting;
+        $movie->rating = $rating;
         $movie->save();
     }
 
