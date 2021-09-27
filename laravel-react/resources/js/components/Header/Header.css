@@ -8,6 +8,20 @@
   margin: 0 0 1vh;
 }
 
+.btn-back{
+  color: #ffa500;
+  font-size: 2.5rem;
+  justify-self: flex-start;
+  cursor: pointer;
+  position: absolute;
+  left: calc(50% - 470px);
+  top: .8rem;
+}
+
+.btn-back:hover {
+  color: #fff;
+}
+
 .header__title {
   color: #ffa500;
   align-items: center;
@@ -17,4 +31,22 @@
 .navbar {
   position: absolute!important;
   right: calc(50% - 490px)!important;
+}
+
+#spinner {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.spinner-border {
+  margin-bottom: 3vh;
+}
+
+#spinner p {
+  font-size: 1.1rem;  
+  line-height: 1.3rem;
+  font-weight: 200;
+  color: #fff;
+  margin: 0;
 }

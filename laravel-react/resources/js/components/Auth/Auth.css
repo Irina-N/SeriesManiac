@@ -18,3 +18,7 @@
   cursor: pointer;
 }
 
+#singup_btn:hover{
+  background-color: #f59607;
+}
+
