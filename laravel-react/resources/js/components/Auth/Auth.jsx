@@ -14,7 +14,7 @@ export default function Auth() {
 
   return (
     <div className="content-narrow">
-      <Header />
+      <Header/>
       <FormAuth />
       <h3 className="center-text">Ещё нет аккаунта?</h3>
       <div className="content-back bg-dark">

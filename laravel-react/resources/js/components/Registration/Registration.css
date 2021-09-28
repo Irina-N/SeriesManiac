@@ -22,5 +22,11 @@
 }
 
 #login_btn:hover{
-    background-color: #f59607;
+    background-color: #f79c14;
+  }
+
+  @media (max-width: 425px) {
+    #login_btn{
+      width: fit-content;
+    }
   }

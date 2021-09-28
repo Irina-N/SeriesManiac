@@ -27,7 +27,7 @@ export const RandomMovie = () => {
     >
       <div className="row py-lg-5">
         <div className="col-lg-6 col-md-8 mx-auto">
-          <h1 className="random-movie_title fw-light text-light">{ru_title || title}</h1>
+          <h1 id="random-movie_title" className="random-movie_title fw-light text-light">{ru_title || title}</h1>
           <div className="lead text-white text-break">
             {description ? parse(shortDescriptionMapper(description)) : ''}
           </div>

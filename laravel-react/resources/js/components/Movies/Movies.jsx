@@ -82,17 +82,17 @@ export const Movies = () => {
       <RandomMovie />
       <div className="container-fluid d-flex bg-light justify-content-center">
         <form
-          className="form-inline col-6 px-2 d-flex justify-content-center"
+          className="search-form px-2 d-flex justify-content-center"
           onSubmit={handlerSearch}
         >
           <input
-            className="form-control m-2 w-50"
+            className="form-control"
             type="search"
             placeholder="Search"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="btn btn-dark m-2" type="submit">
+          <button className="btn btn-dark" type="submit">
             Search
           </button>
         </form>

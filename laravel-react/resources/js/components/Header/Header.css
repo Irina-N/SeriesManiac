@@ -1,21 +1,15 @@
 .header {
-  position: relative;
   width: 100%;
   height: 5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 0 0 1vh;
-}
+  }
 
 .btn-back{
   color: #ffa500;
   font-size: 2.5rem;
   justify-self: flex-start;
   cursor: pointer;
-  position: absolute;
-  left: calc(50% - 470px);
-  top: .8rem;
 }
 
 .btn-back:hover {
@@ -23,14 +17,17 @@
 }
 
 .header__title {
+  max-width: 40%;
+  width: fit-content;
   color: #ffa500;
-  align-items: center;
+  text-align: center;
   width: 100%;
+  padding: 1vw;
+  margin: 0;
 }
 
 .navbar {
-  position: absolute!important;
-  right: calc(50% - 490px)!important;
+  padding: 0;
 }
 
 #spinner {
@@ -49,4 +46,16 @@
   font-weight: 200;
   color: #fff;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+
+  .header {
+    padding-top: 1.5vw!important;
+    padding-bottom: 1.5vw!important;
+  }
+
+  .header__title {
+    font-size: calc(.3rem + 3.8vw);
+    }
 }
