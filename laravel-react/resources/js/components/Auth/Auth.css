@@ -19,6 +19,11 @@
 }
 
 #singup_btn:hover{
-  background-color: #f59607;
+  background-color: #f79c14;
 }
 
+@media (max-width: 426px) {
+  #singup_btn{
+    width: fit-content;
+  }
+}

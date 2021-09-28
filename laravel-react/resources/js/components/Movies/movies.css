@@ -5,9 +5,25 @@
 }
 
 .container-fluid{
-  padding-top: 1rem;
+  padding: 1rem;
 }
 
 .album {
-  padding-top: 1rem!important;
+  padding-top: .5rem!important;
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+  gap: 5vw;
+}
+
+.form-control{
+  width: calc(85% - 10vw); 
+  font-size: calc(0.5rem + 1vw);
+}
+
+.btn.btn-dark {
+  width: fit-content;
+  font-size: calc(0.5rem + 1vw);
 }

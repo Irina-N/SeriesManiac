@@ -30,14 +30,6 @@
     padding: 1vh;
 }
 
-.movie-desc {
-    padding: 2vh 2vw;
-}
-
-.movie-desc p{
-    font-size: 1.1rem;
-}
-
 .movie_ru-title {
     font-size: 2.5rem;
     margin: 0;
@@ -52,4 +44,41 @@
     font-size: 1rem;
     margin: 0;
 }
+.movie-desc {
+    padding: 2vh 2vw;
+}
+
+.movie-desc p{
+    font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+    .movie-header {
+        border-radius: 0;
+        gap: .3vh;
+        padding: 1vh;
+    }
+
+    .movie_ru-title {
+        font-size: 5vw;
+    }
+    
+    .movie_title {
+        font-size: calc(.25rem + 3vw);
+    }
+    
+    .movie_year {
+        font-size: calc(.3rem + 2vw);
+    }
+
+    .movie-desc {
+        padding: 2vh 2vw;
+    }
+    
+    .movie-desc p{
+        font-size: calc(.7rem + .9vw);
+        font-weight: 200;
+    }
+  }
 

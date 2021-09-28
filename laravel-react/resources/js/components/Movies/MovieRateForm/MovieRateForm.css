@@ -1,7 +1,6 @@
 .form__movie-rate {
   width: 100%;
-  padding-bottom: 2vh;
-  
+  padding-bottom: 2vh;  
 }
 
 .form__movie-rate__content{
@@ -17,7 +16,7 @@
   width: 100%;
   text-align: center;
   color: #fff;
-  font-size: 2rem;  
+  font-size: calc(1.3rem + .6vw); 
 }
 
 .stars_block {
@@ -34,7 +33,6 @@
   padding: 0;
   width: 4rem;
   margin-left: 4vw;
-  /* height: 5vmin; */
   font-weight: 500;
   font-size: 16px;
   border: none;
@@ -57,19 +55,29 @@
 }
 
 .fa-check {
-  font-size: 5vmin;
+  font-size: calc(1.7rem + 1vw);;
 }
 
 .fa-pen {
-  font-size: 4vmin;
+  font-size: calc(1.3rem + 1vw);;
 }
 
 .userMovieRate {
   cursor: pointer;
   color: #ccccb3;
-  font-size: 5vmin;
+  font-size: calc(1.6rem + 1vw);;
 }
 
 .userMovieRate[disabled] {
   cursor: default;
+}
+
+@media (max-width: 768px) {
+  .form__movie-rate {
+    padding-bottom: 3vw;  
+  }
+  .form__movie-rate__content {
+    padding: 4vw 2vw;
+  }
+  
 }

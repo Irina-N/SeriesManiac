@@ -1,6 +1,15 @@
+#dropdown-profile-details {
+  padding: 1vw 0 1vw 1vw;
+}
+
+.dropdown-menu {
+  margin-top: .4rem;
+}
+
 .userAvatar {
   object-fit: cover;
   position: relative;
+  font-size: 1.2rem;
 }
 
 .userAvatar::after {
@@ -16,9 +25,10 @@
 }
 
 .userName {
-  max-width: 9vw;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  max-width: 40vw;
+  width: fit-content;
+  margin-left: 1vw;
+  margin-right: 1vw;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -27,8 +37,10 @@
 }
 
 .dropdown-toggle::after {
-  margin: 0;
+  margin: 0 .5rem 0 0!important;
 }
+
+
 header .dropdown > .dropdown-toggle,
 header .dropdown > .dropdown-toggle:hover {
   display: flex;
@@ -43,8 +55,32 @@ header .dropdown > .dropdown-toggle:hover {
 header .dropdown .dropdown-item {
   font-size: 1.2rem;
 }
+
 header .dropdown-item:focus,
 header .dropdown-item:hover {
   color: #fff;
   background-color: #ffa500;
+}
+
+@media (max-width: 768px) {
+  header .dropdown > .dropdown-toggle,
+  header .dropdown > .dropdown-toggle:hover {   
+    font-size: calc(.3rem + 1.9vw);
+    font-weight: 200;
+    line-height: calc(.4rem + 2vw);
+  }
+
+  .userAvatar {
+    
+    width: 5vw!important;
+    height: 5vw!important;
+  }
+
+  .userAvatar  > div {
+    font-size: 2.8vw!important;
+  }
+
+  .userName{
+    max-width: 30vw; 
+  }
 }

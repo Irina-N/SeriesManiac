@@ -12,15 +12,16 @@ export default function Header() {
   const { user } = useSelector((state) => state.currentUserReducer);
 
   return (
-    <header className='header'>
-      {user.id && (
+    <header className='header'
+    style={{ justifyContent: user.id ? 'space-between' : 'center' }}>    
+      {/* {user.id && (
         <i 
           className='far fa-arrow-alt-circle-left btn-back'
           onClick={history.goBack}
         >
         </i>
-      )}
-      <h1 className='header__title center-text'>SериальныйMaньяK</h1>
+      )} */}
+      <h1 className='header__title'>SериальныйMaньяK</h1>
       {user.id && (
         <Navbar>
           <NavProfile userName={user.login} />

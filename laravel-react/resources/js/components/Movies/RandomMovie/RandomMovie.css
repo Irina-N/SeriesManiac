@@ -6,13 +6,13 @@
 #random-movie .row .mx-auto {
   background-color: #10101078;
   overflow: hidden;
-  max-height: 10rem;
+  max-height: 11rem;
   padding: .5rem 1rem;
 }
 
-#random-movie .random-movie_title .fw-light {
+#random-movie_title{
 font-size: 2.2rem;
-line-height: 2.3rem!important;
+line-height: 1!important;
 }
 
 #random-movie .lead {
