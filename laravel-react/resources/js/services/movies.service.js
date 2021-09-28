@@ -13,10 +13,10 @@ class Movies {
     });
   }
 
-  getOneMovie({userId, movieId}) {
+  getOneMovie({ userId, movieId }) {
     return this._http.load(`/api/movies/${movieId}`, {
       method: HttpMethod.POST,
-      payload: JSON.stringify({ userId}),
+      payload: JSON.stringify({ userId }),
       contentType: ContentType.JSON,
     });
   }
@@ -35,9 +35,9 @@ class Movies {
 
   sendMovieRate(payload) {
     return this._http.load('/api/movies/rate', {
-      method: HttpMethod.PUT,
+      method: HttpMethod.POST,
       payload: JSON.stringify(payload),
-      contentType: ContentType.JSON,      
+      contentType: ContentType.JSON,
     });
   }
 
