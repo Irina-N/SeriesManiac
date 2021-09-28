@@ -44,6 +44,6 @@
   .user-movies .card .card-body h5,
   .user-movies .card .card-body h4,
   .user-movies .card .card-body .stars {
-    width: 100%;
+    width: 100% !important;
   }
 }
