@@ -10,6 +10,7 @@ import {
   clearUsersError,
   getRecommendMovies,
 } from '../../../store/actions/currentUser';
+import './RecommendMovie.css';
 
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
