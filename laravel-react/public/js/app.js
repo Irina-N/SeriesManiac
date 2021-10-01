@@ -10418,9 +10418,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Header)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Navbar */ "./node_modules/react-bootstrap/esm/Navbar.js");
+/* harmony import */ var react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Navbar */ "./node_modules/react-bootstrap/esm/Navbar.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _NavProfile_NavProfile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavProfile/NavProfile */ "./resources/js/components/Header/NavProfile/NavProfile.jsx");
 /* harmony import */ var _Header_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header.css */ "./resources/js/components/Header/Header.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -10431,10 +10430,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function Header() {
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
-
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.currentUserReducer;
   }),
@@ -10446,9 +10442,9 @@ function Header() {
       justifyContent: user.id ? 'space-between' : 'center'
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-      className: "header__title",
+      className: "header__title ".concat(user.id ? 'header__text-left' : 'header__text-center'),
       children: "S\u0435\u0440\u0438\u0430\u043B\u044C\u043D\u044B\u0439Ma\u043D\u044C\u044FK"
-    }), user.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), user.id && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_5__["default"], {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_NavProfile_NavProfile__WEBPACK_IMPORTED_MODULE_2__.NavProfile, {
         userName: user.login
       })
@@ -11225,14 +11221,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Header/Header */ "./resources/js/components/Header/Header.jsx");
 /* harmony import */ var _RecommendMovieCard_RecommendMovieCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RecommendMovieCard/RecommendMovieCard */ "./resources/js/components/Movies/RecommendMovie/RecommendMovieCard/RecommendMovieCard.jsx");
-/* harmony import */ var use_debounce__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! use-debounce */ "./node_modules/use-debounce/esm/useDebouncedCallback.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var use_debounce__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! use-debounce */ "./node_modules/use-debounce/esm/useDebouncedCallback.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
 /* harmony import */ var _store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../store/actions/currentUser */ "./resources/js/store/actions/currentUser.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _RecommendMovie_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RecommendMovie.css */ "./resources/js/components/Movies/RecommendMovie/RecommendMovie.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11262,10 +11259,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var DEBOUNCE_WAIT_MILLISECONDS = 300;
 var RecommendMovies = function RecommendMovies() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
 
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.currentUserReducer.user;
@@ -11289,7 +11287,7 @@ var RecommendMovies = function RecommendMovies() {
       searchText = _useState4[0],
       setSearchText = _useState4[1];
 
-  var debouncedSearch = (0,use_debounce__WEBPACK_IMPORTED_MODULE_7__["default"])(function (query) {
+  var debouncedSearch = (0,use_debounce__WEBPACK_IMPORTED_MODULE_8__["default"])(function (query) {
     var searchResult = movies.filter(function (movie) {
       return movie.ru_title.toLowerCase().includes(query.toLowerCase()) || movie.title.toLowerCase().includes(query.toLowerCase());
     });
@@ -11321,30 +11319,30 @@ var RecommendMovies = function RecommendMovies() {
   }, [searchText]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (error.status) {
-      react_toastify__WEBPACK_IMPORTED_MODULE_8__.toast.error(error.errorMessage);
+      react_toastify__WEBPACK_IMPORTED_MODULE_9__.toast.error(error.errorMessage);
       dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__.clearUsersError)());
     }
   }, [error.status]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "content main",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), preloader ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), preloader ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       id: "spinner",
       className: "d-flex justify-content-center align-items-center",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
         animation: "border",
         variant: "warning"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         children: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u0434\u043E\u0436\u0434\u0438\u0442\u0435."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         children: "\u041C\u044B \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u044B\u0432\u0430\u0435\u043C \u0438\u043D\u0434\u0438\u0432\u0438\u0434\u0443\u0430\u043B\u044C\u043D\u044B\u0435 \u0440\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u0430\u0446\u0438\u0438 \u0434\u043B\u044F \u0432\u0430\u0441."
       })]
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "container-fluid d-flex bg-light justify-content-center py-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("form", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("form", {
           className: "form-inline col-6 px-2 d-flex justify-content-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            className: "form-control m-2 w-50",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+            className: "form-control w-100",
             type: "search",
             placeholder: "Search",
             value: searchText,
@@ -11353,10 +11351,10 @@ var RecommendMovies = function RecommendMovies() {
             }
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies",
         children: recommendMovies.length && recommendMovies.map(function (movie) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_RecommendMovieCard_RecommendMovieCard__WEBPACK_IMPORTED_MODULE_3__.RecommendMovieCard, _objectSpread({}, movie), movie.id);
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_RecommendMovieCard_RecommendMovieCard__WEBPACK_IMPORTED_MODULE_3__.RecommendMovieCard, _objectSpread({}, movie), movie.id);
         })
       })]
     })]
@@ -11667,7 +11665,7 @@ var UserMovies = function UserMovies() {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("form", {
           className: "form-inline col-6 px-2 d-flex justify-content-center",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-            className: "form-control m-2 w-50",
+            className: "form-control w-100",
             type: "search",
             placeholder: "Search",
             value: searchText,
@@ -21900,7 +21898,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n#singup_btn {\r\n  width: 35%;\r\n  font-size: 16px;\r\n  font-weight: 500;\r\n  color: white;\r\n  background-color: #e68a00;\r\n  text-transform: uppercase;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n}\r\n\r\n#singup_btn:hover{\r\n  background-color: #f79c14;\r\n}\r\n\r\n@media (max-width: 426px) {\r\n  #singup_btn{\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n  }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n#singup_btn {\r\n  width: 14rem;\r\n  min-width: -moz-fit-content;\r\n  min-width: fit-content;\r\n  max-width: 100%;\r\n  font-size: 16px;\r\n  font-weight: 500;\r\n  color: white;\r\n  background-color: #e68a00;\r\n  text-transform: uppercase;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n}\r\n\r\n#singup_btn:hover{\r\n  background-color: #f79c14;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  \r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21924,7 +21922,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__auth {\r\n  margin: 0 auto 10px;\r\n  padding: 20px;\r\n  display: flex;\r\n  flex-flow: column nowrap;\r\n  width: 100%;\r\n}\r\n\r\ninput[type='text'],\r\ninput[type='email'],\r\ninput[type='password'],\r\nselect,\r\ntextarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  box-sizing: border-box;\r\n  margin-top: 6px;\r\n  margin-bottom: 20px;\r\n  resize: vertical;\r\n}\r\n\r\nlabel {\r\n  margin: 0;\r\n}\r\n\r\ninput[type='submit'] {\r\n  align-self: center;\r\n  background-color: #04aa6d;\r\n  color: white;\r\n  width: 35%;\r\n  font-weight: 500;\r\n  font-size: 16px;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n}\r\n\r\ninput[type='submit']:hover {\r\n  background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__auth {\r\n  margin: 0 auto 10px;\r\n  padding: 20px;\r\n  display: flex;\r\n  flex-flow: column nowrap;\r\n  width: 100%;\r\n}\r\n\r\ninput[type='text'],\r\ninput[type='email'],\r\ninput[type='password'],\r\nselect,\r\ntextarea {\r\n  width: 100%;\r\n  padding: 12px;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  box-sizing: border-box;\r\n  margin-top: 6px;\r\n  margin-bottom: 20px;\r\n  resize: vertical;\r\n}\r\n\r\nlabel {\r\n  margin: 0;\r\n}\r\n\r\ninput[type='submit'] {\r\n  align-self: center;\r\n  background-color: #04aa6d;\r\n  color: white;\r\n  width: 14rem;\r\n  min-width: -moz-fit-content;\r\n  min-width: fit-content;\r\n  max-width: 100%;\r\n  font-weight: 500;\r\n  font-size: 16px;\r\n  padding: 12px 20px;\r\n  border: none;\r\n  border-radius: 4px;\r\n  cursor: pointer;\r\n}\r\n\r\ninput[type='submit']:hover {\r\n  background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21948,7 +21946,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".header {\r\n  width: 100%;\r\n  height: 5rem;\r\n  display: flex;\r\n  align-items: center;\r\n  }\r\n\r\n.btn-back{\r\n  color: #ffa500;\r\n  font-size: 2.5rem;\r\n  justify-self: flex-start;\r\n  cursor: pointer;\r\n}\r\n\r\n.btn-back:hover {\r\n  color: #fff;\r\n}\r\n\r\n.header__title {\r\n  max-width: 40%;\r\n  width: -moz-fit-content;\r\n  width: fit-content;\r\n  color: #ffa500;\r\n  text-align: center;\r\n  width: 100%;\r\n  padding: 1vw;\r\n  margin: 0;\r\n}\r\n\r\n.navbar {\r\n  padding: 0;\r\n}\r\n\r\n#spinner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 1vh;\r\n}\r\n\r\n.spinner-border {\r\n  margin-bottom: 3vh;\r\n}\r\n\r\n#spinner p {\r\n  font-size: 1.1rem;  \r\n  line-height: 1.3rem;\r\n  font-weight: 200;\r\n  color: #fff;\r\n  margin: 0;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n\r\n  .header {\r\n    padding-top: 1.5vw!important;\r\n    padding-bottom: 1.5vw!important;\r\n  }\r\n\r\n  .header__title {\r\n    font-size: calc(.3rem + 3.8vw);\r\n    }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".header {\r\n  width: 100%;\r\n  height: 5rem;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n.btn-back {\r\n  color: #ffa500;\r\n  font-size: 2.5rem;\r\n  justify-self: flex-start;\r\n  cursor: pointer;\r\n}\r\n\r\n.btn-back:hover {\r\n  color: #fff;\r\n}\r\n\r\n.header__title {\r\n  width: -moz-fit-content;\r\n  width: fit-content;\r\n  color: #ffa500;\r\n  width: 100%;\r\n  padding: 1vw;\r\n  margin: 0;\r\n}\r\n\r\n.header__text-left {\r\n  font-size: calc(1.375rem + 1.5vw);\r\n}\r\n\r\n.header__text-center {\r\n  font-size: calc(1.375rem + 1.5vw);\r\n}\r\n\r\n.navbar {\r\n  padding: 0;\r\n}\r\n\r\n#spinner {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 1vh;\r\n}\r\n\r\n.spinner-border {\r\n  margin-bottom: 3vh;\r\n}\r\n\r\n#spinner p {\r\n  font-size: 1.1rem;\r\n  line-height: 1.3rem;\r\n  font-weight: 200;\r\n  color: #fff;\r\n  margin: 0;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  .header {\r\n    padding-top: 1.5vw !important;\r\n    padding-bottom: 1.5vw !important;\r\n  }\r\n\r\n  .header__text-left {\r\n    font-size: calc(0.3rem + 3.8vw);\r\n  }\r\n\r\n  .header__text-center {\r\n    font-size: calc(1.5rem + 2.1vw);\r\n  }\r\n} \r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21972,7 +21970,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#dropdown-profile-details {\r\n  padding: 1vw 0 1vw 1vw;\r\n}\r\n\r\n.dropdown-menu {\r\n  margin-top: .4rem;\r\n}\r\n\r\n.userAvatar {\r\n  object-fit: cover;\r\n  position: relative;\r\n  font-size: 1.2rem;\r\n}\r\n\r\n.userAvatar::after {\r\n  content: '';\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px inset;\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 5;\r\n  border-radius: 100%;\r\n}\r\n\r\n.userName {\r\n  max-width: 40vw;\r\n  width: -moz-fit-content;\r\n  width: fit-content;\r\n  margin-left: 1vw;\r\n  margin-right: 1vw;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n  vertical-align: middle;\r\n}\r\n\r\n.dropdown-toggle::after {\r\n  margin: 0 .5rem 0 0!important;\r\n}\r\n\r\n\r\nheader .dropdown > .dropdown-toggle,\r\nheader .dropdown > .dropdown-toggle:hover {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  color: #ffa500;\r\n  font-size: 1.4rem;\r\n  font-weight: 400;\r\n  line-height: 1.6rem;\r\n}\r\n\r\nheader .dropdown .dropdown-item {\r\n  font-size: 1.2rem;\r\n}\r\n\r\nheader .dropdown-item:focus,\r\nheader .dropdown-item:hover {\r\n  color: #fff;\r\n  background-color: #ffa500;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  header .dropdown > .dropdown-toggle,\r\n  header .dropdown > .dropdown-toggle:hover {   \r\n    font-size: calc(.3rem + 1.9vw);\r\n    font-weight: 200;\r\n    line-height: calc(.4rem + 2vw);\r\n  }\r\n\r\n  .userAvatar {\r\n    \r\n    width: 5vw!important;\r\n    height: 5vw!important;\r\n  }\r\n\r\n  .userAvatar  > div {\r\n    font-size: 2.8vw!important;\r\n  }\r\n\r\n  .userName{\r\n    max-width: 30vw; \r\n  }\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#dropdown-profile-details {\r\n  padding: 1vw 0 1vw 1vw;\r\n}\r\n\r\n.dropdown-menu {\r\n  margin-top: .4rem;\r\n}\r\n\r\n.userAvatar {\r\n  object-fit: cover;\r\n  position: relative;\r\n}\r\n.userAvatar > div > span{  \r\n  font-size: 1.2rem;\r\n}\r\n\r\n.userAvatar::after {\r\n  content: '';\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px inset;\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 5;\r\n  border-radius: 100%;\r\n}\r\n\r\n.userName {\r\n  max-width: 40vw;\r\n  width: -moz-fit-content;\r\n  width: fit-content;\r\n  margin-left: 1vw;\r\n  margin-right: 1vw;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n  vertical-align: middle;\r\n}\r\n\r\n.dropdown-toggle::after {\r\n  margin: 0 .5rem 0 0!important;\r\n}\r\n\r\n\r\nheader .dropdown > .dropdown-toggle,\r\nheader .dropdown > .dropdown-toggle:hover {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  color: #ffa500;\r\n  font-size: 1.4rem;\r\n  font-weight: 400;\r\n  line-height: 1.6rem;\r\n}\r\n\r\nheader .dropdown .dropdown-item {\r\n  font-size: calc(.8rem + .5vw);;\r\n}\r\n\r\nheader .dropdown-item:focus,\r\nheader .dropdown-item:hover {\r\n  color: #fff;\r\n  background-color: #ffa500;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  header .dropdown > .dropdown-toggle,\r\n  header .dropdown > .dropdown-toggle:hover {   \r\n    font-size: calc(.3rem + 1.9vw);\r\n    font-weight: 200;\r\n    line-height: calc(.4rem + 2vw);\r\n  }\r\n\r\n  .userAvatar {\r\n    \r\n    width: 5vw!important;\r\n    height: 5vw!important;\r\n  }\r\n\r\n  .userAvatar > div > span {\r\n    font-size: 2.8vw!important;\r\n  }\r\n\r\n  .userName{\r\n    max-width: 30vw; \r\n  }\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22068,7 +22066,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n  background-size: cover;\r\n  background-position: top;\r\n  text-decoration: none;\r\n}\r\n#random-movie .row .mx-auto {\r\n  background-color: #10101078;\r\n  overflow: hidden;\r\n  max-height: 11rem;\r\n  padding: .5rem 1rem;\r\n}\r\n\r\n#random-movie_title{\r\nfont-size: 2.2rem;\r\nline-height: 1!important;\r\n}\r\n\r\n#random-movie .lead {\r\n  font-size: .9rem;\r\n  font-weight: 200;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n  background-size: cover;\r\n  background-position: top;\r\n  text-decoration: none;\r\n}\r\n#random-movie .row .mx-auto {\r\n  background-color: #10101078;\r\n  overflow: hidden;\r\n  max-height: 11rem;\r\n  padding: .5rem 1rem;\r\n}\r\n\r\n#random-movie_title{\r\nfont-size: 2.2rem;\r\nline-height: 1!important;\r\n}\r\n\r\n#random-movie .lead {\r\n  font-size: .9rem;\r\n  font-weight: 200;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  #random-movie .lead {\r\n    font-size: .8rem;\r\n    font-weight: 200;\r\n  }\r\n\r\n  #random-movie_title{\r\n    font-size: 1.5rem;    \r\n    }\r\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/RecommendMovie/RecommendMovie.css":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/RecommendMovie/RecommendMovie.css ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 768px) {\r\n  .container-fluid .card {\r\n    max-width: 320px;\r\n  }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22092,7 +22114,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".user-movies .card a {\r\n  text-decoration: none;\r\n}\r\n.user-movies .card .row .col-md-4 {\r\n  max-width: 160px;\r\n}\r\n.user-movies .card .row img {\r\n  opacity: 0.8;\r\n}\r\n.user-movies .card:hover .row img {\r\n  opacity: 1;\r\n}\r\n.user-movies .card .row .col-md-8 {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-grow: 1;\r\n}\r\n.user-movies .card .card-body {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n.user-movies .card .card-body .fa-star {\r\n  font-size: 20px;\r\n  color: rgb(204, 204, 179);\r\n}\r\n.user-movies .card .card-body .checked {\r\n  color: rgb(255, 165, 0);\r\n}\r\n@media (max-width: 768px) {\r\n  .user-movies .card .row {\r\n    justify-content: center;\r\n  }\r\n  .user-movies .card .row .col-md-4 {\r\n    max-width: 320px;\r\n  }\r\n  .user-movies .card .card-body {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    text-align: center;\r\n  }\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body h5,\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body .stars {\r\n    width: 100%;\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".user-movies .card a {\r\n  text-decoration: none;\r\n}\r\n.user-movies .card .row .col-md-4 {\r\n  max-width: 160px;\r\n}\r\n.user-movies .card .row img {\r\n  opacity: 0.8;\r\n}\r\n.user-movies .card:hover .row img {\r\n  opacity: 1;\r\n}\r\n.user-movies .card .row .col-md-8 {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-grow: 1;\r\n}\r\n.user-movies .card .card-body {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n.user-movies .card .card-body .fa-star {\r\n  font-size: 20px;\r\n  color: rgb(204, 204, 179);\r\n}\r\n.user-movies .card .card-body .checked {\r\n  color: rgb(255, 165, 0);\r\n}\r\n@media (max-width: 768px) {\r\n  .user-movies .card .row {\r\n    justify-content: center;\r\n  }\r\n  .user-movies .card .row .col-md-4 {\r\n    max-width: 320px;\r\n  }\r\n  .user-movies .card .card-body {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    text-align: center;\r\n  }\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body h5,\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body .stars {\r\n    width: 100% !important;\r\n  }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22164,7 +22186,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\r\n    width: 800px;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=email],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 16px;\r\n    resize: vertical;\r\n}\r\n\r\ninput[type=submit] {\r\n    width: 35%;\r\n    font-weight: 500;\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__signup {\r\n    width: 800px;\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    padding: 20px;\r\n    display: flex;\r\n    flex-flow: column nowrap;\r\n}\r\n\r\ninput[type=text],\r\ninput[type=email],\r\ninput[type=password],\r\nselect,\r\ntextarea {\r\n    width: 100%;\r\n    padding: 12px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px;\r\n    box-sizing: border-box;\r\n    margin-top: 6px;\r\n    margin-bottom: 16px;\r\n    resize: vertical;\r\n}\r\n\r\ninput[type=submit] {\r\n    width: 14rem;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    max-width: 100%;\r\n    font-weight: 500;\r\n    align-self: center;\r\n    background-color: #04AA6D;\r\n    color: white;\r\n    font-size: 16px;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\ninput[type=submit]:hover {\r\n    background-color: #45a049;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22188,7 +22210,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    padding: 20px;\r\n    width: 800px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n#login_btn {\r\n    width: 35%;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    text-transform: uppercase;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n#login_btn:hover{\r\n    background-color: #f79c14;\r\n  }\r\n\r\n  @media (max-width: 425px) {\r\n    #login_btn{\r\n      width: -moz-fit-content;\r\n      width: fit-content;\r\n    }\r\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".content-back {\r\n    margin: 0 auto;\r\n    border-radius: 5px;\r\n    padding: 20px;\r\n    width: 800px;\r\n    display: flex;\r\n    justify-content: center;\r\n}\r\n\r\n\r\n#login_btn {\r\n    width: 14rem;\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    max-width: 100%;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    text-transform: uppercase;\r\n    padding: 12px 20px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n#login_btn:hover{\r\n    background-color: #f79c14;\r\n  }\r\n\r\n  ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -102299,6 +102321,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./resources/js/components/Movies/RecommendMovie/RecommendMovie.css":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Movies/RecommendMovie/RecommendMovie.css ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_RecommendMovie_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./RecommendMovie.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/RecommendMovie/RecommendMovie.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_RecommendMovie_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_RecommendMovie_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.css":
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.css ***!
@@ -103972,7 +104024,7 @@ var attributesToProps = _index_js__WEBPACK_IMPORTED_MODULE_0__.attributesToProps
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\inaro\\\\УЧЁБА\\\\Стажировка\\\\SeriesManiac\\\\laravel-react"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\Users\\\\inaro\\\\УЧЁБА\\\\Стажировка\\\\SeriesManiac\\\\laravel-react","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

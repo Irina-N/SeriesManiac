@@ -9,6 +9,8 @@
 .userAvatar {
   object-fit: cover;
   position: relative;
+}
+.userAvatar > div > span{  
   font-size: 1.2rem;
 }
 
@@ -53,7 +55,7 @@ header .dropdown > .dropdown-toggle:hover {
 }
 
 header .dropdown .dropdown-item {
-  font-size: 1.2rem;
+  font-size: calc(.8rem + .5vw);;
 }
 
 header .dropdown-item:focus,
@@ -76,7 +78,7 @@ header .dropdown-item:hover {
     height: 5vw!important;
   }
 
-  .userAvatar  > div {
+  .userAvatar > div > span {
     font-size: 2.8vw!important;
   }
 

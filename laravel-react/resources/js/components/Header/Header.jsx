@@ -14,7 +14,7 @@ export default function Header() {
       className="header"
       style={{ justifyContent: user.id ? 'space-between' : 'center' }}
     >
-      <h1 className={`header__title ${user.id ? 'text-left' : 'text-center'}`}>
+      <h1 className={`header__title ${user.id ? 'header__text-left' : 'header__text-center'}`}>
         SериальныйMaньяK
       </h1>
       {user.id && (

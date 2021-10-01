@@ -6,7 +6,9 @@
 }
 
 #singup_btn {
-  width: 35%;
+  width: 14rem;
+  min-width: fit-content;
+  max-width: 100%;
   font-size: 16px;
   font-weight: 500;
   color: white;
@@ -22,8 +24,6 @@
   background-color: #f79c14;
 }
 
-@media (max-width: 426px) {
-  #singup_btn{
-    width: fit-content;
-  }
+@media (max-width: 768px) {
+  
 }

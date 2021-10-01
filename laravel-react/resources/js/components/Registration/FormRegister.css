@@ -23,7 +23,9 @@ textarea {
 }
 
 input[type=submit] {
-    width: 35%;
+    width: 14rem;
+    min-width: fit-content;
+    max-width: 100%;
     font-weight: 500;
     align-self: center;
     background-color: #04AA6D;

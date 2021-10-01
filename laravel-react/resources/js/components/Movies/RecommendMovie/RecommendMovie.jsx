@@ -84,7 +84,7 @@ export const RecommendMovies = () => {
           <div className="container-fluid d-flex bg-light justify-content-center py-3">
             <form className="form-inline col-6 px-2 d-flex justify-content-center">
               <input
-                className="form-control m-2 w-50"
+                className="form-control w-100"
                 type="search"
                 placeholder="Search"
                 value={searchText}
