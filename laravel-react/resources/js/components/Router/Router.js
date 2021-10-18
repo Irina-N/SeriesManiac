@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import Auth from '../Auth/Auth';
 import Registration from '../Registration/Registration';
 import Movies from '../Movies/Movies';
-import MovieCard from '../Movies/MovieCard/MovieCard';
+import MoviePage from '../Movies/MoviePage/MoviePage';
 import { UserMovies } from '../Movies/UserMovies/UserMovies';
 import { RecommendMovies } from '../Movies/RecommendMovie/RecommendMovie';
 
@@ -32,7 +32,7 @@ export default function Router() {
         <Route exact path="/user/recommendations">
           <RecommendMovies />
         </Route>
-        <Route exact path="/movies/:movieId" component={MovieCard}></Route>
+        <Route exact path="/movies/:movieId" component={MoviePage}></Route>
       </Switch>
       <ToastContainer theme="colored" />
     </>

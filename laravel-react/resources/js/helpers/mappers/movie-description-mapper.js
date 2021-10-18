@@ -1,7 +1,7 @@
 export const descriptionMapper = (htmlAsText) => {
   if (!htmlAsText || !htmlAsText.length) return '';  
   
-  let newHtmlText = htmlAsText.replaceAll('</a>', '');
+  let newHtmlText = htmlAsText.replaceAll('</a>', '').replaceAll('h3', 'h4');
 
   while (newHtmlText.includes('<a href=')) {
     let idx = 9;

@@ -9,7 +9,7 @@ import {
   loadMoreMovies,
   searchMovies,
 } from '../../store/actions/movies';
-import { MovieListItem } from './MovieListItem/MovieListItem';
+import { MovieCard } from './MovieCard/MovieCard';
 import Header from '../Header/Header';
 import Spinner from 'react-bootstrap/Spinner';
 import { RandomMovie } from './RandomMovie/RandomMovie';
@@ -106,7 +106,7 @@ export const Movies = () => {
               </div>
             ) : (
               topMovies.map((movie) => {
-                return <MovieListItem key={movie.id} {...movie} />;
+                return <MovieCard key={movie.id} {...movie} />;
               })
             )}
           </div>
