@@ -1,32 +1,33 @@
 #random-movie {
-  background-size: cover;
-  background-position: top;
-  text-decoration: none;
-}
-#random-movie .row .mx-auto {
-  background-color: #10101078;
-  overflow: hidden;
-  max-height: 11rem;
-  padding: .5rem 1rem;
+    background-size: cover;
+    background-position: top;
+    text-decoration: none;
 }
 
-#random-movie_title{
-font-size: 2.2rem;
-line-height: 1!important;
+#random-movie .row .mx-auto {
+    background-color: #10101078;
+    overflow: hidden;
+    max-height: 11rem;
+    padding: .5rem 1rem;
+}
+
+#random-movie_title {
+    font-size: 2.2rem;
+    line-height: 1 !important;
 }
 
 #random-movie .lead {
-  font-size: .9rem;
-  font-weight: 200;
+    font-size: .9rem;
+    font-weight: 200;
 }
 
 @media (max-width: 768px) {
-  #random-movie .lead {
-    font-size: .8rem;
-    font-weight: 200;
-  }
+    #random-movie .lead {
+        font-size: .8rem;
+        font-weight: 200;
+    }
 
-  #random-movie_title{
-    font-size: 1.5rem;    
+    #random-movie_title {
+        font-size: 1.5rem;
     }
 }

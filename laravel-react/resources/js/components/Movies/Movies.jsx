@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+/* import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; */
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import Spinner from 'react-bootstrap/Spinner';
+
 import {
   clearMoviesError,
   getTopMovies,
@@ -11,9 +15,8 @@ import {
 } from '../../store/actions/movies';
 import { MovieCard } from './MovieCard/MovieCard';
 import Header from '../Header/Header';
-import Spinner from 'react-bootstrap/Spinner';
 import { RandomMovie } from './RandomMovie/RandomMovie';
-import { toast } from 'react-toastify';
+
 import './movies.css';
 
 const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
@@ -21,9 +24,11 @@ const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
 export const Movies = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { movies: topMovies } = useSelector((state) => state.moviesReducer);
   const { preloader, error } = useSelector((state) => state.moviesReducer);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
+
   const [paginateCounter, setPaginateCounter] = useState(0);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
@@ -77,10 +82,10 @@ export const Movies = () => {
   };
 
   return (
-    <div className="content main">
+    <>
       <Header />
       <RandomMovie />
-      <div className="container-fluid d-flex bg-light justify-content-center">
+      {/* <div className="container-fluid d-flex bg-light justify-content-center">
         <form
           className="search-form px-2 d-flex justify-content-center"
           onSubmit={handlerSearch}
@@ -127,8 +132,8 @@ export const Movies = () => {
             </button>
           )}
         </div>
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 };
 

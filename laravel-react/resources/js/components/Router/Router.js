@@ -10,8 +10,10 @@ import MoviePage from '../Movies/MoviePage/MoviePage';
 import { UserMovies } from '../Movies/UserMovies/UserMovies';
 import { RecommendMovies } from '../Movies/RecommendMovie/RecommendMovie';
 
-import '../../../css/app.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
+import '../../../css/app.css';
 
 export default function Router() {
   return (

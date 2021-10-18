@@ -3,36 +3,13 @@
 }
 
 #singup_btn {
-    /* width: 14rem;
-    
-    max-width: 100%;
-    font-size: 16px; */
     min-width: fit-content;
+    width: 210px;
     color: white;
     background-color: #e68a00;
     border: none;
-    /* padding: 12px 20px;
-    
-    border-radius: 4px;
-    cursor: pointer; */
 }
 
 #singup_btn:hover {
     background-color: #f79c14;
 }
-
-
-/* .content-back {
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-
-
-
-
-@media (max-width: 768px) {
-  
-} */
