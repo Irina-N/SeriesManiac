@@ -16,10 +16,10 @@ export const NavProfile = ({ userName }) => {
 
   return (
     <Navbar expand='md' variant='dark' className='p-0'>
-      <Container fluid='lg' className='justify-content-between align-items-end pt-2 pb-2 w-100 m-auto'>
+      <Container fluid='lg' className='justify-content-between align-items-end py-2 w-100 m-auto'>
         <Navbar.Brand
           href='/movies'
-          className='text-warning ps-2 pb-0'
+          className='ps-2 pb-0'
         >
           SериальныйMaньяK
         </Navbar.Brand>

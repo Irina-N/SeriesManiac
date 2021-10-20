@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { Row, Col, Image } from 'react-bootstrap';
+
 import { Stars as Rating } from './Stars/Stars';
+
 import './UserMovieCard.css';
 
 export const UserMovieCard = ({
@@ -12,7 +16,31 @@ export const UserMovieCard = ({
   grade: rate,
 }) => {
   return (
-    <div className="card mb-3 w-100">
+    <Row
+      as={Link}
+      to={`/movies/${id}`}
+      className="card mb-3 w-100"
+    >
+      <Col xs={12} md={3}>
+        <Image src={image} className="img-fluid rounded-start" alt="poster" />
+      </Col>
+      <Col xs={12} md={3}>
+        <h4 className="card-title text-dark">{ru_title}</h4>
+      </Col>
+      <Col xs={12} md={2}>
+        <h5 className="card-title text-dark">({title})</h5>
+      </Col>
+      <Col xs={12} md={1}>
+        <h5 className="card-text text-muted text-center">{year}</h5>
+      </Col>
+      <Col xs={12} md={3}>
+        <Rating rate={rate} className="stars" />
+      </Col>
+    </Row>
+  );
+};
+
+{/* <div className="card mb-3 w-100">
       <Link to={`/movies/${id}`}>
         <div className="row g-0">
           <div className="col-md-4">
@@ -28,6 +56,4 @@ export const UserMovieCard = ({
           </div>
         </div>
       </Link>
-    </div>
-  );
-};
+    </div> */}

@@ -2,13 +2,13 @@
     background-size: cover;
     background-position: top;
     text-decoration: none;
+
 }
 
-#random-movie .row .mx-auto {
+#random-movie_text {
     background-color: #10101078;
     overflow: hidden;
-    max-height: 11rem;
-    padding: .5rem 1rem;
+    height: fit-content;
 }
 
 #random-movie_title {
@@ -16,18 +16,34 @@
     line-height: 1 !important;
 }
 
-#random-movie .lead {
+#random-movie_desc {
     font-size: .9rem;
     font-weight: 200;
 }
 
+#random-movie_desc>p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 530px) {
+    #random-movie {
+        height: 215px;
+    }
+}
+
+
 @media (max-width: 768px) {
-    #random-movie .lead {
+
+    #random-movie {
+        height: 256px;
+    }
+
+    #random-movie_desc {
         font-size: .8rem;
         font-weight: 200;
     }
 
     #random-movie_title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 }

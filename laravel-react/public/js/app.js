@@ -9989,29 +9989,6 @@ function Header() {
     })
   });
 }
-{
-  /* <Container
-       fluid='lg'
-       className='header'
-     >
-       <Row className={`${user.id ? 'justify-content-between' : 'justify-content-center'} align-items-center pl-2 pr-0 pt-3 pb-3`}>
-         <Col xs={10} sm={8} md={7}>
-           <h1
-             className={`text-warning header__title ${user.id ? 'text-left' : 'text-center'}`}
-           >
-             SериальныйMaньяK
-           </h1>
-         </Col>
-         {user.id && (
-           <Col xs={2} sm={4} md={5}>
-             <Navbar>
-               <NavProfile userName={user.login} />
-             </Navbar>
-           </Col>
-         )}
-       </Row>
-     </Container> */
-}
 
 /***/ }),
 
@@ -10055,10 +10032,10 @@ var NavProfile = function NavProfile(_ref) {
     className: "p-0",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       fluid: "lg",
-      className: "justify-content-between align-items-end pt-2 pb-2 w-100 m-auto",
+      className: "justify-content-between align-items-end py-2 w-100 m-auto",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Brand, {
         href: "/movies",
-        className: "text-warning ps-2 pb-0",
+        className: "ps-2 pb-0",
         children: "S\u0435\u0440\u0438\u0430\u043B\u044C\u043D\u044B\u0439Ma\u043D\u044C\u044FK"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Toggle, {
         "aria-controls": "basic-navbar-nav",
@@ -10132,9 +10109,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MovieCard": () => (/* binding */ MovieCard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var _MovieCard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MovieCard.css */ "./resources/js/components/Movies/MovieCard/MovieCard.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -10146,30 +10125,25 @@ var MovieCard = function MovieCard(_ref) {
       title = _ref.title,
       year = _ref.year,
       ru_title = _ref.ru_title;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    className: "col-lg-3 col-md-4 col-12 p-2 movie-list-item",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    as: react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link,
     to: "/movies/".concat(id),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "card shadow-sm",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-        src: image
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-          className: "card-title text-dark",
-          children: ru_title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          className: "card-text truncate text-muted",
-          children: title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "d-flex justify-content-between align-items-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
-            className: "text-muted",
-            children: year
-          })
-        })]
+    className: "movie-list-item",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Img, {
+      variant: "top",
+      src: image
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, {
+        className: "text-truncate text-dark",
+        children: ru_title || title
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Subtitle, {
+        className: "text-truncate text-muted",
+        children: ru_title ? title : ''
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("small", {
+        className: "text-muted text-center",
+        children: year
       })]
-    })
+    })]
   });
 };
 
@@ -10282,7 +10256,7 @@ function MoviePage() {
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
-          className: "movie-header bg-warning text-dark mt-md-3 mb-md-3",
+          className: "movie-header bg-warning text-dark my-md-3",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
             className: "p-2",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h2", {
@@ -10519,14 +10493,14 @@ function MovieRateForm(_ref) {
         xs: "auto",
         className: "text-center ps-2 pe-2 ps-sm-3 pe-sm-3",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          className: "btn btn_send_rate ".concat(isRated ? 'hidden' : ''),
+          className: "btn_send_rate ".concat(isRated ? 'hidden' : ''),
           disabled: !isHaveChoice,
           onClick: handleSubmit,
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-check btn-icon"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          className: "btn btn_edit_rate ".concat(isRated ? '' : 'hidden'),
+          className: "btn_edit_rate ".concat(isRated ? '' : 'hidden'),
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
             className: "fas fa-pen btn-icon",
             onClick: handleEditRate
@@ -10557,12 +10531,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
 /* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/actions/movies */ "./resources/js/store/actions/movies.js");
 /* harmony import */ var _MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MovieCard/MovieCard */ "./resources/js/components/Movies/MovieCard/MovieCard.jsx");
 /* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Header/Header */ "./resources/js/components/Header/Header.jsx");
 /* harmony import */ var _RandomMovie_RandomMovie__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./RandomMovie/RandomMovie */ "./resources/js/components/Movies/RandomMovie/RandomMovie.jsx");
 /* harmony import */ var _movies_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./movies.css */ "./resources/js/components/Movies/movies.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -10581,9 +10568,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-
-/* import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'; */
 
 
 
@@ -10605,13 +10589,9 @@ var Movies = function Movies() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.moviesReducer;
   }),
-      topMovies = _useSelector.movies;
-
-  var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
-    return state.moviesReducer;
-  }),
-      preloader = _useSelector2.preloader,
-      error = _useSelector2.error;
+      topMovies = _useSelector.movies,
+      preloader = _useSelector.preloader,
+      error = _useSelector.error;
 
   var userId = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.currentUserReducer.user.id;
@@ -10706,7 +10686,72 @@ var Movies = function Movies() {
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_RandomMovie_RandomMovie__WEBPACK_IMPORTED_MODULE_6__.RandomMovie, {})]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_RandomMovie_RandomMovie__WEBPACK_IMPORTED_MODULE_6__.RandomMovie, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      fluid: "lg",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        className: "search-form p-3 d-flex justify-content-center bg-light",
+        onSubmit: handlerSearch,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          type: "search",
+          placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0441\u0435\u0440\u0438\u0430\u043B",
+          className: "me-2",
+          "aria-label": "Search",
+          value: searchText,
+          onChange: function onChange(e) {
+            return setSearchText(e.target.value);
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          variant: "dark",
+          className: "btn search-btn",
+          type: "submit",
+          children: "\u041F\u043E\u0438\u0441\u043A"
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      fluid: "lg",
+      className: "mb-lg-5",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        id: "film-container",
+        align: "center",
+        className: "bg-light",
+        children: preloader && !isLoadMore || !topMovies || !topMovies.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          id: "spinner",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+            animation: "border",
+            variant: "dark"
+          })
+        }) : topMovies.map(function (movie) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+            xs: 12,
+            md: 4,
+            lg: 3,
+            className: "mt-3",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_MovieCard_MovieCard__WEBPACK_IMPORTED_MODULE_4__.MovieCard, _objectSpread({}, movie))
+          }, movie.id.toString());
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        align: "center",
+        justify: "center",
+        className: "bg-light p-4",
+        children: preloader && isLoadMore ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          align: "center",
+          className: "w-100 h-25",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_17__["default"], {
+            animation: "border",
+            variant: "dark"
+          })
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_16__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+            onClick: loadMore,
+            id: "load-more",
+            type: "button",
+            variant: "warning",
+            className: "btn-lg",
+            children: "\u0415\u0449\u0451 \u0441\u0435\u0440\u0438\u0430\u043B\u043E\u0432!"
+          })
+        })
+      })]
+    })]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Movies);
@@ -10726,10 +10771,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var html_react_parser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! html-react-parser */ "./node_modules/html-react-parser/index.mjs");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var _store_actions_movies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../store/actions/movies */ "./resources/js/store/actions/movies.js");
 /* harmony import */ var _helpers_mappers_movie_short_description_mapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../helpers/mappers/movie-short-description-mapper */ "./resources/js/helpers/mappers/movie-short-description-mapper.js");
@@ -10757,26 +10802,33 @@ var RandomMovie = function RandomMovie() {
       big_image = _useSelector.big_image,
       id = _useSelector.id;
 
+  var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.moviesReducer;
+  }),
+      preloader = _useSelector2.preloader;
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_store_actions_movies__WEBPACK_IMPORTED_MODULE_3__.getRandomMovie)());
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     fluid: "lg",
-    as: react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link,
-    to: "/movies/".concat(id),
-    id: "random-movie",
-    className: "p-5 text-center",
-    style: {
-      backgroundImage: "url(".concat(big_image, ")")
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        className: "col-lg-6 col-md-8 mx-auto",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      as: react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link,
+      to: "/movies/".concat(id),
+      id: "random-movie",
+      className: "d-flex py-5 text-center align-items-center",
+      style: {
+        backgroundImage: "url(".concat(big_image, ")")
+      },
+      children: !preloader && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        id: "random-movie_text",
+        className: "col-lg-6 col-md-8 mx-auto py-2 px-3 d-flex flex-column justify-content-center",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
           id: "random-movie_title",
           className: "random-movie_title fw-light text-light",
           children: ru_title || title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          id: "random-movie_desc",
           className: "lead text-white text-break",
           children: description ? (0,html_react_parser__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_helpers_mappers_movie_short_description_mapper__WEBPACK_IMPORTED_MODULE_4__.shortDescriptionMapper)(description)) : ''
         })]
@@ -10784,23 +10836,6 @@ var RandomMovie = function RandomMovie() {
     })
   });
 };
-{
-  /* <Link
-         id="random-movie"
-         to={`/movies/${id}`}
-         className="py-5 text-center container-fluid"
-         style={{ backgroundImage: `url(${big_image})` }}
-       >
-         <div className="row py-lg-5">
-           <div className="col-lg-6 col-md-8 mx-auto">
-             <h1 id="random-movie_title" className="random-movie_title fw-light text-light">{ru_title || title}</h1>
-             <div className="lead text-white text-break">
-               {description ? parse(shortDescriptionMapper(description)) : ''}
-             </div>
-           </div>
-         </div>
-       </Link> */
-}
 
 /***/ }),
 
@@ -11040,10 +11075,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
 var Stars = function Stars(_ref) {
   var rate = _ref.rate;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: "stars",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "text-center text-secondary",
       children: "\u041C\u043E\u0439 \u0440\u0435\u0439\u0442\u0438\u043D\u0433"
@@ -11077,10 +11112,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "UserMovieCard": () => (/* binding */ UserMovieCard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Image.js");
 /* harmony import */ var _Stars_Stars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Stars/Stars */ "./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.jsx");
 /* harmony import */ var _UserMovieCard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserMovieCard.css */ "./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -11094,42 +11133,68 @@ var UserMovieCard = function UserMovieCard(_ref) {
       title = _ref.title,
       year = _ref.year,
       rate = _ref.grade;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    as: react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link,
+    to: "/movies/".concat(id),
     className: "card mb-3 w-100",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-      to: "/movies/".concat(id),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "row g-0",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "col-md-4",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: image,
-            className: "img-fluid rounded-start",
-            alt: "poster"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "col-md-8",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "card-body w-100",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-              className: "card-title text-dark w-25",
-              children: ru_title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h5", {
-              className: "card-title text-dark w-25",
-              children: ["(", title, ")"]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
-              className: "card-text w-25 text-muted text-center",
-              children: year
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Stars_Stars__WEBPACK_IMPORTED_MODULE_1__.Stars, {
-              rate: rate,
-              className: "w-25"
-            })]
-          })
-        })]
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      xs: 12,
+      md: 3,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        src: image,
+        className: "img-fluid rounded-start",
+        alt: "poster"
       })
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      xs: 12,
+      md: 3,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
+        className: "card-title text-dark",
+        children: ru_title
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      xs: 12,
+      md: 2,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h5", {
+        className: "card-title text-dark",
+        children: ["(", title, ")"]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      xs: 12,
+      md: 1,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+        className: "card-text text-muted text-center",
+        children: year
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      xs: 12,
+      md: 3,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Stars_Stars__WEBPACK_IMPORTED_MODULE_1__.Stars, {
+        rate: rate,
+        className: "stars"
+      })
+    })]
   });
 };
+{
+  /* <div className="card mb-3 w-100">
+       <Link to={`/movies/${id}`}>
+         <div className="row g-0">
+           <div className="col-md-4">
+             <img src={image} className="img-fluid rounded-start" alt="poster" />
+           </div>
+           <div className="col-md-8">
+             <div className="card-body w-100">
+               <h4 className="card-title text-dark w-25">{ru_title}</h4>
+               <h5 className="card-title text-dark w-25">({title})</h5>
+               <h5 className="card-text w-25 text-muted text-center">{year}</h5>
+               <Rating rate={rate} className="w-25" />
+             </div>
+           </div>
+         </div>
+       </Link>
+     </div> */
+}
 
 /***/ }),
 
@@ -11147,13 +11212,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Header/Header */ "./resources/js/components/Header/Header.jsx");
-/* harmony import */ var _UserMovieCard_UserMovieCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserMovieCard/UserMovieCard */ "./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.jsx");
 /* harmony import */ var use_debounce__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! use-debounce */ "./node_modules/use-debounce/esm/useDebouncedCallback.js");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
-/* harmony import */ var _UserMovies_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./UserMovies.css */ "./resources/js/components/Movies/UserMovies/UserMovies.css");
-/* harmony import */ var _store_actions_currentUser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../store/actions/currentUser */ "./resources/js/store/actions/currentUser.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/FormControl.js");
+/* harmony import */ var _Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Header/Header */ "./resources/js/components/Header/Header.jsx");
+/* harmony import */ var _UserMovieCard_UserMovieCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserMovieCard/UserMovieCard */ "./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.jsx");
+/* harmony import */ var _store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../store/actions/currentUser */ "./resources/js/store/actions/currentUser.js");
+/* harmony import */ var _UserMovies_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UserMovies.css */ "./resources/js/components/Movies/UserMovies/UserMovies.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -11172,6 +11242,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -11225,7 +11296,7 @@ var UserMovies = function UserMovies() {
   }, [id]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (id) {
-      dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_5__.getUserMovies)(id)).unwrap().then(function (res) {
+      dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__.getUserMovies)(id)).unwrap().then(function (res) {
         return setUserMovies(res);
       });
     } else {
@@ -11243,35 +11314,40 @@ var UserMovies = function UserMovies() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (error.status) {
       react_toastify__WEBPACK_IMPORTED_MODULE_9__.toast.error(error.errorMessage);
-      dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_5__.clearUsersError)());
+      dispatch((0,_store_actions_currentUser__WEBPACK_IMPORTED_MODULE_4__.clearUsersError)());
     }
   }, [error.status]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    className: "content main",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), preloader ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      id: "spinner",
-      className: "d-flex justify-content-center align-items-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        animation: "border",
-        variant: "warning"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), preloader ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      fluid: "lg",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          id: "spinner",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+            animation: "border",
+            variant: "warning"
+          })
+        })
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: "container-fluid d-flex bg-light justify-content-center py-3",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("form", {
-          className: "form-inline col-6 px-2 d-flex justify-content-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
-            className: "form-control w-100",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        fluid: "lg",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
+          className: "search-form p-3 d-flex justify-content-center bg-light",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
             type: "search",
-            placeholder: "Search",
+            placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0432 \u043C\u043E\u0438\u0445 \u0441\u0435\u0440\u0438\u0430\u043B\u0430\u0445",
+            className: "me-2",
+            "aria-label": "Search",
             value: searchText,
             onChange: function onChange(e) {
               return setSearchText(e.target.value);
             }
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: "container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies",
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        fluid: "lg",
+        className: "bg-light user-movies",
         children: userMovies.length && userMovies.map(function (movie) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UserMovieCard_UserMovieCard__WEBPACK_IMPORTED_MODULE_3__.UserMovieCard, _objectSpread({}, movie), movie.id);
         })
@@ -11803,7 +11879,7 @@ __webpack_require__.r(__webpack_exports__);
 var shortDescriptionMapper = function shortDescriptionMapper(htmlAsText) {
   if (!htmlAsText || !htmlAsText.length) return '';
   var regex = new RegExp('(<a.{0,}">)|(<h3.{0,}/h3>)|(<.{0,10}>)|(</.{0,10}>)|(\&#.{3,5};\s?)', 'g');
-  var shortDescription = '<p>' + htmlAsText.slice(0, 230).replace(regex, '') + '...</p>';
+  var shortDescription = '<p>' + htmlAsText.slice(0, 250).replace(regex, '') + '...</p>';
   return shortDescription;
 };
 
@@ -21543,7 +21619,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    overflow-x: hidden;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n}\r\n\r\n#app {\r\n    margin: 0 auto;\r\n    max-width: 1400px;\r\n}\r\n\r\n.row {\r\n    width: 100%;\r\n    margin-left: auto !important;\r\n    margin-right: auto !important;\r\n}\r\n\r\n.container,\r\n.container-lg {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.narrow-container {\r\n    max-width: 800px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\n#spinner {\r\n    height: 65vh;\r\n    width: 100vw;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#spinner p {\r\n    padding: 0 9vw;\r\n    text-align: center;\r\n    font-size: calc(.5rem + 1.2vw);\r\n    line-height: 1.2;\r\n    font-weight: 200;\r\n    color: #fff;\r\n    margin: 0;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\r\n    .row {\r\n        width: 100%;\r\n        margin-left: auto !important;\r\n        margin-right: auto !important;\r\n    }\r\n\r\n    .narrow-container>.row {\r\n        border-radius: 5px;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n\r\n    .container-lg {\r\n        padding: 0 calc(50% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .container-lg {\r\n        padding: 0 164px;\r\n    }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    overflow-x: hidden;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n}\r\n\r\n#app {\r\n    margin: 0 auto;\r\n    max-width: 1400px;\r\n}\r\n\r\n.row {\r\n    width: 100%;\r\n    margin-left: auto !important;\r\n    margin-right: auto !important;\r\n}\r\n\r\n.container,\r\n.container-lg {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.narrow-container {\r\n    max-width: 800px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\n#spinner {\r\n    height: 50vh;\r\n    width: 100vw;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#spinner p {\r\n    padding: 0 9vw;\r\n    text-align: center;\r\n    font-size: calc(.5rem + 1.2vw);\r\n    line-height: 1.2;\r\n    font-weight: 200;\r\n    color: #fff;\r\n    margin: 0;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\r\n    .row {\r\n        width: 100%;\r\n        margin-left: auto !important;\r\n        margin-right: auto !important;\r\n    }\r\n\r\n    .narrow-container>.row {\r\n        border-radius: 5px;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n\r\n    .container-lg {\r\n        padding: 0 calc(50% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .container-lg {\r\n        padding: 0 164px;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21567,7 +21643,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#spinner {\r\n    height: 30vh !important;\r\n}\r\n\r\n#singup_btn {\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    width: 210px;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    border: none;\r\n}\r\n\r\n#singup_btn:hover {\r\n    background-color: #f79c14;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#singup_btn {\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    width: 210px;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    border: none;\r\n}\r\n\r\n#singup_btn:hover {\r\n    background-color: #f79c14;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21639,7 +21715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar-brand {\r\n    font-size: calc(1.4rem + .75vw) !important;\r\n    font-weight: 500;\r\n}\r\n\r\n.nav-link:hover {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n#navbar-toggler {\r\n    border: none !important;\r\n}\r\n\r\n#navbar-toggler:focus {\r\n    outline: none !important;\r\n    box-shadow: none !important;\r\n}\r\n\r\n/* #dropdown-profile-details {\r\n  padding: 1vw 0 1vw 1vw;\r\n}\r\n\r\n.dropdown-menu {\r\n  margin-top: .4rem;\r\n}\r\n\r\n.userAvatar {\r\n  object-fit: cover;\r\n  position: relative;\r\n}\r\n.userAvatar > div > span{  \r\n  font-size: 1.2rem;\r\n}\r\n\r\n.userAvatar::after {\r\n  content: '';\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px inset;\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 5;\r\n  border-radius: 100%;\r\n}\r\n\r\n.userName {\r\n  max-width: 40vw;\r\n  width: fit-content;\r\n  margin-left: 1vw;\r\n  margin-right: 1vw;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n  vertical-align: middle;\r\n}\r\n\r\n.dropdown-toggle::after {\r\n  margin: 0 .5rem 0 0!important;\r\n}\r\n\r\n\r\nheader .dropdown > .dropdown-toggle,\r\nheader .dropdown > .dropdown-toggle:hover {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  color: #ffa500;\r\n  font-size: 1.4rem;\r\n  font-weight: 400;\r\n  line-height: 1.6rem;\r\n}\r\n\r\nheader .dropdown .dropdown-item {\r\n  font-size: calc(.8rem + .5vw);;\r\n}\r\n\r\nheader .dropdown-item:focus,\r\nheader .dropdown-item:hover {\r\n  color: #fff;\r\n  background-color: #ffa500;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  header .dropdown > .dropdown-toggle,\r\n  header .dropdown > .dropdown-toggle:hover {   \r\n    font-size: calc(.3rem + 1.9vw);\r\n    font-weight: 200;\r\n    line-height: calc(.4rem + 2vw);\r\n  }\r\n\r\n  .userAvatar {\r\n    \r\n    width: 5vw!important;\r\n    height: 5vw!important;\r\n  }\r\n\r\n  .userAvatar > div > span {\r\n    font-size: 2.8vw!important;\r\n  }\r\n\r\n  .userName{\r\n    max-width: 30vw; \r\n  }\r\n} */\r\n\r\n/* .navbar {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n    .navbar {\r\n        padding: 0 calc(51% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .navbar {\r\n        padding: 0 174px;\r\n    }\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar-brand {\r\n    font-size: calc(1.4rem + .75vw) !important;\r\n    font-weight: 500;\r\n}\r\n\r\n.navbar-brand {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n.nav-link:hover {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n#navbar-toggler {\r\n    border: none !important;\r\n}\r\n\r\n#navbar-toggler:focus {\r\n    outline: none !important;\r\n    box-shadow: none !important;\r\n}\r\n\r\n/* #dropdown-profile-details {\r\n  padding: 1vw 0 1vw 1vw;\r\n}\r\n\r\n.dropdown-menu {\r\n  margin-top: .4rem;\r\n}\r\n\r\n.userAvatar {\r\n  object-fit: cover;\r\n  position: relative;\r\n}\r\n.userAvatar > div > span{  \r\n  font-size: 1.2rem;\r\n}\r\n\r\n.userAvatar::after {\r\n  content: '';\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px inset;\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 5;\r\n  border-radius: 100%;\r\n}\r\n\r\n.userName {\r\n  max-width: 40vw;\r\n  width: fit-content;\r\n  margin-left: 1vw;\r\n  margin-right: 1vw;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n  vertical-align: middle;\r\n}\r\n\r\n.dropdown-toggle::after {\r\n  margin: 0 .5rem 0 0!important;\r\n}\r\n\r\n\r\nheader .dropdown > .dropdown-toggle,\r\nheader .dropdown > .dropdown-toggle:hover {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  color: #ffa500;\r\n  font-size: 1.4rem;\r\n  font-weight: 400;\r\n  line-height: 1.6rem;\r\n}\r\n\r\nheader .dropdown .dropdown-item {\r\n  font-size: calc(.8rem + .5vw);;\r\n}\r\n\r\nheader .dropdown-item:focus,\r\nheader .dropdown-item:hover {\r\n  color: #fff;\r\n  background-color: #ffa500;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  header .dropdown > .dropdown-toggle,\r\n  header .dropdown > .dropdown-toggle:hover {   \r\n    font-size: calc(.3rem + 1.9vw);\r\n    font-weight: 200;\r\n    line-height: calc(.4rem + 2vw);\r\n  }\r\n\r\n  .userAvatar {\r\n    \r\n    width: 5vw!important;\r\n    height: 5vw!important;\r\n  }\r\n\r\n  .userAvatar > div > span {\r\n    font-size: 2.8vw!important;\r\n  }\r\n\r\n  .userName{\r\n    max-width: 30vw; \r\n  }\r\n} */\r\n\r\n/* .navbar {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n    .navbar {\r\n        padding: 0 calc(51% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .navbar {\r\n        padding: 0 174px;\r\n    }\r\n} */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21663,7 +21739,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\r\n  text-decoration: none;\r\n}\r\n.movie-list-item:hover {\r\n  text-decoration: none;\r\n}\r\n.movie-list-item .card img {\r\n  opacity: 0.8;\r\n}\r\n.movie-list-item:hover .card img {\r\n  opacity: 1;\r\n}\r\n.card-body {\r\n  padding: 0.5rem 1rem;\r\n}\r\n\r\n.card-title {\r\n  font-size: 1.15rem;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.card-text {\r\n  font-size: 0.9rem;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-list-item {\r\n    text-decoration: none;\r\n}\r\n\r\n.movie-list-item:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.card-img-top {\r\n    opacity: 0.8;\r\n}\r\n\r\n.movie-list-item:hover .card-img-top {\r\n    opacity: 1;\r\n}\r\n\r\n.movie-list-item:hover .card-title {\r\n    color: #ffa500 !important;\r\n}\r\n\r\n.card-body {\r\n    padding: 0.5rem 1rem;\r\n}\r\n\r\n.card-title {\r\n    font-size: 1.15rem !important;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n}\r\n\r\n.card-subtitle {\r\n    font-size: 0.9rem !important;\r\n    height: 17px;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21711,7 +21787,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form__movie-rate__content {\r\n    border-radius: 5px;\r\n}\r\n\r\n.stars_block {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-items: flex-end;\r\n    gap: 8px;\r\n    max-width: 90%;\r\n}\r\n\r\n.btn_send_rate,\r\n.btn_edit_rate {\r\n    color: #ffa500;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n}\r\n\r\n.btn_send_rate:hover,\r\n.btn_edit_rate:hover {\r\n    color: #45a049;\r\n}\r\n\r\n.btn_send_rate:disabled:hover {\r\n    color: #ccccb3;\r\n}\r\n\r\n.btn_send_rate:disabled {\r\n    cursor: default;\r\n    color: #ccccb3;\r\n}\r\n\r\n.fa-check {\r\n    font-size: calc(1.7rem + 1vw);\r\n    ;\r\n}\r\n\r\n.fa-pen {\r\n    font-size: calc(1.3rem + 1vw);\r\n    ;\r\n}\r\n\r\n.userMovieRate {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n    font-size: calc(1.6rem + 1vw);\r\n    ;\r\n}\r\n\r\n.userMovieRate[disabled] {\r\n    cursor: default;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form__movie-rate__content {\r\n    border-radius: 5px;\r\n}\r\n\r\n.stars_block {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-items: flex-end;\r\n    gap: 8px;\r\n    max-width: 90%;\r\n}\r\n\r\n.btn_send_rate,\r\n.btn_edit_rate {\r\n    color: #ffa500;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    border: none;\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n    background-color: transparent;\r\n}\r\n\r\n.btn_send_rate:hover,\r\n.btn_edit_rate:hover {\r\n    color: #45a049;\r\n}\r\n\r\n.btn_send_rate:disabled:hover {\r\n    color: #ccccb3;\r\n}\r\n\r\n.btn_send_rate:disabled {\r\n    cursor: default;\r\n    color: #ccccb3;\r\n}\r\n\r\n.fa-check {\r\n    font-size: calc(1.7rem + 1vw);\r\n    ;\r\n}\r\n\r\n.fa-pen {\r\n    font-size: calc(1.3rem + 1vw);\r\n    ;\r\n}\r\n\r\n.userMovieRate {\r\n    cursor: pointer;\r\n    color: #ccccb3;\r\n    font-size: calc(1.6rem + 1vw);\r\n    ;\r\n}\r\n\r\n.userMovieRate[disabled] {\r\n    cursor: default;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21735,7 +21811,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n    background-size: cover;\r\n    background-position: top;\r\n    text-decoration: none;\r\n}\r\n\r\n#random-movie .row .mx-auto {\r\n    background-color: #10101078;\r\n    overflow: hidden;\r\n    max-height: 11rem;\r\n    padding: .5rem 1rem;\r\n}\r\n\r\n#random-movie_title {\r\n    font-size: 2.2rem;\r\n    line-height: 1 !important;\r\n}\r\n\r\n#random-movie .lead {\r\n    font-size: .9rem;\r\n    font-weight: 200;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n    #random-movie .lead {\r\n        font-size: .8rem;\r\n        font-weight: 200;\r\n    }\r\n\r\n    #random-movie_title {\r\n        font-size: 1.5rem;\r\n    }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n    background-size: cover;\r\n    background-position: top;\r\n    text-decoration: none;\r\n\r\n}\r\n\r\n#random-movie_text {\r\n    background-color: #10101078;\r\n    overflow: hidden;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n#random-movie_title {\r\n    font-size: 2.2rem;\r\n    line-height: 1 !important;\r\n}\r\n\r\n#random-movie_desc {\r\n    font-size: .9rem;\r\n    font-weight: 200;\r\n}\r\n\r\n#random-movie_desc>p {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media (max-width: 530px) {\r\n    #random-movie {\r\n        height: 215px;\r\n    }\r\n}\r\n\r\n\r\n@media (max-width: 768px) {\r\n\r\n    #random-movie {\r\n        height: 256px;\r\n    }\r\n\r\n    #random-movie_desc {\r\n        font-size: .8rem;\r\n        font-weight: 200;\r\n    }\r\n\r\n    #random-movie_title {\r\n        font-size: 1.3rem;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21831,7 +21907,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/* .content,\r\n.main {\r\n  height: 100vh;\r\n  overflow-y: auto;\r\n}\r\n\r\n.container-fluid{\r\n  padding: 1rem;\r\n}\r\n\r\n.album {\r\n  padding-top: .5rem!important;\r\n}\r\n\r\n.search-form {\r\n  display: flex;\r\n  width: 100%;\r\n  gap: 5vw;\r\n}\r\n\r\n.form-control{\r\n  width: calc(85% - 10vw); \r\n  font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n.btn.btn-dark {\r\n  width: fit-content;\r\n  font-size: calc(0.5rem + 1vw);\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".search-form {\r\n    display: flex;\r\n    width: 100%;\r\n    gap: 5vw;\r\n}\r\n\r\n.form-control {\r\n    width: calc(85% - 10vw);\r\n    font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n.search-btn {\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n#film-container {\r\n    border: none;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21879,7 +21955,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#spinner {\r\n    height: 30vh !important;\r\n}\r\n\r\n#login_btn {\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    width: 210px;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    border: none;\r\n}\r\n\r\n#login_btn:hover {\r\n    background-color: #f79c14;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#login_btn {\r\n    min-width: -moz-fit-content;\r\n    min-width: fit-content;\r\n    width: 210px;\r\n    color: white;\r\n    background-color: #e68a00;\r\n    border: none;\r\n}\r\n\r\n#login_btn:hover {\r\n    background-color: #f79c14;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -59307,6 +59383,140 @@ Button.defaultProps = defaultProps;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/esm/Card.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Card.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createWithBsPrefix */ "./node_modules/react-bootstrap/esm/createWithBsPrefix.js");
+/* harmony import */ var _divWithClassName__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./divWithClassName */ "./node_modules/react-bootstrap/esm/divWithClassName.js");
+/* harmony import */ var _CardImg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CardImg */ "./node_modules/react-bootstrap/esm/CardImg.js");
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CardHeader */ "./node_modules/react-bootstrap/esm/CardHeader.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+const DivStyledAsH5 = (0,_divWithClassName__WEBPACK_IMPORTED_MODULE_3__["default"])('h5');
+const DivStyledAsH6 = (0,_divWithClassName__WEBPACK_IMPORTED_MODULE_3__["default"])('h6');
+const CardBody = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-body');
+const CardTitle = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-title', {
+  Component: DivStyledAsH5
+});
+const CardSubtitle = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-subtitle', {
+  Component: DivStyledAsH6
+});
+const CardLink = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-link', {
+  Component: 'a'
+});
+const CardText = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-text', {
+  Component: 'p'
+});
+const CardFooter = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-footer');
+const CardImgOverlay = (0,_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('card-img-overlay');
+const defaultProps = {
+  body: false
+};
+const Card = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  bsPrefix,
+  className,
+  bg,
+  text,
+  border,
+  body,
+  children,
+  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__.useBootstrapPrefix)(bsPrefix, 'card');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    ...props,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix, bg && `bg-${bg}`, text && `text-${text}`, border && `border-${border}`),
+    children: body ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(CardBody, {
+      children: children
+    }) : children
+  });
+});
+Card.displayName = 'Card';
+Card.defaultProps = defaultProps;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Object.assign(Card, {
+  Img: _CardImg__WEBPACK_IMPORTED_MODULE_6__["default"],
+  Title: CardTitle,
+  Subtitle: CardSubtitle,
+  Body: CardBody,
+  Link: CardLink,
+  Text: CardText,
+  Header: _CardHeader__WEBPACK_IMPORTED_MODULE_7__["default"],
+  Footer: CardFooter,
+  ImgOverlay: CardImgOverlay
+}));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardHeader.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardHeader.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _CardHeaderContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CardHeaderContext */ "./node_modules/react-bootstrap/esm/CardHeaderContext.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+const CardHeader = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(({
+  bsPrefix,
+  className,
+  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+  as: Component = 'div',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-header');
+  const contextValue = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({
+    cardHeaderBsPrefix: prefix
+  }), [prefix]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CardHeaderContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
+    value: contextValue,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+      ref: ref,
+      ...props,
+      className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(className, prefix)
+    })
+  });
+});
+CardHeader.displayName = 'CardHeader';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardHeader);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/esm/CardHeaderContext.js":
 /*!***************************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/CardHeaderContext.js ***!
@@ -59323,6 +59533,46 @@ __webpack_require__.r(__webpack_exports__);
 const context = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext(null);
 context.displayName = 'CardHeaderContext';
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (context);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardImg.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardImg.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+const CardImg = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({
+  bsPrefix,
+  className,
+  variant,
+  as: Component = 'img',
+  ...props
+}, ref) => {
+  const prefix = (0,_ThemeProvider__WEBPACK_IMPORTED_MODULE_3__.useBootstrapPrefix)(bsPrefix, 'card-img');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_0___default()(variant ? `${prefix}-${variant}` : prefix, className),
+    ...props
+  });
+});
+CardImg.displayName = 'CardImg';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardImg);
 
 /***/ }),
 
@@ -61722,6 +61972,31 @@ function createWithBsPrefix(prefix, {
   BsComponent.displayName = displayName;
   return BsComponent;
 }
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/divWithClassName.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/divWithClassName.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (className => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.forwardRef((p, ref) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", { ...p,
+  ref: ref,
+  className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(p.className, className)
+})));
 
 /***/ }),
 

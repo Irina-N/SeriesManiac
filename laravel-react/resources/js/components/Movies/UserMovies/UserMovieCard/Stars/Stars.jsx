@@ -1,6 +1,6 @@
 export const Stars = ({ rate }) => {
   return (
-    <div className="stars">
+    <>
       <div className="text-center text-secondary">Мой рейтинг</div>
       <div>
         <i className={`fas fa-star ${rate >= 1 && 'checked'}`} />
@@ -9,6 +9,6 @@ export const Stars = ({ rate }) => {
         <i className={`fas fa-star ${rate >= 4 && 'checked'}`} />
         <i className={`fas fa-star ${rate === 5 && 'checked'}`} />
       </div>
-    </div>
+    </>
   );
 };

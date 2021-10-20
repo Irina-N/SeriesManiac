@@ -26,24 +26,3 @@ export default function Header() {
     )
   );
 }
-{/* <Container
-      fluid='lg'
-      className='header'
-    >
-      <Row className={`${user.id ? 'justify-content-between' : 'justify-content-center'} align-items-center pl-2 pr-0 pt-3 pb-3`}>
-        <Col xs={10} sm={8} md={7}>
-          <h1
-            className={`text-warning header__title ${user.id ? 'text-left' : 'text-center'}`}
-          >
-            SериальныйMaньяK
-          </h1>
-        </Col>
-        {user.id && (
-          <Col xs={2} sm={4} md={5}>
-            <Navbar>
-              <NavProfile userName={user.login} />
-            </Navbar>
-          </Col>
-        )}
-      </Row>
-    </Container> */}

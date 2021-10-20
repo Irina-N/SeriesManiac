@@ -67,7 +67,7 @@ export default function MoviePage() {
               </Col>
             </Row>
 
-            <Row className='movie-header bg-warning text-dark mt-md-3 mb-md-3'>
+            <Row className='movie-header bg-warning text-dark my-md-3'>
               <Col className='p-2'>
                 <h2 className='movie_ru-title text-center mb-1'>
                   {currentMovie.ru_title || currentMovie.title}

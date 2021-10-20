@@ -138,12 +138,12 @@ export default function MovieRateForm({ movieId, userId, rate }) {
                 </Col>
                 <Col xs='auto' className='text-center ps-2 pe-2 ps-sm-3 pe-sm-3'>
                     <button
-                        className={`btn btn_send_rate ${isRated ? 'hidden' : ''}`}
+                        className={`btn_send_rate ${isRated ? 'hidden' : ''}`}
                         disabled={!isHaveChoice}
                         onClick={handleSubmit}>
                         <i className='fas fa-check btn-icon'></i>
                     </button>
-                    <button className={`btn btn_edit_rate ${isRated ? '' : 'hidden'}`}>
+                    <button className={`btn_edit_rate ${isRated ? '' : 'hidden'}`}>
                         <i className='fas fa-pen btn-icon' onClick={handleEditRate}></i>
                     </button>
                 </Col>
