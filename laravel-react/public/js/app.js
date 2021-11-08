@@ -10692,6 +10692,7 @@ var Movies = function Movies() {
         className: "search-form p-3 d-flex justify-content-center bg-light",
         onSubmit: handlerSearch,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          id: "movies_search",
           type: "search",
           placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0441\u0435\u0440\u0438\u0430\u043B",
           className: "me-2",
@@ -11072,27 +11073,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Stars": () => (/* binding */ Stars)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Stars_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Stars.css */ "./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 var Stars = function Stars(_ref) {
   var rate = _ref.rate;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: "text-center text-secondary",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "stars d-flex flex-column my-auto ms-md-4 ms-lg-2",
+    align: "center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+      className: "rating-title text-center text-dark mb-1 mb-xl-2",
       children: "\u041C\u043E\u0439 \u0440\u0435\u0439\u0442\u0438\u043D\u0433"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-        className: "fas fa-star ".concat(rate >= 1 && 'checked')
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-        className: "fas fa-star ".concat(rate >= 2 && 'checked')
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-        className: "fas fa-star ".concat(rate >= 3 && 'checked')
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-        className: "fas fa-star ".concat(rate >= 4 && 'checked')
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
-        className: "fas fa-star ".concat(rate === 5 && 'checked')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-star star-in-user-movies ".concat(rate >= 1 && 'checked')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-star star-in-user-movies ".concat(rate >= 2 && 'checked')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-star star-in-user-movies ".concat(rate >= 3 && 'checked')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-star star-in-user-movies ".concat(rate >= 4 && 'checked')
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+        className: "fas fa-star star-in-user-movies ".concat(rate === 5 && 'checked')
       })]
     })]
   });
@@ -11136,42 +11140,38 @@ var UserMovieCard = function UserMovieCard(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link,
     to: "/movies/".concat(id),
-    className: "card mb-3 w-100",
+    className: "user-movie-card flex-row mb-3 p-0 w-100",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       xs: 12,
+      sm: 6,
       md: 3,
+      align: "center",
+      className: "p-0",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
         src: image,
-        className: "img-fluid rounded-start",
-        alt: "poster"
+        fluid: true,
+        alt: "poster",
+        className: "user-movie-card_img"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       xs: 12,
-      md: 3,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h4", {
-        className: "card-title text-dark",
-        children: ru_title
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      xs: 12,
-      md: 2,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h5", {
-        className: "card-title text-dark",
-        children: ["(", title, ")"]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      xs: 12,
-      md: 1,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
-        className: "card-text text-muted text-center",
-        children: year
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      xs: 12,
-      md: 3,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Stars_Stars__WEBPACK_IMPORTED_MODULE_1__.Stars, {
-        rate: rate,
-        className: "stars"
+      sm: 6,
+      md: 9,
+      className: "d-flex align-items-center justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "user-movie-card_body w-100 d-flex flex-column flex-md-row justify-content-center align-items-center p-2 p-md-0",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+          className: "user-movie-card_ru-title text-dark text-center mb-2 my-md-auto mx-md-3 mx-lg-4",
+          children: ru_title || title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+          className: "user-movie-card_title text-secondary text-center mb-2 my-md-auto mx-md-3 mx-lg-4",
+          children: ru_title ? title : ''
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+          className: "user-movie-card_year text-secondary text-center mb-2 my-md-auto",
+          children: year
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Stars_Stars__WEBPACK_IMPORTED_MODULE_1__.Stars, {
+          rate: rate
+        })]
       })
     })]
   });
@@ -11185,7 +11185,7 @@ var UserMovieCard = function UserMovieCard(_ref) {
            </div>
            <div className="col-md-8">
              <div className="card-body w-100">
-               <h4 className="card-title text-dark w-25">{ru_title}</h4>
+               <h5 className="card-title text-dark w-25">{ru_title}</h5>
                <h5 className="card-title text-dark w-25">({title})</h5>
                <h5 className="card-text w-25 text-muted text-center">{year}</h5>
                <Rating rate={rate} className="w-25" />
@@ -11329,15 +11329,16 @@ var UserMovies = function UserMovies() {
           })
         })
       })
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
         fluid: "lg",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_14__["default"], {
           className: "search-form p-3 d-flex justify-content-center bg-light",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_15__["default"], {
+            id: "user-movies_search",
             type: "search",
             placeholder: "\u041D\u0430\u0439\u0442\u0438 \u0432 \u043C\u043E\u0438\u0445 \u0441\u0435\u0440\u0438\u0430\u043B\u0430\u0445",
-            className: "me-2",
+            className: "mx-auto",
             "aria-label": "Search",
             value: searchText,
             onChange: function onChange(e) {
@@ -11347,9 +11348,11 @@ var UserMovies = function UserMovies() {
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
         fluid: "lg",
-        className: "bg-light user-movies",
-        children: userMovies.length && userMovies.map(function (movie) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UserMovieCard_UserMovieCard__WEBPACK_IMPORTED_MODULE_3__.UserMovieCard, _objectSpread({}, movie), movie.id);
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("section", {
+          className: "bg-light user-movies p-3",
+          children: userMovies.length && userMovies.map(function (movie) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_UserMovieCard_UserMovieCard__WEBPACK_IMPORTED_MODULE_3__.UserMovieCard, _objectSpread({}, movie), movie.id);
+          })
         })
       })]
     })]
@@ -21619,7 +21622,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    overflow-x: hidden;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n}\r\n\r\n#app {\r\n    margin: 0 auto;\r\n    max-width: 1400px;\r\n}\r\n\r\n.row {\r\n    width: 100%;\r\n    margin-left: auto !important;\r\n    margin-right: auto !important;\r\n}\r\n\r\n.container,\r\n.container-lg {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.narrow-container {\r\n    max-width: 800px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\n#spinner {\r\n    height: 50vh;\r\n    width: 100vw;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#spinner p {\r\n    padding: 0 9vw;\r\n    text-align: center;\r\n    font-size: calc(.5rem + 1.2vw);\r\n    line-height: 1.2;\r\n    font-weight: 200;\r\n    color: #fff;\r\n    margin: 0;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\r\n    .row {\r\n        width: 100%;\r\n        margin-left: auto !important;\r\n        margin-right: auto !important;\r\n    }\r\n\r\n    .narrow-container>.row {\r\n        border-radius: 5px;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n\r\n    .container-lg {\r\n        padding: 0 calc(50% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .container-lg {\r\n        padding: 0 164px;\r\n    }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;\r\n    overflow-x: hidden;\r\n    background: rgba(0, 0, 0, 0.8);\r\n    color: #f1f1f1;\r\n}\r\n\r\n#app {\r\n    margin: 0 auto;\r\n    max-width: 1400px;\r\n}\r\n\r\n.row {\r\n    width: 100%;\r\n    margin-left: auto !important;\r\n    margin-right: auto !important;\r\n}\r\n\r\n.container,\r\n.container-lg {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n\r\n}\r\n\r\n.narrow-container {\r\n    max-width: 800px;\r\n}\r\n\r\n.hidden {\r\n    display: none;\r\n}\r\n\r\n#spinner {\r\n    height: 50vh;\r\n    width: 100vw;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#spinner p {\r\n    padding: 0 9vw;\r\n    text-align: center;\r\n    font-size: calc(.5rem + 1.2vw);\r\n    line-height: 1.2;\r\n    font-weight: 200;\r\n    color: #fff;\r\n    margin: 0;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n\r\n    .row {\r\n        width: 100%;\r\n        margin-left: auto !important;\r\n        margin-right: auto !important;\r\n    }\r\n\r\n    .narrow-container>.row {\r\n        border-radius: 5px;\r\n    }\r\n}\r\n\r\n/* @media (min-width: 992px) {\r\n\r\n\r\n    .container-lg {\r\n        padding: 0 calc(50% - 496px);\r\n    }\r\n} */\r\n\r\n/* @media (min-width: 1400px) {\r\n\r\n    .container-lg {\r\n        padding: 0 164px;\r\n    }\r\n}\r\n */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21715,7 +21718,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar-brand {\r\n    font-size: calc(1.4rem + .75vw) !important;\r\n    font-weight: 500;\r\n}\r\n\r\n.navbar-brand {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n.nav-link:hover {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n#navbar-toggler {\r\n    border: none !important;\r\n}\r\n\r\n#navbar-toggler:focus {\r\n    outline: none !important;\r\n    box-shadow: none !important;\r\n}\r\n\r\n/* #dropdown-profile-details {\r\n  padding: 1vw 0 1vw 1vw;\r\n}\r\n\r\n.dropdown-menu {\r\n  margin-top: .4rem;\r\n}\r\n\r\n.userAvatar {\r\n  object-fit: cover;\r\n  position: relative;\r\n}\r\n.userAvatar > div > span{  \r\n  font-size: 1.2rem;\r\n}\r\n\r\n.userAvatar::after {\r\n  content: '';\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px inset;\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 5;\r\n  border-radius: 100%;\r\n}\r\n\r\n.userName {\r\n  max-width: 40vw;\r\n  width: fit-content;\r\n  margin-left: 1vw;\r\n  margin-right: 1vw;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  white-space: nowrap;\r\n  text-overflow: ellipsis;\r\n  vertical-align: middle;\r\n}\r\n\r\n.dropdown-toggle::after {\r\n  margin: 0 .5rem 0 0!important;\r\n}\r\n\r\n\r\nheader .dropdown > .dropdown-toggle,\r\nheader .dropdown > .dropdown-toggle:hover {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  color: #ffa500;\r\n  font-size: 1.4rem;\r\n  font-weight: 400;\r\n  line-height: 1.6rem;\r\n}\r\n\r\nheader .dropdown .dropdown-item {\r\n  font-size: calc(.8rem + .5vw);;\r\n}\r\n\r\nheader .dropdown-item:focus,\r\nheader .dropdown-item:hover {\r\n  color: #fff;\r\n  background-color: #ffa500;\r\n}\r\n\r\n@media (max-width: 768px) {\r\n  header .dropdown > .dropdown-toggle,\r\n  header .dropdown > .dropdown-toggle:hover {   \r\n    font-size: calc(.3rem + 1.9vw);\r\n    font-weight: 200;\r\n    line-height: calc(.4rem + 2vw);\r\n  }\r\n\r\n  .userAvatar {\r\n    \r\n    width: 5vw!important;\r\n    height: 5vw!important;\r\n  }\r\n\r\n  .userAvatar > div > span {\r\n    font-size: 2.8vw!important;\r\n  }\r\n\r\n  .userName{\r\n    max-width: 30vw; \r\n  }\r\n} */\r\n\r\n/* .navbar {\r\n    padding: 0;\r\n    margin: 0 auto;\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n    .navbar {\r\n        padding: 0 calc(51% - 496px);\r\n    }\r\n}\r\n\r\n@media (min-width: 1400px) {\r\n\r\n    .navbar {\r\n        padding: 0 174px;\r\n    }\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar-brand {\r\n    font-size: calc(1.4rem + .75vw) !important;\r\n    font-weight: 500;\r\n}\r\n\r\n.navbar-brand {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n.nav-link {\r\n    font-size: 1rem !important;\r\n}\r\n\r\n.nav-link:hover {\r\n    color: #ffc107 !important;\r\n}\r\n\r\n#navbar-toggler {\r\n    border: none !important;\r\n}\r\n\r\n#navbar-toggler:focus {\r\n    outline: none !important;\r\n    box-shadow: none !important;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .nav-link {\r\n        font-size: 1rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .nav-link {\r\n        font-size: 1.15rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .nav-link {\r\n        font-size: 1.3rem !important;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21811,7 +21814,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n    background-size: cover;\r\n    background-position: top;\r\n    text-decoration: none;\r\n\r\n}\r\n\r\n#random-movie_text {\r\n    background-color: #10101078;\r\n    overflow: hidden;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n#random-movie_title {\r\n    font-size: 2.2rem;\r\n    line-height: 1 !important;\r\n}\r\n\r\n#random-movie_desc {\r\n    font-size: .9rem;\r\n    font-weight: 200;\r\n}\r\n\r\n#random-movie_desc>p {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media (max-width: 530px) {\r\n    #random-movie {\r\n        height: 215px;\r\n    }\r\n}\r\n\r\n\r\n@media (max-width: 768px) {\r\n\r\n    #random-movie {\r\n        height: 256px;\r\n    }\r\n\r\n    #random-movie_desc {\r\n        font-size: .8rem;\r\n        font-weight: 200;\r\n    }\r\n\r\n    #random-movie_title {\r\n        font-size: 1.3rem;\r\n    }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#random-movie {\r\n    background-size: cover;\r\n    background-position: top;\r\n    text-decoration: none;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n#random-movie_text {\r\n    background-color: #10101078;\r\n    overflow: hidden;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n}\r\n\r\n#random-movie_desc {\r\n    font-size: .8rem;\r\n    font-weight: 200;\r\n}\r\n\r\n#random-movie_title {\r\n    font-size: 1.3rem;\r\n}\r\n\r\n\r\n#random-movie_desc>p {\r\n    margin-bottom: 0;\r\n}\r\n\r\n\r\n@media (min-width: 768px) {\r\n\r\n    #random-movie_title {\r\n        font-size: 2.2rem;\r\n        line-height: 1 !important;\r\n    }\r\n\r\n    #random-movie_desc {\r\n        font-size: .9rem;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n    #random-movie_desc {\r\n        font-size: 1rem;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n\r\n    #random-movie {\r\n        height: 400px;\r\n    }\r\n\r\n\r\n    #random-movie_desc {\r\n        font-size: 1.1rem;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21842,6 +21845,30 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@media (max-width: 768px) {\r\n  .cont
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".rating-title {\r\n    font-size: calc(.9rem + .7vw);\r\n    font-weight: 500;\r\n}\r\n\r\n.star-in-user-movies {\r\n    color: #b3b3b3;\r\n    font-size: calc(.9rem + .7vw);\r\n}\r\n\r\n.checked {\r\n    color: #ffa500 !important;\r\n}\r\n\r\n\r\n@media (min-width: 768px) {\r\n\r\n    .rating-title,\r\n    .star-in-user-movies {\r\n        font-size: calc(.8rem + .6vw);\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n\r\n    .rating-title,\r\n    .star-in-user-movies {\r\n        font-size: 1.25rem;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n\r\n    .rating-title,\r\n    .star-in-user-movies {\r\n        font-size: 1.5rem;\r\n    }\r\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.css":
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/UserMovies/UserMovieCard/UserMovieCard.css ***!
@@ -21859,7 +21886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".user-movies .card a {\r\n  text-decoration: none;\r\n}\r\n.user-movies .card .row .col-md-4 {\r\n  max-width: 160px;\r\n}\r\n.user-movies .card .row img {\r\n  opacity: 0.8;\r\n}\r\n.user-movies .card:hover .row img {\r\n  opacity: 1;\r\n}\r\n.user-movies .card .row .col-md-8 {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  flex-grow: 1;\r\n}\r\n.user-movies .card .card-body {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n.user-movies .card .card-body .fa-star {\r\n  font-size: 20px;\r\n  color: rgb(204, 204, 179);\r\n}\r\n.user-movies .card .card-body .checked {\r\n  color: rgb(255, 165, 0);\r\n}\r\n@media (max-width: 768px) {\r\n  .user-movies .card .row {\r\n    justify-content: center;\r\n  }\r\n  .user-movies .card .row .col-md-4 {\r\n    max-width: 320px;\r\n  }\r\n  .user-movies .card .card-body {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    text-align: center;\r\n  }\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body h5,\r\n  .user-movies .card .card-body h4,\r\n  .user-movies .card .card-body .stars {\r\n    width: 100% !important;\r\n  }\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".user-movie-card {\r\n    text-decoration: none;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 5px;\r\n    overflow: hidden;\r\n    opacity: .8;\r\n}\r\n\r\n.user-movie-card:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.user-movie-card:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.user-movie-card_img {\r\n    padding: 0;\r\n    width: 100%;\r\n}\r\n\r\n.user-movie-card_ru-title,\r\n.user-movie-card_title,\r\n.user-movie-card_year,\r\n.stars {\r\n    width: 100%;\r\n    overflow: hidden;\r\n    line-height: 1.3;\r\n}\r\n\r\n.user-movie-card_ru-title {\r\n    font-size: calc(1rem + .7vw);\r\n}\r\n\r\n.user-movie-card_title {\r\n    font-size: calc(.8rem + .5vw);\r\n}\r\n\r\n.user-movie-card_year {\r\n    font-size: calc(1rem + .7vw);\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .user-movie-card_ru-title {\r\n        width: 35%;\r\n        font-size: calc(1rem + .5vw);\r\n    }\r\n\r\n    .user-movie-card_title {\r\n        width: 30%;\r\n    }\r\n\r\n    .user-movie-card_year {\r\n        width: 10%;\r\n        font-size: calc(.85rem + .7vw);\r\n    }\r\n\r\n    .stars {\r\n        width: 25%;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .user-movie-card_ru-title {\r\n        font-size: 1.25rem;\r\n    }\r\n\r\n    .user-movie-card_title {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n    .user-movie-card_year {\r\n        font-size: 1.1rem;\r\n    }\r\n\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .user-movie-card_ru-title {\r\n        font-size: 1.5rem;\r\n    }\r\n\r\n    .user-movie-card_title {\r\n        font-size: 1.3rem;\r\n    }\r\n\r\n    .user-movie-card_year {\r\n        font-size: 1.3rem;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21883,7 +21910,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#user-movies_search {\r\n    font-size: 1.1rem;\r\n}\r\n\r\n#user-movies_search:focus {\r\n    border-color: rgb(255 165 0 / 25%);\r\n    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    #user-movies_search {\r\n        font-size: .9rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    #user-movies_search {\r\n        font-size: 1rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    #user-movies_search {\r\n        font-size: 1.2rem !important;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21907,7 +21934,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".search-form {\r\n    display: flex;\r\n    width: 100%;\r\n    gap: 5vw;\r\n}\r\n\r\n.form-control {\r\n    width: calc(85% - 10vw);\r\n    font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n.search-btn {\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n#film-container {\r\n    border: none;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".search-form {\r\n    display: flex;\r\n    width: 100%;\r\n    gap: 5vw;\r\n}\r\n\r\n#movies_search {\r\n    width: calc(85% - 10vw);\r\n    font-size: 1.1rem;\r\n}\r\n\r\n#movies_search:focus {\r\n    border-color: rgb(255 165 0 / 25%);\r\n    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);\r\n}\r\n\r\n.search-btn {\r\n    width: -moz-fit-content;\r\n    width: fit-content;\r\n    font-size: calc(0.5rem + 1vw);\r\n}\r\n\r\n#film-container {\r\n    border: none;\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    #movies_search {\r\n        font-size: .9rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    #movies_search {\r\n        font-size: 1rem !important;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    #movies_search {\r\n        font-size: 1.2rem !important;\r\n    }\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -103063,6 +103090,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_RecommendMovie_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_Stars_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!../../../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./Stars.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].oneOf[1].use[2]!./resources/js/components/Movies/UserMovies/UserMovieCard/Stars/Stars.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_Stars_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_oneOf_1_use_2_Stars_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 

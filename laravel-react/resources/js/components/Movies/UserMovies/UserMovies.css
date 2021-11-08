@@ -1,0 +1,26 @@
+#user-movies_search {
+    font-size: 1.1rem;
+}
+
+#user-movies_search:focus {
+    border-color: rgb(255 165 0 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
+}
+
+@media (min-width: 768px) {
+    #user-movies_search {
+        font-size: .9rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #user-movies_search {
+        font-size: 1rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #user-movies_search {
+        font-size: 1.2rem !important;
+    }
+}

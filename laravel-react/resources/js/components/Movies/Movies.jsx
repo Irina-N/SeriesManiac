@@ -90,6 +90,7 @@ export const Movies = () => {
           onSubmit={handlerSearch}
         >
           <FormControl
+            id='movies_search'
             type='search'
             placeholder='Найти сериал'
             className='me-2'

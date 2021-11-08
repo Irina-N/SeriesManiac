@@ -83,13 +83,14 @@ export const UserMovies = () => {
           </Row>
         </Container>
       ) : (
-        <React.Fragment>
+        <>
           <Container fluid='lg'>
             <Form className='search-form p-3 d-flex justify-content-center bg-light'>
               <FormControl
+                id='user-movies_search'
                 type='search'
                 placeholder='Найти в моих сериалах'
-                className='me-2'
+                className='mx-auto'
                 aria-label='Search'
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
@@ -97,32 +98,15 @@ export const UserMovies = () => {
             </Form>
           </Container>
 
-          {/* <div className="container-fluid d-flex bg-light justify-content-center py-3">
-            <form className="form-inline col-6 px-2 d-flex justify-content-center">
-              <input
-                className="form-control w-100"
-                type="search"
-                placeholder="Search"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-              />
-            </form>
-          </div> */}
-
-          <Container fluid='lg' className="bg-light user-movies">
-            {userMovies.length &&
-              userMovies.map((movie) => {
-                return <UserMovieCard key={movie.id} {...movie} />;
-              })}
+          <Container fluid='lg'>
+            <section className='bg-light user-movies p-3'>
+              {userMovies.length &&
+                userMovies.map((movie) => {
+                  return <UserMovieCard key={movie.id} {...movie} />;
+                })}
+            </section>
           </Container>
-
-          {/* <div className="container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies">
-            {userMovies.length &&
-              userMovies.map((movie) => {
-                return <UserMovieCard key={movie.id} {...movie} />;
-              })}
-          </div> */}
-        </React.Fragment>
+        </>
       )}
     </>
   );

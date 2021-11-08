@@ -4,9 +4,14 @@
     gap: 5vw;
 }
 
-.form-control {
+#movies_search {
     width: calc(85% - 10vw);
-    font-size: calc(0.5rem + 1vw);
+    font-size: 1.1rem;
+}
+
+#movies_search:focus {
+    border-color: rgb(255 165 0 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
 }
 
 .search-btn {
@@ -16,4 +21,22 @@
 
 #film-container {
     border: none;
+}
+
+@media (min-width: 768px) {
+    #movies_search {
+        font-size: .9rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #movies_search {
+        font-size: 1rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #movies_search {
+        font-size: 1.2rem !important;
+    }
 }

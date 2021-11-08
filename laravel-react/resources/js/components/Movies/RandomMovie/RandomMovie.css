@@ -2,7 +2,7 @@
     background-size: cover;
     background-position: top;
     text-decoration: none;
-
+    height: fit-content;
 }
 
 #random-movie_text {
@@ -11,39 +11,48 @@
     height: fit-content;
 }
 
-#random-movie_title {
-    font-size: 2.2rem;
-    line-height: 1 !important;
-}
-
 #random-movie_desc {
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 200;
 }
+
+#random-movie_title {
+    font-size: 1.3rem;
+}
+
 
 #random-movie_desc>p {
     margin-bottom: 0;
 }
 
-@media (max-width: 530px) {
-    #random-movie {
-        height: 215px;
-    }
-}
 
+@media (min-width: 768px) {
 
-@media (max-width: 768px) {
-
-    #random-movie {
-        height: 256px;
+    #random-movie_title {
+        font-size: 2.2rem;
+        line-height: 1 !important;
     }
 
     #random-movie_desc {
-        font-size: .8rem;
-        font-weight: 200;
+        font-size: .9rem;
+    }
+}
+
+@media (min-width: 992px) {
+
+    #random-movie_desc {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    #random-movie {
+        height: 400px;
     }
 
-    #random-movie_title {
-        font-size: 1.3rem;
+
+    #random-movie_desc {
+        font-size: 1.1rem;
     }
 }

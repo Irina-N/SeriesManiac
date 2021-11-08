@@ -1,49 +1,90 @@
-.user-movies .card a {
-  text-decoration: none;
+.user-movie-card {
+    text-decoration: none;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: .8;
 }
-.user-movies .card .row .col-md-4 {
-  max-width: 160px;
+
+.user-movie-card:hover {
+    opacity: 1;
 }
-.user-movies .card .row img {
-  opacity: 0.8;
+
+.user-movie-card:hover {
+    text-decoration: none;
 }
-.user-movies .card:hover .row img {
-  opacity: 1;
+
+.user-movie-card_img {
+    padding: 0;
+    width: 100%;
 }
-.user-movies .card .row .col-md-8 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+
+.user-movie-card_ru-title,
+.user-movie-card_title,
+.user-movie-card_year,
+.stars {
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.3;
 }
-.user-movies .card .card-body {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+
+.user-movie-card_ru-title {
+    font-size: calc(1rem + .7vw);
 }
-.user-movies .card .card-body .fa-star {
-  font-size: 20px;
-  color: rgb(204, 204, 179);
+
+.user-movie-card_title {
+    font-size: calc(.8rem + .5vw);
 }
-.user-movies .card .card-body .checked {
-  color: rgb(255, 165, 0);
+
+.user-movie-card_year {
+    font-size: calc(1rem + .7vw);
 }
-@media (max-width: 768px) {
-  .user-movies .card .row {
-    justify-content: center;
-  }
-  .user-movies .card .row .col-md-4 {
-    max-width: 320px;
-  }
-  .user-movies .card .card-body {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-  .user-movies .card .card-body h4,
-  .user-movies .card .card-body h5,
-  .user-movies .card .card-body h4,
-  .user-movies .card .card-body .stars {
-    width: 100% !important;
-  }
+
+@media (min-width: 768px) {
+    .user-movie-card_ru-title {
+        width: 35%;
+        font-size: calc(1rem + .5vw);
+    }
+
+    .user-movie-card_title {
+        width: 30%;
+    }
+
+    .user-movie-card_year {
+        width: 10%;
+        font-size: calc(.85rem + .7vw);
+    }
+
+    .stars {
+        width: 25%;
+    }
+}
+
+@media (min-width: 992px) {
+    .user-movie-card_ru-title {
+        font-size: 1.25rem;
+    }
+
+    .user-movie-card_title {
+        font-size: 1.1rem;
+    }
+
+    .user-movie-card_year {
+        font-size: 1.1rem;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .user-movie-card_ru-title {
+        font-size: 1.5rem;
+    }
+
+    .user-movie-card_title {
+        font-size: 1.3rem;
+    }
+
+    .user-movie-card_year {
+        font-size: 1.3rem;
+    }
 }

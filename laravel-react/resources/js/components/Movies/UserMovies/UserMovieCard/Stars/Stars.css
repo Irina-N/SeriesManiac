@@ -1,0 +1,38 @@
+.rating-title {
+    font-size: calc(.9rem + .7vw);
+    font-weight: 500;
+}
+
+.star-in-user-movies {
+    color: #b3b3b3;
+    font-size: calc(.9rem + .7vw);
+}
+
+.checked {
+    color: #ffa500 !important;
+}
+
+
+@media (min-width: 768px) {
+
+    .rating-title,
+    .star-in-user-movies {
+        font-size: calc(.8rem + .6vw);
+    }
+}
+
+@media (min-width: 992px) {
+
+    .rating-title,
+    .star-in-user-movies {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .rating-title,
+    .star-in-user-movies {
+        font-size: 1.5rem;
+    }
+}
