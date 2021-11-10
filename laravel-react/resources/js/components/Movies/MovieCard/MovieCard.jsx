@@ -7,12 +7,12 @@ import './MovieCard.css';
 
 export const MovieCard = ({ id, image, title, year, ru_title }) => {
   return (
-    <Card as={Link} to={`/movies/${id}`} className="movie-list-item">
-      <Card.Img variant="top" src={image} />
+    <Card as={Link} to={`/movies/${id}`} className='movie-list-item'>
+      <Card.Img variant='top' src={image} />
       <Card.Body>
-        <Card.Title className="text-truncate text-dark">{ru_title || title}</Card.Title>
-        <Card.Subtitle className="text-truncate text-muted">{ru_title ? title : ''}</Card.Subtitle>
-        <small className="text-muted text-center">{year}</small>
+        <Card.Title className='movie-ru_title text-truncate text-dark'>{ru_title || title}</Card.Title>
+        <Card.Subtitle className='movie-title text-truncate text-muted mt-1 mb-2'>{ru_title ? title : ''}</Card.Subtitle>
+        <Card.Text className='movie-year text-muted text-center'>{year}</Card.Text>
       </Card.Body>
     </Card>
   );

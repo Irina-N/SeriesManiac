@@ -22,17 +22,52 @@
     padding: 0.5rem 1rem;
 }
 
-.card-title {
+.movie-ru_title {
     font-size: 1.15rem !important;
+    line-height: 1;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.card-subtitle {
+.movie-title {
     font-size: 0.9rem !important;
-    height: 17px;
+    line-height: 1;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.movie-year {
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+
+    .movie-ru_title {
+        font-size: 1.2rem !important;
+    }
+
+    .movie-title {
+        font-size: 1rem !important;
+    }
+
+    .movie-year {
+        font-size: 1rem !important;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .movie-ru_title {
+        font-size: 1.3rem !important;
+    }
+
+    .movie-title {
+        font-size: 1.1rem !important;
+    }
+
+    .movie-year {
+        font-size: 1.1rem !important;
+    }
 }

@@ -1,0 +1,42 @@
+#spinner-recommend {
+    margin-top: 25vh;
+}
+
+.loading-text {
+    padding: 0 9vw;
+    text-align: center;
+    font-size: calc(.8rem + .6vw);
+    line-height: 1.3;
+    font-weight: 200;
+}
+
+#recommend_search {
+    font-size: 1.1rem;
+}
+
+#recommend_search:focus {
+    border-color: rgb(255 165 0 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
+}
+
+@media (min-width: 768px) {
+    #recommend_search {
+        font-size: .9rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #recommend_search {
+        font-size: 1rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #recommend_search {
+        font-size: 1.2rem !important;
+    }
+
+    .loading-text {
+        font-size: 1.3rem;
+    }
+}

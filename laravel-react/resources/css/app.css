@@ -39,15 +39,6 @@ body {
     justify-content: center;
 }
 
-#spinner p {
-    padding: 0 9vw;
-    text-align: center;
-    font-size: calc(.5rem + 1.2vw);
-    line-height: 1.2;
-    font-weight: 200;
-    color: #fff;
-    margin: 0;
-}
 
 @media (min-width: 768px) {
 

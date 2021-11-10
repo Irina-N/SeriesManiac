@@ -5,11 +5,11 @@ import { useHistory } from 'react-router-dom';
 
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
-import { Container, Row, Col, Form, FormControl, Button, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, Form, FormControl, Spinner } from 'react-bootstrap';
 
 
 import Header from '../../Header/Header';
-import { UserMovieCard } from './UserMovieCard/UserMovieCard';
+import { MoviesListItem } from '../MoviesListItem/MoviesListItem.jsx';
 import {
   clearUsersError,
   getUserMovies,
@@ -20,16 +20,21 @@ import './UserMovies.css';
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
 export const UserMovies = () => {
+  const componentName = 'userMovies';
+
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { id } = useSelector((state) => state.currentUserReducer.user);
   const {
     userMovies: movies,
     error,
     preloader,
   } = useSelector((state) => state.currentUserReducer);
+
   const [userMovies, setUserMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
+
   const debouncedSearch = useDebouncedCallback((query) => {
     const searchResult = movies.filter(
       (movie) =>
@@ -73,7 +78,7 @@ export const UserMovies = () => {
 
   return (
     <>
-      <Header />
+      <Header componentName={componentName} />
       {preloader ? (
         <Container fluid='lg'>
           <Row>
@@ -102,8 +107,9 @@ export const UserMovies = () => {
             <section className='bg-light user-movies p-3'>
               {userMovies.length &&
                 userMovies.map((movie) => {
-                  return <UserMovieCard key={movie.id} {...movie} />;
-                })}
+                  return <MoviesListItem key={movie.id} {...movie} componentName={componentName} />;
+                })
+              }
             </section>
           </Container>
         </>

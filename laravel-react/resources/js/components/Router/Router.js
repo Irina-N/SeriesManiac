@@ -8,7 +8,7 @@ import Registration from '../Registration/Registration';
 import Movies from '../Movies/Movies';
 import MoviePage from '../Movies/MoviePage/MoviePage';
 import { UserMovies } from '../Movies/UserMovies/UserMovies';
-import { RecommendMovies } from '../Movies/RecommendMovie/RecommendMovie';
+import { RecommendMovies } from '../Movies/RecommendMovies/RecommendMovies';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,24 +19,24 @@ export default function Router() {
   return (
     <>
       <Switch>
-        <Route exact path="/">
+        <Route exact path='/'>
           <Auth />
         </Route>
-        <Route exact path="/register">
+        <Route exact path='/register'>
           <Registration />
         </Route>
-        <Route exact path="/movies">
+        <Route exact path='/movies'>
           <Movies />
         </Route>
-        <Route exact path="/user/movies">
+        <Route exact path='/user/movies'>
           <UserMovies />
         </Route>
-        <Route exact path="/user/recommendations">
+        <Route exact path='/user/recommendations'>
           <RecommendMovies />
         </Route>
-        <Route exact path="/movies/:movieId" component={MoviePage}></Route>
+        <Route exact path='/movies/:movieId' component={MoviePage}></Route>
       </Switch>
-      <ToastContainer theme="colored" />
+      <ToastContainer theme='colored' />
     </>
   );
 }

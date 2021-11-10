@@ -1,30 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Header from '../../Header/Header';
-import { RecommendMovieCard } from './RecommendMovieCard/RecommendMovieCard';
+
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
-import Spinner from 'react-bootstrap/Spinner';
+import { Spinner, Container, Row, Col, Form, FormControl } from 'react-bootstrap';
+
+import Header from '../../Header/Header';
+import { MoviesListItem } from '../MoviesListItem/MoviesListItem.jsx';
 import {
   clearUsersError,
   getRecommendMovies,
 } from '../../../store/actions/currentUser';
-import './RecommendMovie.css';
+
+import './RecommendMovies.css';
 
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
 export const RecommendMovies = () => {
+  const componentName = 'recommendMovies';
+
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { id } = useSelector((state) => state.currentUserReducer.user);
   const {
     recommendMovies: movies,
     error,
     preloader,
   } = useSelector((state) => state.currentUserReducer);
+
   const [recommendMovies, setRecommendMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
+
   const debouncedSearch = useDebouncedCallback((query) => {
     const searchResult = movies.filter(
       (movie) =>
@@ -68,39 +76,49 @@ export const RecommendMovies = () => {
   }, [error.status]);
 
   return (
-    <div className="content main">
-      <Header />
+    <>
+      <Header componentName={componentName} />
       {preloader ? (
-        <div
-          id="spinner"
-          className="d-flex justify-content-center align-items-center"
-        >
-          <Spinner animation="border" variant="warning" />
-          <p>Пожалуйста, подождите.</p>
-          <p>Мы рассчитываем индивидуальные рекомендации для вас.</p>
-        </div>
+        <Container fluid='lg'>
+          <Row>
+            <Col xs={12} id='spinner-recommend' className='d-flex justify-content-center mb-5'>
+              <Spinner animation='border' variant='warning' />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12} className='text-secondary'>
+              <p className='loading-text w-100 mb-2'>Пожалуйста, подождите.</p>
+              <p className='loading-text w-100'>Мы&nbsp;рассчитываем индивидуальные рекомендации&nbsp;для&nbsp;вас.</p>
+            </Col>
+          </Row>
+        </Container>
       ) : (
-        <React.Fragment>
-          <div className="container-fluid d-flex bg-light justify-content-center py-3">
-            <form className="form-inline col-6 px-2 d-flex justify-content-center">
-              <input
-                className="form-control w-100"
-                type="search"
-                placeholder="Search"
+        <>
+          <Container fluid='lg'>
+            <Form className='search-form p-3 d-flex justify-content-center bg-light'>
+              <FormControl
+                id='recommend_search'
+                type='search'
+                placeholder='Найти в рекомендациях'
+                className='mx-auto'
+                aria-label='Search'
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
-            </form>
-          </div>
+            </Form>
+          </Container>
 
-          <div className="container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies">
-            {recommendMovies.length &&
-              recommendMovies.map((movie) => {
-                return <RecommendMovieCard key={movie.id} {...movie} />;
-              })}
-          </div>
-        </React.Fragment>
+          <Container fluid='lg'>
+            <section className='bg-light recommended-movies p-3'>
+              {recommendMovies.length &&
+                recommendMovies.map((movie) => {
+                  return <MoviesListItem key={movie.id} {...movie} componentName={componentName} />;
+                })
+              }
+            </section>
+          </Container>
+        </>
       )}
-    </div>
+    </>
   );
 };

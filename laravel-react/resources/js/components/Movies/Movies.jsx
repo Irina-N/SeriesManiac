@@ -21,6 +21,8 @@ import './movies.css';
 const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
 
 export const Movies = () => {
+  const componentName = 'movies';
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -81,7 +83,7 @@ export const Movies = () => {
 
   return (
     <>
-      <Header />
+      <Header componentName={componentName} />
       <RandomMovie />
 
       <Container fluid='lg'>
@@ -122,7 +124,8 @@ export const Movies = () => {
           ) : (
             topMovies.map((movie) => {
               return (
-                <Col key={(movie.id).toString()} xs={12} md={4} lg={3} className='mt-3'>
+                <Col key={(movie.id).toString()} xs={12} sm=
+                  {6} md={4} lg={3} className='mt-3'>
                   <MovieCard {...movie} />
                 </Col>
               )

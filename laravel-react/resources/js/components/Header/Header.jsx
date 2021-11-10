@@ -7,12 +7,12 @@ import { NavProfile } from './NavProfile/NavProfile';
 
 import './Header.css';
 
-export default function Header() {
+export default function Header({ componentName: currentComponent }) {
   const { user } = useSelector((state) => state.currentUserReducer);
 
   return (
     user.id ? (
-      <NavProfile userName={user.login} />
+      <NavProfile currentComponent={currentComponent} userName={user.login} />
     ) : (
       <Container fluid='lg' className='header'>
         <Row className='align-items-center p-3'>
