@@ -1,39 +1,24 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
-import Spinner from 'react-bootstrap/Spinner';
-import { toast } from 'react-toastify';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 
-import { register, clearUsersError } from '../../store/actions/currentUser';
+import { register } from '../../store/actions/currentUser';
 
 import './FormRegister.css';
 
 export default function FormRegister() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const form = useRef(null);
 
   const [email, setEmail] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-  const { user, preloader, error } = useSelector(
-    (state) => state.currentUserReducer,
-  );
-
   useEffect(() => {
-    if (error.status) {
-      toast.error(error.errorMessage);
-      dispatch(clearUsersError());
-    }
-  }, [error.status]);
-
-  useEffect(() => {
-    if (user.id) {
-      history.push('/movies');
-    }
-  }, [user]);
+    form.current.focus();
+  }, []);
 
   const handleSubmit = useCallback(
     (e) => {
@@ -47,62 +32,96 @@ export default function FormRegister() {
   );
 
   return (
-    <React.Fragment>
-      <form
-        className="form__signup bg-dark"
-        onSubmit={handleSubmit}
-        name="sing_up"
-      >
-        <label htmlFor="email">Электронная почта</label>
-        <input
-          required
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
+    <Container className='narrow-container'>
+      <Row className='mt-3 mb-2'>
+        <Col>
+          <h3 className='text-center'>Регистрация</h3>
+        </Col>
+      </Row>
 
-        <label htmlFor="login">Логин</label>
-        <input
-          required
-          type="text"
-          id="login"
-          name="login"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-        ></input>
+      <Row className='bg-dark'>
+        <Col>
+          <Form
+            name='auth'
+            id='form_reister'
+            className='p-3'
+            ref={form}
+            onSubmit={handleSubmit}
+            align='center'
+          >
+            <Form.Group
+              className='mb-3'
+              align='start'
+              controlId='email'
+            >
+              <Form.Label>Электронная почта</Form.Label>
+              <Form.Control
+                required
+                type='email'
+                name='email'
+                className='w-100 m-auto'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} />
+            </Form.Group>
 
-        <label htmlFor="password">Пароль</label>
-        <input
-          required
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
+            <Form.Group
+              className='mb-3'
+              align='start'
+              controlId='email'
+            >
+              <Form.Label>Логин</Form.Label>
+              <Form.Control
+                required
+                type='login'
+                name='login'
+                className='w-100 m-auto'
+                value={login}
+                onChange={(e) => setLogin(e.target.value)} />
+            </Form.Group>
 
-        <label htmlFor="password2">Повторите пароль</label>
-        <input
-          required
-          type="password"
-          id="password2"
-          name="password2"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        ></input>
+            <Form.Group
+              className='mb-3'
+              align='start'
+              controlId='password'
+            >
+              <Form.Label>Пароль</Form.Label>
+              <Form.Control
+                required
+                type='password'
+                name='password'
+                className='w-100 m-auto'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-        <input type="submit" value="ЗАРЕГИСТРИРОВАТЬСЯ"></input>
-      </form>
-      {preloader && (
-        <div
-          id="spinner"
-          className="d-flex justify-content-center align-items-center"
-        >
-          <Spinner animation="border" variant="warning" />
-        </div>
-      )}
-    </React.Fragment>
+            <Form.Group
+              className='mb-3'
+              align='start'
+              controlId='password2'
+            >
+              <Form.Label>Повторите пароль</Form.Label>
+              <Form.Control
+                required
+                type='password'
+                name='password2'
+                className='w-100 m-auto'
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+              />
+            </Form.Group>
+
+            <Button
+              as='input'
+              id='sign_up-btn'
+              type='submit'
+              variant='success'
+              className='btn text-uppercase mt-1'
+              value='зарегистрироваться'
+            />
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }

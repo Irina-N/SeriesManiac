@@ -1,84 +1,73 @@
-.movie-card {
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2vh; 
+.movie-list-item {
+    text-decoration: none;
 }
 
-.movie-card__main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   
-    gap: 2vh; 
+.movie-list-item:hover {
+    text-decoration: none;
 }
 
-.movie-poster {
-    width: 100%;
+.card-img-top {
+    opacity: 0.8;
 }
 
-.movie-header {
-    width: 100%;
-    border-radius: 5px;
-    background-color: #ffa500;
-    color: #212529;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    gap: .3vh;
-    padding: 1vh;
+.movie-list-item:hover .card-img-top {
+    opacity: 1;
 }
 
-.movie_ru-title {
-    font-size: 2.5rem;
-    margin: 0;
+.movie-list-item:hover .card-title {
+    color: #ffa500 !important;
 }
 
-.movie_title {
-    font-size: 1.3rem;
-    margin: 0;
+.card-body {
+    padding: 0.5rem 1rem;
 }
 
-.movie_year {
-    font-size: 1rem;
-    margin: 0;
-}
-.movie-desc {
-    padding: 2vh 2vw;
-}
-
-.movie-desc p{
-    font-size: 1.1rem;
+.movie-ru_title {
+    font-size: 1.15rem !important;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
+.movie-title {
+    font-size: 0.9rem !important;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-@media (max-width: 768px) {
-    .movie-header {
-        border-radius: 0;
-        gap: .3vh;
-        padding: 1vh;
+.movie-year {
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+
+    .movie-ru_title {
+        font-size: 1.2rem !important;
     }
 
-    .movie_ru-title {
-        font-size: 5vw;
-    }
-    
-    .movie_title {
-        font-size: calc(.25rem + 3vw);
-    }
-    
-    .movie_year {
-        font-size: calc(.3rem + 2vw);
+    .movie-title {
+        font-size: 1rem !important;
     }
 
-    .movie-desc {
-        padding: 2vh 2vw;
+    .movie-year {
+        font-size: 1rem !important;
     }
-    
-    .movie-desc p{
-        font-size: calc(.7rem + .9vw);
-        font-weight: 200;
-    }
-  }
+}
 
+@media (min-width: 1400px) {
+
+    .movie-ru_title {
+        font-size: 1.3rem !important;
+    }
+
+    .movie-title {
+        font-size: 1.1rem !important;
+    }
+
+    .movie-year {
+        font-size: 1.1rem !important;
+    }
+}

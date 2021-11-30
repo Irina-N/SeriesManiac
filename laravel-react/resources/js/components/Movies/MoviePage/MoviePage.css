@@ -1,0 +1,18 @@
+.movie-desc p {
+    font-size: 1.1rem;
+}
+
+iframe {
+    max-width: 98% !important;
+    min-height: fit-content !important;
+}
+
+
+@media (min-width: 992px) {
+
+    .movie-header,
+    .movie-desc,
+    .movie-poster {
+        border-radius: 5px;
+    }
+}

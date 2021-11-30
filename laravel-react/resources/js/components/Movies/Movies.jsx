@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+import { Container, Row, Col, Form, FormControl, Button, Spinner } from 'react-bootstrap';
+
+
 import {
   clearMoviesError,
   getTopMovies,
   loadMoreMovies,
   searchMovies,
 } from '../../store/actions/movies';
-import { MovieListItem } from './MovieListItem/MovieListItem';
+import { MovieCard } from './MovieCard/MovieCard';
 import Header from '../Header/Header';
-import Spinner from 'react-bootstrap/Spinner';
 import { RandomMovie } from './RandomMovie/RandomMovie';
-import { toast } from 'react-toastify';
+
 import './movies.css';
 
 const MINIMUM_QUERY_LENGTH_FOR_SEARCH = 0;
 
 export const Movies = () => {
+  const componentName = 'movies';
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const { movies: topMovies } = useSelector((state) => state.moviesReducer);
-  const { preloader, error } = useSelector((state) => state.moviesReducer);
+
+  const { movies: topMovies, preloader, error } = useSelector((state) => state.moviesReducer);
   const userId = useSelector((state) => state.currentUserReducer.user.id);
+
   const [paginateCounter, setPaginateCounter] = useState(0);
   const [searchText, setSearchText] = useState('');
   const [searchQuery, setSearchQuery] = useState(null);
@@ -77,58 +82,77 @@ export const Movies = () => {
   };
 
   return (
-    <div className="content main">
-      <Header />
+    <>
+      <Header componentName={componentName} />
       <RandomMovie />
-      <div className="container-fluid d-flex bg-light justify-content-center">
-        <form
-          className="search-form px-2 d-flex justify-content-center"
+
+      <Container fluid='lg'>
+        <Form
+          className='search-form p-3 d-flex justify-content-center bg-light'
           onSubmit={handlerSearch}
         >
-          <input
-            className="form-control"
-            type="search"
-            placeholder="Search"
+          <FormControl
+            id='movies_search'
+            type='search'
+            placeholder='Найти сериал'
+            className='me-2'
+            aria-label='Search'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="btn btn-dark" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-      <div className="album py-5 bg-light w-100">
-        <div className="container">
-          <div id="film-container" className="row align-items-center">
-            {(preloader && !isLoadMore) || !topMovies || !topMovies.length ? (
-              <div className="d-flex justify-content-center align-items-center h-100">
-                <Spinner animation="border" variant="dark" />
-              </div>
-            ) : (
-              topMovies.map((movie) => {
-                return <MovieListItem key={movie.id} {...movie} />;
-              })
-            )}
-          </div>
-        </div>
-        <div className="d-flex justify-content-center align-items-center pt-4">
-          {preloader && isLoadMore ? (
-            <div className="d-flex justify-content-center align-items-center h-100">
-              <Spinner animation="border" variant="dark" />
-            </div>
+          <Button
+            variant='dark'
+            className='btn search-btn'
+            type='submit'
+          >
+            Поиск
+          </Button>
+        </Form>
+      </Container>
+
+      <Container fluid='lg' className='mb-lg-5'>
+        <Row
+
+          id='film-container'
+          align='center'
+          className='bg-light'
+        >
+          {(preloader && !isLoadMore) || !topMovies || !topMovies.length ? (
+            <Col id='spinner'>
+              <Spinner animation='border' variant='dark' />
+            </Col>
           ) : (
-            <button
-              onClick={loadMore}
-              id="load-more"
-              type="button"
-              className="btn btn-lg btn-outline-success"
-            >
-              Load more
-            </button>
+            topMovies.map((movie) => {
+              return (
+                <Col key={(movie.id).toString()} xs={12} sm=
+                  {6} md={4} lg={3} className='mt-3'>
+                  <MovieCard {...movie} />
+                </Col>
+              )
+            })
           )}
-        </div>
-      </div>
-    </div>
+        </Row>
+        <Row align='center' justify='center' className='bg-light p-4'>
+          {preloader && isLoadMore ? (
+            <Col align='center' className='w-100 h-25'>
+              <Spinner animation='border' variant='dark' />
+            </Col>
+          ) : (
+            <Col>
+              <Button
+                onClick={loadMore}
+                id='load-more'
+                type='button'
+                variant='warning'
+                className='btn-lg'
+              >
+                Ещё сериалов!
+              </Button>
+            </Col>
+          )}
+        </Row>
+      </Container>
+    </>
   );
 };
 

@@ -1,29 +1,11 @@
-.content-back {
-  margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-
 #singup_btn {
-  width: 35%;
-  font-size: 16px;
-  font-weight: 500;
-  color: white;
-  background-color: #e68a00;
-  text-transform: uppercase;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+    min-width: fit-content;
+    width: 210px;
+    color: white;
+    background-color: #e68a00;
+    border: none;
 }
 
-#singup_btn:hover{
-  background-color: #f79c14;
-}
-
-@media (max-width: 426px) {
-  #singup_btn{
-    width: fit-content;
-  }
+#singup_btn:hover {
+    background-color: #f79c14;
 }

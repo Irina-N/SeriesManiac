@@ -1,30 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import Header from '../../Header/Header';
-import { UserMovieCard } from './UserMovieCard/UserMovieCard';
+
+
 import { useDebouncedCallback } from 'use-debounce';
 import { toast } from 'react-toastify';
-import Spinner from 'react-bootstrap/Spinner';
-import './UserMovies.css';
+import { Container, Row, Col, Form, FormControl, Spinner } from 'react-bootstrap';
+
+
+import Header from '../../Header/Header';
+import { MoviesListItem } from '../MoviesListItem/MoviesListItem.jsx';
 import {
   clearUsersError,
   getUserMovies,
 } from '../../../store/actions/currentUser';
 
+import './UserMovies.css';
+
 const DEBOUNCE_WAIT_MILLISECONDS = 300;
 
 export const UserMovies = () => {
+  const componentName = 'userMovies';
+
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { id } = useSelector((state) => state.currentUserReducer.user);
   const {
     userMovies: movies,
     error,
     preloader,
   } = useSelector((state) => state.currentUserReducer);
+
   const [userMovies, setUserMovies] = useState([]);
   const [searchText, setSearchText] = useState('');
+
   const debouncedSearch = useDebouncedCallback((query) => {
     const searchResult = movies.filter(
       (movie) =>
@@ -67,37 +77,43 @@ export const UserMovies = () => {
   }, [error.status]);
 
   return (
-    <div className="content main">
-      <Header />
+    <>
+      <Header componentName={componentName} />
       {preloader ? (
-        <div
-          id="spinner"
-          className="d-flex justify-content-center align-items-center"
-        >
-          <Spinner animation="border" variant="warning" />
-        </div>
+        <Container fluid='lg'>
+          <Row>
+            <Col id='spinner'>
+              <Spinner animation='border' variant='warning' />
+            </Col>
+          </Row>
+        </Container>
       ) : (
-        <React.Fragment>
-          <div className="container-fluid d-flex bg-light justify-content-center py-3">
-            <form className="form-inline col-6 px-2 d-flex justify-content-center">
-              <input
-                className="form-control m-2 w-50"
-                type="search"
-                placeholder="Search"
+        <>
+          <Container fluid='lg'>
+            <Form className='search-form p-3 d-flex justify-content-center bg-light'>
+              <FormControl
+                id='user-movies_search'
+                type='search'
+                placeholder='Найти в моих сериалах'
+                className='mx-auto'
+                aria-label='Search'
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
-            </form>
-          </div>
+            </Form>
+          </Container>
 
-          <div className="container-fluid d-flex bg-light justify-content-center flex-column align-items-center user-movies">
-            {userMovies.length &&
-              userMovies.map((movie) => {
-                return <UserMovieCard key={movie.id} {...movie} />;
-              })}
-          </div>
-        </React.Fragment>
+          <Container fluid='lg'>
+            <section className='bg-light user-movies p-3'>
+              {userMovies.length &&
+                userMovies.map((movie) => {
+                  return <MoviesListItem key={movie.id} {...movie} componentName={componentName} />;
+                })
+              }
+            </section>
+          </Container>
+        </>
       )}
-    </div>
+    </>
   );
 };

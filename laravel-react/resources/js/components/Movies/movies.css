@@ -1,29 +1,42 @@
-.content,
-.main {
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.container-fluid{
-  padding: 1rem;
-}
-
-.album {
-  padding-top: .5rem!important;
-}
-
 .search-form {
-  display: flex;
-  width: 100%;
-  gap: 5vw;
+    display: flex;
+    width: 100%;
+    gap: 5vw;
 }
 
-.form-control{
-  width: calc(85% - 10vw); 
-  font-size: calc(0.5rem + 1vw);
+#movies_search {
+    width: calc(85% - 10vw);
+    font-size: 1.1rem;
 }
 
-.btn.btn-dark {
-  width: fit-content;
-  font-size: calc(0.5rem + 1vw);
+#movies_search:focus {
+    border-color: rgb(255 165 0 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
+}
+
+.search-btn {
+    width: fit-content;
+    font-size: calc(0.5rem + 1vw);
+}
+
+#film-container {
+    border: none;
+}
+
+@media (min-width: 768px) {
+    #movies_search {
+        font-size: .9rem !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #movies_search {
+        font-size: 1rem !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #movies_search {
+        font-size: 1.2rem !important;
+    }
 }
