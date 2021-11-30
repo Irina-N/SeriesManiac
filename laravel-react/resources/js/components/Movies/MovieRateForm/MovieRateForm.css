@@ -65,7 +65,9 @@
 }
 
 .tooltip-inner {
-    opacity: .75;
-    color: #ffa500 !important;
+    opacity: 1 !important;
+    background-color: #ffa500 !important;
+    color: #212529 !important;
     font-size: 1rem !important;
+    font-weight: 500;
 }

@@ -5,7 +5,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import { NavProfile } from './NavProfile/NavProfile';
 
-import './Header.css';
 
 export default function Header({ componentName: currentComponent }) {
   const { user } = useSelector((state) => state.currentUserReducer);

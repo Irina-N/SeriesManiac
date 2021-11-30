@@ -13,7 +13,6 @@ export const NavProfile = ({ currentComponent }) => {
     dispatch(logout());
   };
 
-
   return (
     <Navbar expand='md' variant='dark' className='p-0'>
       <Container fluid='lg' className='justify-content-between align-items-end py-2 w-100 m-auto'>

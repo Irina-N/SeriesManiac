@@ -40,6 +40,5 @@ export const RandomMovie = () => {
         </Col>)}
       </Row>
     </Container>
-
   );
 };
